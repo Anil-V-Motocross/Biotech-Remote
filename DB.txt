@@ -1,0 +1,237 @@
+
+Table Color {
+  Slno int [pk]
+  Select boolean
+  Color_Code varchar
+  Name varchar
+  Status boolean
+}
+
+Table Size {
+  Slno int [pk]
+  Select boolean
+  Id int
+  Name varchar
+  Status boolean
+}
+
+Table Plants {
+  Slno int [pk]
+  Select boolean
+  Name varchar
+  Status boolean
+}
+
+Table Banner {
+  Image varchar
+  Visible boolean
+  URL varchar
+}
+
+Table User {
+  Sno int [pk]
+  Fname varchar
+  Lname varchar
+  Email varchar
+  DOB date
+  Gender varchar
+  Address varchar
+  Office_Address varchar
+  Phone varchar
+  Tot_Referrals int
+  Referred_By int [ref: > User.Sno]
+  Amount_Of_Referrals int
+  Picture varchar
+}
+
+Table Seed_Type {
+  SKU varchar [pk]
+  Name varchar
+  Image varchar
+  Ribbon varchar
+  Threshold int
+  Tag varchar
+  Category varchar
+  Description varchar
+  What_In_Box varchar
+  Video varchar
+  Type varchar
+}
+
+Table Plant_Type {
+  SKU varchar [pk]
+  Name varchar
+  Image varchar
+  Ribbon varchar
+  Threshold int
+  Tag varchar
+  Category varchar
+  Description varchar
+  What_In_Box varchar
+  Video varchar
+  Type varchar
+  Planters varchar
+}
+
+Table Material {
+  SKU varchar [pk]
+  Name varchar
+  Image varchar
+  Ribbon varchar
+  Threshold int
+  Tag varchar
+  Category varchar
+  Description varchar
+  What_In_Box varchar
+  Video varchar
+  Cost_Of_Goods decimal
+  Sales_Price decimal
+  Price decimal
+  Profit decimal
+  Discount decimal
+  Stock int
+}
+
+Table Products {
+  Pid int [pk]
+  Name varchar
+  Size varchar
+  Category varchar
+  Quantity int
+  Price decimal
+  Discount_Price decimal
+  SKU_FK varchar [ref: > Seed_Type.SKU, ref: > Plant_Type.SKU, ref: > Material.SKU]
+  Date_Added date
+  Date_Published varchar
+  Action varchar
+}
+
+Table Orders {
+  Slno int [pk]
+  Order_No varchar
+  Payment_Type varchar
+  Price decimal
+  Date_Time timestamp
+  Pid int [ref: > Products.Pid]
+  Sno int [ref: > User.Sno]
+}
+
+Table Featured {
+  pid int [pk, ref: > Products.Pid]
+  pname varchar
+}
+
+Table Best_Sellers {
+  pid int [pk, ref: > Products.Pid]
+  pname varchar
+}
+
+Table Trending {
+  pid int [pk, ref: > Products.Pid]
+  pname varchar
+}
+
+Table Seasonal_Collection {
+  pid int [pk, ref: > Products.Pid]
+  pname varchar
+}
+
+
+
+Table Stock_History {
+  pid int [ref: > Products.Pid]
+  pimage varchar
+  stock int
+}
+
+Table Stores {
+  Slno int [pk]
+  Select boolean
+  Location varchar
+  Address varchar
+  Contact_No varchar
+  Time varchar
+  Address_Link varchar
+}
+
+Table Franchises {
+  Owner int [ref: > User.Sno]
+  Banner varchar
+  Images varchar
+}
+
+Table Franchise_Enquire {
+  Slno int [pk]
+  Name varchar
+  Phone varchar
+  Email varchar
+  Location varchar
+  Address varchar
+  Message varchar
+  Comment varchar
+  Status boolean
+}
+
+Table Careers {
+  Slno int [pk]
+  Select boolean
+  Heading varchar
+  Category varchar
+  Position_Name varchar
+  Job_Summary text
+  Responsibilities text
+  Desired_Skills text
+}
+
+Table Service_List {
+  Image varchar
+  Visible boolean
+  Heading varchar
+}
+
+Table Service_Enquiry {
+  Slno int [pk]
+  Name varchar
+  Contact_No varchar
+  Email varchar
+  Services varchar
+  Location varchar
+  Message text
+  Comment text
+  Status boolean
+}
+Table Coupon {
+  Id int [pk]
+  Title varchar
+  Visible boolean
+}
+Table Gift_Card {
+  Gname varchar
+  Image varchar
+  Price decimal
+  Visible boolean
+}
+
+Table Corporate_Gift_Enquiry {
+  Slno int [pk]
+  Name varchar
+  Phone varchar
+  Email varchar
+  Quantity int
+  Company_Name varchar
+  Comment text
+  Status boolean
+  Start_Date date
+  End_Date date
+}
+
+Table Blogs {
+  Id int [pk]
+  Title varchar
+  Image varchar
+  Visible boolean
+}
+
+
+
+
