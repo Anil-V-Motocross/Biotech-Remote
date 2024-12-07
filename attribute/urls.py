@@ -1,8 +1,8 @@
 from django.urls import path
-from .view.test import test
+from .view.color import color
 
-app_name = 'category'
+app_name = 'attribute'
 
 urlpatterns = [
-    path('test/', test, name='test'),
+    path('color/', color, name='color'),
 ]

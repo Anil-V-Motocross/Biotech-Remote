@@ -4,6 +4,8 @@ from .views.login import login_staff
 from .views.role import create_group_and_assign_permissions, get_permissions
 from .views.register_mobile import register_mobile, validate_otp, register
 
+name = 'account'
+
 urlpatterns = [
     path('registerWithMobile/', register_mobile, name='register_mobile'),
     path('validateOtp/', validate_otp, name='validate_otp'),
