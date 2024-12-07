@@ -1,26 +1,26 @@
 #!/bin/bash
-set -e
+# set -e
 
-PORT=8000
+# PORT=8000
 
-# Kill process on port
-echo "----------> Checking for process on port $PORT."
-if command -v lsof &>/dev/null; then
-    PID=$(sudo lsof -t -i:$PORT)
-elif command -v fuser &>/dev/null; then
-    PID=$(sudo fuser $PORT/tcp 2>/dev/null)
-else
-    echo "----------> Neither lsof nor fuser is available. Exiting."
-    exit 1
-fi
+# # Kill process on port
+# echo "----------> Checking for process on port $PORT."
+# if command -v lsof &>/dev/null; then
+#     PID=$(sudo lsof -t -i:$PORT)
+# elif command -v fuser &>/dev/null; then
+#     PID=$(sudo fuser $PORT/tcp 2>/dev/null)
+# else
+#     echo "----------> Neither lsof nor fuser is available. Exiting."
+#     exit 1
+# fi
 
-if [ -n "$PID" ]; then
-    echo "----------> Killing process $PID running on port $PORT..."
-    sudo kill -9 $PID
-    echo "----------> Process killed successfully."
-else
-    echo "----------> No process running on port $PORT."
-fi
+# if [ -n "$PID" ]; then
+#     echo "----------> Killing process $PID running on port $PORT..."
+#     sudo kill -9 $PID
+#     echo "----------> Process killed successfully."
+# else
+#     echo "----------> No process running on port $PORT."
+# fi
 
 # Virtual environment setup
 if [ ! -d "venv" ]; then
