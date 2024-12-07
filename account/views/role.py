@@ -65,7 +65,7 @@ def create_group_and_assign_permissions(request):
         
         return Response({'message': f'Group "{group_name}" created and permissions assigned successfully.'}, status=status.HTTP_201_CREATED)
     else:
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
 
 @api_view(['GET'])
