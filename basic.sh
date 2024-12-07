@@ -39,3 +39,9 @@ echo "----------> migrate executed successfully."
 # echo "----------> Starting server on port 8000."
 # /var/lib/jenkins/workspace/git-demo/venv/bin/gunicorn --bind 0.0.0.0:8000 main.wsgi:application
 # echo "----------> Running server on port 8000."
+
+echo "----------> restarting server."
+systemctl daemon-reload
+sudo systemctl restart nginx
+systemctl restart gunicorn
+echo "----------> server restarted successfully."
