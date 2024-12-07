@@ -157,16 +157,16 @@ REST_FRAMEWORK = {
     )
 }
 
-# JAZZMIN_UI_TWEAKS = {
-#     "theme": "flatly",
-#     "dark_mode_theme": "darkly",
-# }
+JAZZMIN_UI_TWEAKS = {
+    "theme": "flatly",
+    "dark_mode_theme": "darkly",
+}
 
 
-# JAZZMIN_SETTINGS = {
-#     "site_title": "BioTech Admin",
-#     "site_header": "BioTech Portal",
-#     "site_brand": "BioTech",
-#     "welcome_sign": "Welcome to the BioTech Admin Panel",
-#     "copyright": "BioTech",
-# }
+JAZZMIN_SETTINGS = {
+    "site_title": "BioTech Admin",
+    "site_header": "BioTech Portal",
+    "site_brand": "BioTech",
+    "welcome_sign": "Welcome to the BioTech Admin Panel",
+    "copyright": "BioTech",
+}
