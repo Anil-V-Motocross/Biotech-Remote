@@ -2,7 +2,6 @@ __pycache__
 venv
 .idea
 .venv
-db.sqlite3
 .devcontainer/
 devcontainer.json
 Dockerfile
