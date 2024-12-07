@@ -66,3 +66,12 @@ def create_group_and_assign_permissions(request):
         return Response({'message': f'Group "{group_name}" created and permissions assigned successfully.'}, status=status.HTTP_201_CREATED)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])  
+@authentication_classes([JWTAuthentication])
+def get_permissions(request):
+    user = request.user
+    permissions = user.get_all_permissions()
+    return Response(data={'message': 'success', 'permissions': list(permissions)}, status=status.HTTP_200_OK)

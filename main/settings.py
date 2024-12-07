@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-1-sk5v@+&4rcpre!1x#r$@*jyx@)fm$rv4y)0c-vi+ar(*jnio
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.dev.back.biotechmaali.com', 'dev.back.biotechmaali.com']
+ALLOWED_HOSTS = ['www.dev.back.biotechmaali.com', 'dev.back.biotechmaali.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -169,4 +170,9 @@ JAZZMIN_SETTINGS = {
     "site_brand": "BioTech",
     "welcome_sign": "Welcome to the BioTech Admin Panel",
     "copyright": "BioTech",
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=10),
 }

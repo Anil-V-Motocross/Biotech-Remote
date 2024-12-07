@@ -15,7 +15,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 @api_view(['POST'])
-def register(request):
+def register_staff(request):
     if request.method == 'POST':
         serializer = RegisterSerializer(data=request.data)
         

@@ -11,7 +11,7 @@ from account.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 
 @api_view(['POST'])
-def login(request):
+def login_staff(request):
     if request.method == 'POST':
         # Get the email and password from the request data
         phone_number = request.data.get('phone_number')
