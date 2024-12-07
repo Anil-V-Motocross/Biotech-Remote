@@ -41,11 +41,11 @@ echo "----------> Installing gunicorn."
 pip install gunicorn
 
 # Django setup
-echo "----------> Running makemigrations."
-python3 manage.py makemigrations
+# echo "----------> Running makemigrations."
+# python3 manage.py makemigrations
 
-echo "----------> Running migrate."
-python3 manage.py migrate
+# echo "----------> Running migrate."
+# python3 manage.py migrate
 
 # Restart services
 echo "----------> Restarting Gunicorn and Nginx."
