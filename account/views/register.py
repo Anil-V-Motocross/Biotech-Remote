@@ -18,13 +18,8 @@ class RegisterSerializer(serializers.ModelSerializer):
 def register_staff(request):
     if request.method == 'POST':
         serializer = RegisterSerializer(data=request.data)
-        
-        
         if serializer.is_valid():
-            # Save the new Service Enquiry record
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        # also check password Invalid password format or unknown hashing algorithm.
-
+            return Response(data={'message': 'success'}, status=status.HTTP_201_CREATED)
         if serializer.errors:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
