@@ -74,4 +74,7 @@ def create_group_and_assign_permissions(request):
 def get_permissions(request):
     user = request.user
     permissions = user.get_all_permissions()
-    return Response(data={'message': 'success', 'permissions': list(permissions)}, status=status.HTTP_200_OK)
+    data = {
+        'permissions': permissions
+    }
+    return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
