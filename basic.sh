@@ -1,47 +1,55 @@
 #!/bin/bash
+set -e
 
-# Port to kill
 PORT=8000
 
-# Find the process ID (PID) using the port
-PID=$(sudo lsof -t -i:$PORT)
+# Kill process on port
+echo "----------> Checking for process on port $PORT."
+if command -v lsof &>/dev/null; then
+    PID=$(sudo lsof -t -i:$PORT)
+elif command -v fuser &>/dev/null; then
+    PID=$(sudo fuser $PORT/tcp 2>/dev/null)
+else
+    echo "----------> Neither lsof nor fuser is available. Exiting."
+    exit 1
+fi
 
-# Check if PID exists
 if [ -n "$PID" ]; then
     echo "----------> Killing process $PID running on port $PORT..."
     sudo kill -9 $PID
     echo "----------> Process killed successfully."
 else
-    echo "----------> No process is running on port $PORT."
+    echo "----------> No process running on port $PORT."
+fi
+
+# Virtual environment setup
+if [ ! -d "venv" ]; then
+    echo "----------> Creating venv."
+    python3 -m venv venv
+else
+    echo "----------> venv already exists."
 fi
 
 echo "----------> Activating venv."
-python3 -m venv venv
 source ./venv/bin/activate
-echo "----------> venv activated sucessfully."
 
+# Install dependencies
 echo "----------> Installing requirements.txt."
 pip install -r requirements.txt
-echo "----------> requirements.txt installed successfully."
 
 echo "----------> Installing gunicorn."
 pip install gunicorn
-echo "----------> gunicorn installed sucessfuuly."
 
-echo "----------> Executing makemigrations."
+# Django setup
+echo "----------> Running makemigrations."
 python3 manage.py makemigrations
-echo "----------> makemigrations executed successfully."
 
-echo "----------> Executing migrate."
+echo "----------> Running migrate."
 python3 manage.py migrate
-echo "----------> migrate executed successfully."
 
-# echo "----------> Starting server on port 8000."
-# /var/lib/jenkins/workspace/git-demo/venv/bin/gunicorn --bind 0.0.0.0:8000 main.wsgi:application
-# echo "----------> Running server on port 8000."
-
-echo "----------> restarting server."
-systemctl daemon-reload
-# sudo systemctl restart nginx
+# Restart services
+echo "----------> Restarting Gunicorn and Nginx."
 sudo systemctl restart gunicorn.service
-echo "----------> server restarted successfully."
+sudo systemctl restart nginx
+
+echo "----------> Deployment complete."
