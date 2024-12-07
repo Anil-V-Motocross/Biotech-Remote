@@ -43,5 +43,5 @@ echo "----------> migrate executed successfully."
 echo "----------> restarting server."
 systemctl daemon-reload
 sudo systemctl restart nginx
-systemctl restart gunicorn
+sudo systemctl restart gunicorn.service
 echo "----------> server restarted successfully."
