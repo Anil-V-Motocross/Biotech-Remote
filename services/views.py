@@ -37,7 +37,7 @@ def get_service_enquiries(request):
         # print("Required permissions:", required_permissions)
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         service_enquiries = Service_enquiry.objects.all()
         serializer = ServiceEnquirySerializer(service_enquiries, many=True)

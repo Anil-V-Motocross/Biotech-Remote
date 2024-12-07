@@ -25,7 +25,7 @@ def color(request):
         
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         colors = Color.objects.all()
         serializer = ColorSerializer(colors, many=True)
@@ -40,13 +40,13 @@ def color(request):
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         serializer = ColorSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(data={'message': 'success'}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
     if request.method == 'PATCH':
         required_permissions = [
@@ -54,7 +54,7 @@ def color(request):
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         color_id = request.data.get('color_id', None)
 
@@ -65,7 +65,7 @@ def color(request):
         if serializer.is_valid():
             serializer.save()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
     if request.method == 'DELETE':
         required_permissions = [
@@ -73,7 +73,7 @@ def color(request):
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         color_id = request.data.get('color_id', None)
 
