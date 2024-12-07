@@ -29,5 +29,7 @@ def color(request):
         
         colors = Color.objects.all()
         serializer = ColorSerializer(colors, many=True)
-        
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        data = {
+            'colors': serializer.data
+        }
+        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
