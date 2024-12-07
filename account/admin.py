@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group, Permission
-from .models import User
+from .models import User, InitialInfo
 from django.contrib.auth.admin import UserAdmin
 
 # Custom UserAdmin class to display relevant fields in the Django admin interface
@@ -42,8 +42,14 @@ class CustomUserAdmin(UserAdmin):
     # Specify which fields should be read-only
     readonly_fields = ('created', 'updated', 'last_login')
 
+class InitialInfoAdmin(admin.ModelAdmin):
+    list_display = ('mobile',)
+
 # Register the custom User model with the custom UserAdmin
 admin.site.register(User, CustomUserAdmin)
+
+# Register the InitialInfo model
+admin.site.register(InitialInfo, InitialInfoAdmin)
 
 # Unregister Group and Permission models if they're already registered
 # try:
