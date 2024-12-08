@@ -48,9 +48,7 @@ pip install gunicorn
 # python3 manage.py migrate
 
 # Restart services
-echo "----------> Restarting Gunicorn and Nginx."
-# sudo systemctl restart gunicorn
-# sudo systemctl restart gunicorn.service
-# sudo systemctl restart nginx
-/var/lib/jenkins/workspace/git-demo/venv/bin/gunicorn --bind 0.0.0.0:8000 main.wsgi:application
+echo "----------> Restarting Gunicorn."
+nohup /var/lib/jenkins/workspace/git-demo/venv/bin/gunicorn --bind 0.0.0.0:8000 main.wsgi:application > gunicorn.log 2>&1 &
+
 echo "----------> Deployment complete."
