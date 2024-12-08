@@ -1,25 +1,16 @@
 #!/bin/bash
 set -e
 
+echo "----------> Checking for process on port 8000."
 PORT=8000
 
-# Kill process on port
-echo "----------> Checking for process on port $PORT."
+# Kill process on port 8000 if running
 if command -v lsof &>/dev/null; then
-    PID=$(sudo lsof -t -i:$PORT)
-elif command -v fuser &>/dev/null; then
-    PID=$(sudo fuser $PORT/tcp 2>/dev/null)
-else
-    echo "----------> Neither lsof nor fuser is available. Exiting."
-    exit 1
-fi
-
-if [ -n "$PID" ]; then
-    echo "----------> Killing process $PID running on port $PORT..."
-    sudo kill -9 $PID
-    echo "----------> Process killed successfully."
-else
-    echo "----------> No process running on port $PORT."
+    PID=$(lsof -t -i:$PORT 2>/dev/null || true)
+    if [ -n "$PID" ]; then
+        echo "----------> Killing process $PID running on port $PORT..."
+        kill -9 $PID
+    fi
 fi
 
 # Virtual environment setup
