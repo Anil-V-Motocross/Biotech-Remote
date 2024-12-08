@@ -43,7 +43,7 @@ class CustomUserAdmin(UserAdmin):
     readonly_fields = ('created', 'updated', 'last_login')
 
 class InitialInfoAdmin(admin.ModelAdmin):
-    list_display = ('mobile',)
+    list_display = ('mobile', 'otp', 'name', 'email', 'referell_code')
 
 # Register the custom User model with the custom UserAdmin
 admin.site.register(User, CustomUserAdmin)
