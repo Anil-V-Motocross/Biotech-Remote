@@ -6,15 +6,23 @@ from account.models import InitialInfo
 
 import requests
 
+from account.models import User
+
 # generate 6 digit otp
 def generate_otp():
     import random
     return str(random.randint(100000, 999999))
 
+def gererate_password():
+    # make password of 20 characters including special characters, numbers, and uppercase and lowercase letters
+    import random
+    import string
+    return ''.join(random.choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(20))
+
 
 def send_otp(mobile, otp):
     phone = "91" + str(mobile)
-    # print(user["phone_number"])
+    # print(user["mobile"])
     # print(user["otp"])
     try:
         # =======================================================================
@@ -58,13 +66,6 @@ class RegisteMOBileRegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Mobile number must be 10 digits.")
         return value
     
-    @property
-    def errors(self):
-        errors = super().errors
-        # Flatten errors for group_name if it exists
-        if "mobile" in errors and isinstance(errors["mobile"], list):
-            errors["mobile"] = errors["mobile"][0]
-        return errors
 
 @api_view(['POST'])
 def register_mobile(request):
@@ -72,7 +73,17 @@ def register_mobile(request):
         mobile = request.data.get('mobile', None)
 
         if not mobile:
-            return Response({'message': 'Mobile number is required.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={'message': 'Mobile number is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # check mobile is exists in User model with mobile
+        if User.objects.filter(mobile=mobile).exists():
+            # Generate OTP
+            otp = generate_otp()
+            # update otp in User model
+            User.objects.filter(mobile=mobile).update(otp=otp)
+            # send otp
+            send_otp(mobile=mobile, otp=otp)
+            return Response(data={'message': 'Registered User.', 'mobile': mobile}, status=status.HTTP_200_OK)
         
         # mobile is exists send otp with status 200
         if InitialInfo.objects.filter(mobile=mobile).exists():
@@ -81,7 +92,7 @@ def register_mobile(request):
             InitialInfo.objects.filter(mobile=mobile).update(otp=otp)
             # send otp
             send_otp(mobile=mobile, otp=otp)
-            return Response({'message': 'Mobile number already exists.'}, status=status.HTTP_200_OK)
+            return Response(data={'message': 'Only registered with mobile number.', 'mobile': mobile}, status=status.HTTP_200_OK)
 
         serializer = RegisteMOBileRegisterSerializer(data=request.data)
         if serializer.is_valid():
@@ -92,7 +103,7 @@ def register_mobile(request):
             send_otp(mobile=mobile, otp=otp)
             # Save the new Service Enquiry record
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(data={'message': 'Mobile number registered successfully.', 'mobile': mobile}, status=status.HTTP_201_CREATED)
         # also check password Invalid password format or unknown hashing algorithm.
 
         if serializer.errors:
@@ -105,16 +116,26 @@ def validate_otp(request):
         mobile = request.data.get('mobile', None)
         otp = request.data.get('otp', None)
         if not mobile or not otp:
-            return Response({'message': 'Mobile number and OTP are required.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={'message': 'Mobile number and OTP are required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # check mobile is exists in User model with mobile
+        if User.objects.filter(mobile=mobile).exists():
+            # check otp request and database
+            if not User.objects.filter(mobile=mobile, otp=otp).exists():
+                return Response(data={'message': 'Invalid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
+            
+            return Response(data={'message': 'OTP is valid. and registered User.', 'mobile': mobile}, status=status.HTTP_200_OK)
+
         # check otp request and database
         if not InitialInfo.objects.filter(mobile=mobile).exists():
-            return Response({'message': 'Mobile number does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={'message': 'Mobile number does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
         # check request otp and database otp
         if not InitialInfo.objects.filter(mobile=mobile, otp=otp).exists():
-            return Response({'message': 'Invalid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={'message': 'Invalid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
+        
         if InitialInfo.objects.filter(mobile=mobile, otp=otp).exists():
-            return Response({'message': 'OTP is valid.'}, status=status.HTTP_200_OK)
-        return Response({'message': 'Invalid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={'message': 'OTP is valid. and only registered with mobile number.', 'mobile': mobile}, status=status.HTTP_200_OK)
+        return Response(data={'message': 'Invalid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
     
 
 class InitialInfoSerializer(serializers.ModelSerializer):
@@ -129,22 +150,21 @@ def register(request):
     if request.method == 'POST':
         mobile = request.data.get('mobile', None)
         name = request.data.get('name', None)
-        email = request.data.get('email', None)
+        referell_code = request.data.get('referell_code', None)
 
-        if not mobile or not name or not email:
-            return Response({'message': 'Mobile number, name, email and referell code are required.'}, status=status.HTTP_400_BAD_REQUEST)
+        if not mobile or not name:
+            return Response(data={'message': 'Mobile number, name, code are required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        # email should be unique
-        if InitialInfo.objects.filter(email=email).exists():
-            return Response({'message': 'Email already exists.'}, status=status.HTTP_400_BAD_REQUEST)
-        
-        
-
-        serializer = InitialInfoSerializer(data=request.data)
-        
-        if serializer.is_valid():
-            # Save the new Service Enquiry record
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # make email field by concatenating mobile number and save in User model and delete in InitialInfo model
+        data = {
+                "password": gererate_password(),
+                "first_name": name,
+                "mobile": mobile,
+                "email": f"{mobile}@example.com",
+                "referell_code": referell_code,
+                "is_active": True
+            }
+        user = User.objects.create_user(**data)
+        user.save()
+        InitialInfo.objects.filter(mobile=mobile).delete()
+        return Response(data={'message': 'User registered successfully.'}, status=status.HTTP_200_OK)
