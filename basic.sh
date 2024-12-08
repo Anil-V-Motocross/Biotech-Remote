@@ -49,6 +49,7 @@ pip install gunicorn
 
 # Restart services
 echo "----------> Restarting Gunicorn and Nginx."
+sudo systemctl restart gunicorn
 sudo systemctl restart gunicorn.service
 sudo systemctl restart nginx
 

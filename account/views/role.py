@@ -47,7 +47,7 @@ def create_group_and_assign_permissions(request):
     user = request.user
     
     if not user.groups.filter(name='admin').exists():
-        return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
     
     serializer = GroupPermissionSerializer(data=request.data)
     if serializer.is_valid():

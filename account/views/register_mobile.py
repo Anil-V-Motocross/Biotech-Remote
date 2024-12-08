@@ -36,12 +36,12 @@ def send_otp(mobile, otp):
         }
 
         response = requests.post(url, json=payload, headers=headers)
-        for i in response:
-            print(i)
+        # for i in response:
+        #     print(i)
         # =======================================================================
         return True
     except Exception as e:
-        print(e)
+        # print(e)
         return False
 
 class RegisteMOBileRegisterSerializer(serializers.ModelSerializer):
