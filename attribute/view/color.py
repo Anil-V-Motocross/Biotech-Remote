@@ -17,8 +17,8 @@ class ColorSerializer(serializers.ModelSerializer):
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated, DynamicPermission])
 @authentication_classes([JWTAuthentication])
-def color(request):
-    if request.method == 'GET':
+def color(request, pk=None):
+    if request.method == 'GET' and not pk:
         required_permissions = [
             'attribute.view_color'
         ]
@@ -31,6 +31,21 @@ def color(request):
         serializer = ColorSerializer(colors, many=True)
         data = {
             'colors': serializer.data
+        }
+        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+    
+    if request.method == 'GET' and pk:
+        required_permissions = [
+            'attribute.view_color'
+        ]
+        
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        
+        color = Color.objects.get(id=pk)
+        serializer = ColorSerializer(color)
+        data = {
+            'color': serializer.data
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
     

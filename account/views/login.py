@@ -18,7 +18,7 @@ def login_staff(request):
         password = request.data.get('password')
         
         if not mobile or not password:
-            return Response({'message': 'Email and password are required.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'message': 'Mobile and password are required.'}, status=status.HTTP_400_BAD_REQUEST)
         
         # Check if the user exists in the database
         user = User.objects.filter(mobile=mobile).first()

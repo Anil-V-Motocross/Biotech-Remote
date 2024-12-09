@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import serializers
 from account.models import InitialInfo
+from rest_framework_simplejwt.tokens import RefreshToken
 
 import requests
 
@@ -11,7 +12,7 @@ from account.models import User
 # generate 6 digit otp
 def generate_otp():
     import random
-    return str(random.randint(100000, 999999))
+    return str(random.randint(1111, 9999))
 
 def gererate_password():
     # make password of 20 characters including special characters, numbers, and uppercase and lowercase letters
@@ -124,7 +125,27 @@ def validate_otp(request):
             if not User.objects.filter(mobile=mobile, otp=otp).exists():
                 return Response(data={'message': 'Invalid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
             
-            return Response(data={'message': 'OTP is valid. and registered User.', 'mobile': mobile}, status=status.HTTP_200_OK)
+            # Attach jwt token
+            user = User.objects.filter(mobile=mobile).first()
+            refresh = RefreshToken.for_user(user)
+            token = {
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            }
+            # attach user details
+            data = {
+                'user': {
+                    'id': user.id,
+                    'first_name': user.first_name,
+                    'mobile': user.mobile,
+                },
+                'token': token
+            }
+            # update otp in User model to None
+            user.otp = None
+            user.save()
+
+            return Response(data={'data': data, 'message': 'OTP is valid. and registered User.'}, status=status.HTTP_200_OK)
 
         # check otp request and database
         if not InitialInfo.objects.filter(mobile=mobile).exists():
@@ -167,4 +188,19 @@ def register(request):
         user = User.objects.create_user(**data)
         user.save()
         InitialInfo.objects.filter(mobile=mobile).delete()
-        return Response(data={'message': 'User registered successfully.'}, status=status.HTTP_200_OK)
+        # attech jwt token
+        refresh = RefreshToken.for_user(user)
+        token = {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+        }
+        # attach user de
+        data = {
+            'user': {
+                'id': user.id,
+                'first_name': user.first_name,
+                'mobile': user.mobile,
+            },
+            'token': token
+        }
+        return Response(data={'data': data, 'message': 'User registered successfully.'}, status=status.HTTP_200_OK)

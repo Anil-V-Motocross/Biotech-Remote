@@ -17,8 +17,8 @@ class SizeSerializer(serializers.ModelSerializer):
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated,DynamicPermission])
 @authentication_classes([JWTAuthentication])
-def size(request):
-    if request.method == 'GET':
+def size(request, pk=None):
+    if request.method == 'GET' and not pk:
         required_permissions = [
             'attribute.view_size'
         ]
@@ -30,6 +30,21 @@ def size(request):
         serializer = SizeSerializer(sizes, many=True)
         data = {
             'sizes': serializer.data
+        }
+        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+    
+    if request.method == 'GET' and pk:
+        required_permissions = [
+            'attribute.view_size'
+        ]
+        
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        
+        size = Size.objects.get(id=pk)
+        serializer = SizeSerializer(size)
+        data = {
+            'size': serializer.data
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
     
