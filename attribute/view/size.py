@@ -41,15 +41,14 @@ def size(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        size = Size.objects.get(id=pk)
-
-        if not size:
-            return Response(data={'message': 'size does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
-        serializer = SizeSerializer(size)
-        data = {
-            'size': serializer.data
-        }
-        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+        if Size.objects.filter(id=pk).exists():
+            size = Size.objects.get(id=pk)
+            serializer = SizeSerializer(size)
+            data = {
+                'size': serializer.data
+            }
+            return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+        return Response(data={'message': 'size does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
     
     if request.method == 'POST':
         required_permissions = [
@@ -77,15 +76,14 @@ def size(request, pk=None):
         if not size_id:
             return Response(data={'message': 'size_id is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        size = Size.objects.get(id=size_id)
-        
-        if not size:
-            return Response(data={'message': 'size does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
-        serializer = SizeSerializer(size, data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
-        return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        if Size.objects.filter(id=size_id).exists():
+            size = Size.objects.get(id=size_id)
+            serializer = SizeSerializer(size, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
+            return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'message': 'size does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
     
     if request.method == 'DELETE':
         required_permissions = [
@@ -103,3 +101,5 @@ def size(request, pk=None):
             Size.objects.get(id=size_id).delete()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
         return Response(data={'message': 'size does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)

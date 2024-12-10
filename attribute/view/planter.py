@@ -40,15 +40,14 @@ def planter(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        planter = Planter.objects.get(id=pk)
-
-        if not planter:
-            return Response(data={'message': 'Planter not found.'}, status=status.HTTP_404_NOT_FOUND)
-        serializer = PlanterSerializer(planter)
-        data = {
-            'planter': serializer.data
-        }
-        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+        if Planter.objects.filter(id=pk).exists():
+            planter = Planter.objects.get(id=pk)
+            serializer = PlanterSerializer(planter)
+            data = {
+                'planter': serializer.data
+            }
+            return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+        return Response(data={'message': 'Planter not found.'}, status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'POST':
         required_permissions = [
@@ -77,17 +76,15 @@ def planter(request, pk=None):
         if not planter_id:
             return Response(data={'message': 'Planter ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        planter = Planter.objects.filter(id=planter_id).first()
-
-        if not planter:
-            return Response(data={'message': 'Planter not found.'}, status=status.HTTP_404_NOT_FOUND)
-        
-        serializer = PlanterSerializer(planter, data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
-        return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-        
+        if Planter.objects.filter(id=planter_id).exists():
+            planter = Planter.objects.get(id=planter_id)
+            serializer = PlanterSerializer(planter, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
+            return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'message': 'Planter not found.'}, status=status.HTTP_404_NOT_FOUND)
+    
     if request.method == 'DELETE':
         required_permissions = [
             'attribute.delete_planter'
@@ -106,3 +103,5 @@ def planter(request, pk=None):
             Planter.objects.filter(id=planter_id).delete()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
         return Response(data={'message': 'Planter not found.'}, status=status.HTTP_404_NOT_FOUND)
+    
+    return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)

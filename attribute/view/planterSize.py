@@ -40,16 +40,11 @@ def planter_size(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        planter_size = PlanterSize.objects.get(id=pk)
-
-        if not planter_size:
-            return Response(data={'message': 'Planter Size not found.'}, status=status.HTTP_404_NOT_FOUND)
-        
-        serializer = PlanterSizeSerializer(planter_size)
-        data = {
-            'planter_size': serializer.data
-        }
-        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+        if PlanterSize.objects.filter(id=pk).exists():
+            planter_size = PlanterSize.objects.get(id=pk)
+            serializer = PlanterSizeSerializer(planter_size)
+            return Response(data={'message': 'success', 'data': serializer.data}, status=status.HTTP_200_OK)
+        return Response(data={'message': 'Planter Size not found.'}, status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'POST':
         required_permissions = [
@@ -78,16 +73,14 @@ def planter_size(request, pk=None):
         if not planter_size_id:
             return Response(data={'message': 'Planter Size ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        planter_size = PlanterSize.objects.filter(id=planter_size_id).first()
-
-        if not planter_size:
-            return Response(data={'message': 'Planter Size not found.'}, status=status.HTTP_404_NOT_FOUND)
-        
-        serializer = PlanterSizeSerializer(planter_size, data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
-        return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        if PlanterSize.objects.filter(id=planter_size_id).exists():
+            planter_size = PlanterSize.objects.get(id=planter_size_id)
+            serializer = PlanterSizeSerializer(planter_size, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
+            return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'message': 'Planter Size not found.'}, status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'DELETE':
         required_permissions = [
@@ -106,3 +99,5 @@ def planter_size(request, pk=None):
             PlanterSize.objects.filter(id=planter_size_id).delete()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
         return Response(data={'message': 'Planter Size not found.'}, status=status.HTTP_404_NOT_FOUND)
+    
+    return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
