@@ -19,7 +19,7 @@ class PlanterSizeSerializer(serializers.ModelSerializer):
 def planter_size(request, pk=None):
     if request.method == 'GET' and not pk:
         required_permissions = [
-            'attribute.view_planter_size'
+            'attribute.view_plantersize'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
@@ -34,7 +34,7 @@ def planter_size(request, pk=None):
     
     if request.method == 'GET' and pk:
         required_permissions = [
-            'attribute.view_planter_size'
+            'attribute.view_plantersize'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
@@ -48,7 +48,7 @@ def planter_size(request, pk=None):
     
     if request.method == 'POST':
         required_permissions = [
-            'attribute.add_planter_size'
+            'attribute.add_plantersize'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
@@ -62,7 +62,7 @@ def planter_size(request, pk=None):
     
     if request.method == 'PATCH':
         required_permissions = [
-            'attribute.change_planter_size'
+            'attribute.change_plantersize'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
@@ -84,7 +84,7 @@ def planter_size(request, pk=None):
     
     if request.method == 'DELETE':
         required_permissions = [
-            'attribute.delete_planter_size'
+            'attribute.delete_plantersize'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
