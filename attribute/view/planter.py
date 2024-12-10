@@ -77,7 +77,7 @@ def planter(request, pk=None):
         if not planter_id:
             return Response(data={'message': 'Planter ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        planter = Planter.objects.filter(planter_id=planter_id).first()
+        planter = Planter.objects.filter(id=planter_id).first()
 
         if not planter:
             return Response(data={'message': 'Planter not found.'}, status=status.HTTP_404_NOT_FOUND)
@@ -97,10 +97,12 @@ def planter(request, pk=None):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         planter_id = request.data.get('planter_id', None)
+        
         if not planter_id:
             return Response(data={'message': 'Planter ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        if Planter.objects.filter(planter_id=planter_id).exists():
-            Planter.objects.filter(planter_id=planter_id).delete()
+        
+        if Planter.objects.filter(id=planter_id).exists():
+            Planter.objects.filter(id=planter_id).delete()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
         return Response(data={'message': 'Planter not found.'}, status=status.HTTP_404_NOT_FOUND)
