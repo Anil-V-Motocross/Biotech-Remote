@@ -16,6 +16,7 @@ class PlanterSizeAdmin(admin.ModelAdmin):
     list_display = ('id', 'size', 'status')
 
 
+admin.site.register(PlanterSize, PlanterSizeAdmin)
 admin.site.register(Planter, PlanterAdmin)
 admin.site.register(Color, ColorAdmin)
 admin.site.register(Size, SizeAdmin)
