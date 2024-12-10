@@ -162,7 +162,7 @@ def validate_otp(request):
 class InitialInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = InitialInfo
-        fields = ['name', 'email', 'referell_code']
+        fields = ['name', 'email', 'referal_code']
     
 
 # Take other fields of InitialInfo
@@ -171,7 +171,7 @@ def register(request):
     if request.method == 'POST':
         mobile = request.data.get('mobile', None)
         name = request.data.get('name', None)
-        referell_code = request.data.get('referell_code', None)
+        referal_code = request.data.get('referal_code', None)
 
         if not mobile or not name:
             return Response(data={'message': 'Mobile number, name, code are required.'}, status=status.HTTP_400_BAD_REQUEST)
@@ -182,7 +182,7 @@ def register(request):
                 "first_name": name,
                 "mobile": mobile,
                 "email": f"{mobile}@example.com",
-                "referell_code": referell_code,
+                "referal_code": referal_code,
                 "is_active": True
             }
         user = User.objects.create_user(**data)
