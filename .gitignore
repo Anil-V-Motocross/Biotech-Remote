@@ -8,3 +8,4 @@ Dockerfile
 .vscode
 all_models.py
 db.sqlite3
+z_api/

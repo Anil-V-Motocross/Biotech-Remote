@@ -42,6 +42,9 @@ def size(request, pk=None):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         size = Size.objects.get(id=pk)
+
+        if not size:
+            return Response(data={'message': 'size does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
         serializer = SizeSerializer(size)
         data = {
             'size': serializer.data
@@ -75,6 +78,9 @@ def size(request, pk=None):
             return Response(data={'message': 'size_id is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
         size = Size.objects.get(id=size_id)
+        
+        if not size:
+            return Response(data={'message': 'size does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
         serializer = SizeSerializer(size, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
@@ -96,5 +102,4 @@ def size(request, pk=None):
         if Size.objects.filter(id=size_id).exists():
             Size.objects.get(id=size_id).delete()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
-        
-        return Response(data={'message': 'size_id does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'message': 'size does not exist.'}, status=status.HTTP_400_BAD_REQUEST)

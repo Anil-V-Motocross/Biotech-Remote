@@ -2,65 +2,64 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated
-from attribute.models import Color
+from attribute.models import PlanterSize
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from account.permissions import DynamicPermission
 from rest_framework import serializers
 
 
-class ColorSerializer(serializers.ModelSerializer):
+class PlanterSizeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Color
+        model = PlanterSize
         fields = '__all__'
-
 
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated, DynamicPermission])
 @authentication_classes([JWTAuthentication])
-def color(request, pk=None):
+def planter_size(request, pk=None):
     if request.method == 'GET' and not pk:
         required_permissions = [
-            'attribute.view_color'
+            'attribute.view_planter_size'
         ]
-        
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        colors = Color.objects.all()
-        serializer = ColorSerializer(colors, many=True)
+        planter_sizes = PlanterSize.objects.all()
+        serializer = PlanterSizeSerializer(planter_sizes, many=True)
         data = {
-            'colors': serializer.data
+            'planter_sizes': serializer.data
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
     
     if request.method == 'GET' and pk:
         required_permissions = [
-            'attribute.view_color'
+            'attribute.view_planter_size'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        color = Color.objects.get(id=pk)
+        planter_size = PlanterSize.objects.get(id=pk)
 
-        if not color:
-            return Response(data={'message': 'Color not found.'}, status=status.HTTP_404_NOT_FOUND)
-        serializer = ColorSerializer(color)
+        if not planter_size:
+            return Response(data={'message': 'Planter Size not found.'}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = PlanterSizeSerializer(planter_size)
         data = {
-            'color': serializer.data
+            'planter_size': serializer.data
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
     
     if request.method == 'POST':
         required_permissions = [
-            'attribute.add_color'
+            'attribute.add_planter_size'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        serializer = ColorSerializer(data=request.data)
+        serializer = PlanterSizeSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(data={'message': 'success'}, status=status.HTTP_201_CREATED)
@@ -68,23 +67,23 @@ def color(request, pk=None):
     
     if request.method == 'PATCH':
         required_permissions = [
-            'attribute.change_color'
+            'attribute.change_planter_size'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        color_id = request.data.get('color_id', None)
+        planter_size_id = request.data.get('planter_size_id', None)
 
-        if not color_id:
-            return Response({'message': 'color_id is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        if not planter_size_id:
+            return Response(data={'message': 'Planter Size ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        color = Color.objects.get(id=color_id)
+        planter_size = PlanterSize.objects.filter(id=planter_size_id).first()
 
-        if not color:
-            return Response(data={'message': 'Color not found.'}, status=status.HTTP_404_NOT_FOUND)
-
-        serializer = ColorSerializer(color, data=request.data, partial=True)
+        if not planter_size:
+            return Response(data={'message': 'Planter Size not found.'}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = PlanterSizeSerializer(planter_size, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
@@ -92,17 +91,18 @@ def color(request, pk=None):
     
     if request.method == 'DELETE':
         required_permissions = [
-            'attribute.delete_color'
+            'attribute.delete_planter_size'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        color_id = request.data.get('color_id', None)
+        planter_size_id = request.data.get('planter_size_id', None)
 
-        if not color_id:
-            return Response({'message': 'color_id is required.'}, status=status.HTTP_400_BAD_REQUEST)
-        if Color.objects.filter(id=color_id).exists():
-            Color.objects.filter(id=color_id).delete()
+        if not planter_size_id:
+            return Response(data={'message': 'Planter Size ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if PlanterSize.objects.filter(id=planter_size_id).exists():
+            PlanterSize.objects.filter(id=planter_size_id).delete()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
-        return Response(data={'message': 'color not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={'message': 'Planter Size not found.'}, status=status.HTTP_404_NOT_FOUND)
