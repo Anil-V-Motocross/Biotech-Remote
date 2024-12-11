@@ -17,7 +17,7 @@ class SubCategorySerializer(serializers.ModelSerializer):
 @permission_classes([IsAuthenticated, DynamicPermission])
 @authentication_classes([JWTAuthentication])
 def subCategory(request, pk=None):
-    if request.method == 'GET' :
+    if request.method == 'GET' and not pk:
         required_permissions = [
             'category.view_subcategory'
         ]
@@ -71,8 +71,13 @@ def subCategory(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        if SubCategory.objects.filter(id=pk).exists():
-            subCategory = SubCategory.objects.get(id=pk)
+        subCategory_id = request.data.get('subCategory_id')
+
+        if not subCategory_id:
+            return Response(data={'message': 'SubCategory id is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if SubCategory.objects.filter(id=subCategory_id).exists():
+            subCategory = SubCategory.objects.get(id=subCategory_id)
             serializer = SubCategorySerializer(subCategory, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
@@ -88,8 +93,13 @@ def subCategory(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        if SubCategory.objects.filter(id=pk).exists():
-            subCategory = SubCategory.objects.get(id=pk)
+        subCategory_id = request.data.get('subCategory_id')
+
+        if not subCategory_id:
+            return Response(data={'message': 'SubCategory id is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if SubCategory.objects.filter(id=subCategory_id).exists():
+            subCategory = SubCategory.objects.get(id=subCategory_id)
             subCategory.delete()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
         return Response(data={'message': 'SubCategory not found.'}, status=status.HTTP_404_NOT_FOUND)

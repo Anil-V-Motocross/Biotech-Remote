@@ -16,7 +16,7 @@ class CategorySerializer(serializers.ModelSerializer):
 @permission_classes([IsAuthenticated, DynamicPermission])  
 @authentication_classes([JWTAuthentication])
 def category(request, pk=None):
-    if request.method == 'GET':
+    if request.method == 'GET' and not pk:
         required_permissions = [
             'category.view_category'
         ]
@@ -71,7 +71,7 @@ def category(request, pk=None):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         category_id = request.data.get('category_id', None)
-        if not category:
+        if not category_id:
             return Response(data={'message': 'category_id is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
         if Category.objects.filter(id=category_id).exists():

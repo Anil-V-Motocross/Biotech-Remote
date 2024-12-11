@@ -10,9 +10,9 @@ class BannerSerializer(serializers.ModelSerializer):
         model = Banner
         fields = '__all__'
 
-@api_view(['GET'])
+@api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 def banner(request, pk=None):
-    if request.method == 'GET':
+    if request.method == 'GET' and not pk:
         # required_permissions = []
         
         # if not any(request.user.has_perm(perm) for perm in required_permissions):
@@ -60,6 +60,11 @@ def banner(request, pk=None):
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        
+        banner_id = request.data.get('banner_id')
+
+        if not banner_id:
+            return Response(data={'message': 'Banner id is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
         if Banner.objects.filter(id=pk).exists():
             banner = Banner.objects.get(id=pk)

@@ -5,4 +5,5 @@ app_name = 'promotion'
 
 urlpatterns = [
     path('banner/', banner, name='banner'),
+    path('banner/<int:pk>/', banner, name='banner'),
 ]
