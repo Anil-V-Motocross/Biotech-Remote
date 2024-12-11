@@ -1,8 +1,13 @@
 from django.urls import path
-from .view.test import test
+from .view.category import category
 
 app_name = 'category'
 
 urlpatterns = [
-    path('test/', test, name='test'),
+    path('category/', category, name='category'),
+    path('category/<int:pk>/', category, name='category'),
+
+    path('subCategory/', category, name='subCategory'),
+    path('subCategory/<int:pk>/', category, name='subCategory'),
+
 ]
