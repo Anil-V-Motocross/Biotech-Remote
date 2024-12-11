@@ -66,8 +66,8 @@ def banner(request, pk=None):
         if not banner_id:
             return Response(data={'message': 'Banner id is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        if Banner.objects.filter(id=pk).exists():
-            banner = Banner.objects.get(id=pk)
+        if Banner.objects.filter(id=banner_id).exists():
+            banner = Banner.objects.get(id=banner_id)
             serializer = BannerSerializer(banner, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
@@ -83,8 +83,13 @@ def banner(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        if Banner.objects.filter(id=pk).exists():
-            banner = Banner.objects.get(id=pk)
+        banner_id = request.data.get('banner_id')
+
+        if not banner_id:
+            return Response(data={'message': 'Banner id is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if Banner.objects.filter(id=banner_id).exists():
+            banner = Banner.objects.get(id=banner_id)
             banner.delete()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
         return Response(data={'message': 'Banner does not exist.'}, status=status.HTTP_400_BAD_REQUEST)

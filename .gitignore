@@ -9,4 +9,5 @@ Dockerfile
 all_models.py
 db.sqlite3
 z_api/
+z_images
 media/
