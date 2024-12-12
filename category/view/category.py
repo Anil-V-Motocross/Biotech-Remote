@@ -102,3 +102,16 @@ def category(request, pk=None):
         return Response(data={'message': 'Category not found.'}, status=status.HTTP_404_NOT_FOUND)
 
     return Response({'message': 'Something went wrong.!'}, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def open_category(request):
+    if request.method == 'GET':
+        categories = Category.objects.all()
+        serializer = CategorySerializer(categories, many=True)
+        data = {
+            'categories': serializer.data
+        }
+        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+    
+    return Response({'message': 'Something went wrong.!'}, status=status.HTTP_200_OK)
