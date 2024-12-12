@@ -1,8 +1,9 @@
 from django.urls import path
-from .view.test import test
+from .view.carrier import carrier
 
 app_name = 'carrier'
 
 urlpatterns = [
-    path('test/', test, name='test'),
+    path('', carrier, name='carrier'),
+    path('<int:pk>/', carrier, name='carrier'),
 ]

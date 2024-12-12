@@ -17,12 +17,12 @@ class CategorySerializer(serializers.ModelSerializer):
 @authentication_classes([JWTAuthentication])
 def category(request, pk=None):
     if request.method == 'GET' and not pk:
-        required_permissions = [
-            'category.view_category'
-        ]
+        # required_permissions = [
+        #     'category.view_category'
+        # ]
         
-        if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        # if not any(request.user.has_perm(perm) for perm in required_permissions):
+        #     return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         categories = Category.objects.all()
         serializer = CategorySerializer(categories, many=True)
