@@ -105,3 +105,15 @@ def subCategory(request, pk=None):
         return Response(data={'message': 'SubCategory not found.'}, status=status.HTTP_404_NOT_FOUND)
 
     return Response(data={'message': 'Something went wrong.!'}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def category_wise_subCategory(request, pk=None):
+    if request.method == 'GET':
+        subCategorys = SubCategory.objects.filter(category_id=pk)
+        serializer = SubCategorySerializer(subCategorys, many=True)
+        data = {
+            'subCategorys': serializer.data
+        }
+        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+    return Response({'message': 'Something went wrong.!'}, status=status.HTTP_200_OK)
+    
