@@ -47,8 +47,8 @@ def get_service_enquiries(request):
 
 
    
-@api_view(['POST'])
-def create_servicelist(request):
+@api_view(['GET', 'POST'])
+def servicelist(request):
     if request.method == 'POST':
         serializer = ServiceListSerializer(data=request.data)
         
@@ -57,3 +57,12 @@ def create_servicelist(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    if request.method == 'GET':
+        
+        service_list = Servicelist.objects.all()
+        serializer = ServiceListSerializer(service_list, many=True)
+        
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    return Response({'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)

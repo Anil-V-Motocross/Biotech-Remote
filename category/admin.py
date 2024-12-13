@@ -9,5 +9,5 @@ class CategoryAdmin(admin.ModelAdmin):
 class SubCategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'category', 'is_published')
     
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(SubCategory, SubCategoryAdmin)
