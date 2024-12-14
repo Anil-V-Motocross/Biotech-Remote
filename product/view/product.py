@@ -6,6 +6,10 @@ from product.models import MainProduct, MainProductImage
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import serializers
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from account.permissions import DynamicPermission
+from rest_framework.decorators import permission_classes, authentication_classes
 
 class MainProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,9 +23,18 @@ class MainProductImageSerializer(serializers.ModelSerializer):
 
 
 
-@api_view(['POST'])
+@api_view(['GET', 'POST', 'PATCH', 'DELETE'])
+@permission_classes([IsAuthenticated, DynamicPermission])
+@authentication_classes([JWTAuthentication])
 def product(request):
     if request.method == 'POST':
+        required_permissions = [
+            'product.add_mainproduct', 'product.add_mainproductimage'
+        ]
+        
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+
         parser_classes = [MultiPartParser, FormParser]
 
         print("Received request to add product with images.")
