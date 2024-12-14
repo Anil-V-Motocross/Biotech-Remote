@@ -115,4 +115,4 @@ def store_list(request):
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
     
-    return Response({'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
