@@ -31,7 +31,7 @@ class PlanterSize(models.Model):
 
 class Planter(models.Model):
     name = models.CharField(max_length=50)
-    planter_size = models.ForeignKey(PlanterSize, on_delete=models.CASCADE, default=1)
+    planter_size = models.ForeignKey(PlanterSize, on_delete=models.CASCADE)
     status = models.BooleanField(default=True)
 
     def __str__(self):
