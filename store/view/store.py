@@ -102,3 +102,17 @@ def store(request, pk=None):
         return Response(data={'message': 'Store not found.'}, status=status.HTTP_404_NOT_FOUND)
 
     return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+# Publiv APIs
+@api_view(['GET'])
+def store_list(request):
+    if request.method == 'GET':
+        stores = Store.objects.all()
+        serializer = StoreSerializer(stores, many=True)
+        data = {
+            'stores': serializer.data
+        }
+        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+    
+    return Response({'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)

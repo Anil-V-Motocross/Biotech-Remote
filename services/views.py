@@ -47,16 +47,8 @@ def get_service_enquiries(request):
 
 
    
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def servicelist(request):
-    if request.method == 'POST':
-        serializer = ServiceListSerializer(data=request.data)
-        
-        if serializer.is_valid():
-            # Save the new Service List record
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     if request.method == 'GET':
         
