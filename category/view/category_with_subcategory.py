@@ -10,14 +10,19 @@ from rest_framework import status
 class SubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = SubCategory
-        fields = ['id', 'name', 'is_published']
+        fields = ['id', 'name']
 
 class CategorySerializer(serializers.ModelSerializer):
-    subcategories = SubCategorySerializer(many=True, source='subcategory_set')
+    subcategories = serializers.SerializerMethodField()
 
     class Meta:
         model = Category
         fields = ['id', 'name', 'subcategories']
+
+    def get_subcategories(self, obj):
+        # Filter subcategories where is_published=True
+        subcategories = obj.subcategory_set.filter(is_published=True)
+        return SubCategorySerializer(subcategories, many=True).data
 
 
 @api_view(['GET'])
