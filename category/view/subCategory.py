@@ -106,6 +106,8 @@ def subCategory(request, pk=None):
 
     return Response(data={'message': 'Something went wrong.!'}, status=status.HTTP_400_BAD_REQUEST)
 
+
+# Publlic APIs
 @api_view(['GET'])
 def category_wise_subCategory(request, pk=None):
     if request.method == 'GET':
@@ -115,5 +117,5 @@ def category_wise_subCategory(request, pk=None):
             'subCategorys': serializer.data
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
-    return Response({'message': 'Something went wrong.!'}, status=status.HTTP_200_OK)
     
+    return Response({'message': 'Something went wrong.!'}, status=status.HTTP_200_OK)  

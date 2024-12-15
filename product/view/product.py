@@ -62,7 +62,7 @@ def product(request):
             return Response(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         # Handle images
-        images = request.FILES.getlist('images')
+        images = request.FILES.getlist('photos')
         print("Number of images received:", len(images))
 
         image_instances = []
