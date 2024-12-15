@@ -6,6 +6,7 @@ from product.models import ProductCategory, ProductSubCategory, ProductTag
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from account.permissions import DynamicPermission  
 from category.models import Category, SubCategory
+from product.models import MainProduct
 
         
 
@@ -28,6 +29,7 @@ def add_category_subcategory_tags(request):
         subcategory = request.data.get('category')
 
         if product_id and tags and subcategory:
+            product_id = MainProduct.objects.get(id=product_id)
             # Save the tags
             for tag in tags:
                 ProductTag.objects.create(product_id=product_id, tag=tag)
