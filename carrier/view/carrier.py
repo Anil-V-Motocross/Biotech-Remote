@@ -110,3 +110,17 @@ def carrier(request, pk=None):
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
         return Response(data={'message': 'Carrier not found.'}, status=status.HTTP_404_NOT_FOUND)
     return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+# Public APIs
+@api_view(['GET'])
+def public_carrier(request):
+    if request.method == 'GET':
+        carrier = Carrier.objects.all()
+        serializer = CarrierSerializer(carrier, many=True)
+        data = {
+            'carrier': serializer.data
+        }
+        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+    return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
