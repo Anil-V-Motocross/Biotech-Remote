@@ -9,3 +9,15 @@ class Banner(models.Model):
 
     def __str__(self):
         return self.type
+
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length=50)
+    mobile = models.CharField(max_length=15)
+    email = models.EmailField()
+    message = models.TextField()
+    comment = models.TextField(null=True, blank=True)
+    status = models.CharField(max_length=100, default='Pending')
+
+    def __str__(self):
+        return self.name
