@@ -31,7 +31,7 @@ class ProductTagSerializer(serializers.ModelSerializer):
 def add_category_subcategory_tags(request):
     if request.method == 'POST':
         required_permissions = [
-            'product.add_mainproduct', 'product.add_mainproductimage'
+            'product.add_productcategory', 'product.add_productsubcategory', 'product.add_producttag'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
