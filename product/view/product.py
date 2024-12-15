@@ -83,7 +83,8 @@ def product(request):
 
         print("All images processed successfully.")
 
-        return Response({
+        data = {
             'product': product_serializer.data,
-            'images': [MainProductImageSerializer(instance).data for instance in image_instances]
-        }, status=status.HTTP_201_CREATED)
+        }
+
+        return Response(data={"message": "success", "data": data}, status=status.HTTP_201_CREATED)
