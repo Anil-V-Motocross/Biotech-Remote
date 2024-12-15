@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MainProduct, MainProductImage
+from .models import MainProduct, MainProductImage, ProductCategory, ProductSubCategory, ProductTag
 from django.utils.html import format_html
 
 class MainProductAdmin(admin.ModelAdmin):  # Use ModelAdmin for the main admin class
@@ -15,5 +15,18 @@ class MainProductImageAdmin(admin.ModelAdmin):
 
     image_tag.short_description = 'Image'  # Set the column name in the admin panel
 
+
+class ProductCategoryAdmin(admin.ModelAdmin):
+    list_display = ('product_id', 'category_id')
+
+class ProductSubCategoryAdmin(admin.ModelAdmin):
+    list_display = ('product_id', 'subcategory_id')
+
+class ProductTagAdmin(admin.ModelAdmin):
+    list_display = ('product_id', 'tag')
+
 admin.site.register(MainProduct, MainProductAdmin)
 admin.site.register(MainProductImage, MainProductImageAdmin)
+admin.site.register(ProductCategory, ProductCategoryAdmin)
+admin.site.register(ProductSubCategory, ProductSubCategoryAdmin)
+admin.site.register(ProductTag, ProductTagAdmin)

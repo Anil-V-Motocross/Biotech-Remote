@@ -21,3 +21,26 @@ class MainProductImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.product.name}"
+    
+class ProductCategory(models.Model):
+    product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    category_id = models.ForeignKey('category.Category', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.product_id.name} - {self.category_id.name}"
+    
+
+class ProductSubCategory(models.Model):
+    product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    subcategory_id = models.ForeignKey('category.SubCategory', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.product_id.name} - {self.subcategory_id.name}"
+    
+
+class ProductTag(models.Model):
+    product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    tag = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.product_id.name} - {self.tag}"

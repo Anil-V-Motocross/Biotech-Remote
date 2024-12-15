@@ -88,3 +88,4 @@ def product(request):
         }
 
         return Response(data={"message": "success", "data": data}, status=status.HTTP_201_CREATED)
+    
