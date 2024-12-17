@@ -36,8 +36,8 @@ def add_category_subcategory_tags(request):
 
             # Save the category
             for subcat in subcategory:
-                cat = SubCategory.objects.get(id=subcat)
-                cat  = Category.objects.get(id=cat.category_id.id)
+                subcat = SubCategory.objects.get(id=subcat)
+                cat  = Category.objects.get(id=subcat.category_id)
                 ProductCategory.objects.create(product_id=product_id, category_id=cat)
 
                 # Add ProductSubCategory
