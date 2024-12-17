@@ -10,7 +10,7 @@ from rest_framework import serializers
 class PlanterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Planter
-        fields = '__all__'
+        fields = ['id', 'name', 'planter_size']
 
 # get planters by planter size
 @api_view(['GET'])
