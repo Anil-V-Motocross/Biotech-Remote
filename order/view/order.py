@@ -22,6 +22,10 @@ def order(request):
         required_permissions = [
             'order.view_order'
         ]
+        
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        
         orders = Order.objects.all()
         serializer = OrderSerializer(orders, many=True)
         return Response(data={'message': 'success', 'data': serializer.data}, status=status.HTTP_200_OK)

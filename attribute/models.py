@@ -36,3 +36,11 @@ class Planter(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Weight(models.Model):
+    size_grams = models.CharField(max_length=50)
+    status = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.size_grams
