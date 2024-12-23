@@ -27,6 +27,21 @@ class MainProductImageSerializer(serializers.ModelSerializer):
 @permission_classes([IsAuthenticated, DynamicPermission])
 @authentication_classes([JWTAuthentication])
 def main_product(request):
+    if request.method == 'GET':
+        required_permissions = [
+            'product.view_mainproduct'
+        ]
+        
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        
+        products = MainProduct.objects.all()
+        serializer = MainProductSerializer(products, many=True)
+        data = {
+            'products': serializer.data
+        }
+        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+    
     if request.method == 'POST':
         required_permissions = [
             'product.add_mainproduct', 'product.add_mainproductimage'
