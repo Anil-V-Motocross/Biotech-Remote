@@ -51,7 +51,7 @@ class Product(models.Model):
     product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
     size_id = models.ForeignKey(Size, on_delete=models.CASCADE)
     planter_size_id = models.ForeignKey(PlanterSize, on_delete=models.CASCADE)
-    plnater_id = models.ForeignKey(Planter, on_delete=models.CASCADE)
+    planter_id = models.ForeignKey(Planter, on_delete=models.CASCADE)
     color_id = models.ForeignKey(Color, on_delete=models.CASCADE)
 
     name = models.CharField(max_length=100)
