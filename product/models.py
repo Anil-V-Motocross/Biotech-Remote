@@ -13,6 +13,11 @@ class MainProduct(models.Model):
     whats_included = models.TextField()
     vedio_link = models.CharField(max_length=200)
 
+    is_featured = models.BooleanField(default=False)
+    is_best_seller = models.BooleanField(default=False)
+    is_seasonal_collection = models.BooleanField(default=False)
+    is_trending = models.BooleanField(default=False)
+
     def __str__(self):
         return self.name
     
@@ -64,6 +69,7 @@ class Product(models.Model):
     sku = models.CharField(max_length=40)
     image = models.ImageField(upload_to='product_images/', default='default/category_default.jpg')
     visible_online = models.BooleanField(default=True)
+
 
     def __str__(self):
         return self.name
