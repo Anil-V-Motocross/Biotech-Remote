@@ -27,7 +27,7 @@ class ProductTagAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'sku', 'stock', 'visible_online')
+    list_display = ('id', 'name', 'product_id', 'sku', 'stock', 'visible_online')
 
 admin.site.register(MainProduct, MainProductAdmin)
 admin.site.register(MainProductImage, MainProductImageAdmin)
