@@ -1,8 +1,8 @@
 from django.urls import path
 from .view.color import color
-from .view.size import size, all_siezes
+from .view.size import size
 from .view.planter import planter
-from .view.planterSize import planter_size, all_planter_sizes
+from .view.planterSize import planter_size
 from .view.plantersByPlanterSize import get_planters_by_planter_size
 from .view.weight import weight
 
@@ -27,7 +27,4 @@ urlpatterns = [
     # Get all planters by planter size
     path('plantersByPlanterSize/<int:pk>/', get_planters_by_planter_size, name='get_planters_by_planter_size'),
 
-    # Public API
-    path('allSiezes/', all_siezes, name='all_siezes'),
-    path('allPlanterSizes/', all_planter_sizes, name='all_planter_sizes'),
 ]

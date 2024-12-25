@@ -101,15 +101,3 @@ def planter_size(request, pk=None):
         return Response(data={'message': 'Planter Size not found.'}, status=status.HTTP_404_NOT_FOUND)
     
     return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['GET'])
-def all_planter_sizes(request):
-    if request.method == 'GET':
-        planter_sizes = PlanterSize.objects.all()
-        serializer = PlanterSizeSerializer(planter_sizes, many=True)
-        data = {
-            'planter_sizes': serializer.data
-        }
-        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
-    
-    return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)

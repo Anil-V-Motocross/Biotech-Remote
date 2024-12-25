@@ -103,16 +103,3 @@ def size(request, pk=None):
         return Response(data={'message': 'size does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
     
     return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['GET'])
-def all_siezes(request):
-    if request.method == 'GET':
-        sizes = Size.objects.all()
-        serializer = SizeSerializer(sizes, many=True)
-        data = {
-            'sizes': serializer.data
-        }
-        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
-    
-    return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
