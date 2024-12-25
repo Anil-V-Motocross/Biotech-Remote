@@ -27,8 +27,9 @@ def product(request):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
 
-        products_data = request.data.getlist('products')
-        images = request.FILES.getlist('images')
+        products_data = request.data.get('data')
+        products_data = json.loads(products_data)
+        images = request.FILES.getlist('file')
 
         if len(products_data) != len(images):
             return Response(
@@ -41,8 +42,6 @@ def product(request):
 
         for index, product_data in enumerate(products_data):
             try:
-                product_data = json.loads(product_data)  # Parse JSON string into dictionary
-
                 # Validate and ensure the MainProduct exists
                 main_product_id = product_data.get('product_id')
                 if not main_product_id:

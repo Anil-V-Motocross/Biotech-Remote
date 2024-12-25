@@ -70,6 +70,8 @@ class Product(models.Model):
     image = models.ImageField(upload_to='product_images/', default='default/category_default.jpg')
     visible_online = models.BooleanField(default=True)
 
+    is_default = models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.name
