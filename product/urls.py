@@ -2,6 +2,7 @@ from django.urls import path
 from .view.main_product import main_product
 from .view.add_category_subcategory_tags import add_category_subcategory_tags
 from .view.product import product
+from .view.home_products import home_products
 
 app_name = 'product'
 
@@ -11,4 +12,6 @@ urlpatterns = [
 
     # manage products
     path('product/', product, name='product'),
+
+    path('homeProducts/', home_products, name='home_products'),
 ]

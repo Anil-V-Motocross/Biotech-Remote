@@ -22,7 +22,7 @@ class MainProduct(models.Model):
         return self.name
     
 class MainProductImage(models.Model):
-    product = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    product = models.ForeignKey(MainProduct, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='main_product_images/')
 
     def __str__(self):
