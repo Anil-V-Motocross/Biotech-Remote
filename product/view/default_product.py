@@ -3,12 +3,27 @@ from rest_framework.response import Response
 from rest_framework import status
 from product.models import Product
 from rest_framework import serializers
-from product.models import Product
+from product.models import Product, MainProductImage
 
 class ProductSerializer(serializers.ModelSerializer):
+    # Include main product image as the first element in the images list
+    images = serializers.SerializerMethodField()
+
     class Meta:
         model = Product
         fields = '__all__'
+
+    def get_images(self, obj):
+        # Start with the product's main image
+        image_list = [{"image": obj.image.url}] if obj.image else []
+        
+        # Add the related MainProductImages
+        main_product_images = MainProductImage.objects.filter(product=obj.product_id)
+        for main_product_image in main_product_images:
+            image_list.append({"image": main_product_image.image.url})
+
+        return image_list
+
 
 @api_view(['GET'])
 def default_product(request, product_id=None):
