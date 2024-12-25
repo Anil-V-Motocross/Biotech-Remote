@@ -10,6 +10,7 @@ class MainProductImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = MainProductImage
         fields = ['id', 'image']
+    
 
 # Serializer for MainProduct, with related images
 class MainProductSerializer(serializers.ModelSerializer):
@@ -18,6 +19,12 @@ class MainProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = MainProduct
         fields = ['id', 'name', 'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending', 'images']
+
+    def to_representation(self, instance):
+        # Add the dummy 'price' field dynamically
+        representation = super().to_representation(instance)
+        representation['price'] = '500'  # Add the dummy price value
+        return representation
 
 
 @api_view(['GET'])
