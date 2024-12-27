@@ -1,5 +1,5 @@
 from django.db import models
-from attribute.models import Size, PlanterSize, Planter, Color
+from attribute.models import Size, PlanterSize, Planter, Color, Weight
 
 # Create your models here.
 
@@ -61,10 +61,11 @@ class ProductTag(models.Model):
 
 class Product(models.Model):
     product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
-    size_id = models.ForeignKey(Size, on_delete=models.CASCADE)
-    planter_size_id = models.ForeignKey(PlanterSize, on_delete=models.CASCADE)
-    planter_id = models.ForeignKey(Planter, on_delete=models.CASCADE)
-    color_id = models.ForeignKey(Color, on_delete=models.CASCADE)
+    size_id = models.ForeignKey(Size, on_delete=models.CASCADE, null=True)
+    planter_size_id = models.ForeignKey(PlanterSize, on_delete=models.CASCADE, null=True)
+    planter_id = models.ForeignKey(Planter, on_delete=models.CASCADE, null=True)
+    color_id = models.ForeignKey(Color, on_delete=models.CASCADE, null=True)
+    weight_id = models.ForeignKey(Weight, on_delete=models.CASCADE, null=True)
 
     name = models.CharField(max_length=100)
     cost = models.CharField(max_length=10)
