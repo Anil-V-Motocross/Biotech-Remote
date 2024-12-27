@@ -6,6 +6,13 @@ from attribute.models import Size, PlanterSize, Planter, Color
 
 class MainProduct(models.Model):
     name = models.CharField(max_length=100, unique=True)
+
+    type_choices = [
+        ('plant', 'plant'),
+        ('seed', 'seed'),
+    ]
+    type = models.CharField(max_length=10, choices=type_choices, default='plant')
+
     short_description = models.TextField()
     ribbon = models.CharField(max_length=100)
     threshold = models.CharField(max_length=100)
