@@ -5,6 +5,30 @@ from product.models import Product
 from rest_framework import serializers
 from product.models import Product, MainProductImage
 from django.conf import settings
+from attribute.models import Size
+from attribute.models import PlanterSize
+from attribute.models import Planter
+from attribute.models import Color
+
+class ColorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Color
+        fields = '__all__'
+
+class PlanterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Planter
+        fields = '__all__'
+        
+class PlanterSizeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlanterSize
+        fields = ['id', 'name', 'size']
+        
+class SizeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Size
+        fields = ['id', 'name', 'size']
 
 class ProductSerializer(serializers.ModelSerializer):
     # Include main product image as the first element in the images list
@@ -53,9 +77,24 @@ def default_product(request, product_id=None):
         # Serialize the single product (do not use `many=True`)
         serializer = ProductSerializer(product, context={'request': request})
         
+        # return all unique size_id of the product
+        product_size_ids = Product.objects.filter(product_id=product_id).values_list('size_id', flat=True).distinct()
+        product_planter_size_ids = Product.objects.filter(product_id=product_id).values_list('planter_size_id', flat=True).distinct()
+        product_planter_ids = Product.objects.filter(product_id=product_id).values_list('planter_id', flat=True).distinct()
+        product_color_ids = Product.objects.filter(product_id=product_id).values_list('color_id', flat=True).distinct()
+        
+        product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
+        product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
+        product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
+        product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
+        
         # Prepare the response data
         data = {
-            'product': serializer.data
+            'product': serializer.data,
+            'product_sizes': product_sizes.data,
+            'product_planter_sizes': product_planter_sizes.data,
+            'product_planters': product_planter.data,
+            'product_colors': product_color.data
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
 
