@@ -5,4 +5,5 @@ app_name = 'order'
 
 urlpatterns = [
     path('', order, name='order'),
+    path('<int:pk>/', order, name='order'),
 ]
