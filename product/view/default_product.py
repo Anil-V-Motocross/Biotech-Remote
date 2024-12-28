@@ -13,7 +13,7 @@ from attribute.models import Color
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Color
-        fields = ['id', 'color_name']
+        fields = ['id', 'color_name', 'color_code']
 
 class PlanterSerializer(serializers.ModelSerializer):
     class Meta:
