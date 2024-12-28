@@ -1,10 +1,9 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from product.models import Product
-from rest_framework import serializers
 from product.models import Product, MainProductImage
 from django.conf import settings
+from rest_framework import serializers
 from attribute.models import Size
 from attribute.models import PlanterSize
 from attribute.models import Planter
@@ -24,7 +23,7 @@ class PlanterSizeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlanterSize
         fields = ['id', 'name', 'size']
-        
+
 class SizeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Size
@@ -65,30 +64,47 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 @api_view(['GET'])
-def default_product(request, product_id=None):
+def filter_product(request):
     if request.method == 'GET':
-        # Filter the product to get the default one with the specified product_id
-        product = Product.objects.filter(product_id=product_id, is_default=True).first()
+
+        # Initialize an empty filter dictionary
+        filter_params = {}
+
+        # Extract query parameters from the request
+        size_id = request.query_params.get('size_id', None)
+        planter_size_id = request.query_params.get('planter_size_id', None)
+        planter_id = request.query_params.get('planter_id', None)
+        color_id = request.query_params.get('color_id', None)
+
+        # Only add to the filter dictionary if the parameter is provided
+        if size_id:
+            filter_params['size_id'] = size_id
+        if planter_size_id:
+            filter_params['planter_size_id'] = planter_size_id
+        if planter_id:
+            filter_params['planter_id'] = planter_id
+        if color_id:
+            filter_params['color_id'] = color_id
+
+        # Query the products based on the filters
+        product = Product.objects.filter(**filter_params).first()
         
-        # Check if the product exists
-        if product is None:
-            return Response(data={'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
-        
-        # Serialize the single product (do not use `many=True`)
         serializer = ProductSerializer(product, context={'request': request})
+        
+        product_id = product.product_id
         
         # return all unique size_id of the product
         product_size_ids = Product.objects.filter(product_id=product_id).values_list('size_id', flat=True).distinct()
         product_planter_size_ids = Product.objects.filter(product_id=product_id).values_list('planter_size_id', flat=True).distinct()
         product_planter_ids = Product.objects.filter(product_id=product_id).values_list('planter_id', flat=True).distinct()
         product_color_ids = Product.objects.filter(product_id=product_id).values_list('color_id', flat=True).distinct()
-        
+
         product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
         product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
         product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
         product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
         
-        # Prepare the response data
+
         data = {
             'product': serializer.data,
             'product_sizes': product_sizes.data,
@@ -97,5 +113,3 @@ def default_product(request, product_id=None):
             'product_colors': product_color.data
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
-
-    return Response(data={'message': 'Invalid request method.'}, status=status.HTTP_400_BAD_REQUEST)
