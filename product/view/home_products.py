@@ -21,9 +21,21 @@ class MainProductSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending', 'images']
 
     def to_representation(self, instance):
-        # Add the dummy 'price' field dynamically
+        # Call the parent class to get the default representation
         representation = super().to_representation(instance)
-        representation['price'] = '500'  # Add the dummy price value
+
+        # Get the first image from the images list, if any
+        if representation['images']:
+            representation['image'] = representation['images'][0]['image']
+        else:
+            representation['image'] = None  # If no images, set image to None
+
+        # Add a dummy 'price' field
+        representation['price'] = '500'
+
+        # Optionally, remove the 'images' field if you don't need it in the response
+        representation.pop('images', None)
+
         return representation
 
 
