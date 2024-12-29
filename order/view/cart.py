@@ -4,13 +4,36 @@ from rest_framework.decorators import api_view, permission_classes, authenticati
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from order.models import Cart
+from product.models import Product, MainProduct
 from rest_framework import serializers
 from account.permissions import DynamicPermission
 
+
 class CartSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(source='product_id.product_id.name', read_only=True)
+    image = serializers.CharField(source='product_id.image.url', read_only=True)  # Assuming product has the image field
+    price = serializers.CharField(source='product_id.price', read_only=True)  # Price from the Product model
+    short_description = serializers.CharField(source='product_id.product_id.short_description', read_only=True)
+    stock_status = serializers.SerializerMethodField()  # Adding a custom field for stock status
+
     class Meta:
         model = Cart
-        fields = '__all__'
+        fields = ['id', 'user_id', 'quantity', 'name', 'image', 'price', 'short_description', 'stock_status']
+
+    def get_stock_status(self, instance):
+        # Access the Product associated with the Cart item
+        product = instance.product_id
+
+        # Get the stock quantity from the Product model
+        stock_quantity = int(product.stock)  # Ensure stock is treated as an integer
+        
+        # Return "Out Of Stock" if stock is 0, else "In Stock"
+        if stock_quantity == 0:
+            return "Out Of Stock"
+        else:
+            return "In Stock"
+
+
 
 
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
