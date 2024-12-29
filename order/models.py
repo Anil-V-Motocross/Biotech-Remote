@@ -19,3 +19,12 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_id
+
+
+class Cart(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.product_id.name} - {self.quantity}"
