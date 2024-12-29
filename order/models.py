@@ -30,7 +30,7 @@ class Cart(models.Model):
         return f"{self.product_id.name} - {self.quantity}"
     
 
-class wishlist(models.Model):
+class Wishlist(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
 

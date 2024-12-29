@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, Cart, wishlist
+from .models import Order, Cart, Wishlist
 
 # Register your models here.
 class OrderAdmin(admin.ModelAdmin):
@@ -8,9 +8,9 @@ class OrderAdmin(admin.ModelAdmin):
 class CartAdmin(admin.ModelAdmin):
     list_display = ('id', 'user_id', 'product_id', 'quantity')
     
-class wishlistAdmin(admin.ModelAdmin):
+class WishlistAdmin(admin.ModelAdmin):
     list_display = ('id', 'user_id', 'product_id')
 
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Cart, CartAdmin)
-admin.site.register(wishlist, wishlistAdmin)
+admin.site.register(Wishlist, WishlistAdmin)
