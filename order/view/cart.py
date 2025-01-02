@@ -18,7 +18,7 @@ class CartSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cart
-        fields = ['id', 'user_id', 'quantity', 'name', 'image', 'price', 'short_description', 'stock_status']
+        fields = ['id', 'user_id', 'product_id','quantity', 'name', 'image', 'price', 'short_description', 'stock_status']
 
     def get_stock_status(self, instance):
         # Access the Product associated with the Cart item
@@ -63,9 +63,10 @@ def cart(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
+        product_id = request.data.get('prod_id')
         data = {
             'user_id': request.user.id,
-            'product_id': request.data.get('prod_id'),
+            'product_id': product_id,
             'quantity': request.data.get('quantity')
             }
         serializer = CartSerializer(data=data)
