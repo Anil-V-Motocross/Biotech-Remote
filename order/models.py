@@ -7,9 +7,10 @@ from account.models import User
 class Order(models.Model):
     order_id = models.CharField(max_length=50)
     date = models.DateField()
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    
     customer_id = models.ForeignKey(User, on_delete=models.CASCADE)
     customer_name = models.CharField(max_length=50)
+    grand_total = models.CharField(max_length=10, default=0)
     email = models.EmailField()
     mobile = models.CharField(max_length=15)
     address = models.CharField(max_length=200)
@@ -19,7 +20,17 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_id
+    
+class OrderItem(models.Model):
+    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.CharField(max_length=10)
+    price = models.CharField(max_length=10)
+    total = models.CharField(max_length=10)
+    
 
+    def __str__(self):
+        return f"{self.product_id.name} - {self.id}"
 
 class Cart(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
