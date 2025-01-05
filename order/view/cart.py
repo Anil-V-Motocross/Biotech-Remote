@@ -60,21 +60,30 @@ def cart(request, pk=None):
             'order.add_cart'
         ]
         
-        if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
-        
         product_id = request.data.get('prod_id')
-        data = {
-            'user_id': request.user.id,
-            'product_id': product_id,
-            'quantity': request.data.get('quantity')
+        quantity = int(request.data.get('quantity', 1))  # Default to 1 if quantity is not provided
+
+        # Check if the product is already in the cart for the user
+        cart_item = Cart.objects.filter(user_id=request.user.id, product_id=product_id).first()
+        
+        if cart_item:
+            # Product already exists in the cart, increase the quantity
+            cart_item.quantity += quantity
+            cart_item.save()
+            return Response(data={'message': 'Product quantity updated successfully.'}, status=status.HTTP_200_OK)
+        else:
+            # Add a new product to the cart
+            data = {
+                'user_id': request.user.id,
+                'product_id': product_id,
+                'quantity': quantity
             }
-        serializer = CartSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(data={'message': 'success'}, status=status.HTTP_201_CREATED)
-        if serializer.errors:
-            return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            serializer = CartSerializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(data={'message': 'Product added to cart successfully.'}, status=status.HTTP_201_CREATED)
+            else:
+                return Response(data={'message': 'Error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         
     if request.method == 'PATCH':
         required_permissions = [
