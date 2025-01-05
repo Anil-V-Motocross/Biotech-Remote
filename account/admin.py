@@ -6,9 +6,9 @@ from django.contrib.auth.admin import UserAdmin
 # Custom UserAdmin class to display relevant fields in the Django admin interface
 class CustomUserAdmin(UserAdmin):
     model = User
-    list_display = ('email', 'first_name', 'last_name', 'phone_number', 'user_type', 'is_active', 'is_staff', 'date_of_birth', 'created', 'updated')
-    list_filter = ('is_active', 'is_staff', 'user_type')
-    search_fields = ('email', 'first_name', 'last_name', 'phone_number')
+    list_display = ('email', 'first_name', 'last_name', 'mobile', 'is_active', 'is_staff', 'date_of_birth', 'created', 'updated')
+    list_filter = ('is_active', 'is_staff',)
+    search_fields = ('email', 'first_name', 'last_name', 'mobile')
     ordering = ('email',)
 
     fieldsets = (
@@ -19,13 +19,13 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('first_name', 'last_name', 'date_of_birth', 'profile_picture')
         }),
         ('Contact info', {
-            'fields': ('phone_number', 'address', 'state', 'city', 'pincode')
+            'fields': ('mobile', 'address', 'state', 'city', 'pincode')
         }),
         ('Permissions', {
             'fields': ('groups', )  # Add groups and permissions here
         }),
         ('User Status', {
-            'fields': ('otp', 'is_active', 'is_staff', 'user_type')
+            'fields': ('otp', 'is_active', 'is_staff',)
         }),
         ('Important dates', {
             'fields': ('last_login', 'created', 'updated')
@@ -35,7 +35,7 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2', 'first_name', 'last_name', 'phone_number', 'user_type', 'is_active', 'is_staff')
+            'fields': ('email', 'password1', 'password2', 'first_name', 'last_name', 'mobile', 'is_active', 'is_staff')
         }),
     )
 
@@ -43,7 +43,7 @@ class CustomUserAdmin(UserAdmin):
     readonly_fields = ('created', 'updated', 'last_login')
 
 class InitialInfoAdmin(admin.ModelAdmin):
-    list_display = ('mobile',)
+    list_display = ('mobile', 'otp', 'name', 'email', 'referal_code')
 
 # Register the custom User model with the custom UserAdmin
 admin.site.register(User, CustomUserAdmin)

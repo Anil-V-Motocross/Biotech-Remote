@@ -37,7 +37,7 @@ def get_service_enquiries(request):
         # print("Required permissions:", required_permissions)
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         service_enquiries = Service_enquiry.objects.all()
         serializer = ServiceEnquirySerializer(service_enquiries, many=True)
@@ -47,13 +47,14 @@ def get_service_enquiries(request):
 
 
    
-@api_view(['POST'])
-def create_servicelist(request):
-    if request.method == 'POST':
-        serializer = ServiceListSerializer(data=request.data)
+@api_view(['GET'])
+def servicelist(request):
+    
+    if request.method == 'GET':
         
-        if serializer.is_valid():
-            # Save the new Service List record
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        service_list = Servicelist.objects.all()
+        serializer = ServiceListSerializer(service_list, many=True)
+        
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    return Response({'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)

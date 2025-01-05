@@ -29,7 +29,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     profile_picture = models.ImageField(upload_to='profile_image/', default='default/profile_default.png', null=True, blank=True)  # Changed from profilePicture
 
     # Contact Data
-    phone_number = models.CharField(max_length=20, unique=True, blank=False, null=False)
+    mobile = models.CharField(max_length=20, unique=True, blank=False, null=False)
     email = models.EmailField(_('email address'), unique=True)
 
     # Address Data
@@ -43,14 +43,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=False, verbose_name='status')
     is_staff = models.BooleanField(default=False)
 
-    # User Type
-    user_type_choices = [
-        ('customer', 'Customer'),
-        ('vendor', 'Vendor'),
-        ('sub_admin', 'Sub Admin'),  # Changed from 'sub admin' to 'sub_admin' for snake_case
-        ('sales', 'Sales'),
-    ]
-    user_type = models.CharField(max_length=20, choices=user_type_choices, default='customer')
+    referal_code = models.CharField(max_length=15, null=True, blank=True)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -58,7 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = CustomAccountManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['phone_number']
+    REQUIRED_FIELDS = ['mobile']
 
     class Meta:
         verbose_name_plural = "Account"
@@ -72,4 +65,4 @@ class InitialInfo(models.Model):
     otp = models.CharField(max_length=6, null=True, blank=True)
     name = models.CharField(max_length=50, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
-    referell_code = models.CharField(max_length=15, null=True, blank=True)
+    referal_code = models.CharField(max_length=15, null=True, blank=True)

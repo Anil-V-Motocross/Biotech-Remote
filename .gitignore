@@ -7,3 +7,8 @@ devcontainer.json
 Dockerfile
 .vscode
 all_models.py
+db.sqlite3
+z_api/
+z_images
+z_Assets
+media/

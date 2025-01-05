@@ -1,8 +1,21 @@
 from django.urls import path
-from .view.test import test
+from .view.main_product import main_product
+from .view.add_category_subcategory_tags import add_category_subcategory_tags
+from .view.product import product
+from .view.home_products import home_products
+from .view.default_product import default_product
+from .view.filter_product import filter_product
 
 app_name = 'product'
 
 urlpatterns = [
-    path('test/', test, name='test'),
+    path('', main_product, name='main_product'),
+    path('addCategorySubcategoryTags/', add_category_subcategory_tags, name='add_category_subcategory_tags'),
+
+    # manage products
+    path('product/', product, name='product'),
+
+    path('homeProducts/', home_products, name='home_products'),
+    path('defaultProduct/<int:product_id>/', default_product, name='default_product'),
+    path('filterProduct/', filter_product, name='filter_product'),
 ]

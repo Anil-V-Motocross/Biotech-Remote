@@ -1,8 +1,8 @@
 from django.urls import path
-from .view.test import test
+from blog.view.blog import blog
 
 app_name = 'blog'
 
 urlpatterns = [
-    path('test/', test, name='test'),
+    path('', blog, name='blog'),
 ]

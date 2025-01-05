@@ -1,8 +1,12 @@
 from django.urls import path
-from .view.test import test
+from .view.carrier import carrier, public_carrier
 
 app_name = 'carrier'
 
 urlpatterns = [
-    path('test/', test, name='test'),
+    path('', carrier, name='carrier'),
+    path('<int:pk>/', carrier, name='carrier'),
+
+    # Public APIs
+    path('publicCarrier/', public_carrier, name='public_carrier'),
 ]

@@ -1,26 +1,17 @@
 #!/bin/bash
-# set -e
+set -e
 
-# PORT=8000
+echo "----------> Checking for process on port 8000."
+PORT=8000
 
-# # Kill process on port
-# echo "----------> Checking for process on port $PORT."
-# if command -v lsof &>/dev/null; then
-#     PID=$(sudo lsof -t -i:$PORT)
-# elif command -v fuser &>/dev/null; then
-#     PID=$(sudo fuser $PORT/tcp 2>/dev/null)
-# else
-#     echo "----------> Neither lsof nor fuser is available. Exiting."
-#     exit 1
-# fi
-
-# if [ -n "$PID" ]; then
-#     echo "----------> Killing process $PID running on port $PORT..."
-#     sudo kill -9 $PID
-#     echo "----------> Process killed successfully."
-# else
-#     echo "----------> No process running on port $PORT."
-# fi
+# Kill process on port 8000 if running
+if command -v lsof &>/dev/null; then
+    PID=$(lsof -t -i:$PORT 2>/dev/null || true)
+    if [ -n "$PID" ]; then
+        echo "----------> Killing process $PID running on port $PORT..."
+        kill -9 $PID
+    fi
+fi
 
 # Virtual environment setup
 if [ ! -d "venv" ]; then
@@ -41,15 +32,14 @@ echo "----------> Installing gunicorn."
 pip install gunicorn
 
 # Django setup
-# echo "----------> Running makemigrations."
-# python3 manage.py makemigrations
+echo "----------> Running makemigrations."
+python3 manage.py makemigrations
 
-# echo "----------> Running migrate."
-# python3 manage.py migrate
+echo "----------> Running migrate."
+python3 manage.py migrate
 
 # Restart services
-echo "----------> Restarting Gunicorn and Nginx."
-sudo systemctl restart gunicorn.service
-sudo systemctl restart nginx
+echo "----------> Restarting Gunicorn."
+nohup /var/lib/jenkins/workspace/git-demo/venv/bin/gunicorn --bind 0.0.0.0:8000 main.wsgi:application > gunicorn.log 2>&1 &
 
 echo "----------> Deployment complete."

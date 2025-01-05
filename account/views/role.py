@@ -47,7 +47,7 @@ def create_group_and_assign_permissions(request):
     user = request.user
     
     if not user.groups.filter(name='admin').exists():
-        return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
     
     serializer = GroupPermissionSerializer(data=request.data)
     if serializer.is_valid():
@@ -65,7 +65,7 @@ def create_group_and_assign_permissions(request):
         
         return Response({'message': f'Group "{group_name}" created and permissions assigned successfully.'}, status=status.HTTP_201_CREATED)
     else:
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
 
 @api_view(['GET'])
@@ -74,4 +74,7 @@ def create_group_and_assign_permissions(request):
 def get_permissions(request):
     user = request.user
     permissions = user.get_all_permissions()
-    return Response(data={'message': 'success', 'permissions': list(permissions)}, status=status.HTTP_200_OK)
+    data = {
+        'permissions': permissions
+    }
+    return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
