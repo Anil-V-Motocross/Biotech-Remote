@@ -3,6 +3,7 @@ from .view.order import order
 from .view.cart import cart
 from .view.wishlist import wishlist
 from .view.order_item import order_item
+from .view.user_orders import user_orders
 
 app_name = 'order'
 
@@ -17,4 +18,6 @@ urlpatterns = [
     
     path('wishlist/', wishlist, name='wishlist'),
     path('wishlist/<int:pk>/', wishlist, name='wishlist'),
+    
+    path('userOrders/<int:customer_id>/', user_orders, name='user_orders'),
 ]
