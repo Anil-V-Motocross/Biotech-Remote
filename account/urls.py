@@ -14,6 +14,7 @@ urlpatterns = [
     path('register-staff/', register_staff, name='register_staff'),
     path('login-staff/', login_staff, name='login_staff'),
     path('all_users/', all_users, name='all_users'),
+    path('all_users/<int:pk>/', all_users, name='all_users'),
 
     path('create-group/', create_group_and_assign_permissions, name='create_group_and_assign_permissions'),
     path('get-permissions/', get_permissions, name='get_permissions')
