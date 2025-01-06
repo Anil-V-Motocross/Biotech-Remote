@@ -62,7 +62,7 @@ def store(request, pk=None):
             return Response(data={'message': 'success', 'data': serializer.data}, status=status.HTTP_201_CREATED)
         return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
-    if request.method == 'PATCH' and pk:
+    if request.method == 'PATCH':
         required_permissions = [
             'store.change_store'
         ]
@@ -91,12 +91,8 @@ def store(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        store_id = request.data.get('store_id')
-        if not store_id:
-            return Response(data={'message': 'Store ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
-        
-        if Store.objects.filter(id=store_id).exists():
-            store = Store.objects.get(id=store_id)
+        if Store.objects.filter(id=pk).exists():
+            store = Store.objects.get(id=pk)
             store.delete()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
         return Response(data={'message': 'Store not found.'}, status=status.HTTP_404_NOT_FOUND)
