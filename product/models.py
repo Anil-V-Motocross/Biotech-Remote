@@ -78,6 +78,7 @@ class Product(models.Model):
     sku = models.CharField(max_length=40)
     image = models.ImageField(upload_to='product_images/', default='default/category_default.jpg')
     visible_online = models.BooleanField(default=True)
+    date_added = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     is_default = models.BooleanField(default=False)
 

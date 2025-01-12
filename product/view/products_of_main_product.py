@@ -8,9 +8,38 @@ from account.permissions import DynamicPermission
 from rest_framework import serializers
 
 class ProductSerializer(serializers.ModelSerializer):
+    main_product_name = serializers.CharField(source='product_id.name', read_only=True)
+    size = serializers.CharField(source='size_id.name', read_only=True)
+    planter_size = serializers.CharField(source='planter_size_id.name', read_only=True)
+    planter = serializers.CharField(source='planter_id.name', read_only=True)
+    color = serializers.CharField(source='color_id.color_code', read_only=True)
+
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = [
+            'id', 
+            'main_product_name',  # Instead of size_id, this gives the name of MainProduct
+            'size',               # Custom field for size name
+            'planter_size',
+            'planter',
+            'color',
+            'weight_id',
+            'name',
+            'price',
+            'discount',
+            'stock',
+            'sku',
+            'image',
+            'visible_online',
+            'date_added',
+            'is_default'
+        ]
+
+    def get_size(self, obj):
+        # Get the name from the Size model if size_id is not null
+        if obj.size_id:
+            return obj.size_id.name
+        return None
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, DynamicPermission])

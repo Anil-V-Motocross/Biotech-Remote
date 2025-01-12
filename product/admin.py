@@ -27,7 +27,7 @@ class ProductTagAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'product_id', 'sku', 'stock', 'visible_online')
+    list_display = ('id', 'name', 'product_id', 'sku', 'stock', 'date_added', 'visible_online')
 
 class RatingAdmin(admin.ModelAdmin):
     list_display = ('id', 'main_product_id', 'user_id', 'product_rating', 'date')
