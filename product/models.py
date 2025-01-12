@@ -1,5 +1,6 @@
 from django.db import models
 from attribute.models import Size, PlanterSize, Planter, Color, Weight
+from account.models import User
 
 # Create your models here.
 
@@ -84,3 +85,21 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+
+class Rating(models.Model):
+    main_product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    product_rating = models.DecimalField(max_digits=3, decimal_places=2)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Rating {self.product_rating} by {self.user_id} for {self.main_product_id}"
+
+class Review(models.Model):
+    main_product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    product_review = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Review by {self.user_id} for {self.main_product_id}"

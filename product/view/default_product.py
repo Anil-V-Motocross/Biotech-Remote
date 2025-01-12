@@ -3,12 +3,32 @@ from rest_framework.response import Response
 from rest_framework import status
 from product.models import Product
 from rest_framework import serializers
-from product.models import Product, MainProductImage
+from product.models import Product, MainProductImage, Rating, Review
 from django.conf import settings
 from attribute.models import Size
 from attribute.models import PlanterSize
 from attribute.models import Planter
 from attribute.models import Color
+from django.db.models import Avg, Count, F
+from django.db.models.functions import Floor
+
+class ReviewSerializer(serializers.ModelSerializer):
+    date = serializers.DateTimeField(format='%d/%m/%Y')
+    latest_rating = serializers.SerializerMethodField()
+    user_name = serializers.CharField(source='user_id.first_name', read_only=True)  # Access the related field
+
+
+    class Meta:
+        model = Review
+        fields = ['id', 'user_id', 'user_name', 'product_review', 'date', 'latest_rating']
+
+    def get_latest_rating(self, obj):
+        # Retrieve the latest rating for the product and user
+        rating = Rating.objects.filter(
+            main_product_id=obj.main_product_id, user_id=obj.user_id
+            ).order_by('-date').first()
+
+        return rating.product_rating if rating else None
 
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -66,7 +86,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 @api_view(['GET'])
 def default_product(request, product_id=None):
-    if request.method == 'GET':
+    if request.method == 'GET' and product_id:
         # Filter the product to get the default one with the specified product_id
         product = Product.objects.filter(product_id=product_id, is_default=True).first()
         
@@ -88,13 +108,27 @@ def default_product(request, product_id=None):
         product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
         product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
         
+        # return rating by calulating average of product_rating 
+        product_rating = Rating.objects.filter(main_product_id=product_id).aggregate(avg_rating=Avg('product_rating'), num_ratings=Count('id'))
+        product_rating['avg_rating'] = round(product_rating['avg_rating'], 2) if product_rating['avg_rating'] else 0
+        
+        # return number of stars given by user for the product like 5 starts is given 10 users, 4 starts is given by 5 users like {'5': 10, '4': 5}
+        product_rating['stars_given'] = (Rating.objects.filter(main_product_id=product_id).annotate(rounded_rating=Floor(F('product_rating')))
+                                         .values('rounded_rating').annotate(count=Count('id')).order_by('-rounded_rating'))
+        
+        # return product review by user
+        product_reviews = Review.objects.filter(main_product_id=product_id)
+        product_reviews = ReviewSerializer(product_reviews, many=True)
+        
         # Prepare the response data
         data = {
             'product': serializer.data,
             'product_sizes': product_sizes.data,
             'product_planter_sizes': product_planter_sizes.data,
             'product_planters': product_planter.data,
-            'product_colors': product_color.data
+            'product_colors': product_color.data,
+            'product_rating': product_rating,
+            'product_reviews': product_reviews.data
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
 
