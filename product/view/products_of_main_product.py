@@ -13,6 +13,7 @@ class ProductSerializer(serializers.ModelSerializer):
     planter_size = serializers.CharField(source='planter_size_id.size', read_only=True)
     planter = serializers.CharField(source='planter_id.name', read_only=True)
     color = serializers.CharField(source='color_id.color_code', read_only=True)
+    date_added = serializers.DateTimeField(format='%d-%m-%Y')
 
     class Meta:
         model = Product
