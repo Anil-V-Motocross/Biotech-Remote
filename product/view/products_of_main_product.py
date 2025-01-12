@@ -10,7 +10,7 @@ from rest_framework import serializers
 class ProductSerializer(serializers.ModelSerializer):
     main_product_name = serializers.CharField(source='product_id.name', read_only=True)
     size = serializers.CharField(source='size_id.name', read_only=True)
-    planter_size = serializers.CharField(source='planter_size_id.name', read_only=True)
+    planter_size = serializers.CharField(source='planter_size_id.size', read_only=True)
     planter = serializers.CharField(source='planter_id.name', read_only=True)
     color = serializers.CharField(source='color_id.color_code', read_only=True)
 
