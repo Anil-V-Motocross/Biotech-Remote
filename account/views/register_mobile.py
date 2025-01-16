@@ -29,8 +29,8 @@ def send_otp(mobile, otp):
         # =======================================================================
         url = "https://control.msg91.com/api/v5/flow/"
         # payload = {"template_id": "60ffda6d9c235f799241960f",
-        #            "recipients": [{"mobiles": phone, "name": name, "otp": otp}]}
-        payload = {"template_id": "674a89f9d6fc05032f5bf902",
+        #            "recipients": [{"mobiles": phone, "name": name, "otp": otp}]}  674a89f9d6fc05032f5bf902
+        payload = {"template_id": "60ffda6d9c235f799241960f",
                    "recipients": [{
                        "mobiles": phone,
                        "name": "ABC",
@@ -41,7 +41,8 @@ def send_otp(mobile, otp):
         headers = {
             "accept": "application/json",
             "content-type": "application/json",
-            "authkey": "433172AwxmUdTOWK6746d6c2P1"
+            # "authkey": "433172AwxmUdTOWK6746d6c2P1"
+            "authkey": "112997AWvDqQDssV665ba34edP1"
         }
 
         response = requests.post(url, json=payload, headers=headers)
@@ -123,8 +124,8 @@ def validate_otp(request):
         if User.objects.filter(mobile=mobile).exists():
             # check otp request and database
             if not User.objects.filter(mobile=mobile, otp=otp).exists():
-                # return Response(data={'message': 'Invalid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
-                pass
+                return Response(data={'message': 'Invalid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
+                # pass
             
             # Attach jwt token
             user = User.objects.filter(mobile=mobile).first()
