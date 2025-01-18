@@ -56,10 +56,12 @@ class ProductSerializer(serializers.ModelSerializer):
     # add short_description from MainProduct
     short_description = serializers.ReadOnlyField(source='product_id.short_description')
     main_product_name = serializers.ReadOnlyField(source='product_id.name')
+    whats_included = serializers.ReadOnlyField(source='product_id.whats_included')
+    vedio_link = serializers.ReadOnlyField(source='product_id.vedio_link')
 
     class Meta:
         model = Product
-        fields = ['id', 'price', 'images', 'short_description', 'main_product_name', 'size_id', 'planter_size_id', 'planter_id', 'color_id']
+        fields = ['id', 'price', 'images', 'short_description', 'main_product_name', 'size_id', 'planter_size_id', 'planter_id', 'color_id', 'whats_included', 'vedio_link']
 
     def get_images(self, obj):
         # Start with the product's main image
