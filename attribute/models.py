@@ -30,9 +30,12 @@ class PlanterSize(models.Model):
     
 
 class Planter(models.Model):
-    name = models.CharField(max_length=50, blank=False, null=False, unique=True)
+    name = models.CharField(max_length=50, blank=False, null=False)
     planter_size = models.ForeignKey(PlanterSize, on_delete=models.CASCADE)
     status = models.BooleanField(default=True)
+    
+    class Meta:
+        unique_together = ('name', 'planter_size')
 
     def __str__(self):
         return self.name
