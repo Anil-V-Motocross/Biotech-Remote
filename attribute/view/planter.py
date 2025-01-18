@@ -12,6 +12,12 @@ class PlanterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Planter
         fields = '__all__'
+        
+    def to_internal_value(self, data):
+        data = data.copy()  # This will ensure the data is mutable
+        if 'name' in data:
+            data['name'] = data['name'].lower()
+        return super().to_internal_value(data)
 
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated, DynamicPermission])
