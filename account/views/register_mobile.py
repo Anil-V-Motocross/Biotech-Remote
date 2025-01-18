@@ -94,7 +94,7 @@ def register_mobile(request):
             InitialInfo.objects.filter(mobile=mobile).update(otp=otp)
             # send otp
             send_otp(mobile=mobile, otp=otp)
-            return Response(data={'message': 'Only registered with mobile number.', 'mobile': mobile}, status=status.HTTP_200_OK)
+            return Response(data={'message': 'Only registered with mobile number.', 'mobile': mobile}, status=status.HTTP_201_CREATED)
 
         serializer = RegisteMOBileRegisterSerializer(data=request.data)
         if serializer.is_valid():
