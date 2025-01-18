@@ -1,3 +1,4 @@
+from django.contrib.auth.models import Group
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -189,6 +190,11 @@ def register(request):
             }
         user = User.objects.create_user(**data)
         user.save()
+        
+         # Add the user to the 'Customer' group
+        customer_group, created = Group.objects.get_or_create(name='Customer')
+        user.groups.add(customer_group)
+        
         InitialInfo.objects.filter(mobile=mobile).delete()
         # attech jwt token
         refresh = RefreshToken.for_user(user)
