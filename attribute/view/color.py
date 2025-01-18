@@ -13,9 +13,8 @@ class ColorSerializer(serializers.ModelSerializer):
         model = Color
         fields = '__all__'
         
-    # def validate function for color_name
     def to_internal_value(self, data):
-        # Convert color_name to lowercase before any other validation happens
+        data = data.copy()  # This will ensure the data is mutable
         if 'color_name' in data:
             data['color_name'] = data['color_name'].lower()
         return super().to_internal_value(data)
@@ -66,8 +65,7 @@ def color(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        data = request.data
-        serializer = ColorSerializer(data=data)
+        serializer = ColorSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(data={'message': 'success'}, status=status.HTTP_201_CREATED)
@@ -88,8 +86,7 @@ def color(request, pk=None):
         
         if Color.objects.filter(id=color_id).exists():
             color = Color.objects.get(id=color_id)
-            data = request.data
-            serializer = ColorSerializer(color, data=data, partial=True)
+            serializer = ColorSerializer(color, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
