@@ -21,8 +21,8 @@ class Size(models.Model):
 
     
 class PlanterSize(models.Model):
-    size = models.CharField(max_length=50)
-    name = models.CharField(max_length=50)
+    size = models.CharField(max_length=50, blank=False, null=False, unique=True)
+    name = models.CharField(max_length=50, blank=False, null=False, unique=True)
     status = models.BooleanField(default=True)
 
     def __str__(self):
