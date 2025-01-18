@@ -66,7 +66,8 @@ def color(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        serializer = ColorSerializer(data=request.data)
+        data = request.data
+        serializer = ColorSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(data={'message': 'success'}, status=status.HTTP_201_CREATED)
@@ -87,7 +88,8 @@ def color(request, pk=None):
         
         if Color.objects.filter(id=color_id).exists():
             color = Color.objects.get(id=color_id)
-            serializer = ColorSerializer(color, data=request.data, partial=True)
+            data = request.data
+            serializer = ColorSerializer(color, data=data, partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
