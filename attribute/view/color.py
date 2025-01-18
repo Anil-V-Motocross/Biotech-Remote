@@ -12,7 +12,14 @@ class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Color
         fields = '__all__'
-
+        
+    # def validate function for color_name
+    def to_internal_value(self, data):
+        # Convert color_name to lowercase before any other validation happens
+        if 'color_name' in data:
+            data['color_name'] = data['color_name'].lower()
+        return super().to_internal_value(data)
+    
 
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated, DynamicPermission])
