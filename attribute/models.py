@@ -12,8 +12,8 @@ class Color(models.Model):
     
 
 class Size(models.Model):
-    size = models.CharField(max_length=30, blank=False, null=False)
-    name = models.CharField(max_length=30, blank=False, null=False)
+    size = models.CharField(max_length=30, blank=False, null=False, unique=True)
+    name = models.CharField(max_length=30, blank=False, null=False, unique=True)
     status = models.BooleanField(default=True)
 
     def __str__(self):
