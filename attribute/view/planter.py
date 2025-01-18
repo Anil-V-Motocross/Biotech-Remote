@@ -31,7 +31,15 @@ def planter(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        planters = Planter.objects.all()
+        filter_params = {}
+        planter_size = request.query_params.get('planter_size', None)
+        
+        if planter_size:
+            filter_params['planter_size'] = planter_size
+        
+        planters = Planter.objects.filter(**filter_params).all()
+        
+        # planters = Planter.objects.all()
         serializer = PlanterSerializer(planters, many=True)
         data = {
             'planters': serializer.data
