@@ -179,6 +179,11 @@ def register(request):
         if not mobile or not name:
             return Response(data={'message': 'Mobile number, name, code are required.'}, status=status.HTTP_400_BAD_REQUEST)
         
+        # check mobile is exists in User model with mobile
+        if User.objects.filter(mobile=mobile).exists():
+            return Response(data={'message': 'Mobile number already exists.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        
         # make email field by concatenating mobile number and save in User model and delete in InitialInfo model
         data = {
                 "password": gererate_password(),
