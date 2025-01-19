@@ -183,37 +183,38 @@ def register(request):
         if User.objects.filter(mobile=mobile).exists():
             return Response(data={'message': 'Mobile number already exists.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        
-        # make email field by concatenating mobile number and save in User model and delete in InitialInfo model
-        data = {
-                "password": gererate_password(),
-                "first_name": name,
-                "mobile": mobile,
-                "email": f"{mobile}@example.com",
-                "referal_code": referal_code,
-                "is_active": True
+        if InitialInfo.objects.filter(mobile=mobile).exists():
+            # make email field by concatenating mobile number and save in User model and delete in InitialInfo model
+            data = {
+                    "password": gererate_password(),
+                    "first_name": name,
+                    "mobile": mobile,
+                    "email": f"{mobile}@example.com",
+                    "referal_code": referal_code,
+                    "is_active": True
+                }
+            user = User.objects.create_user(**data)
+            user.save()
+            
+            # Add the user to the 'Customer' group
+            customer_group, created = Group.objects.get_or_create(name='Customer')
+            user.groups.add(customer_group)
+            
+            InitialInfo.objects.filter(mobile=mobile).delete()
+            # attech jwt token
+            refresh = RefreshToken.for_user(user)
+            token = {
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
             }
-        user = User.objects.create_user(**data)
-        user.save()
-        
-         # Add the user to the 'Customer' group
-        customer_group, created = Group.objects.get_or_create(name='Customer')
-        user.groups.add(customer_group)
-        
-        InitialInfo.objects.filter(mobile=mobile).delete()
-        # attech jwt token
-        refresh = RefreshToken.for_user(user)
-        token = {
-            'refresh': str(refresh),
-            'access': str(refresh.access_token),
-        }
-        # attach user de
-        data = {
-            'user': {
-                'id': user.id,
-                'first_name': user.first_name,
-                'mobile': user.mobile,
-            },
-            'token': token
-        }
-        return Response(data={'data': data, 'message': 'User registered successfully.'}, status=status.HTTP_200_OK)
+            # attach user de
+            data = {
+                'user': {
+                    'id': user.id,
+                    'first_name': user.first_name,
+                    'mobile': user.mobile,
+                },
+                'token': token
+            }
+            return Response(data={'data': data, 'message': 'User registered successfully.'}, status=status.HTTP_200_OK)
+        return Response(data={'message': 'Mobile number does not registered.'}, status=status.HTTP_400_BAD_REQUEST)
