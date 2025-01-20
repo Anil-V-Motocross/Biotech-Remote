@@ -46,7 +46,18 @@ def wishlist(request):
         
         main_product_id= request.query_params.get('main_prod_id', None)
         product_id = request.query_params.get('prod_id', None)
+        main_product_id_list = request.query_params.getlist('main_product_id_list', None)
         
+        if main_product_id_list:
+            wishlist_items = Wishlist.objects.filter(
+                                                    user_id=request.user,
+                                                    product_id__is_default=True
+                                                    ).select_related('product_id__product_id')
+        
+            main_product_ids = list(wishlist_items.values_list('product_id__product_id', flat=True).distinct())
+            
+            return Response(data={'main_product_ids': main_product_ids},status=status.HTTP_200_OK)
+            
         if main_product_id or product_id:
             if main_product_id:
                 product_id = Product.objects.filter(product_id=main_product_id, is_default=True).first()
