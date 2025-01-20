@@ -58,31 +58,17 @@ def wishlist(request):
             
             return Response(data={'main_product_ids': main_product_ids},status=status.HTTP_200_OK)
             
-        if main_product_id or product_id:
-            if main_product_id:
-                product_id = Product.objects.filter(product_id=main_product_id, is_default=True).first()
-                product_id = product_id.id
-                if Wishlist.objects.filter(user_id=request.user.id, product_id=product_id).exists():
-                    data = {
-                        "in_wishlist": True
-                    }
-                    return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
-                else:
-                    data = {
-                        "in_wishlist": False
-                    }
-                    return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+        if product_id:
+            if Wishlist.objects.filter(user_id=request.user.id, product_id=product_id).exists():
+                data = {
+                    "in_wishlist": True
+                }
+                return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
             else:
-                if Wishlist.objects.filter(user_id=request.user.id, product_id=product_id).exists():
-                    data = {
-                        "in_wishlist": True
-                    }
-                    return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
-                else:
-                    data = {
-                        "in_wishlist": False
-                    }
-                    return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+                data = {
+                    "in_wishlist": False
+                }
+                return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
         
         wishlists = Wishlist.objects.filter(user_id=request.user.id).all()
         serializer = WishlistSerializer(wishlists, many=True)
@@ -112,7 +98,10 @@ def wishlist(request):
         if Wishlist.objects.filter(user_id=request.user.id, product_id=product_id).exists():
             wishlist = Wishlist.objects.get(user_id=request.user.id, product_id=product_id)
             wishlist.delete()
-            return Response(data={'message': 'Product removed from wishlist'}, status=status.HTTP_200_OK)
+            data = {
+                "in_wishlist": False
+            }
+            return Response(data={'message': 'Product removed from wishlist', 'data': data}, status=status.HTTP_200_OK)
         else:
             # If the product is not in the wishlist, add it
             data = {
@@ -122,7 +111,10 @@ def wishlist(request):
             serializer = WishlistSerializer(data=data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(data={'message': 'Product added to wishlist'}, status=status.HTTP_200_OK)
+                data = {
+                    "in_wishlist": True
+                }
+                return Response(data={'message': 'Product added to wishlist', 'data': data}, status=status.HTTP_200_OK)
             else:
                 return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
