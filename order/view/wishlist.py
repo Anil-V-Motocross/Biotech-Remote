@@ -35,8 +35,8 @@ class WishlistSerializer(serializers.ModelSerializer):
 @api_view(['GET', 'POST', 'DELETE'])
 @permission_classes([IsAuthenticated, DynamicPermission])
 @authentication_classes([JWTAuthentication])
-def wishlist(request):
-    if request.method == 'GET':
+def wishlist(request, pk=None):
+    if request.method == 'GET' and not pk:
         required_permissions = [
             'order.view_wishlist'
         ]
@@ -44,11 +44,10 @@ def wishlist(request):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        main_product_id= request.query_params.get('main_prod_id', None)
         product_id = request.query_params.get('prod_id', None)
         main_product_id_list = request.query_params.getlist('main_product_id_list', None)
         
-        if main_product_id_list:
+        if main_product_id_list and not product_id:
             wishlist_items = Wishlist.objects.filter(
                                                     user_id=request.user,
                                                     product_id__is_default=True
@@ -58,7 +57,7 @@ def wishlist(request):
             
             return Response(data={'main_product_ids': main_product_ids},status=status.HTTP_200_OK)
             
-        if product_id:
+        if product_id and not main_product_id_list:
             if Wishlist.objects.filter(user_id=request.user.id, product_id=product_id).exists():
                 data = {
                     "in_wishlist": True
@@ -77,22 +76,22 @@ def wishlist(request):
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
     
-    if request.method == 'POST':
+    if request.method == 'POST' and not pk:
         required_permissions = [
-            'order.add_wishlist'
+            'order.add_wishlist', 'order.delete_wishlist'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         main_product_id = request.data.get('main_prod_id', None)
-        
+
         if main_product_id:
             product_id = Product.objects.filter(product_id=main_product_id, is_default=True).first()
             product_id = product_id.id
         else:
             product_id = request.data.get('prod_id')
-            
+        
         # Check if the product is already in the wishlist for the user
         # if exists then delete
         if Wishlist.objects.filter(user_id=request.user.id, product_id=product_id).exists():
@@ -117,18 +116,18 @@ def wishlist(request):
                 return Response(data={'message': 'Product added to wishlist', 'data': data}, status=status.HTTP_200_OK)
             else:
                 return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-    
-    # if request.method == 'DELETE' and pk:
-    #     required_permissions = [
-    #         'order.delete_wishlist'
-    #     ]
+                
+    if request.method == 'DELETE' and pk:
+        required_permissions = [
+            'order.delete_wishlist'
+        ]
         
-    #     if not any(request.user.has_perm(perm) for perm in required_permissions):
-    #         return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-    #     if Wishlist.objects.filter(id=pk, user_id=request.user.id).exists():
-    #         wishlist = Wishlist.objects.get(id=pk, user_id=request.user.id)
-    #         wishlist.delete()
-    #         return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
-    #     return Response(data={'message': 'Wishlist does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+        if Wishlist.objects.filter(id=pk, user_id=request.user.id).exists():
+            wishlist = Wishlist.objects.get(id=pk, user_id=request.user.id)
+            wishlist.delete()
+            return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
+        return Response(data={'message': 'Wishlist does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
     

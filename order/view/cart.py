@@ -60,23 +60,23 @@ def cart(request, pk=None):
             'order.add_cart'
         ]
         
-        product_id = request.data.get('prod_id')
-        quantity = int(request.data.get('quantity', 1))  # Default to 1 if quantity is not provided
+        main_product_id = request.data.get('main_prod_id', None)
 
-        # Check if the product is already in the cart for the user
-        cart_item = Cart.objects.filter(user_id=request.user.id, product_id=product_id).first()
-        
-        if cart_item:
-            # Product already exists in the cart, increase the quantity
-            cart_item.quantity += quantity
-            cart_item.save()
-            return Response(data={'message': 'Product quantity updated successfully.'}, status=status.HTTP_200_OK)
+        if main_product_id:
+            product_id = Product.objects.filter(product_id=main_product_id, is_default=True).first()
+            product_id = product_id.id
         else:
-            # Add a new product to the cart
+            product_id = request.data.get('prod_id')
+            
+        quntity = int(request.data.get('quantity', 1))
+        
+        if Cart.objects.filter(user_id=request.user.id, product_id=product_id).exists():
+            return Response(data={'message': 'Product already exists in cart.'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
             data = {
                 'user_id': request.user.id,
                 'product_id': product_id,
-                'quantity': quantity
+                'quantity': quntity
             }
             serializer = CartSerializer(data=data)
             if serializer.is_valid():
@@ -84,6 +84,7 @@ def cart(request, pk=None):
                 return Response(data={'message': 'Product added to cart successfully.'}, status=status.HTTP_201_CREATED)
             else:
                 return Response(data={'message': 'Error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        
         
     if request.method == 'PATCH':
         required_permissions = [
