@@ -73,6 +73,8 @@ def cart(request, pk=None):
         if Cart.objects.filter(user_id=request.user.id, product_id=product_id).exists():
             return Response(data={'message': 'Product already exists in cart.'}, status=status.HTTP_400_BAD_REQUEST)
         else:
+            if not Product.objects.filter(id=product_id).exists():
+                return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
             data = {
                 'user_id': request.user.id,
                 'product_id': product_id,
