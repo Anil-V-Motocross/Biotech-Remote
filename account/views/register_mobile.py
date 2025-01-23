@@ -78,6 +78,13 @@ def register_mobile(request):
         if not mobile:
             return Response(data={'message': 'Mobile number is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
+        ################### For testing in play store ################
+        if mobile == '9999999999':
+            User.objects.filter(mobile=mobile).update(otp='1234')
+            return Response(data={'message': 'Registered User.', 'mobile': mobile}, status=status.HTTP_200_OK)
+        
+        ################################################################
+        
         # check mobile is exists in User model with mobile
         if User.objects.filter(mobile=mobile).exists():
             # Generate OTP
