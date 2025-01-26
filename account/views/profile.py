@@ -153,17 +153,41 @@ def address(request,pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
        
-        address_id = request.data.get('address_id')
+        data = request.data
+        if 'is_default' in data:
+            del data['is_default']
+        address_id = data.get('address_id')
         if not address_id:
             return Response(data={'message': 'Address ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
        
-        if Address.objects.filter(id=address_id).exists():
-            address = Address.objects.get(id=address_id)
-            serializer = AddressSerializer(address, data=request.data, partial=True)
+        if Address.objects.filter(id=address_id, user_id=request.user.id).exists():
+            address = Address.objects.get(id=address_id, user_id=request.user.id)
+            serializer = AddressSerializer(address, data=data, partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return Response(data={'message': 'success', 'data': serializer.data}, status=status.HTTP_200_OK)
             return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={'message': 'Address does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    if request.method == 'PATCH' and pk:
+        required_permissions = ['account.change_address']
+       
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+       
+        if Address.objects.filter(id=pk, user_id=request.user.id).exists():
+            # Update all 'is_default' field to False except the one with the given ID
+            Address.objects.filter(user_id=request.user.id).update(is_default=False)
+            address = Address.objects.get(id=pk, user_id=request.user.id)
+            address.is_default = True
+            address.save()
+            # returl all address of user
+            address = Address.objects.filter(user_id=request.user.id)
+            serializer = AddressSerializer(address, many=True)
+            data = {
+                'address': serializer.data
+            }
+            return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
         return Response(data={'message': 'Address does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
    
     if request.method == 'DELETE' and pk:
@@ -171,8 +195,8 @@ def address(request,pk=None):
        
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
-        if Address.objects.filter(id=pk).exists():
-            address = Address.objects.get(id=pk)
+        if Address.objects.filter(id=pk, user_id=request.user.id).exists():
+            address = Address.objects.get(id=pk, user_id=request.user.id)
             if address.is_default:
                 return Response(data={'message': 'Default address cannot be deleted.'}, status=status.HTTP_400_BAD_REQUEST)
             address.delete()
