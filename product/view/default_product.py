@@ -100,10 +100,10 @@ def default_product(request, product_id=None):
         serializer = ProductSerializer(product, context={'request': request})
         
         # return all unique size_id of the product
-        product_size_ids = Product.objects.filter(product_id=product_id).values_list('size_id', flat=True).distinct()
-        product_planter_size_ids = Product.objects.filter(product_id=product_id).values_list('planter_size_id', flat=True).distinct()
-        product_planter_ids = Product.objects.filter(product_id=product_id).values_list('planter_id', flat=True).distinct()
-        product_color_ids = Product.objects.filter(product_id=product_id).values_list('color_id', flat=True).distinct()
+        product_size_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('size_id', flat=True).distinct()
+        product_planter_size_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id,  visible_online=True).values_list('planter_size_id', flat=True).distinct()
+        product_planter_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, planter_size_id=product.planter_size_id, visible_online=True).values_list('planter_id', flat=True).distinct()
+        product_color_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, planter_size_id=product.planter_size_id, planter_id=product.planter_id, visible_online=True).values_list('color_id', flat=True).distinct()
         
         product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
         product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group, Permission
-from .models import User, InitialInfo
+from .models import User, InitialInfo, Address
 from django.contrib.auth.admin import UserAdmin
 
 # Custom UserAdmin class to display relevant fields in the Django admin interface
@@ -19,7 +19,7 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('first_name', 'last_name', 'date_of_birth', 'profile_picture')
         }),
         ('Contact info', {
-            'fields': ('mobile', 'address', 'state', 'city', 'pincode')
+            'fields': ('mobile',)
         }),
         ('Permissions', {
             'fields': ('groups', )  # Add groups and permissions here
@@ -44,12 +44,18 @@ class CustomUserAdmin(UserAdmin):
 
 class InitialInfoAdmin(admin.ModelAdmin):
     list_display = ('mobile', 'otp', 'name', 'email', 'referal_code')
+    
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ('user', 'city', 'state', 'pincode')
 
 # Register the custom User model with the custom UserAdmin
 admin.site.register(User, CustomUserAdmin)
 
 # Register the InitialInfo model
 admin.site.register(InitialInfo, InitialInfoAdmin)
+
+# Register the Address model
+admin.site.register(Address, AddressAdmin)
 
 # Unregister Group and Permission models if they're already registered
 # try:
