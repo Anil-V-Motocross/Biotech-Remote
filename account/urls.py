@@ -4,7 +4,7 @@ from .views.login import login_staff
 from .views.role import create_group_and_assign_permissions, get_permissions
 from .views.register_mobile import register_mobile, validate_otp, register
 from .views.all_users import all_users
-from .views.profile import profile
+from .views.profile import profile, address
 
 name = 'account'
 
@@ -20,8 +20,9 @@ urlpatterns = [
     path('create-group/', create_group_and_assign_permissions, name='create_group_and_assign_permissions'),
     path('get-permissions/', get_permissions, name='get_permissions'),
     
-    path('profile/', profile,name='editprofile'),
-    # path('address/',add_address,name='add_address'),
-    # path('address/<int:pk>/',add_address,name='add_address'),
+    path('profile/', profile,name='profile'),
+    
+    path('address/',address,name='address'),
+    path('address/<int:pk>/',address,name='address'),
     # path('editprofile/<int:pk>/',edituser_profile,name='editprofile'),
 ]
