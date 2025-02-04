@@ -74,7 +74,7 @@ class Product(models.Model):
     price = models.CharField(max_length=10)
     profit = models.CharField(max_length=10)
     discount = models.CharField(max_length=10)
-    stock = models.CharField(max_length=10)
+    stock = models.IntegerField(default=0)
     sku = models.CharField(max_length=40)
     image = models.ImageField(upload_to='product_images/', default='default/category_default.jpg')
     visible_online = models.BooleanField(default=True)
