@@ -22,7 +22,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
     # add main product name from to_representation
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        representation['product_name'] = instance.product_id.name
+        representation['product_name'] = instance.product_id.product_id.name
         return representation
 
 class OrderSerializer(serializers.ModelSerializer):
