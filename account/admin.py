@@ -16,7 +16,7 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('email', 'password', 'is_superuser')
         }),
         ('Personal info', {
-            'fields': ('first_name', 'last_name', 'date_of_birth', 'profile_picture')
+            'fields': ('first_name', 'last_name', 'date_of_birth', 'profile_picture', 'gender')
         }),
         ('Contact info', {
             'fields': ('mobile',)

@@ -18,6 +18,12 @@ class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
         fields = '__all__'
+        
+    # add main product name from to_representation
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['product_name'] = instance.product_id.name
+        return representation
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
@@ -54,7 +60,7 @@ def place_order(request):
             if not product_id or not quantity:
                 return Response(data={'message': 'Prod_id and quantity are required.'}, status=status.HTTP_400_BAD_REQUEST)
             
-            product = Product.objects.filter(product_id=product_id).first()
+            product = Product.objects.filter(id=product_id).first()
             if not product:
                 return Response(data={'message': 'Product not found.'}, status=status.HTTP_400_BAD_REQUEST)
             
