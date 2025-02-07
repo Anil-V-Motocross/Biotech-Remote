@@ -17,9 +17,13 @@ class Order(models.Model):
     grand_total = models.FloatField(default=0)
     email = models.EmailField()
     mobile = models.CharField(max_length=15)
-    address = models.CharField(max_length=200, null=True, blank=True)
     tracking_id = models.CharField(max_length=50)
     payment_method = models.CharField(max_length=50)
+    delivery_option_types=[
+        ('Standard', 'Standard'),
+        ('Express', 'Express'),
+    ]
+    delivery_option = models.CharField(max_length=10, choices=delivery_option_types, default='Standard')
     status = models.CharField(max_length=50)
 
     def __str__(self):
@@ -65,3 +69,21 @@ class Wishlist(models.Model):
 
     def __str__(self):
         return f"{self.product_id.name}"
+    
+class DeliveryAddress(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    address = models.TextField(max_length=200)
+    state = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
+    pincode = models.IntegerField()
+    address_types=[
+        ('Home', 'Home'),
+        ('Work', 'Work'),
+    ]
+    address_type = models.CharField(max_length=255,choices=address_types)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="delivery_user_addresses")
+    order_id = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="order_address", default='0')
+
+    def __str__(self):
+        return f"{self.user}, {self.city}, {self.state}, {self.pincode}"

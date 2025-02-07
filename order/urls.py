@@ -4,6 +4,7 @@ from .view.cart import cart
 from .view.wishlist import wishlist
 from .view.user_orders import user_orders
 from .view.place_order import place_order
+from .view.order_summary import order_summary
 
 app_name = 'order'
 
@@ -22,6 +23,7 @@ urlpatterns = [
     
     # Following URLs are for user orders
     path('placeOrder/', place_order, name='place_order'),
+    path('orderSummary/', order_summary, name='order_summary'),
     path('userOrders/<int:customer_id>/', user_orders, name='user_orders'),
     
 ]
