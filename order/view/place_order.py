@@ -142,7 +142,6 @@ def place_order(request):
             "mobile": customer.mobile,
             "address": "Need  to create address",
             "tracking_id": "0",
-            "payment_method": "Not defined",
             "status": "Initiated"
         }
         

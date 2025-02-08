@@ -28,7 +28,7 @@ class Order(models.Model):
         ('Cash', 'Cash'),
         ('UPI', 'UPI'),
     ]
-    payment_method = models.CharField(max_length=10, choices=payment_method_types, default='Cash')
+    payment_method = models.CharField(max_length=10, choices=payment_method_types, null=True, blank=True)
     status = models.CharField(max_length=50)
     razorpay_order_id = models.CharField(max_length=50, null=True, blank=True)
 
