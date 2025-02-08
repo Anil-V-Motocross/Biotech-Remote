@@ -5,6 +5,8 @@ from .view.wishlist import wishlist
 from .view.user_orders import user_orders
 from .view.place_order import place_order
 from .view.order_summary import order_summary
+from .view.proceed_to_payment import proceed_to_payment
+from .view.verify_payment import verify_payment
 
 app_name = 'order'
 
@@ -18,12 +20,15 @@ urlpatterns = [
     path('wishlist/', wishlist, name='wishlist'),
     path('wishlist/<int:pk>/', wishlist, name='wishlist'),
     
-    # Following URLs is checkout
-    # path('checkout/', ch, name='checkout'),
-    
     # Following URLs are for user orders
     path('placeOrder/', place_order, name='place_order'),
     path('orderSummary/', order_summary, name='order_summary'),
+    path('proceedToPayment/', proceed_to_payment, name='proceed_to_payment'),
+    path("verifyPayment/", verify_payment, name="verify_payment"),
+    
     path('userOrders/<int:customer_id>/', user_orders, name='user_orders'),
+    
+    #test
+    # path("create-order/", create_order, name="create_order"),
     
 ]

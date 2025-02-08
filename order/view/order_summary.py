@@ -25,7 +25,7 @@ class OrderSerializer(serializers.ModelSerializer):
 def order_summary(request):
     if request.method == 'PATCH':
         required_permissions = [
-            'order.add_order'
+            'order.change_order'
         ]
         
         if not any(request.user.has_perm(perm) for perm in required_permissions):

@@ -3,7 +3,7 @@ from .models import Order, OrderItem, Cart, Wishlist, DeliveryAddress
 
 # Register your models here.
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'order_id', 'grand_total', 'date', 'customer_id', 'customer_name', 'email', 'mobile', 'tracking_id', 'payment_method', 'delivery_option', 'status')
+    list_display = ('id', 'order_id', 'grand_total', 'date', 'customer_id', 'customer_name', 'email', 'mobile', 'tracking_id', 'payment_method', 'delivery_option', 'status', 'razorpay_order_id')
     
 
 class OrderItemAdmin(admin.ModelAdmin):

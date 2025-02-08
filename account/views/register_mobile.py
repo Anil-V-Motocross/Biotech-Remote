@@ -9,6 +9,24 @@ from rest_framework_simplejwt.tokens import RefreshToken
 import requests
 
 from account.models import User
+import datetime
+from django.db.models import Max
+
+
+def generate_bmu():
+    current_year = datetime.datetime.now().year
+    year_suffix = str(current_year)[-2:] 
+    max_bmu = User.objects.filter(bmu__startswith=f"BMU{year_suffix}").aggregate(Max('bmu'))['bmu__max']
+    
+    if max_bmu:
+        numeric_part = int(max_bmu[5:]) + 1 
+        numeric_part = str(numeric_part).zfill(7)
+    else:
+        numeric_part = '0000001'
+
+    bmu_code = f"BMU{year_suffix}{numeric_part}"
+    return bmu_code
+
 
 # generate 6 digit otp
 def generate_otp():
@@ -148,6 +166,7 @@ def validate_otp(request):
                     'id': user.id,
                     'first_name': user.first_name,
                     'mobile': user.mobile,
+                    "bmu": user.bmu
                 },
                 'token': token
             }
@@ -186,6 +205,9 @@ def register(request):
         if not mobile or not name:
             return Response(data={'message': 'Mobile number, name, code are required.'}, status=status.HTTP_400_BAD_REQUEST)
         
+        if referal_code and not User.objects.filter(bmu=referal_code).exists():
+            return Response(data={"message": "referal code not exists."}, status=status.HTTP_400_BAD_REQUEST)
+        
         # check mobile is exists in User model with mobile
         if User.objects.filter(mobile=mobile).exists():
             return Response(data={'message': 'Mobile number already exists.'}, status=status.HTTP_400_BAD_REQUEST)
@@ -195,6 +217,7 @@ def register(request):
             data = {
                     "password": gererate_password(),
                     "first_name": name,
+                    "bmu": generate_bmu(),
                     "mobile": mobile,
                     "email": f"{mobile}@example.com",
                     "referal_code": referal_code,
@@ -220,6 +243,7 @@ def register(request):
                     'id': user.id,
                     'first_name': user.first_name,
                     'mobile': user.mobile,
+                    'bmu': user.bmu
                 },
                 'token': token
             }

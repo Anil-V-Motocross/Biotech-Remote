@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
-from datetime import datetime
-
 
 class CustomAccountManager(BaseUserManager):
     def create_superuser(self, email, password, **other_fields):
@@ -28,7 +26,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_of_birth = models.DateField(null=True, blank=True)  # Changed from dateOfBirth
     profile_picture = models.ImageField(upload_to='profile_image/', default='default/profile_default.png', null=True, blank=True)  # Changed from profilePicture
     gender = models.CharField(max_length=20, null=True, blank=True)
-
+    bmu = models.CharField(max_length=20, default='0')
+    
     # Contact Data
     mobile = models.CharField(max_length=20, unique=True, blank=False, null=False)
     email = models.EmailField(_('email address'), unique=True)

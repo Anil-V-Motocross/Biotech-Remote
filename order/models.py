@@ -24,7 +24,13 @@ class Order(models.Model):
         ('Express', 'Express'),
     ]
     delivery_option = models.CharField(max_length=10, choices=delivery_option_types, default='Standard')
+    payment_method_types=[
+        ('Cash', 'Cash'),
+        ('UPI', 'UPI'),
+    ]
+    payment_method = models.CharField(max_length=10, choices=payment_method_types, default='Cash')
     status = models.CharField(max_length=50)
+    razorpay_order_id = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
