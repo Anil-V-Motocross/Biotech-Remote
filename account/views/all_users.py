@@ -10,7 +10,7 @@ from account.permissions import DynamicPermission
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'profile_picture', 'first_name', 'last_name', 'email', 'date_of_birth', 'mobile']
+        fields = ['id', 'profile_picture', 'first_name', 'last_name', 'email', 'date_of_birth', 'mobile', 'bmu', 'referal_code']
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, DynamicPermission])
