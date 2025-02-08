@@ -6,7 +6,7 @@ from django.contrib.auth.admin import UserAdmin
 # Custom UserAdmin class to display relevant fields in the Django admin interface
 class CustomUserAdmin(UserAdmin):
     model = User
-    list_display = ('id', 'bmu', 'email', 'first_name', 'last_name', 'mobile', 'is_active', 'is_staff', 'date_of_birth', 'created', 'updated')
+    list_display = ('id', 'bmu', 'email', 'first_name', 'last_name', 'mobile', 'referal_code', 'is_active', 'is_staff', 'date_of_birth', 'created', 'updated')
     list_filter = ('is_active', 'is_staff',)
     search_fields = ('email', 'first_name', 'last_name', 'mobile')
     ordering = ('email',)
