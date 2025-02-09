@@ -92,4 +92,4 @@ class DeliveryAddress(models.Model):
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="order_address", default='0')
 
     def __str__(self):
-        return f"{self.user}, {self.city}, {self.state}, {self.pincode}"
+        return f"{self.user_id}, {self.city}, {self.state}, {self.pincode}"
