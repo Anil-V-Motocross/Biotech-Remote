@@ -39,7 +39,7 @@ def order_history(request):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        orders = Order.objects.filter(customer_id=request.user.id).all()
+        orders = Order.objects.filter(customer_id=request.user.id).order_by('-id') 
         serializer = OrderSerializer(orders, many=True)
         data = {
             'orders': serializer.data
