@@ -39,23 +39,24 @@ class MainProductSerializer(serializers.ModelSerializer):
 
 @api_view(['GET'])
 def subcategory_products(request, subcategory_id=None):
-    if subcategory_id is None:
-        return Response({"detail": "Subcategory ID is required."}, status=status.HTTP_400_BAD_REQUEST)
+    if request.method == 'GET' and not subcategory_id:
 
-    # Query ProductSubCategory to get all products related to the subcategory_id
-    products_in_subcategory = ProductSubCategory.objects.filter(subcategory_id=subcategory_id)
+        products_in_subcategory = ProductSubCategory.objects.filter(subcategory_id=subcategory_id)
 
-    if not products_in_subcategory.exists():
-        return Response({"detail": "No products found for this subcategory."}, status=status.HTTP_404_NOT_FOUND)
+        if not products_in_subcategory.exists():
+            return Response({"detail": "No products found for this subcategory."}, status=status.HTTP_404_NOT_FOUND)
 
-    # Extract the product_ids from the ProductSubCategory
-    product_ids = products_in_subcategory.values_list('product_id', flat=True)
+        # Extract the product_ids from the ProductSubCategory
+        product_ids = products_in_subcategory.values_list('product_id', flat=True)
 
-    # Fetch the MainProduct objects related to the product_ids
-    products = MainProduct.objects.filter(id__in=product_ids)
+        # Fetch the MainProduct objects related to the product_ids
+        products = MainProduct.objects.filter(id__in=product_ids)
 
-    # Serialize the products using the MainProductSerializer
-    serializer = MainProductSerializer(products, many=True)
+        # Serialize the products using the MainProductSerializer
+        serializer = MainProductSerializer(products, many=True)
+        data = {
+                    'products': serializer.data
+            }
+        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
 
-    # Return the serialized data
-    return Response(serializer.data)
+    return Response(data={'message': 'Invalid request method.'}, status=status.HTTP_400_BAD_REQUEST)
