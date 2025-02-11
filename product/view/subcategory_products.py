@@ -39,7 +39,7 @@ class MainProductSerializer(serializers.ModelSerializer):
 
 @api_view(['GET'])
 def subcategory_products(request, subcategory_id=None):
-    if request.method == 'GET' and not subcategory_id:
+    if request.method == 'GET' and subcategory_id:
 
         products_in_subcategory = ProductSubCategory.objects.filter(subcategory_id=subcategory_id)
 
