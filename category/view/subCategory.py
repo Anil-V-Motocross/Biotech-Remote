@@ -49,7 +49,7 @@ def subCategory(request, pk=None):
             return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
         return Response(data={'message': 'SubCategory not found.'}, status=status.HTTP_404_NOT_FOUND)
     
-    if request.method == 'POST':
+    if request.method == 'POST' and not pk:
         required_permissions = [
             'category.add_subcategory'
         ]
@@ -63,7 +63,7 @@ def subCategory(request, pk=None):
             return Response(data={'message': 'success', 'data': serializer.data}, status=status.HTTP_201_CREATED)
         return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
-    if request.method == 'PATCH':
+    if request.method == 'PATCH' and not pk:
         required_permissions = [
             'category.change_subcategory'
         ]
