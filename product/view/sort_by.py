@@ -1,9 +1,9 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from product.models import MainProduct, MainProductImage, Product
+from product.models import MainProduct, MainProductImage
 from rest_framework import status
 from rest_framework import serializers
-from django.db.models import Prefetch
+
 from rest_framework import serializers
 
 class MainProductImageSerializer(serializers.ModelSerializer):
@@ -47,29 +47,14 @@ def sort_by(request):
     if request.method == 'GET':
         sort_by = request.query_params.get('sort_by', None)
 
+        # Check if 'sort_by' is 'a-z' and sort alphabetically A-Z
         if sort_by == 'a-z':
-            products = MainProduct.objects.all().order_by('name')  
+            products = MainProduct.objects.all().order_by('name')  # Sort alphabetically A-Z
+        # Check if 'sort_by' is 'z-a' and sort alphabetically Z-A
         elif sort_by == 'z-a':
-            products = MainProduct.objects.all().order_by('-name')  
-        elif sort_by == 'low-high':
-            products = MainProduct.objects.prefetch_related(
-                Prefetch(
-                    'product_variants',  # Assuming related_name='product_variants' in ProductVariant model
-                    queryset=Product.objects.filter(is_default=True).order_by('sale_price'),
-                    to_attr='default_variant'
-                )
-            )
-            products = sorted(products, key=lambda p: p.default_variant[0].sale_price if p.default_variant else float('inf'))
-        elif sort_by == 'high-low':
-            products = MainProduct.objects.prefetch_related(
-                Prefetch(
-                    'product_variants',
-                    queryset=Product.objects.filter(is_default=True).order_by('-sale_price'),
-                    to_attr='default_variant'
-                )
-            )
-            products = sorted(products, key=lambda p: p.default_variant[0].sale_price if p.default_variant else float('-inf'), reverse=True)
+            products = MainProduct.objects.all().order_by('-name')  # Sort alphabetically Z-A
         else:
+            # Handle other sorting logic here or default to unsorted if not recognized
             products = MainProduct.objects.all()
 
         serializer = MainProductSerializer(products, many=True)
@@ -77,5 +62,7 @@ def sort_by(request):
         data = {
             'products': serializer.data
         }
+
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+
     return Response(data={'message': 'Invalid request method.'}, status=status.HTTP_400_BAD_REQUEST)
