@@ -61,7 +61,7 @@ class ProductTag(models.Model):
     
 
 class Product(models.Model):
-    product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    product_id = models.ForeignKey(MainProduct, related_name='product_variants', on_delete=models.CASCADE)
     size_id = models.ForeignKey(Size, on_delete=models.CASCADE, null=True)
     planter_size_id = models.ForeignKey(PlanterSize, on_delete=models.CASCADE, null=True)
     planter_id = models.ForeignKey(Planter, on_delete=models.CASCADE, null=True)
