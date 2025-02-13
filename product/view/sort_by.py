@@ -30,8 +30,12 @@ class MainProductSerializer(serializers.ModelSerializer):
         else:
             representation['image'] = None  # If no images, set image to None
 
-        # Add a dummy 'price' field
-        representation['price'] = '500'
+        default_product = instance.product_set.filter(is_default=True).first()
+
+        if default_product:
+            representation['price'] = default_product.price
+        else:
+            representation['price'] = None
 
         # Optionally, remove the 'images' field if you don't need it in the response
         representation.pop('images', None)
