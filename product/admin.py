@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MainProduct, MainProductImage, ProductCategory, ProductSubCategory, ProductTag, Product
+from .models import MainProduct, MainProductImage, ProductCategory, ProductSubCategory, ProductTag, Product, Rating, Review
 from django.utils.html import format_html
 
 class MainProductAdmin(admin.ModelAdmin):  # Use ModelAdmin for the main admin class
@@ -27,7 +27,14 @@ class ProductTagAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'product_id', 'sku', 'stock', 'visible_online')
+    list_display = ('id', 'name', 'product_id', 'sku', 'stock', 'date_added', 'visible_online')
+    list_filter = ('product_id', 'size_id', 'planter_size_id', 'planter_id', 'color_id', 'weight_id')
+
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ('id', 'main_product_id', 'user_id', 'product_rating', 'date')
+    
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('id', 'main_product_id', 'user_id', 'date')
 
 admin.site.register(MainProduct, MainProductAdmin)
 admin.site.register(MainProductImage, MainProductImageAdmin)
@@ -35,3 +42,5 @@ admin.site.register(ProductCategory, ProductCategoryAdmin)
 admin.site.register(ProductSubCategory, ProductSubCategoryAdmin)
 admin.site.register(ProductTag, ProductTagAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Rating, RatingAdmin)
+admin.site.register(Review, ReviewAdmin)

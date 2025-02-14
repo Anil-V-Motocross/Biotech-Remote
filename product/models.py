@@ -1,5 +1,6 @@
 from django.db import models
 from attribute.models import Size, PlanterSize, Planter, Color, Weight
+from account.models import User
 
 # Create your models here.
 
@@ -68,15 +69,16 @@ class Product(models.Model):
     weight_id = models.ForeignKey(Weight, on_delete=models.CASCADE, null=True)
 
     name = models.CharField(max_length=100)
-    cost = models.CharField(max_length=10)
-    sale_price = models.CharField(max_length=10)
-    price = models.CharField(max_length=10)
-    profit = models.CharField(max_length=10)
-    discount = models.CharField(max_length=10)
-    stock = models.CharField(max_length=10)
+    cost = models.FloatField(default=0)
+    sale_price = models.FloatField(default=0)
+    price = models.FloatField(default=0)
+    profit = models.FloatField(default=0)
+    discount = models.FloatField(default=0)
+    stock = models.IntegerField(default=0)
     sku = models.CharField(max_length=40)
     image = models.ImageField(upload_to='product_images/', default='default/category_default.jpg')
     visible_online = models.BooleanField(default=True)
+    date_added = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     is_default = models.BooleanField(default=False)
 
@@ -84,3 +86,21 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+
+class Rating(models.Model):
+    main_product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    product_rating = models.DecimalField(max_digits=3, decimal_places=2)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Rating {self.product_rating} by {self.user_id} for {self.main_product_id}"
+
+class Review(models.Model):
+    main_product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    product_review = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Review by {self.user_id} for {self.main_product_id}"

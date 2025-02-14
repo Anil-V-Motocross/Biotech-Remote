@@ -60,21 +60,33 @@ def cart(request, pk=None):
             'order.add_cart'
         ]
         
-        if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        main_product_id = request.data.get('main_prod_id', None)
+
+        if main_product_id:
+            product_id = Product.objects.filter(product_id=main_product_id, is_default=True).first()
+            product_id = product_id.id
+        else:
+            product_id = request.data.get('prod_id')
+            
+        quntity = int(request.data.get('quantity', 1))
         
-        product_id = request.data.get('prod_id')
-        data = {
-            'user_id': request.user.id,
-            'product_id': product_id,
-            'quantity': request.data.get('quantity')
+        if Cart.objects.filter(user_id=request.user.id, product_id=product_id).exists():
+            return Response(data={'message': 'Product already exists in cart.'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            if not Product.objects.filter(id=product_id).exists():
+                return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+            data = {
+                'user_id': request.user.id,
+                'product_id': product_id,
+                'quantity': quntity
             }
-        serializer = CartSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(data={'message': 'success'}, status=status.HTTP_201_CREATED)
-        if serializer.errors:
-            return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            serializer = CartSerializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(data={'message': 'Product added to cart successfully.'}, status=status.HTTP_201_CREATED)
+            else:
+                return Response(data={'message': 'Error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        
         
     if request.method == 'PATCH':
         required_permissions = [

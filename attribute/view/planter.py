@@ -12,6 +12,12 @@ class PlanterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Planter
         fields = '__all__'
+        
+    def to_internal_value(self, data):
+        data = data.copy()  # This will ensure the data is mutable
+        if 'name' in data:
+            data['name'] = data['name'].lower()
+        return super().to_internal_value(data)
 
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated, DynamicPermission])
@@ -25,7 +31,15 @@ def planter(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        planters = Planter.objects.all()
+        filter_params = {}
+        planter_size = request.query_params.get('planter_size', None)
+        
+        if planter_size:
+            filter_params['planter_size'] = planter_size
+        
+        planters = Planter.objects.filter(**filter_params).all()
+        
+        # planters = Planter.objects.all()
         serializer = PlanterSerializer(planters, many=True)
         data = {
             'planters': serializer.data

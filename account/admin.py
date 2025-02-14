@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group, Permission
-from .models import User, InitialInfo
+from .models import User, InitialInfo, Address
 from django.contrib.auth.admin import UserAdmin
 
 # Custom UserAdmin class to display relevant fields in the Django admin interface
 class CustomUserAdmin(UserAdmin):
     model = User
-    list_display = ('email', 'first_name', 'last_name', 'mobile', 'is_active', 'is_staff', 'date_of_birth', 'created', 'updated')
+    list_display = ('id', 'bmu', 'email', 'first_name', 'last_name', 'mobile', 'referal_code', 'is_active', 'is_staff', 'date_of_birth', 'created', 'updated')
     list_filter = ('is_active', 'is_staff',)
     search_fields = ('email', 'first_name', 'last_name', 'mobile')
     ordering = ('email',)
@@ -16,10 +16,10 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('email', 'password', 'is_superuser')
         }),
         ('Personal info', {
-            'fields': ('first_name', 'last_name', 'date_of_birth', 'profile_picture')
+            'fields': ('first_name', 'last_name', 'date_of_birth', 'profile_picture', 'gender')
         }),
         ('Contact info', {
-            'fields': ('mobile', 'address', 'state', 'city', 'pincode')
+            'fields': ('mobile',)
         }),
         ('Permissions', {
             'fields': ('groups', )  # Add groups and permissions here
@@ -43,13 +43,19 @@ class CustomUserAdmin(UserAdmin):
     readonly_fields = ('created', 'updated', 'last_login')
 
 class InitialInfoAdmin(admin.ModelAdmin):
-    list_display = ('mobile', 'otp', 'name', 'email', 'referal_code')
+    list_display = ('id', 'mobile', 'otp', 'name', 'email', 'referal_code')
+    
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'city', 'state', 'pincode')
 
 # Register the custom User model with the custom UserAdmin
 admin.site.register(User, CustomUserAdmin)
 
 # Register the InitialInfo model
 admin.site.register(InitialInfo, InitialInfoAdmin)
+
+# Register the Address model
+admin.site.register(Address, AddressAdmin)
 
 # Unregister Group and Permission models if they're already registered
 # try:

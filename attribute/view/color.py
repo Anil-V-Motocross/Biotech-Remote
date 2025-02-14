@@ -12,7 +12,13 @@ class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Color
         fields = '__all__'
-
+        
+    def to_internal_value(self, data):
+        data = data.copy()  # This will ensure the data is mutable
+        if 'color_name' in data:
+            data['color_name'] = data['color_name'].lower()
+        return super().to_internal_value(data)
+    
 
 @api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated, DynamicPermission])

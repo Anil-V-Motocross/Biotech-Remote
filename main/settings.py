@@ -186,6 +186,11 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=10),
 }
 
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(minutes=4),
+# }
+
 CORS_ALLOWED_ORIGINS = [
     "http://*:8000", "http://*:3001", "http://*:3000",
 ]

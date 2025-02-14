@@ -1,3 +1,4 @@
+from django.contrib.auth.models import Group
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -8,6 +9,24 @@ from rest_framework_simplejwt.tokens import RefreshToken
 import requests
 
 from account.models import User
+import datetime
+from django.db.models import Max
+
+
+def generate_bmu():
+    current_year = datetime.datetime.now().year
+    year_suffix = str(current_year)[-2:] 
+    max_bmu = User.objects.filter(bmu__startswith=f"BMU{year_suffix}").aggregate(Max('bmu'))['bmu__max']
+    
+    if max_bmu:
+        numeric_part = int(max_bmu[5:]) + 1 
+        numeric_part = str(numeric_part).zfill(7)
+    else:
+        numeric_part = '0000001'
+
+    bmu_code = f"BMU{year_suffix}{numeric_part}"
+    return bmu_code
+
 
 # generate 6 digit otp
 def generate_otp():
@@ -29,8 +48,8 @@ def send_otp(mobile, otp):
         # =======================================================================
         url = "https://control.msg91.com/api/v5/flow/"
         # payload = {"template_id": "60ffda6d9c235f799241960f",
-        #            "recipients": [{"mobiles": phone, "name": name, "otp": otp}]}
-        payload = {"template_id": "674a89f9d6fc05032f5bf902",
+        #            "recipients": [{"mobiles": phone, "name": name, "otp": otp}]}  674a89f9d6fc05032f5bf902
+        payload = {"template_id": "60ffda6d9c235f799241960f",
                    "recipients": [{
                        "mobiles": phone,
                        "name": "ABC",
@@ -41,7 +60,8 @@ def send_otp(mobile, otp):
         headers = {
             "accept": "application/json",
             "content-type": "application/json",
-            "authkey": "433172AwxmUdTOWK6746d6c2P1"
+            # "authkey": "433172AwxmUdTOWK6746d6c2P1"
+            "authkey": "112997AWvDqQDssV665ba34edP1"
         }
 
         response = requests.post(url, json=payload, headers=headers)
@@ -76,6 +96,13 @@ def register_mobile(request):
         if not mobile:
             return Response(data={'message': 'Mobile number is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
+        ################### For testing in play store ################
+        if mobile == '9999999999':
+            User.objects.filter(mobile=mobile).update(otp='1234')
+            return Response(data={'message': 'Registered User.', 'mobile': mobile}, status=status.HTTP_200_OK)
+        
+        ################################################################
+        
         # check mobile is exists in User model with mobile
         if User.objects.filter(mobile=mobile).exists():
             # Generate OTP
@@ -93,7 +120,7 @@ def register_mobile(request):
             InitialInfo.objects.filter(mobile=mobile).update(otp=otp)
             # send otp
             send_otp(mobile=mobile, otp=otp)
-            return Response(data={'message': 'Only registered with mobile number.', 'mobile': mobile}, status=status.HTTP_200_OK)
+            return Response(data={'message': 'Only registered with mobile number.', 'mobile': mobile}, status=status.HTTP_201_CREATED)
 
         serializer = RegisteMOBileRegisterSerializer(data=request.data)
         if serializer.is_valid():
@@ -123,8 +150,8 @@ def validate_otp(request):
         if User.objects.filter(mobile=mobile).exists():
             # check otp request and database
             if not User.objects.filter(mobile=mobile, otp=otp).exists():
-                # return Response(data={'message': 'Invalid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
-                pass
+                return Response(data={'message': 'Invalid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
+                # pass
             
             # Attach jwt token
             user = User.objects.filter(mobile=mobile).first()
@@ -139,6 +166,7 @@ def validate_otp(request):
                     'id': user.id,
                     'first_name': user.first_name,
                     'mobile': user.mobile,
+                    "bmu": user.bmu
                 },
                 'token': token
             }
@@ -177,31 +205,47 @@ def register(request):
         if not mobile or not name:
             return Response(data={'message': 'Mobile number, name, code are required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        # make email field by concatenating mobile number and save in User model and delete in InitialInfo model
-        data = {
-                "password": gererate_password(),
-                "first_name": name,
-                "mobile": mobile,
-                "email": f"{mobile}@example.com",
-                "referal_code": referal_code,
-                "is_active": True
+        if referal_code and not User.objects.filter(bmu=referal_code).exists():
+            return Response(data={"message": "referal code not exists."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # check mobile is exists in User model with mobile
+        if User.objects.filter(mobile=mobile).exists():
+            return Response(data={'message': 'Mobile number already exists.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if InitialInfo.objects.filter(mobile=mobile).exists():
+            # make email field by concatenating mobile number and save in User model and delete in InitialInfo model
+            data = {
+                    "password": gererate_password(),
+                    "first_name": name,
+                    "bmu": generate_bmu(),
+                    "mobile": mobile,
+                    "email": f"{mobile}@example.com",
+                    "referal_code": referal_code,
+                    "is_active": True
+                }
+            user = User.objects.create_user(**data)
+            user.save()
+            
+            # Add the user to the 'Customer' group
+            customer_group, created = Group.objects.get_or_create(name='Customer')
+            user.groups.add(customer_group)
+            
+            InitialInfo.objects.filter(mobile=mobile).delete()
+            # attech jwt token
+            refresh = RefreshToken.for_user(user)
+            token = {
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
             }
-        user = User.objects.create_user(**data)
-        user.save()
-        InitialInfo.objects.filter(mobile=mobile).delete()
-        # attech jwt token
-        refresh = RefreshToken.for_user(user)
-        token = {
-            'refresh': str(refresh),
-            'access': str(refresh.access_token),
-        }
-        # attach user de
-        data = {
-            'user': {
-                'id': user.id,
-                'first_name': user.first_name,
-                'mobile': user.mobile,
-            },
-            'token': token
-        }
-        return Response(data={'data': data, 'message': 'User registered successfully.'}, status=status.HTTP_200_OK)
+            # attach user de
+            data = {
+                'user': {
+                    'id': user.id,
+                    'first_name': user.first_name,
+                    'mobile': user.mobile,
+                    'bmu': user.bmu
+                },
+                'token': token
+            }
+            return Response(data={'data': data, 'message': 'User registered successfully.'}, status=status.HTTP_200_OK)
+        return Response(data={'message': 'Mobile number does not registered.'}, status=status.HTTP_400_BAD_REQUEST)

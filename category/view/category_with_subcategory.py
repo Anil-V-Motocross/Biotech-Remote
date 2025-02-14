@@ -26,8 +26,6 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated, DynamicPermission])
-@authentication_classes([JWTAuthentication])
 def category_with_subCategory(request):
     if request.method == 'GET':  
         categories = Category.objects.prefetch_related('subcategory_set').filter(is_published=True)

@@ -2,6 +2,7 @@ __pycache__
 venv
 .idea
 .venv
+.env
 .devcontainer/
 devcontainer.json
 Dockerfile

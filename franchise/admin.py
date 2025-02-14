@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Franchise
+from .models import FranchiseEnquiry
 
 # Register your models here.
 
 class FranchiseAdmin(admin.ModelAdmin):
-    list_display = ('name', 'mobile', 'email', 'area', 'address', 'message')
+    list_display = ('name', 'mobile', 'email', 'area', 'address', 'status')
 
-admin.site.register(Franchise, FranchiseAdmin)
+admin.site.register(FranchiseEnquiry, FranchiseAdmin)

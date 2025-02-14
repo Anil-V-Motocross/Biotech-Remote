@@ -14,6 +14,7 @@ class Category(models.Model):
 class SubCategory(models.Model):
     name = models.CharField(max_length=255)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='subcategory/', default='default/category_default.png')
     is_published = models.BooleanField(default=True)
 
     def __str__(self):
