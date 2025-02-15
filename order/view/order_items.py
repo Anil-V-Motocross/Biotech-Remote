@@ -11,6 +11,7 @@ from account.permissions import DynamicPermission
 
 class OrderItemSerializer(serializers.ModelSerializer):
     bmo = serializers.CharField(source='order_id.order_id', read_only=True)
+    name = serializers.CharField(source='product_id.product_id.name', read_only=True)
     class Meta:
         model = OrderItem
         fields = ['id', 'order_id',  'bmo', 'product_id', 'quantity', 'price', 'total']
