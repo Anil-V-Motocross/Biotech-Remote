@@ -73,8 +73,13 @@ def product(request):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # add default_price of Main Product from first product
+        
         first_product = saved_products[0]
+        # make first product as default product
+        first_product.is_default = True
+        first_product.save()
+        
+        # add default_price of Main Product from first product
         main_product = MainProduct.objects.get(id=main_product_id)
         main_product.default_sale_price = first_product.price
         main_product.default_price = first_product.price
