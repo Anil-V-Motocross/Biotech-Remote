@@ -9,13 +9,15 @@ from .view.proceed_to_payment import proceed_to_payment
 from .view.verify_payment import verify_payment
 from .view.order_history import order_history
 from .view.order_history_items import order_history_items
-# from .view.order import order
+from .view.order_items import order_items
 
 app_name = 'order'
 
 urlpatterns = [
     path('', order, name='order'),
     path('<int:pk>/', order, name='order'),
+    
+    path('orderItem/', order_items, name='order_items'),
     
     path('cart/', cart, name='cart'),
     path('cart/<int:pk>/', cart, name='cart'),
