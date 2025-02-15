@@ -13,6 +13,7 @@ class MainProduct(models.Model):
         ('seed', 'seed'),
     ]
     type = models.CharField(max_length=10, choices=type_choices, default='plant')
+    default_price = models.FloatField(default=0)
 
     short_description = models.TextField()
     ribbon = models.CharField(max_length=100)

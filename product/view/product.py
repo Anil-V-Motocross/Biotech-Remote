@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from product.models import Product
+from product.models import Product, MainProduct
 from account.permissions import DynamicPermission
 from rest_framework import serializers
 from django.core.files.base import ContentFile
@@ -56,7 +56,6 @@ def product(request):
                     # Attach image to the product
                     image = images[index]
                     product.image.save(image.name, ContentFile(image.read()), save=True)
-
                     saved_products.append(product)
                 else:
                     errors.append({
@@ -74,6 +73,11 @@ def product(request):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+        # add default_price of Main Product from first product
+        first_product = saved_products[0]
+        main_product = MainProduct.objects.get(id=main_product_id)
+        main_product.default_price = first_product.price
+        main_product.save()
         return Response(
             {'message': 'Products added successfully.', 'saved_products': [p.id for p in saved_products]}, 
             status=status.HTTP_201_CREATED
