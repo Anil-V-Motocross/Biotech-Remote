@@ -19,7 +19,7 @@ class CartSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cart
-        fields = ['id', 'user_id', 'product_id','quantity', 'name', 'image', 'price', 'short_description', 'stock_status']
+        fields = ['id', 'user_id', 'product_id','quantity', 'name', 'image', 'price', 'discount', 'short_description', 'stock_status']
 
     def get_stock_status(self, instance):
         # Access the Product associated with the Cart item
