@@ -26,9 +26,9 @@ def order_items(request, order_id):
         if not all(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        prder_id = request.query_params.get('order_id', None)
+        order_id = request.query_params.get('order_id', None)
         
-        if not prder_id:
+        if not order_id:
             return Response(data={'message': 'Order id is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
         if Order.objects.filter(id=order_id, customer_id=request.user.id).exists():
