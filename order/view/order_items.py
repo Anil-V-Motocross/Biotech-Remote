@@ -10,9 +10,10 @@ from account.permissions import DynamicPermission
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
+    bmo = serializers.CharField(source='order_id.order_id', read_only=True)
     class Meta:
         model = OrderItem
-        fields = ['id', 'order_id', 'product_id', 'quantity', 'price', 'total']
+        fields = ['id', 'order_id',  'bmo', 'product_id', 'quantity', 'price', 'total']
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, DynamicPermission])
