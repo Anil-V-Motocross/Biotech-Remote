@@ -76,7 +76,10 @@ def product(request):
         # add default_price of Main Product from first product
         first_product = saved_products[0]
         main_product = MainProduct.objects.get(id=main_product_id)
+        main_product.default_sale_price = first_product.price
         main_product.default_price = first_product.price
+        main_product.default_discount = first_product.discount
+        main_product.default_sku = first_product.sku
         main_product.save()
         return Response(
             {'message': 'Products added successfully.', 'saved_products': [p.id for p in saved_products]}, 
