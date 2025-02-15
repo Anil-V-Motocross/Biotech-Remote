@@ -9,6 +9,7 @@ from .view.proceed_to_payment import proceed_to_payment
 from .view.verify_payment import verify_payment
 from .view.order_history import order_history
 from .view.order_history_items import order_history_items
+# from .view.order import order
 
 app_name = 'order'
 
@@ -30,7 +31,7 @@ urlpatterns = [
     path("orderHistory/", order_history, name="order_history"), # this will retun all orders of a user
     path("orderHistoryItems/<int:order_id>/", order_history_items, name="order_history_items"), # this will retun all orders of a user`
     
-    # path('userOrders/<int:customer_id>/', user_orders, name='user_orders'),  # Need to be ckeck whos is using it
+    path('userOrders/<int:customer_id>/', user_orders, name='user_orders'),  # Need to be ckeck whos is using it
     
     #test
     # path("create-order/", create_order, name="create_order"),
