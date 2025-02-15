@@ -31,7 +31,7 @@ def order_items(request):
         if not order_id:
             return Response(data={'message': 'Order id is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        if Order.objects.filter(id=order_id, customer_id=request.user.id).exists():
+        if Order.objects.filter(id=order_id).exists():
             order_items = OrderItem.objects.filter(order_id=order_id)
             serializer = OrderItemSerializer(order_items, many=True)
             data = {
