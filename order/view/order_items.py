@@ -17,7 +17,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, DynamicPermission])
 @authentication_classes([JWTAuthentication])
-def order_items(request, order_id):
+def order_items(request):
     if request.method == 'GET':
         required_permissions = [
             'order.view_order', 'order.view_orderitem'
