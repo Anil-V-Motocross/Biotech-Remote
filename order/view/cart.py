@@ -15,10 +15,11 @@ class CartSerializer(serializers.ModelSerializer):
     price = serializers.CharField(source='product_id.price', read_only=True)  # Price from the Product model
     short_description = serializers.CharField(source='product_id.product_id.short_description', read_only=True)
     stock_status = serializers.SerializerMethodField()  # Adding a custom field for stock status
+    discount = serializers.CharField(source='product_id.discount', read_only=True)
 
     class Meta:
         model = Cart
-        fields = ['id', 'user_id', 'product_id','quantity', 'name', 'image', 'price', 'short_description', 'stock_status']
+        fields = ['id', 'user_id', 'product_id','quantity', 'name', 'image', 'price', 'discount', 'short_description', 'stock_status']
 
     def get_stock_status(self, instance):
         # Access the Product associated with the Cart item

@@ -18,7 +18,7 @@ class MainProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MainProduct
-        fields = ['id', 'name', 'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending', 'images']
+        fields = ['id', 'name', 'default_price', 'default_sale_price', 'default_discount', 'default_sku', 'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending', 'images']
 
     def to_representation(self, instance):
         # Call the parent class to get the default representation
@@ -29,13 +29,6 @@ class MainProductSerializer(serializers.ModelSerializer):
             representation['image'] = representation['images'][0]['image']
         else:
             representation['image'] = None  # If no images, set image to None
-
-        default_product = instance.product_set.filter(is_default=True).first()
-
-        if default_product:
-            representation['price'] = default_product.price
-        else:
-            representation['price'] = None
 
         # Optionally, remove the 'images' field if you don't need it in the response
         representation.pop('images', None)
