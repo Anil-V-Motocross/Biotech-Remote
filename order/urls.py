@@ -17,7 +17,7 @@ urlpatterns = [
     path('', order, name='order'),
     path('<int:pk>/', order, name='order'),
     
-    path('orderItems/', order_items, name='order_items'),
+    path('orderItem/', order_items, name='order_items'),
     
     path('cart/', cart, name='cart'),
     path('cart/<int:pk>/', cart, name='cart'),
