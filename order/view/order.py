@@ -1,4 +1,5 @@
-from rest_framework.decorators import api_view
+import requests
+import rest_framework.decorators
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
@@ -6,7 +7,8 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from order.models import Order
 from rest_framework import serializers
 from account.permissions import DynamicPermission
-from rest_framework.decorators import authentication_classes, permission_classes
+from rest_framework.decorators import authentication_classes, permission_classes, api_view
+from account.permissions import DynamicPermission
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -83,3 +85,23 @@ def order(request, pk=None):
         return Response(data={'message': 'Order does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
         
     return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated, DynamicPermission])
+@authentication_classes([JWTAuthentication])
+def admin_user_orders(request, user_id):
+    required_permissions = [
+            'order.view_order'
+        ]
+
+    if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+
+    if not User.objects.filter(id=user_id).exists():
+        return Response(data={'message': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+    orders = Order.objects.filter(customer_id=user_id)
+    serializer = OrderSerializer(orders, many=True)
+
+    return Response(data={'message': 'success', 'orders': serializer.data}, status=status.HTTP_200_OK)            
