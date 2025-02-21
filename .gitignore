@@ -2,8 +2,14 @@ __pycache__
 venv
 .idea
 .venv
-db.sqlite3
+.env
 .devcontainer/
 devcontainer.json
 Dockerfile
 .vscode
+all_models.py
+db.sqlite3
+z_api/
+z_images
+z_Assets
+media/

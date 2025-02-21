@@ -1,8 +1,9 @@
 from django.urls import path
-from .view.test import test
+from .view.franchise import franchise
 
 app_name = 'franchise'
 
 urlpatterns = [
-    path('test/', test, name='test'),
+    path('', franchise, name='franchise'),
+    path('<int:pk>/', franchise, name='franchise'),
 ]

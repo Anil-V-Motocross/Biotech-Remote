@@ -11,17 +11,17 @@ from account.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 
 @api_view(['POST'])
-def login(request):
+def login_staff(request):
     if request.method == 'POST':
         # Get the email and password from the request data
-        phone_number = request.data.get('phone_number')
+        mobile = request.data.get('mobile')
         password = request.data.get('password')
         
-        if not phone_number or not password:
-            return Response({'message': 'Email and password are required.'}, status=status.HTTP_400_BAD_REQUEST)
+        if not mobile or not password:
+            return Response({'message': 'Mobile and password are required.'}, status=status.HTTP_400_BAD_REQUEST)
         
         # Check if the user exists in the database
-        user = User.objects.filter(phone_number=phone_number).first()
+        user = User.objects.filter(mobile=mobile).first()
         
         if user and user.check_password(password):
             # add access token and refresh token to response
