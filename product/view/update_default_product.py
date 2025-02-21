@@ -13,7 +13,7 @@ from account.permissions import DynamicPermission
 def update_default_product(request, product_id):
     if request.method == 'PATCH':
         required_permissions = [
-            'product.edit_product'
+            'product.change_product'
         ]
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)     

@@ -6,7 +6,7 @@ from rest_framework import serializers
 from product.models import Product, MainProductImage, Rating, Review
 from django.conf import settings
 from attribute.models import Size
-from attribute.models import PlanterSize
+from attribute.models import PlanterSize, Weight
 from attribute.models import Planter
 from attribute.models import Color
 from django.db.models import Avg, Count, F
@@ -50,7 +50,13 @@ class SizeSerializer(serializers.ModelSerializer):
         model = Size
         fields = ['id', 'name', 'size']
 
+class WeightSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Weight
+        fields = ['id', 'size_grams', 'status']
+
 class ProductSerializer(serializers.ModelSerializer):
+    # type = serializers.ReadOnlyField(source='product_id.type')
     # Include main product image as the first element in the images list
     images = serializers.SerializerMethodField()
     # add short_description from MainProduct
@@ -98,17 +104,22 @@ def default_product(request, product_id=None):
         
         # Serialize the single product (do not use `many=True`)
         serializer = ProductSerializer(product, context={'request': request})
+
+        # return the product type
+        product_type = product.product_id.type
         
         # return all unique size_id of the product
         product_size_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('size_id', flat=True).distinct()
         product_planter_size_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id,  visible_online=True).values_list('planter_size_id', flat=True).distinct()
         product_planter_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, planter_size_id=product.planter_size_id, visible_online=True).values_list('planter_id', flat=True).distinct()
         product_color_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, planter_size_id=product.planter_size_id, planter_id=product.planter_id, visible_online=True).values_list('color_id', flat=True).distinct()
-        
+        product_weight_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, planter_size_id=product.planter_size_id, planter_id=product.planter_id, color_id=product.color_id, visible_online=True).values_list('weight_id', flat=True).distinct()
+
         product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
         product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
         product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
         product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
+        product_weights = WeightSerializer(Weight.objects.filter(id__in=product_weight_ids), many=True) if product_weight_ids else None
         
         # return rating by calulating average of product_rating 
         product_rating = Rating.objects.filter(main_product_id=product_id).aggregate(avg_rating=Avg('product_rating'), num_ratings=Count('id'))
@@ -124,13 +135,15 @@ def default_product(request, product_id=None):
         
         # Prepare the response data
         data = {
+            'product_type': product_type,
             'product': serializer.data,
             'product_sizes': product_sizes.data,
             'product_planter_sizes': product_planter_sizes.data,
+            'product_weights': product_weights.data,
             'product_planters': product_planter.data,
             'product_colors': product_color.data,
             'product_rating': product_rating,
-            'product_reviews': product_reviews.data
+            'product_reviews': product_reviews.data,
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
 

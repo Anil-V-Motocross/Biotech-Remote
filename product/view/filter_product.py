@@ -8,6 +8,8 @@ from attribute.models import Size
 from attribute.models import PlanterSize
 from attribute.models import Planter
 from attribute.models import Color
+from attribute.models import Weight
+from rest_framework.exceptions import ValidationError
 
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,6 +30,11 @@ class SizeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Size
         fields = ['id', 'name', 'size']
+
+class WeightSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Weight
+        fields = ['id', 'size_grams']
 
 class ProductSerializer(serializers.ModelSerializer):
     # Include main product image as the first element in the images list
@@ -72,114 +79,146 @@ def filter_product(request, pk):
             # Initialize an empty filter dictionary
             filter_params = {}
 
-            # Extract query parameters from the request
-            size_id = request.query_params.get('size_id', None)
-            planter_size_id = request.query_params.get('planter_size_id', None)
-            planter_id = request.query_params.get('planter_id', None)
-            color_id = request.query_params.get('color_id', None)
-
-            # Only add to the filter dictionary if the parameter is provided
             current_product = Product.objects.filter(id=pk).first()
             product_id = current_product.product_id
-            filter_params = {'product_id': product_id, 'visible_online': True}
+            product_type = product_id.type
 
-            if size_id and not planter_size_id and not planter_id and not color_id:
-                filter_params['size_id'] = size_id
+            if product_id.type == 'seed':
+                weight_id = request.query_params.get('weight_id', None)
+                if len(request.query_params) > 1: 
+                    raise ValidationError("Only 'weight_id' can be used for seed products.")
                 
-                product = Product.objects.filter(**filter_params).first()
-                
-                if not product:
-                    return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
-            
-                product_size_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('size_id', flat=True).distinct()
-                product_planter_size_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, visible_online=True).values_list('planter_size_id', flat=True).distinct()
-                filter_params['planter_size_id'] = product_planter_size_ids[0]
-                product_planter_ids = Product.objects.filter(**filter_params).values_list('planter_id', flat=True).distinct()
-                filter_params['planter_id'] = product_planter_ids[0]
-                product_color_ids = Product.objects.filter(**filter_params).values_list('color_id', flat=True).distinct()
-                filter_params['color_id'] = product_color_ids[0]
-                
-                product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
-                product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
-                product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
-                product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
-           
+                filter_params = {'product_id': product_id, 'visible_online': True}
 
-                product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
-                product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
-                product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
-                product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
-                
-            elif size_id and planter_size_id and not planter_id and not color_id:
-                filter_params['size_id'] = size_id
-                filter_params['planter_size_id'] = planter_size_id
+                if weight_id:
+                    filter_params['weight_id'] = weight_id
+
                 product = Product.objects.filter(**filter_params).first()
-                
                 if not product:
-                    return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
-            
-                product_size_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('size_id', flat=True).distinct()
-                product_planter_size_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, visible_online=True).values_list('planter_size_id', flat=True).distinct()
-                product_planter_ids = Product.objects.filter(**filter_params).values_list('planter_id', flat=True).distinct()
-                filter_params['planter_id'] = product_planter_ids[0]
-                product_color_ids = Product.objects.filter(**filter_params).values_list('color_id', flat=True).distinct()
-                filter_params['color_id'] = product_color_ids[0]
-                
-                product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
-                product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
-                product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
-                product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
-                
-            elif size_id and planter_size_id and planter_id and not color_id:
-                filter_params['size_id'] = size_id
-                filter_params['planter_size_id'] = planter_size_id
-                filter_params['planter_id'] = planter_id
-                product = Product.objects.filter(**filter_params).first()
-                
-                if not product:
-                    return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
-            
-                product_size_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('size_id', flat=True).distinct()
-                product_planter_size_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, visible_online=True).values_list('planter_size_id', flat=True).distinct()
-                product_planter_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, planter_size_id=product.planter_size_id, visible_online=True).values_list('planter_id', flat=True).distinct()
-                product_color_ids = Product.objects.filter(**filter_params).values_list('color_id', flat=True).distinct()
-                filter_params['color_id'] = product_color_ids[0]
-                
-                product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
-                product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
-                product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
-                product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
-                
-            elif size_id and planter_size_id and planter_id and color_id:
-                filter_params['size_id'] = size_id
-                filter_params['planter_size_id'] = planter_size_id
-                filter_params['planter_id'] = planter_id
-                filter_params['color_id'] = color_id
-                product = Product.objects.filter(**filter_params).first()
-                
-                if not product:
-                    return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
-                
-                product_size_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('size_id', flat=True).distinct()
-                product_planter_size_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, visible_online=True).values_list('planter_size_id', flat=True).distinct()
-                product_planter_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, planter_size_id=product.planter_size_id, visible_online=True).values_list('planter_id', flat=True).distinct()
-                product_color_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, planter_size_id=product.planter_size_id, planter_id=product.planter_id, visible_online=True).values_list('color_id', flat=True).distinct()
-                
-                product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
-                product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
-                product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
-                product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
+                    return Response({'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+                # Available weight options for the seed product
+                product_weight_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('weight_id', flat=True).distinct()
+                product_weights = WeightSerializer(Weight.objects.filter(id__in=product_weight_ids), many=True) if product_weight_ids else None
+
+                serializer = ProductSerializer(product, context={'request': request})
+                data = {
+                    'product_type': product_type,
+                    'product': serializer.data,
+                    'product_weights': product_weights.data,
+                }
+                return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+
             else:
-                return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+                # Extract query parameters from the request
+                size_id = request.query_params.get('size_id', None)
+                planter_size_id = request.query_params.get('planter_size_id', None)
+                planter_id = request.query_params.get('planter_id', None)
+                color_id = request.query_params.get('color_id', None)
+
+                # Only add to the filter dictionary if the parameter is provided
+                product_id = current_product.product_id
+                filter_params = {'product_id': product_id, 'visible_online': True}
+
+                if size_id and not planter_size_id and not planter_id and not color_id:
+                    filter_params['size_id'] = size_id
+                    
+                    product = Product.objects.filter(**filter_params).first()
+                    
+                    if not product:
+                        return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+                
+                    product_size_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('size_id', flat=True).distinct()
+                    product_planter_size_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, visible_online=True).values_list('planter_size_id', flat=True).distinct()
+                    filter_params['planter_size_id'] = product_planter_size_ids[0]
+                    product_planter_ids = Product.objects.filter(**filter_params).values_list('planter_id', flat=True).distinct()
+                    filter_params['planter_id'] = product_planter_ids[0]
+                    product_color_ids = Product.objects.filter(**filter_params).values_list('color_id', flat=True).distinct()
+                    filter_params['color_id'] = product_color_ids[0]
+                    
+                    product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
+                    product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
+                    product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
+                    product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
             
-            product = Product.objects.filter(**filter_params).first()
-            serializer = ProductSerializer(product, context={'request': request})
-            data = {
-                'product': serializer.data,
-                'product_sizes': product_sizes.data,
-                'product_planter_sizes': product_planter_sizes.data,
-                'product_planters': product_planter.data,
-                'product_colors': product_color.data
-            }
-            return Response(data={'message': 'success111', 'data': data}, status=status.HTTP_200_OK)
+
+                    product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
+                    product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
+                    product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
+                    product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
+                    
+                elif size_id and planter_size_id and not planter_id and not color_id:
+                    filter_params['size_id'] = size_id
+                    filter_params['planter_size_id'] = planter_size_id
+                    product = Product.objects.filter(**filter_params).first()
+                    
+                    if not product:
+                        return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+                
+                    product_size_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('size_id', flat=True).distinct()
+                    product_planter_size_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, visible_online=True).values_list('planter_size_id', flat=True).distinct()
+                    product_planter_ids = Product.objects.filter(**filter_params).values_list('planter_id', flat=True).distinct()
+                    filter_params['planter_id'] = product_planter_ids[0]
+                    product_color_ids = Product.objects.filter(**filter_params).values_list('color_id', flat=True).distinct()
+                    filter_params['color_id'] = product_color_ids[0]
+                    
+                    product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
+                    product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
+                    product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
+                    product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
+                    
+                elif size_id and planter_size_id and planter_id and not color_id:
+                    filter_params['size_id'] = size_id
+                    filter_params['planter_size_id'] = planter_size_id
+                    filter_params['planter_id'] = planter_id
+                    product = Product.objects.filter(**filter_params).first()
+                    
+                    if not product:
+                        return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+                
+                    product_size_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('size_id', flat=True).distinct()
+                    product_planter_size_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, visible_online=True).values_list('planter_size_id', flat=True).distinct()
+                    product_planter_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, planter_size_id=product.planter_size_id, visible_online=True).values_list('planter_id', flat=True).distinct()
+                    product_color_ids = Product.objects.filter(**filter_params).values_list('color_id', flat=True).distinct()
+                    filter_params['color_id'] = product_color_ids[0]
+                    
+                    product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
+                    product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
+                    product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
+                    product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
+                    
+                elif size_id and planter_size_id and planter_id and color_id:
+                    filter_params['size_id'] = size_id
+                    filter_params['planter_size_id'] = planter_size_id
+                    filter_params['planter_id'] = planter_id
+                    filter_params['color_id'] = color_id
+                    product = Product.objects.filter(**filter_params).first()
+                    
+                    if not product:
+                        return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+                    
+                    product_size_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('size_id', flat=True).distinct()
+                    product_planter_size_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, visible_online=True).values_list('planter_size_id', flat=True).distinct()
+                    product_planter_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, planter_size_id=product.planter_size_id, visible_online=True).values_list('planter_id', flat=True).distinct()
+                    product_color_ids = Product.objects.filter(product_id=product_id, size_id=product.size_id, planter_size_id=product.planter_size_id, planter_id=product.planter_id, visible_online=True).values_list('color_id', flat=True).distinct()
+                    
+                    product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
+                    product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id__in=product_planter_size_ids), many=True)
+                    product_planter = PlanterSerializer(Planter.objects.filter(id__in=product_planter_ids), many=True)
+                    product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
+                else:
+                    return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+                
+                product = Product.objects.filter(**filter_params).first()
+                serializer = ProductSerializer(product, context={'request': request})
+                data = {
+                    'product_type': product_type,
+                    'product': serializer.data,
+                    'product_sizes': product_sizes.data,
+                    'product_planter_sizes': product_planter_sizes.data,
+                    'product_planters': product_planter.data,
+                    'product_colors': product_color.data,
+                }
+                return Response(data={'message': 'success111', 'data': data}, status=status.HTTP_200_OK)
         return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
