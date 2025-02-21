@@ -67,9 +67,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         return f"{self.first_name} {self.last_name}"
     
 
-# class InitialInfo(models.Model):
-#     mobile = models.CharField(max_length=15, null=True, blank=True)
-#     otp = models.CharField(max_length=6, null=True, blank=True)
-#     name = models.CharField(max_length=50, null=True, blank=True)
-#     email = models.EmailField(null=True, blank=True)
-#     referell_code = models.CharField(max_length=15, null=True, blank=True)
+class InitialInfo(models.Model):
+    mobile = models.CharField(max_length=15, null=True, blank=True)
+    otp = models.CharField(max_length=6, null=True, blank=True)
+    name = models.CharField(max_length=50, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    referell_code = models.CharField(max_length=15, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.mobile}"

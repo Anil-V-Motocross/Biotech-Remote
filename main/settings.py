@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-1-sk5v@+&4rcpre!1x#r$@*jyx@)fm$rv4y)0c-vi+ar(*jnio
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dev.back.biotechmaali.com', 'www.dev.back.biotechmaali.com']
 
 
 # Application definition
@@ -133,7 +134,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -148,16 +150,16 @@ REST_FRAMEWORK = {
     )
 }
 
-# JAZZMIN_UI_TWEAKS = {
-#     "theme": "flatly",
-#     "dark_mode_theme": "darkly",
-# }
+JAZZMIN_UI_TWEAKS = {
+    "theme": "flatly",
+    "dark_mode_theme": "darkly",
+}
 
 
-# JAZZMIN_SETTINGS = {
-#     "site_title": "BioTech Admin",
-#     "site_header": "BioTech Portal",
-#     "site_brand": "BioTech",
-#     "welcome_sign": "Welcome to the BioTech Admin Panel",
-#     "copyright": "BioTech",
-# }
+JAZZMIN_SETTINGS = {
+    "site_title": "BioTech Admin",
+    "site_header": "BioTech Portal",
+    "site_brand": "BioTech",
+    "welcome_sign": "Welcome to the BioTech Admin Panel",
+    "copyright": "BioTech",
+}
