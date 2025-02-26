@@ -46,8 +46,8 @@ def cart(request, pk=None):
             'order.view_cart'
         ]
         
-        if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        # if not any(request.user.has_perm(perm) for perm in required_permissions):
+        #     return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         cart = Cart.objects.filter(user_id=request.user.id).all()
         serializer = CartSerializer(cart, many=True)
@@ -129,7 +129,7 @@ def cart(request, pk=None):
         except Cart.DoesNotExist:
             return Response(data={'message': 'Cart does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        # Get product and quantity from request data
+        # Get product and quantity from request data 
         product_id = cart.product_id.id
         quantity = request.data.get('quantity', 1)
         

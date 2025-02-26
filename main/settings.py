@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'services',
     'coupon',
     'blog',
+    'material'
 ]
 
 MIDDLEWARE = [
