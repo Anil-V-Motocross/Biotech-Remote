@@ -21,7 +21,7 @@ class ToolVariantImageInline(admin.TabularInline):
 # Admin for Inventory Items
 @admin.register(InventoryItem)
 class InventoryItemAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'category', 'mrp', 'sale_price', 'average_rating', 'material', 'date_added')
+    list_display = ('id', 'name', 'category', 'mrp', 'sale_price', 'average_rating', 'material_id', 'date_added')
     list_filter = ('category', 'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending')
     search_fields = ('name', 'category')
     inlines = [InventoryItemImageInline]
@@ -29,17 +29,17 @@ class InventoryItemAdmin(admin.ModelAdmin):
 # Admin for Pot Variants
 @admin.register(PotVariant)
 class PotVariantAdmin(admin.ModelAdmin):
-    list_display = ('id', 'inventory_item', 'size', 'color', 'pot_type', 'litre', 'mrp', 'sale_price', 'stock', 'visible_online')
-    list_filter = ('size', 'color', 'pot_type', 'visible_online')
-    search_fields = ('inventory_item__name', 'pot_type__name')
+    list_display = ('id', 'inventory_item_id', 'size_id', 'color_id', 'pot_type_id', 'litre', 'mrp', 'sale_price', 'stock', 'visible_online')
+    list_filter = ('size_id', 'color_id', 'pot_type_id', 'visible_online')
+    search_fields = ('inventory_item_id__name', 'pot_type_id__name')
     inlines = [PotVariantImageInline]
 
 # Admin for Tool Variants
 @admin.register(ToolVariant)
 class ToolVariantAdmin(admin.ModelAdmin):
-    list_display = ('id', 'inventory_item', 'size', 'color', 'handle_material', 'blade_material', 'mrp', 'sale_price', 'stock', 'visible_online')
-    list_filter = ('size', 'color', 'handle_material', 'blade_material', 'visible_online')
-    search_fields = ('inventory_item__name',)
+    list_display = ('id', 'inventory_item_id', 'size_id', 'color_id', 'handle_material_id', 'blade_material_id', 'mrp', 'sale_price', 'stock', 'visible_online')
+    list_filter = ('size_id', 'color_id', 'handle_material_id', 'blade_material_id', 'visible_online')
+    search_fields = ('inventory_item_id__name',)
     inlines = [ToolVariantImageInline]
 
 # Admin for Ratings

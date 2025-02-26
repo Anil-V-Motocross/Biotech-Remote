@@ -11,6 +11,9 @@ from attribute.models import Planter
 from attribute.models import Color
 from django.db.models import Avg, Count, F
 from django.db.models.functions import Floor
+from material.models import InventoryItem
+from material.views import get_inventory_item
+
 
 class ReviewSerializer(serializers.ModelSerializer):
     date = serializers.DateTimeField(format='%d/%m/%Y')
@@ -93,6 +96,25 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 @api_view(['GET'])
+def default_item(request, product_id):
+    item_type = request.query_params.get('type')  # 'product' or 'inventory'
+
+    if item_type == 'product':
+        if Product.objects.filter(id=product_id).exists():
+            return default_product(request, product_id)  # Call the existing product filter function
+        else:
+            return Response({'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    elif item_type == 'inventory':
+        if InventoryItem.objects.filter(id=product_id).exists():
+            return get_inventory_item(request, product_id)  # Call the existing inventory filter function
+        else:
+            return Response({'message': 'Inventory item does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    else:
+        return Response({'message': 'Invalid type. Use type=product or type=inventory.'}, status=status.HTTP_400_BAD_REQUEST)
+
+# @api_view(['GET'])
 def default_product(request, product_id=None):
     if request.method == 'GET' and product_id:
         # Filter the product to get the default one with the specified product_id

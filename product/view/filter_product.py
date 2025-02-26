@@ -10,6 +10,8 @@ from attribute.models import Planter
 from attribute.models import Color
 from attribute.models import Weight
 from rest_framework.exceptions import ValidationError
+from material.models import InventoryItem
+from material.views import filter_inventory
 
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -71,6 +73,26 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 @api_view(['GET'])
+def filter_item(request, pk):
+    item_type = request.query_params.get('type')  # 'product' or 'inventory'
+
+    if item_type == 'product':
+        if Product.objects.filter(id=pk).exists():
+            return filter_product(request, pk)  # Call the existing product filter function
+        else:
+            return Response({'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    elif item_type == 'inventory':
+        if InventoryItem.objects.filter(id=pk).exists():
+            return filter_inventory(request, pk)  # Call the existing inventory filter function
+        else:
+            return Response({'message': 'Inventory item does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    else:
+        return Response({'message': 'Invalid type. Use type=product or type=inventory.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+# @api_view(['GET'])
 def filter_product(request, pk):
     if request.method == 'GET' and pk:
         
@@ -109,7 +131,7 @@ def filter_product(request, pk):
                 }
                 return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
 
-            else:
+            elif product_id.type == 'plant':
 
                 # Extract query parameters from the request
                 size_id = request.query_params.get('size_id', None)

@@ -25,7 +25,7 @@ class PotVariantSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = PotVariant
-        fields = ['size', 'color', 'pot_type', 'litre', 'mrp', 'sale_price', 'discount', 'stock', 'images']
+        fields = ['id', 'size_id', 'color_id', 'pot_type_id', 'litre', 'mrp', 'sale_price', 'discount', 'stock', 'images']
 
     def create(self, validated_data):
         images_data = validated_data.pop('images', [])
@@ -39,7 +39,7 @@ class ToolVariantSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ToolVariant
-        fields = ['size', 'color', 'handle_material', 'blade_material', 'mrp', 'sale_price', 'discount', 'stock', 'images']
+        fields = ['id', 'size_id', 'color_id', 'handle_material_id', 'blade_material_id', 'mrp', 'sale_price', 'discount', 'stock', 'images']
 
     def create(self, validated_data):
         images_data = validated_data.pop('images', [])
@@ -48,58 +48,117 @@ class ToolVariantSerializer(serializers.ModelSerializer):
             ToolVariantImage.objects.create(tool_variant=tool_variant, **img_data)
         return tool_variant
 
+
 class InventoryItemSerializer(serializers.ModelSerializer):
     images = InventoryItemImageSerializer(many=True, required=False)
-    pot_variants = PotVariantSerializer(many=True, required=False)
-    tool_variants = ToolVariantSerializer(many=True, required=False)
+    price = serializers.DecimalField(source='sale_price', max_digits=10, decimal_places=2)
+    whats_included = serializers.CharField(source='whats_in_the_box')
 
     class Meta:
         model = InventoryItem
         fields = [
-            'name', 'category', 'material', 'shape', 'short_description', 'long_description', 'mrp', 'sale_price', 
-            'discount', 'whats_in_the_box', 'additional_attributes', 'images', 'pot_variants', 'tool_variants'
+            'id', 'name', 'category', 'material_id', 'shape_id', 'short_description', 'long_description', 'mrp', 'price',
+            'discount', 'whats_included', 'additional_attributes', 'images'
         ]
 
     def to_representation(self, instance):
-        """Modify response to reorder images based on variant selection"""
+        """Modify response to reorder images and exclude variant data"""
         data = super().to_representation(instance)
-        
+
         # Default Inventory Images
         inventory_images = data.get('images', [])
-        
-        # Collect images from Pot Variants
-        pot_variant_images = []
-        for pot_variant in data.get('pot_variants', []):
-            if 'images' in pot_variant:
-                pot_variant_images.extend(pot_variant['images'])
 
-        # Collect images from Tool Variants
-        tool_variant_images = []
-        for tool_variant in data.get('tool_variants', []):
-            if 'images' in tool_variant:
-                tool_variant_images.extend(tool_variant['images'])
+        # Use correct related names to fetch images from variants
+        pot_variant_images = InventoryItemImage.objects.filter(
+            id__in=PotVariant.objects.filter(inventory_item_id=instance).values_list('images', flat=True)
+        ).values_list('image', flat=True).distinct()
 
-        # Merge Images (Variant Images First)
-        all_images = pot_variant_images + tool_variant_images + inventory_images
+        tool_variant_images = InventoryItemImage.objects.filter(
+            id__in=ToolVariant.objects.filter(inventory_item_id=instance).values_list('images', flat=True)
+        ).values_list('image', flat=True).distinct()
+
+        # Merge images (Variant Images First)
+        all_images = list(pot_variant_images) + list(tool_variant_images) + inventory_images
 
         # Update final images list
         data['images'] = all_images
-        
+
         return data
+
+
+# class FilteredInventorySerializer(serializers.ModelSerializer):
+#     images = InventoryItemImageSerializer(many=True, required=False)
+#     price = serializers.DecimalField(source='sale_price', max_digits=10, decimal_places=2)
+#     whats_included = serializers.CharField(source='whats_in_the_box')
+
+#     class Meta:
+#         model = InventoryItem
+#         fields = [
+#             'id', 'name', 'category', 'material_id', 'shape_id', 'short_description', 'long_description', 
+#             'mrp', 'price', 'discount', 'whats_included', 'additional_attributes', 
+#             'images'
+#         ]
+
+#     def to_representation(self, instance):
+#         """Modify response to include selected variant's price, stock, and images"""
+#         data = super().to_representation(instance)
+#         selected_variant = self.context.get('selected_variant')
+
+#         # Get inventory item images
+#         inventory_images = InventoryItemImage.objects.filter(inventory_item=instance)
+#         inventory_images_serialized = InventoryItemImageSerializer(inventory_images, many=True).data
+
+#         all_variant_images_serialized = []
+        
+#         if selected_variant:
+#             # Apply pricing & stock updates
+#             data['mrp'] = selected_variant.mrp
+#             data['price'] = selected_variant.sale_price
+#             data['discount'] = selected_variant.discount
+#             data['stock'] = selected_variant.stock
+
+#             # Get selected variant images
+#             selected_variant_images = []
+#             if hasattr(selected_variant, 'images'):
+#                 selected_variant_images = InventoryItemImageSerializer(selected_variant.images.all(), many=True).data
+            
+#             # Fetch images from all other variants of the same inventory item
+#             all_variants = selected_variant.__class__.objects.filter(inventory_item_id=instance.id).exclude(id=selected_variant.id)  # Fixed
+#             all_variant_items = InventoryItem.objects.filter(id__in=all_variants.values_list('inventory_item_id', flat=True))
+#             all_variant_images = InventoryItemImage.objects.filter(inventory_item__in=all_variant_items)
+#             all_variant_images_serialized = InventoryItemImageSerializer(all_variant_images, many=True).data
+
+#             # Merge images: selected variant → inventory item → other variants
+#             data['images'] = selected_variant_images + inventory_images_serialized + all_variant_images_serialized
+#         else:
+#             # If no variant is selected, return only inventory item images
+#             data['images'] = inventory_images_serialized
+
+#         return data
 
 class FilteredInventorySerializer(serializers.ModelSerializer):
     images = InventoryItemImageSerializer(many=True, required=False)
+    price = serializers.DecimalField(source='sale_price', max_digits=10, decimal_places=2)
+    whats_included = serializers.CharField(source='whats_in_the_box')
+    id = serializers.SerializerMethodField()
 
     class Meta:
         model = InventoryItem
         fields = [
-            'name', 'category', 'material', 'shape', 'short_description', 'long_description', 
-            'mrp', 'sale_price', 'discount', 'whats_in_the_box', 'additional_attributes', 
-            'images'
+            'id', 'name', 'category', 'material_id', 'shape_id', 
+            'short_description', 'long_description', 'mrp', 'price', 'discount', 
+            'whats_included', 'additional_attributes', 'images'
         ]
 
+    def get_id(self, instance):
+        """Return the correct variant ID based on the selected variant."""
+        selected_variant = self.context.get('selected_variant')
+        if selected_variant:
+            return selected_variant.id  # This returns the specific pot/tool variant ID
+        return None  # No variant selected
+
     def to_representation(self, instance):
-        """Modify response to include selected variant's price, stock, and images"""
+        """Modify response to include selected variant's price, stock, and images."""
         data = super().to_representation(instance)
         selected_variant = self.context.get('selected_variant')
 
@@ -107,12 +166,10 @@ class FilteredInventorySerializer(serializers.ModelSerializer):
         inventory_images = InventoryItemImage.objects.filter(inventory_item=instance)
         inventory_images_serialized = InventoryItemImageSerializer(inventory_images, many=True).data
 
-        all_variant_images_serialized = []
-        
         if selected_variant:
             # Apply pricing & stock updates
             data['mrp'] = selected_variant.mrp
-            data['sale_price'] = selected_variant.sale_price
+            data['price'] = selected_variant.sale_price
             data['discount'] = selected_variant.discount
             data['stock'] = selected_variant.stock
 
@@ -122,7 +179,7 @@ class FilteredInventorySerializer(serializers.ModelSerializer):
                 selected_variant_images = InventoryItemImageSerializer(selected_variant.images.all(), many=True).data
             
             # Fetch images from all other variants of the same inventory item
-            all_variants = selected_variant.__class__.objects.filter(inventory_item=instance).exclude(id=selected_variant.id)
+            all_variants = selected_variant.__class__.objects.filter(inventory_item_id=instance.id).exclude(id=selected_variant.id)
             all_variant_items = InventoryItem.objects.filter(id__in=all_variants.values_list('inventory_item_id', flat=True))
             all_variant_images = InventoryItemImage.objects.filter(inventory_item__in=all_variant_items)
             all_variant_images_serialized = InventoryItemImageSerializer(all_variant_images, many=True).data
@@ -134,6 +191,7 @@ class FilteredInventorySerializer(serializers.ModelSerializer):
             data['images'] = inventory_images_serialized
 
         return data
+
 
 
 class RatingSerializer(serializers.ModelSerializer):
@@ -185,6 +243,6 @@ class ToolVariantSerializer(serializers.ModelSerializer):
     class Meta:
         model = ToolVariant
         fields = [
-            'id', 'inventory_item', 'size', 'color', 'handle_material', 'blade_material',
+            'id', 'inventory_item_id', 'size_id', 'color_id', 'handle_material_id', 'blade_material_id',
             'mrp', 'sale_price', 'discount', 'profit', 'stock', 'visible_online', 'date_added'
         ]        
