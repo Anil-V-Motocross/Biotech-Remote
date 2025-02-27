@@ -9,7 +9,9 @@ from attribute.models import PlanterSize
 from attribute.models import Planter
 from attribute.models import Color
 from attribute.models import Weight
+from attribute.models import Material, Shape, PotType
 from rest_framework.exceptions import ValidationError
+
 
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -35,6 +37,23 @@ class WeightSerializer(serializers.ModelSerializer):
     class Meta:
         model = Weight
         fields = ['id', 'size_grams']
+
+class MaterialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Material
+        fields = ['id', 'name']
+
+class ShapeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shape
+        fields = ['id', 'name']
+
+class PotTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PotType
+        fields = ['id', 'name']   
+
+
 
 class ProductSerializer(serializers.ModelSerializer):
     # Include main product image as the first element in the images list
@@ -79,12 +98,16 @@ def filter_product(request, pk):
             # Initialize an empty filter dictionary
             filter_params = {}
 
-            current_product = Product.objects.filter(id=pk).first()
+            current_product = Product.objects.filter(product_id=pk).first()
+            if not current_product:
+                return Response({'message': 'Product not found'}, status=status.HTTP_400_BAD_REQUEST)
             product_id = current_product.product_id
             product_type = product_id.type
+            print("-------------product_type:", product_type)
 
-            if product_id.type == 'seed':
+            if product_type == 'seed':
                 weight_id = request.query_params.get('weight_id', None)
+                print('seed-----------------',weight_id)
                 if len(request.query_params) > 1: 
                     raise ValidationError("Only 'weight_id' can be used for seed products.")
                 
@@ -109,13 +132,14 @@ def filter_product(request, pk):
                 }
                 return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
 
-            else:
+            elif product_type == 'plant':
 
                 # Extract query parameters from the request
                 size_id = request.query_params.get('size_id', None)
                 planter_size_id = request.query_params.get('planter_size_id', None)
                 planter_id = request.query_params.get('planter_id', None)
                 color_id = request.query_params.get('color_id', None)
+                print('plant-----------------',size_id,planter_size_id,planter_id,color_id)
 
                 # Only add to the filter dictionary if the parameter is provided
                 product_id = current_product.product_id
@@ -221,4 +245,123 @@ def filter_product(request, pk):
                     'product_colors': product_color.data,
                 }
                 return Response(data={'message': 'success111', 'data': data}, status=status.HTTP_200_OK)
+            
+            elif product_type == 'pot':
+                planter_size_id = request.query_params.get('planter_size_id', None)
+                color_id = request.query_params.get('color_id', None)
+                litre = request.query_params.get('litre', None)
+                print('pot-----------------',planter_size_id,color_id,litre)
+                
+                filter_params = {'product_id': product_id, 'visible_online': True}
+                if planter_size_id:
+                    filter_params['planter_size_id'] = planter_size_id
+                if color_id:
+                    filter_params['color_id'] = color_id
+                if litre:
+                    filter_params['litre'] = litre    
+
+                    product_litre_data = []
+                    product_planter_sizes = []
+                    product_colors = []   
+                
+                # 1. If only planter_size_id is provided, return available colors for the selected planter_size_id
+                if planter_size_id and not color_id and not litre:
+                    available_colors = Product.objects.filter(**filter_params).values_list('color_id', flat=True).distinct()
+                    product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id=planter_size_id), many=True)
+                    product_colors = ColorSerializer(Color.objects.filter(id__in=available_colors), many=True)
+                    
+                # 2. If only litre is provided, return available colors for the selected litre
+                elif litre and not color_id and not planter_size_id:
+                    available_colors = Product.objects.filter(**filter_params).values_list('color_id', flat=True).distinct()
+                    product_litres = Product.objects.filter(product_id=product_id, visible_online=True).values_list('litre', flat=True).distinct()
+                    product_litre_data = [{'litre': l} for l in product_litres]
+                    product_colors = ColorSerializer(Color.objects.filter(id__in=available_colors), many=True)
+                    
+                # 3. If planter_size_id and color_id are provided, find the corresponding product
+                elif planter_size_id and color_id and not litre:
+                    product = Product.objects.filter(**filter_params).first()
+                    if not product:
+                        return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+                    product_planter_sizes = PlanterSizeSerializer(PlanterSize.objects.filter(id=planter_size_id), many=True)
+                    product_colors = ColorSerializer(Color.objects.filter(id=color_id), many=True)
+                    
+                # 4. If litre and color_id are provided, find the corresponding product
+                elif litre and color_id and not planter_size_id:
+                    product = Product.objects.filter(**filter_params).first()
+                    if not product:
+                        return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+                    product_litre_data = [{'litre': litre}]
+                    product_colors = ColorSerializer(Color.objects.filter(id=color_id), many=True)
+                else:
+                    return Response(data={'message': 'Invalid filter combination.'}, status=status.HTTP_400_BAD_REQUEST)
+                
+                product = Product.objects.filter(**filter_params).first()
+                serializer = ProductSerializer(product, context={'request': request})
+                data = {
+                    'product_type': product_type,
+                    'product': serializer.data,
+                    'product_planter_sizes': product_planter_sizes.data if isinstance(product_planter_sizes, serializers.BaseSerializer) else [],
+                    'product_litre': product_litre_data,
+                    'product_colors': product_colors.data if isinstance(product_colors, serializers.BaseSerializer) else [],
+                }
+                return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+            
+            elif product_type == 'tool':
+                size_id = request.query_params.get('size_id', None)
+                color_id = request.query_params.get('color_id', None)
+                print('tool-----------------',size_id,color_id)
+
+                filter_params = {'product_id': product_id, 'visible_online': True}
+
+                if size_id:
+                    filter_params['size_id'] = size_id
+                if color_id:
+                    filter_params['color_id'] = color_id
+
+                product = Product.objects.filter(**filter_params).first()
+                if not product:
+                    return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+                # Case 1: If only size_id is provided, find available colors for that size
+                if size_id and not color_id:
+                    available_color_ids = Product.objects.filter(
+                        product_id=product_id, size_id=size_id, visible_online=True
+                    ).values_list('color_id', flat=True).distinct()
+
+                    available_colors = ColorSerializer(Color.objects.filter(id__in=available_color_ids), many=True)
+
+                    product_sizes = Product.objects.filter(
+                        product_id=product_id, visible_online=True
+                    ).values_list('size_id', flat=True).distinct()
+                    product_sizes = SizeSerializer(Size.objects.filter(id__in=product_sizes), many=True)
+
+                    product_colors = available_colors  # Use available colors for this case
+
+                # Case 2: If both size_id and color_id are provided, return the exact match
+                elif size_id and color_id:
+                    product_size_ids = Product.objects.filter(
+                        product_id=product_id, visible_online=True
+                    ).values_list('size_id', flat=True).distinct()
+
+                    product_color_ids = Product.objects.filter(
+                        product_id=product_id, size_id=size_id, visible_online=True
+                    ).values_list('color_id', flat=True).distinct()
+
+                    product_sizes = SizeSerializer(Size.objects.filter(id__in=product_size_ids), many=True)
+                    product_colors = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
+
+                else:
+                    return Response(data={'message': 'Invalid request parameters.'}, status=status.HTTP_400_BAD_REQUEST)
+
+                serializer = ProductSerializer(product, context={'request': request})
+
+                data = {
+                    'product_type': product_type,
+                    'product': serializer.data,
+                    'product_sizes': product_sizes.data,
+                    'product_colors': product_colors.data,  # Ensures correct variable
+                }
+
+                return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+
         return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)

@@ -9,8 +9,10 @@ from attribute.models import Size
 from attribute.models import PlanterSize, Weight
 from attribute.models import Planter
 from attribute.models import Color
+from attribute.models import Material, HandleMaterial, BladeMaterial, Shape, PotType
 from django.db.models import Avg, Count, F
 from django.db.models.functions import Floor
+
 
 class ReviewSerializer(serializers.ModelSerializer):
     date = serializers.DateTimeField(format='%d/%m/%Y')
@@ -55,6 +57,32 @@ class WeightSerializer(serializers.ModelSerializer):
         model = Weight
         fields = ['id', 'size_grams', 'status']
 
+class MaterialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Material
+        fields = ['id', 'name']
+
+class ShapeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shape
+        fields = ['id', 'name']
+
+class PotTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PotType
+        fields = ['id', 'name']   
+
+class HandleMaterialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HandleMaterial
+        fields = ['id', 'name']   
+
+class BladeMaterialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Material
+        fields = ['id', 'name']   
+
+
 class ProductSerializer(serializers.ModelSerializer):
     # type = serializers.ReadOnlyField(source='product_id.type')
     # Include main product image as the first element in the images list
@@ -67,7 +95,26 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['id', 'price', 'images', 'short_description', 'main_product_name', 'size_id', 'planter_size_id', 'planter_id', 'color_id', 'whats_included', 'vedio_link']
+        fields = [
+            'id', 
+            'price', 
+            'images', 
+            'short_description', 
+            'main_product_name', 
+            'size_id', 
+            'planter_size_id', 
+            'planter_id',
+            'weight_id', 
+            'handle_material_id',
+            'blade_material_id',
+            'material_id',
+            'shape_id',
+            'pot_type_id',
+            'litre',
+            'color_id', 
+            'whats_included', 
+            'vedio_link'
+        ]
 
     def get_images(self, obj):
         # Start with the product's main image
@@ -121,6 +168,14 @@ def default_product(request, product_id=None):
         product_color = ColorSerializer(Color.objects.filter(id__in=product_color_ids), many=True)
         product_weights = WeightSerializer(Weight.objects.filter(id__in=product_weight_ids), many=True) if product_weight_ids else None
         
+        # Tool and Pot-specific fields
+        handle_material = HandleMaterialSerializer(product.handle_material_id) if product.handle_material_id else None
+        blade_material = BladeMaterialSerializer(product.blade_material_id) if product.blade_material_id else None
+        material = MaterialSerializer(product.material_id) if product.material_id else None
+        shape = ShapeSerializer(product.shape_id) if product.shape_id else None
+        pot_type = PotTypeSerializer(product.pot_type_id) if product.pot_type_id else None
+        litre = product.litre
+
         # return rating by calulating average of product_rating 
         product_rating = Rating.objects.filter(main_product_id=product_id).aggregate(avg_rating=Avg('product_rating'), num_ratings=Count('id'))
         product_rating['avg_rating'] = round(product_rating['avg_rating'], 2) if product_rating['avg_rating'] else 0
@@ -142,6 +197,12 @@ def default_product(request, product_id=None):
             'product_weights': product_weights.data,
             'product_planters': product_planter.data,
             'product_colors': product_color.data,
+            'product_handle_material': handle_material.data if handle_material else None,
+            'product_blade_material': blade_material.data if blade_material else None,
+            'product_material': material.data if material else None,
+            'product_shape': shape.data if shape else None,
+            'product_pot_type': pot_type.data if pot_type else None,
+            'product_litre': litre,
             'product_rating': product_rating,
             'product_reviews': product_reviews.data,
         }

@@ -46,8 +46,8 @@ def cart(request, pk=None):
             'order.view_cart'
         ]
         
-        if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        # if not any(request.user.has_perm(perm) for perm in required_permissions):
+        #     return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         cart = Cart.objects.filter(user_id=request.user.id).all()
         serializer = CartSerializer(cart, many=True)
@@ -89,11 +89,35 @@ def cart(request, pk=None):
                 return Response(data={'message': 'Error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         
         
+    # if request.method == 'PATCH':
+    #     required_permissions = [
+    #         'order.change_cart'
+    #     ]
+        
+    #     if not any(request.user.has_perm(perm) for perm in required_permissions):
+    #         return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        
+    #     cart_id = request.data.get('cart_id')
+        
+    #     if not cart_id:
+    #         return Response(data={'message': 'Cart id is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+    #     if Cart.objects.filter(id=cart_id).exists():
+    #         cart = Cart.objects.get(id=cart_id)
+
+    #         serializer = CartSerializer(instance=cart, data=request.data, partial=True)
+    #         if serializer.is_valid():
+    #             serializer.save()
+    #             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
+    #         if serializer.errors:
+    #             return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+    #     return Response(data={'message': 'Cart does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
     if request.method == 'PATCH':
         required_permissions = ['order.change_cart']
         
-        if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        # if not any(request.user.has_perm(perm) for perm in required_permissions):
+        #     return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         cart_id = request.data.get('cart_id')
         
@@ -105,7 +129,7 @@ def cart(request, pk=None):
         except Cart.DoesNotExist:
             return Response(data={'message': 'Cart does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        # Get product and quantity from request data
+        # Get product and quantity from request data 
         product_id = cart.product_id.id
         quantity = request.data.get('quantity', 1)
         
@@ -128,14 +152,14 @@ def cart(request, pk=None):
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
         
         return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-    
+
     if request.method == 'DELETE' and pk:
         required_permissions = [
             'order.delete_cart'
         ]
         
-        if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        # if not any(request.user.has_perm(perm) for perm in required_permissions):
+        #     return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         if Cart.objects.filter(id=pk, user_id=request.user.id).exists():
             cart = Cart.objects.get(id=pk, user_id=request.user.id)
