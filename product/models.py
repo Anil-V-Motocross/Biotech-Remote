@@ -1,5 +1,5 @@
 from django.db import models
-from attribute.models import Size, PlanterSize, Planter, Color, Weight
+from attribute.models import Size, PlanterSize, Planter, Color, Weight, HandleMaterial, BladeMaterial, PotType, Material, Shape
 from account.models import User
 
 # Create your models here.
@@ -11,6 +11,8 @@ class MainProduct(models.Model):
     type_choices = [
         ('plant', 'plant'),
         ('seed', 'seed'),
+        ('pot', 'Pot'),
+        ('tool', 'Garden Tool'),
     ]
     type = models.CharField(max_length=10, choices=type_choices, default='plant')
     default_sale_price = models.FloatField(default=0)
@@ -25,6 +27,7 @@ class MainProduct(models.Model):
     whats_included = models.TextField()
     vedio_link = models.CharField(max_length=200)
 
+    # Flag
     is_featured = models.BooleanField(default=False)
     is_best_seller = models.BooleanField(default=False)
     is_seasonal_collection = models.BooleanField(default=False)
@@ -66,11 +69,21 @@ class ProductTag(models.Model):
 
 class Product(models.Model):
     product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
-    size_id = models.ForeignKey(Size, on_delete=models.CASCADE, null=True)
-    planter_size_id = models.ForeignKey(PlanterSize, on_delete=models.CASCADE, null=True)
-    planter_id = models.ForeignKey(Planter, on_delete=models.CASCADE, null=True)
-    color_id = models.ForeignKey(Color, on_delete=models.CASCADE, null=True)
-    weight_id = models.ForeignKey(Weight, on_delete=models.CASCADE, null=True)
+    size_id = models.ForeignKey(Size, on_delete=models.CASCADE, null=True, blank=True)
+    planter_size_id = models.ForeignKey(PlanterSize, on_delete=models.CASCADE, null=True, blank=True)
+    planter_id = models.ForeignKey(Planter, on_delete=models.CASCADE, null=True, blank=True)
+    color_id = models.ForeignKey(Color, on_delete=models.CASCADE, null=True, blank=True)
+    weight_id = models.ForeignKey(Weight, on_delete=models.CASCADE, null=True, blank=True)
+
+    # Tool-specific fields
+    handle_material_id = models.ForeignKey(HandleMaterial, on_delete=models.SET_NULL, null=True, blank=True)
+    blade_material_id = models.ForeignKey(BladeMaterial, on_delete=models.SET_NULL, null=True, blank=True)
+
+    # Pot-specific fields
+    material_id = models.ForeignKey(Material, on_delete=models.SET_NULL, null=True, blank=True)
+    shape_id = models.ForeignKey(Shape, on_delete=models.SET_NULL, null=True, blank=True)
+    pot_type_id = models.ForeignKey(PotType, on_delete=models.SET_NULL, null=True, blank=True)
+    litre = models.FloatField(null=True, blank=True)
 
     name = models.CharField(max_length=100)
     cost = models.FloatField(default=0)
