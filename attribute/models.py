@@ -47,3 +47,39 @@ class Weight(models.Model):
 
     def __str__(self):
         return self.size_grams
+    
+
+class Material(models.Model):
+    name = models.CharField(max_length=50, unique=True)  # e.g., "Ceramic", "Plastic", "Metal"
+    status = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+class Shape(models.Model):
+    name = models.CharField(max_length=50, unique=True)  # e.g., "Round", "Rectangle"
+    status = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+class PotType(models.Model):
+    name = models.CharField(max_length=50, unique=True) # Wall, Rope, Hanging
+    status = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+class HandleMaterial(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    status = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+class BladeMaterial(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    status = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name    
