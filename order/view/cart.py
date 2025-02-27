@@ -116,8 +116,8 @@ def cart(request, pk=None):
     if request.method == 'PATCH':
         required_permissions = ['order.change_cart']
         
-        if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        # if not any(request.user.has_perm(perm) for perm in required_permissions):
+        #     return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         cart_id = request.data.get('cart_id')
         
@@ -158,8 +158,8 @@ def cart(request, pk=None):
             'order.delete_cart'
         ]
         
-        if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        # if not any(request.user.has_perm(perm) for perm in required_permissions):
+        #     return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         if Cart.objects.filter(id=pk, user_id=request.user.id).exists():
             cart = Cart.objects.get(id=pk, user_id=request.user.id)
