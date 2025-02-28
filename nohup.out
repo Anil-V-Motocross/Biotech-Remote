@@ -3000,3 +3000,1186 @@ Traceback (most recent call last):
   File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/graph.py", line 60, in raise_error
     raise NodeNotFoundError(self.error_message, self.key, origin=self.origin)
 django.db.migrations.exceptions.NodeNotFoundError: Migration product.0009_product_blade_material_id_product_handle_material_id_and_more dependencies reference nonexistent parent node ('product', '0008_mainproduct_default_discount_and_more')
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 137, in inner_run
+    self.check_migrations()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/base.py", line 581, in check_migrations
+    executor = MigrationExecutor(connections[DEFAULT_DB_ALIAS])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/executor.py", line 18, in __init__
+    self.loader = MigrationLoader(self.connection)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/loader.py", line 58, in __init__
+    self.build_graph()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/loader.py", line 276, in build_graph
+    self.graph.validate_consistency()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/graph.py", line 198, in validate_consistency
+    [n.raise_error() for n in self.node_map.values() if isinstance(n, DummyNode)]
+     ^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/graph.py", line 60, in raise_error
+    raise NodeNotFoundError(self.error_message, self.key, origin=self.origin)
+django.db.migrations.exceptions.NodeNotFoundError: Migration product.0009_product_blade_material_id_product_handle_material_id_and_more dependencies reference nonexistent parent node ('product', '0008_mainproduct_default_discount_and_more')
+/root/biotechmaali/attribute/migrations/__init__.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+/root/biotechmaali/attribute/migrations/__init__.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+    self._target(*self._args, **self._kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 137, in inner_run
+    self.check_migrations()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/base.py", line 581, in check_migrations
+    executor = MigrationExecutor(connections[DEFAULT_DB_ALIAS])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/executor.py", line 18, in __init__
+    self.loader = MigrationLoader(self.connection)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/loader.py", line 58, in __init__
+    self.build_graph()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/loader.py", line 276, in build_graph
+    self.graph.validate_consistency()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/graph.py", line 198, in validate_consistency
+    [n.raise_error() for n in self.node_map.values() if isinstance(n, DummyNode)]
+     ^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/graph.py", line 60, in raise_error
+    raise NodeNotFoundError(self.error_message, self.key, origin=self.origin)
+django.db.migrations.exceptions.NodeNotFoundError: Migration order.0001_initial dependencies reference nonexistent parent node ('product', '0001_initial')
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 137, in inner_run
+    self.check_migrations()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/base.py", line 581, in check_migrations
+    executor = MigrationExecutor(connections[DEFAULT_DB_ALIAS])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/executor.py", line 18, in __init__
+    self.loader = MigrationLoader(self.connection)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/loader.py", line 58, in __init__
+    self.build_graph()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/loader.py", line 276, in build_graph
+    self.graph.validate_consistency()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/graph.py", line 198, in validate_consistency
+    [n.raise_error() for n in self.node_map.values() if isinstance(n, DummyNode)]
+     ^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/migrations/graph.py", line 60, in raise_error
+    raise NodeNotFoundError(self.error_message, self.key, origin=self.origin)
+django.db.migrations.exceptions.NodeNotFoundError: Migration order.0001_initial dependencies reference nonexistent parent node ('product', '0001_initial')
+/root/biotechmaali/venv/lib/python3.12/site-packages/sqlparse/filters/reindent.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+/root/biotechmaali/venv/lib/python3.12/site-packages/sqlparse/engine/filter_stack.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+Traceback (most recent call last):
+  File "/root/biotechmaali/manage.py", line 11, in main
+    from django.core.management import execute_from_command_line
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/__init__.py", line 1, in <module>
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/version.py", line 7, in <module>
+ModuleNotFoundError: No module named 'django.utils.regex_helper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/biotechmaali/manage.py", line 22, in <module>
+    main()
+  File "/root/biotechmaali/manage.py", line 13, in main
+    raise ImportError(
+ImportError: Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable? Did you forget to activate a virtual environment?
+Traceback (most recent call last):
+  File "/root/biotechmaali/manage.py", line 11, in main
+    from django.core.management import execute_from_command_line
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/__init__.py", line 1, in <module>
+    from django.utils.version import get_version
+ModuleNotFoundError: No module named 'django.utils'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/biotechmaali/manage.py", line 22, in <module>
+    main()
+  File "/root/biotechmaali/manage.py", line 13, in main
+    raise ImportError(
+ImportError: Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable? Did you forget to activate a virtual environment?
+Watching for file changes with StatReloader
+[27/Feb/2025 16:15:07] "GET /promotion/banner/ HTTP/1.1" 200 43
+[27/Feb/2025 16:15:07] "GET /category/ HTTP/1.1" 200 46
+[27/Feb/2025 16:15:07] "GET /blog/ HTTP/1.1" 200 2
+[27/Feb/2025 16:15:07] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[27/Feb/2025 16:15:07] "GET /store/store_list/ HTTP/1.1" 200 42
+[27/Feb/2025 16:15:07] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 16:15:08] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 16:15:08] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:08] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:08] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:08] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:08] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 304 0
+[27/Feb/2025 16:15:08] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 304 0
+[27/Feb/2025 16:15:08] "GET /media/main_product_images/1_2.webp HTTP/1.1" 304 0
+[27/Feb/2025 16:15:08] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:08] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:08] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:08] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:08] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:08] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:08] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:08] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[27/Feb/2025 16:15:09] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 16:15:09] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1591
+[27/Feb/2025 16:15:09] "GET /media/main_product_images/GroPot_ZKfJXUn.webp HTTP/1.1" 304 0
+[27/Feb/2025 16:15:09] "GET /media/product_images/GroPot.webp HTTP/1.1" 304 0
+[27/Feb/2025 16:15:09] "GET /media/main_product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd_ihTdTZk.webp HTTP/1.1" 304 0
+[27/Feb/2025 16:15:09] "GET /product/homeProducts/ HTTP/1.1" 200 924
+Bad Request: /product/filterProduct/1/
+[27/Feb/2025 16:15:13] "GET /product/filterProduct/1/?size_id=1 HTTP/1.1" 400 37
+Bad Request: /product/filterProduct/1/
+[27/Feb/2025 16:15:14] "GET /product/filterProduct/1/?planter_size_id=1 HTTP/1.1" 400 37
+Bad Request: /product/filterProduct/1/
+[27/Feb/2025 16:15:19] "GET /product/filterProduct/1/?planter_id=1 HTTP/1.1" 400 37
+[27/Feb/2025 16:15:22] "OPTIONS /order/cart/ HTTP/1.1" 200 0
+[27/Feb/2025 16:15:22] "OPTIONS /order/cart/ HTTP/1.1" 200 0
+Unauthorized: /order/cart/
+[27/Feb/2025 16:15:22] "POST /order/cart/ HTTP/1.1" 401 183
+Unauthorized: /order/cart/
+[27/Feb/2025 16:15:22] "GET /order/cart/ HTTP/1.1" 401 183
+[27/Feb/2025 16:15:53] "GET /promotion/banner/ HTTP/1.1" 200 43
+[27/Feb/2025 16:15:53] "GET /category/ HTTP/1.1" 200 46
+[27/Feb/2025 16:15:53] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[27/Feb/2025 16:15:53] "GET /store/store_list/ HTTP/1.1" 200 42
+[27/Feb/2025 16:15:53] "GET /blog/ HTTP/1.1" 200 2
+[27/Feb/2025 16:15:53] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 16:15:53] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 16:15:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:53] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:53] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:53] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:53] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:54] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:54] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[27/Feb/2025 16:15:55] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 16:15:55] "GET /product/defaultProduct/1/ HTTP/1.1" 200 1634
+[27/Feb/2025 16:15:55] "GET /media/product_images/3_1c337c64-3cd2-47b9-87dd-8db98589d093_rG3j7fa.webp HTTP/1.1" 304 0
+[27/Feb/2025 16:15:55] "GET /media/main_product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd_4CyyVRl.webp HTTP/1.1" 304 0
+[27/Feb/2025 16:15:55] "GET /media/main_product_images/GroPot_7PHaGZI.webp HTTP/1.1" 304 0
+[27/Feb/2025 16:15:55] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 16:15:57] "GET /promotion/banner/ HTTP/1.1" 200 43
+[27/Feb/2025 16:15:57] "GET /category/ HTTP/1.1" 200 46
+[27/Feb/2025 16:15:57] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 16:15:57] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[27/Feb/2025 16:15:57] "GET /blog/ HTTP/1.1" 200 2
+[27/Feb/2025 16:15:57] "GET /store/store_list/ HTTP/1.1" 200 42
+[27/Feb/2025 16:15:57] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 16:15:57] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:57] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:57] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:57] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:57] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[27/Feb/2025 16:15:57] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:57] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:57] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:57] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:58] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:58] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[27/Feb/2025 16:15:58] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[27/Feb/2025 16:16:05,666] - Broken pipe from ('171.61.176.18', 53909)
+[27/Feb/2025 16:16:05,666] - Broken pipe from ('171.61.176.18', 53915)
+[27/Feb/2025 16:16:05,667] - Broken pipe from ('171.61.176.18', 53912)
+[27/Feb/2025 16:16:05,667] - Broken pipe from ('171.61.176.18', 53914)
+[27/Feb/2025 16:16:05,667] - Broken pipe from ('171.61.176.18', 53913)
+[27/Feb/2025 16:16:05,668] - Broken pipe from ('171.61.176.18', 53906)
+[27/Feb/2025 16:16:05,668] - Broken pipe from ('171.61.176.18', 53904)
+[27/Feb/2025 16:16:05,669] - Broken pipe from ('171.61.176.18', 53907)
+[27/Feb/2025 16:16:05,669] - Broken pipe from ('171.61.176.18', 53908)
+[27/Feb/2025 18:13:18] "GET /product/filterProduct/1?size_id=3 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/1/
+[27/Feb/2025 18:13:18] "GET /product/filterProduct/1/?size_id=3 HTTP/1.1" 400 37
+[27/Feb/2025 18:13:19] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+[27/Feb/2025 18:13:23] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[27/Feb/2025 18:13:23] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[27/Feb/2025 18:13:23] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1275
+[27/Feb/2025 18:13:23] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1275
+Not Found: /media/default/category_default.jpg
+[27/Feb/2025 18:13:23] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[27/Feb/2025 18:13:26] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[27/Feb/2025 18:13:29] "GET /product/filterProduct/18?size_id=3 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/18/
+[27/Feb/2025 18:13:29] "GET /product/filterProduct/18/?size_id=3 HTTP/1.1" 400 31
+Not Found: /media/default/category_default.jpg
+[27/Feb/2025 18:13:30] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[27/Feb/2025 18:13:31] "GET /product/filterProduct/18?size_id=1 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/18/
+[27/Feb/2025 18:13:32] "GET /product/filterProduct/18/?size_id=1 HTTP/1.1" 400 31
+Not Found: /media/default/category_default.jpg
+[27/Feb/2025 18:13:32] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[27/Feb/2025 18:14:02] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[27/Feb/2025 18:14:02] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[27/Feb/2025 18:14:02] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1275
+[27/Feb/2025 18:14:02] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1275
+Not Found: /media/default/category_default.jpg
+[27/Feb/2025 18:14:03] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[27/Feb/2025 18:14:06] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[27/Feb/2025 18:14:06] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[27/Feb/2025 18:14:06] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1275
+[27/Feb/2025 18:14:06] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1275
+Not Found: /media/default/category_default.jpg
+[27/Feb/2025 18:14:07] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+Not Found: /media/default/category_default.jpg
+[27/Feb/2025 18:14:09] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+Unauthorized: /api/token/verify/
+[27/Feb/2025 18:14:14] "POST /api/token/verify/ HTTP/1.1" 401 65
+[27/Feb/2025 18:14:15] "POST /api/token/refresh/ HTTP/1.1" 200 241
+Unauthorized: /order/wishlist/
+[27/Feb/2025 18:14:15] "POST /order/wishlist/ HTTP/1.1" 401 51
+[27/Feb/2025 18:14:16] "POST /api/token/verify/ HTTP/1.1" 200 2
+Unauthorized: /order/wishlist/
+[27/Feb/2025 18:14:16] "POST /order/wishlist/ HTTP/1.1" 401 51
+[27/Feb/2025 18:14:19] "GET /category/ HTTP/1.1" 200 46
+[27/Feb/2025 18:14:19] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 18:14:19] "GET /promotion/banner/ HTTP/1.1" 200 43
+Unauthorized: /order/wishlist/
+[27/Feb/2025 18:14:32] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 51
+[27/Feb/2025 18:14:35] "GET /promotion/banner/ HTTP/1.1" 200 43
+[27/Feb/2025 18:14:35] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 18:14:35] "GET /category/ HTTP/1.1" 200 46
+Unauthorized: /order/wishlist/
+[27/Feb/2025 18:15:04] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 51
+[27/Feb/2025 18:15:22] "GET /category/ HTTP/1.1" 200 46
+[27/Feb/2025 18:15:22] "GET /promotion/banner/ HTTP/1.1" 200 43
+[27/Feb/2025 18:15:22] "GET /product/homeProducts/ HTTP/1.1" 200 924
+[27/Feb/2025 18:15:33] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[27/Feb/2025 19:52:37] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03U44DV')
+[27/Feb/2025 19:52:37] You're accessing the development server over HTTPS, but it only supports HTTP.
+[27/Feb/2025 23:27:01] code 400, message Bad request syntax ('MGLNDD_46.202.160.239_8000')
+[27/Feb/2025 23:27:01] "MGLNDD_46.202.160.239_8000" 400 -
+[28/Feb/2025 01:30:38] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03lCS-g´\x91&]\x06\x18Þ¹nFxîøt.ÿ\x82§²\x02VéÑ÷¬q«\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+[28/Feb/2025 01:30:38] You're accessing the development server over HTTPS, but it only supports HTTP.
+[28/Feb/2025 01:30:38] code 400, message Bad request version ('À\x14À')
+[28/Feb/2025 01:30:38] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[28/Feb/2025 01:30:38] "GET / HTTP/1.1" 404 4826
+Not Found: /login
+[28/Feb/2025 01:30:38] "GET /login HTTP/1.1" 404 4859
+Not Found: /
+[28/Feb/2025 01:57:02] "GET / HTTP/1.1" 404 4826
+[28/Feb/2025 03:38:00] code 400, message Bad request version ('À\x14À')
+[28/Feb/2025 03:38:00] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[28/Feb/2025 03:57:06] "GET / HTTP/1.1" 404 4826
+[28/Feb/2025 04:06:51] "OPTIONS /product/ HTTP/1.1" 200 0
+[28/Feb/2025 04:06:51] "OPTIONS /api/token/verify/ HTTP/1.1" 200 0
+[28/Feb/2025 04:06:51] "POST /api/token/verify/ HTTP/1.1" 200 2
+[28/Feb/2025 04:06:51] "GET /product/ HTTP/1.1" 200 4783
+[28/Feb/2025 04:06:51] "POST /api/token/verify/ HTTP/1.1" 200 2
+[28/Feb/2025 04:06:51] "POST /api/token/verify/ HTTP/1.1" 200 2
+[28/Feb/2025 04:06:51] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[28/Feb/2025 04:06:51] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[28/Feb/2025 04:06:51] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[28/Feb/2025 04:06:51] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[28/Feb/2025 04:06:51] "OPTIONS /product/productsOfMainProduct/1/ HTTP/1.1" 200 0
+[28/Feb/2025 04:06:51] "GET /attribute/size/ HTTP/1.1" 200 197
+[28/Feb/2025 04:06:51] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 46
+[28/Feb/2025 04:06:51] "GET /attribute/color/ HTTP/1.1" 200 306
+[28/Feb/2025 04:06:51] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[28/Feb/2025 04:06:52] "GET /product/productsOfMainProduct/1/ HTTP/1.1" 200 2477
+[28/Feb/2025 04:06:52] "GET /media/product_images/1_5d5693a6-bc3a-40a9-8f55-533ecde46d39.webp HTTP/1.1" 304 0
+[28/Feb/2025 04:06:52] "GET /media/product_images/2_8422a1c4-19dc-4355-8faa-035367bda194.webp HTTP/1.1" 304 0
+[28/Feb/2025 04:06:52] "GET /media/product_images/3_1c337c64-3cd2-47b9-87dd-8db98589d093_rG3j7fa.webp HTTP/1.1" 304 0
+[28/Feb/2025 04:06:52] "GET /media/product_images/4_18d0087a-01da-4984-b3a5-57601ec05c85_rBMRa2a.webp HTTP/1.1" 304 0
+[28/Feb/2025 04:06:52] "GET /media/product_images/1_5d5693a6-bc3a-40a9-8f55-533ecde46d39_Gmvziti.webp HTTP/1.1" 304 0
+[28/Feb/2025 04:06:52] "GET /media/product_images/2_8422a1c4-19dc-4355-8faa-035367bda194_9Ou09bm.webp HTTP/1.1" 304 0
+[28/Feb/2025 04:06:52] "GET /media/product_images/3_1c337c64-3cd2-47b9-87dd-8db98589d093_xmaaH5L.webp HTTP/1.1" 304 0
+[28/Feb/2025 04:06:52] "GET /media/product_images/4_18d0087a-01da-4984-b3a5-57601ec05c85_RHUlYeW.webp HTTP/1.1" 304 0
+/root/biotechmaali/product/models.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 27, 2025 - 16:14:49
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+-------------product_type: plant
+plant----------------- 1 None None None
+:-------: Brazilian Wood Plant {'product_id': <MainProduct: Brazilian Wood Plant>, 'visible_online': True}
+-------prod: None
+-------------product_type: plant
+plant----------------- None 1 None None
+:-------: Brazilian Wood Plant {'product_id': <MainProduct: Brazilian Wood Plant>, 'visible_online': True}
+-------------product_type: plant
+plant----------------- None None 1 None
+:-------: Brazilian Wood Plant {'product_id': <MainProduct: Brazilian Wood Plant>, 'visible_online': True}
+-------------product_type: plant
+plant----------------- 3 None None None
+:-------: Brazilian Wood Plant {'product_id': <MainProduct: Brazilian Wood Plant>, 'visible_online': True}
+-------prod: None
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 126, in inner_run
+    autoreload.raise_last_exception()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 87, in raise_last_exception
+    raise _exception[1]
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/__init__.py", line 394, in execute
+    autoreload.check_errors(django.setup)()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/apps/registry.py", line 116, in populate
+    app_config.import_models()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/apps/config.py", line 269, in import_models
+    self.models_module = import_module(models_module_name)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/root/biotechmaali/product/models.py", line 2, in <module>
+    from attribute.models import Size, PlanterSize, Planter, Color, Weight, HandleMaterial, BladeMaterial, PotType, Material, Shape, Litre
+ImportError: cannot import name 'Litre' from 'attribute.models' (/root/biotechmaali/attribute/models.py)
+/root/biotechmaali/attribute/models.py changed, reloading.
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 126, in inner_run
+    autoreload.raise_last_exception()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 87, in raise_last_exception
+    raise _exception[1]
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/__init__.py", line 394, in execute
+    autoreload.check_errors(django.setup)()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/apps/registry.py", line 116, in populate
+    app_config.import_models()
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/apps/config.py", line 269, in import_models
+    self.models_module = import_module(models_module_name)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/root/biotechmaali/product/models.py", line 2, in <module>
+    from attribute.models import Size, PlanterSize, Planter, Color, Weight, HandleMaterial, BladeMaterial, PotType, Material, Shape, Litre
+  File "/root/biotechmaali/attribute/models.py", line 92
+    return self.name)   
+                    ^
+SyntaxError: unmatched ')'
+/root/biotechmaali/attribute/models.py changed, reloading.
+Watching for file changes with StatReloader
+[28/Feb/2025 04:40:22] "GET /admin/ HTTP/1.1" 200 84800
+[28/Feb/2025 04:40:22] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[28/Feb/2025 04:40:34] "GET /admin/product/product/ HTTP/1.1" 200 55595
+[28/Feb/2025 04:40:34] "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[28/Feb/2025 04:40:34] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:40:34] "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[28/Feb/2025 04:40:34] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[28/Feb/2025 04:40:34] "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[28/Feb/2025 04:40:34] "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[28/Feb/2025 04:40:34] "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[28/Feb/2025 04:40:34] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+[28/Feb/2025 04:40:35] "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+[28/Feb/2025 04:43:47] code 400, message Bad request syntax ('nil')
+[28/Feb/2025 04:43:47] "nil" 400 -
+Not Found: /
+[28/Feb/2025 04:43:48] "GET / HTTP/1.0" 404 4821
+Not Found: /
+[28/Feb/2025 04:43:48] "GET / HTTP/1.1" 404 4826
+Not Found: /favicon.ico
+[28/Feb/2025 04:43:48] "GET /favicon.ico HTTP/1.1" 404 4877
+[28/Feb/2025 04:54:51] "GET /admin/product/product/add/ HTTP/1.1" 200 65660
+[28/Feb/2025 04:54:51] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:54:51] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+[28/Feb/2025 04:54:51] "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+[28/Feb/2025 04:54:51] "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+[28/Feb/2025 04:54:51] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+[28/Feb/2025 04:54:51] "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+[28/Feb/2025 04:54:51] "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+[28/Feb/2025 04:55:01] "GET /admin/product/mainproduct/ HTTP/1.1" 200 39315
+[28/Feb/2025 04:55:01] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:55:08] "GET /admin/product/mainproduct/add/ HTTP/1.1" 200 45687
+[28/Feb/2025 04:55:08] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:56:59] "POST /admin/product/mainproduct/add/ HTTP/1.1" 302 0
+[28/Feb/2025 04:57:00] "GET /admin/product/mainproduct/ HTTP/1.1" 200 40684
+[28/Feb/2025 04:57:00] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:57:10] "GET /admin/product/product/ HTTP/1.1" 200 55763
+[28/Feb/2025 04:57:10] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:57:13] "GET /admin/product/product/add/ HTTP/1.1" 200 65707
+[28/Feb/2025 04:57:13] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:57:36] "GET /admin/product/product/add/ HTTP/1.1" 200 65707
+[28/Feb/2025 04:57:36] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+/root/biotechmaali/attribute/admin.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 04:39:07
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[28/Feb/2025 04:59:00] "GET /admin/product/product/add/ HTTP/1.1" 200 67415
+[28/Feb/2025 04:59:00] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:59:08] "GET /admin/attribute/litre/ HTTP/1.1" 200 30991
+[28/Feb/2025 04:59:08] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:59:10] "GET /admin/attribute/litre/add/ HTTP/1.1" 200 32854
+[28/Feb/2025 04:59:10] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:59:23] "POST /admin/attribute/litre/add/ HTTP/1.1" 302 0
+[28/Feb/2025 04:59:23] "GET /admin/attribute/litre/add/ HTTP/1.1" 200 33449
+[28/Feb/2025 04:59:23] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:59:31] "POST /admin/attribute/litre/add/ HTTP/1.1" 302 0
+[28/Feb/2025 04:59:31] "GET /admin/attribute/litre/add/ HTTP/1.1" 200 33449
+[28/Feb/2025 04:59:31] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:59:37] "POST /admin/attribute/litre/add/ HTTP/1.1" 302 0
+[28/Feb/2025 04:59:38] "GET /admin/attribute/litre/ HTTP/1.1" 200 35775
+[28/Feb/2025 04:59:38] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 04:59:55] "GET /admin/product/product/add/ HTTP/1.1" 200 67529
+[28/Feb/2025 04:59:55] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 05:03:37] "POST /admin/product/product/add/ HTTP/1.1" 302 0
+[28/Feb/2025 05:03:38] "GET /admin/product/product/ HTTP/1.1" 200 57502
+[28/Feb/2025 05:03:38] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 05:04:02] "GET /admin/product/mainproductimage/ HTTP/1.1" 200 39240
+[28/Feb/2025 05:04:02] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 05:04:02] "GET /media/main_product_images/1_2.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:04:03] "GET /media/main_product_images/2_8422a1c4-19dc-4355-8faa-035367bda194_Vgb2HQe.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:04:03] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:04:03] "GET /media/main_product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd_ihTdTZk.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:04:03] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:04:03] "GET /media/main_product_images/GroPot_ZKfJXUn.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:04:03] "GET /media/main_product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd_4CyyVRl.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:04:03] "GET /media/main_product_images/GroPot_7PHaGZI.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:04:03] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:04:05] "GET /admin/product/mainproductimage/add/ HTTP/1.1" 200 34394
+[28/Feb/2025 05:04:05] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 05:04:17] "POST /admin/product/mainproductimage/add/ HTTP/1.1" 302 0
+[28/Feb/2025 05:04:17] "GET /admin/product/mainproductimage/add/ HTTP/1.1" 200 35044
+[28/Feb/2025 05:04:17] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 05:04:26] "POST /admin/product/mainproductimage/add/ HTTP/1.1" 302 0
+[28/Feb/2025 05:04:26] "GET /admin/product/mainproductimage/ HTTP/1.1" 200 41040
+[28/Feb/2025 05:04:26] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 05:04:26] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 200 62596
+[28/Feb/2025 05:04:26] "GET /media/main_product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 200 75090
+[28/Feb/2025 05:04:32] "GET /admin/product/product/ HTTP/1.1" 200 56928
+[28/Feb/2025 05:04:32] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 05:04:36] "GET /admin/product/product/add/ HTTP/1.1" 200 67529
+[28/Feb/2025 05:04:36] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 05:05:19] "POST /admin/product/product/add/ HTTP/1.1" 200 67843
+[28/Feb/2025 05:05:19] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 05:05:31] "POST /admin/product/product/add/ HTTP/1.1" 302 0
+[28/Feb/2025 05:05:31] "GET /admin/product/product/add/ HTTP/1.1" 200 68138
+[28/Feb/2025 05:05:31] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 05:06:17] "POST /admin/product/product/add/ HTTP/1.1" 302 0
+[28/Feb/2025 05:06:17] "GET /admin/product/product/ HTTP/1.1" 200 58877
+[28/Feb/2025 05:06:17] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[28/Feb/2025 05:06:26] "GET /promotion/banner/ HTTP/1.1" 200 43
+[28/Feb/2025 05:06:26] "GET /category/ HTTP/1.1" 200 46
+[28/Feb/2025 05:06:27] "GET /blog/ HTTP/1.1" 200 2
+[28/Feb/2025 05:06:27] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[28/Feb/2025 05:06:27] "GET /store/store_list/ HTTP/1.1" 200 42
+[28/Feb/2025 05:06:27] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:06:27] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:06:27] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:27] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:27] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:27] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:27] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:27] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:27] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:27] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:27] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:27] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:27] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:27] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:06:27] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:27] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:27] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:27] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:28] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[28/Feb/2025 05:06:30] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+Internal Server Error: /product/defaultProduct/6/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/product/view/default_product.py", line 177, in default_product
+    litre = product.litre
+            ^^^^^^^^^^^^^
+AttributeError: 'Product' object has no attribute 'litre'
+[28/Feb/2025 05:06:30] "GET /product/defaultProduct/6/ HTTP/1.1" 500 101241
+[28/Feb/2025 05:06:30] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:06:35] "GET /promotion/banner/ HTTP/1.1" 200 43
+[28/Feb/2025 05:06:35] "GET /category/ HTTP/1.1" 200 46
+[28/Feb/2025 05:06:35] "GET /blog/ HTTP/1.1" 200 2
+[28/Feb/2025 05:06:35] "GET /store/store_list/ HTTP/1.1" 200 42
+[28/Feb/2025 05:06:35] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[28/Feb/2025 05:06:35] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:06:35] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:06:35] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:35] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:35] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:35] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:35] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:35] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:36] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:06:36] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:36] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:36] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:36] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:36] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:36] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:36] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:36] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:06:36] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[28/Feb/2025 05:06:40] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+Internal Server Error: /product/defaultProduct/6/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/product/view/default_product.py", line 177, in default_product
+    litre = product.litre
+            ^^^^^^^^^^^^^
+AttributeError: 'Product' object has no attribute 'litre'
+[28/Feb/2025 05:06:40] "GET /product/defaultProduct/6/ HTTP/1.1" 500 101241
+[28/Feb/2025 05:06:40] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:07:06] "GET /promotion/banner/ HTTP/1.1" 200 43
+[28/Feb/2025 05:07:06] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[28/Feb/2025 05:07:06] "GET /category/ HTTP/1.1" 200 46
+[28/Feb/2025 05:07:06] "GET /blog/ HTTP/1.1" 200 2
+[28/Feb/2025 05:07:06] "GET /store/store_list/ HTTP/1.1" 200 42
+[28/Feb/2025 05:07:06] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:07:06] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:07:06] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:07:06] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:07:06] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:07:06] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:07:06] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:07:06] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:07:06] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:07:06] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:07:06] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:07:06] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:07:06] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:07:07] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:07:07] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:07:07] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:07:07] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:07:07] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[28/Feb/2025 05:07:07] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+Internal Server Error: /product/defaultProduct/6/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/product/view/default_product.py", line 177, in default_product
+    litre = product.litre
+            ^^^^^^^^^^^^^
+AttributeError: 'Product' object has no attribute 'litre'
+[28/Feb/2025 05:07:07] "GET /product/defaultProduct/6/ HTTP/1.1" 500 101241
+[28/Feb/2025 05:07:08] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 04:58:56
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:13:59
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[28/Feb/2025 05:14:17] "GET /promotion/banner/ HTTP/1.1" 200 43
+[28/Feb/2025 05:14:18] "GET /category/ HTTP/1.1" 200 46
+[28/Feb/2025 05:14:18] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[28/Feb/2025 05:14:18] "GET /store/store_list/ HTTP/1.1" 200 42
+[28/Feb/2025 05:14:18] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:14:18] "GET /blog/ HTTP/1.1" 200 2
+[28/Feb/2025 05:14:18] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:14:18] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:14:18] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:14:18] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:14:18] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:14:18] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:14:18] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:14:18] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:14:18] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:14:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:14:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:14:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:14:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:14:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:14:19] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:14:19] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:14:19] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[28/Feb/2025 05:14:23] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+Internal Server Error: /product/defaultProduct/6/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/product/view/default_product.py", line 198, in default_product
+    'product': serializer.data,
+               ^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 571, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `litre` is not valid for model `Product` in `product.view.default_product.ProductSerializer`.
+[28/Feb/2025 05:14:23] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:14:23] "GET /product/defaultProduct/6/ HTTP/1.1" 500 153988
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:14:03
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[28/Feb/2025 05:14:52] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+Internal Server Error: /product/defaultProduct/6/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ListSerializer is not JSON serializable
+[28/Feb/2025 05:14:52] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:14:52] "GET /product/defaultProduct/6/ HTTP/1.1" 500 116767
+[28/Feb/2025 05:14:52] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:16:32] "GET /promotion/banner/ HTTP/1.1" 200 43
+[28/Feb/2025 05:16:32] "GET /category/ HTTP/1.1" 200 46
+[28/Feb/2025 05:16:32] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[28/Feb/2025 05:16:32] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:16:32] "GET /blog/ HTTP/1.1" 200 2
+[28/Feb/2025 05:16:32] "GET /store/store_list/ HTTP/1.1" 200 42
+[28/Feb/2025 05:16:32] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:16:32] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:16:32] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:16:32] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:16:32] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:16:32] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:16:32] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:16:32] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:16:32] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:16:32] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:16:32] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:16:32] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:16:33] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:16:33] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:16:33] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:16:33] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:16:33] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[28/Feb/2025 05:16:36] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+Internal Server Error: /product/defaultProduct/5/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/renderers.py", line 100, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/utils/json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/utils/encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ListSerializer is not JSON serializable
+[28/Feb/2025 05:16:36] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:16:36] "GET /product/defaultProduct/5/ HTTP/1.1" 500 116067
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:14:45
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:17:12
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[28/Feb/2025 05:17:20] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:17:20] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1277
+[28/Feb/2025 05:17:20] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+Not Found: /media/default/category_default.jpg
+[28/Feb/2025 05:17:20] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[28/Feb/2025 05:17:20] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:17:39] "GET /promotion/banner/ HTTP/1.1" 200 43
+[28/Feb/2025 05:17:39] "GET /category/ HTTP/1.1" 200 46
+[28/Feb/2025 05:17:39] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[28/Feb/2025 05:17:39] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:17:39] "GET /blog/ HTTP/1.1" 200 2
+[28/Feb/2025 05:17:39] "GET /store/store_list/ HTTP/1.1" 200 42
+[28/Feb/2025 05:17:39] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:17:39] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:17:39] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:17:39] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:17:39] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:17:39] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:17:39] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:17:39] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:17:39] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:17:39] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:17:39] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:17:39] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:17:39] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:17:39] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:17:40] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:17:40] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:17:40] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[28/Feb/2025 05:17:44] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:17:44] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1430
+[28/Feb/2025 05:17:44] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:17:44] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 200 75090
+[28/Feb/2025 05:17:44] "GET /media/main_product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 304 0
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:17:15
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:24:44
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[28/Feb/2025 05:25:25] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:25:25] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1430
+[28/Feb/2025 05:25:25] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:25:25] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:25:25] "GET /media/main_product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:25:25] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 304 0
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:25:04
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[28/Feb/2025 05:25:55] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1422
+[28/Feb/2025 05:25:55] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:25:55] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:25:48
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[28/Feb/2025 05:26:15] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:26:15] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1424
+[28/Feb/2025 05:26:15] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:26:11
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:26:57
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/root/biotechmaali/product/models.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:32:02
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[28/Feb/2025 05:32:41] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:32:41] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1430
+[28/Feb/2025 05:32:42] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:32:42] "GET /media/main_product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:32:42] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:32:42] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 304 0
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:32:35
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[28/Feb/2025 05:36:11] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:36:11] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1499
+[28/Feb/2025 05:36:11] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:36:11] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:36:11] "GET /media/main_product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 304 0
+[28/Feb/2025 05:36:11] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 304 0
+/root/biotechmaali/product/view/default_product.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 28, 2025 - 05:36:04
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[28/Feb/2025 05:37:20] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:37:20] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1499
+[28/Feb/2025 05:37:20] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:38:02] "GET /promotion/banner/ HTTP/1.1" 200 43
+[28/Feb/2025 05:38:03] "GET /category/ HTTP/1.1" 200 46
+[28/Feb/2025 05:38:03] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:38:03] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[28/Feb/2025 05:38:03] "GET /blog/ HTTP/1.1" 200 2
+[28/Feb/2025 05:38:03] "GET /store/store_list/ HTTP/1.1" 200 42
+[28/Feb/2025 05:38:03] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:38:03] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:38:03] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:38:03] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:38:03] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:38:03] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:38:03] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:38:03] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[28/Feb/2025 05:38:03] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:38:03] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:38:03] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:38:03] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:38:03] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:38:03] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:38:03] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:38:04] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[28/Feb/2025 05:38:04] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[28/Feb/2025 05:38:08] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:38:08] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1593
+[28/Feb/2025 05:38:08] "GET /product/homeProducts/ HTTP/1.1" 200 1144
+[28/Feb/2025 05:38:08] "GET /media/product_images/GroPot.webp HTTP/1.1" 304 0
+Bad Request: /product/filterProduct/1/
+[28/Feb/2025 05:38:35] "GET /product/filterProduct/1/?size_id=1 HTTP/1.1" 400 37

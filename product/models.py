@@ -1,5 +1,5 @@
 from django.db import models
-from attribute.models import Size, PlanterSize, Planter, Color, Weight, HandleMaterial, BladeMaterial, PotType, Material, Shape
+from attribute.models import Size, PlanterSize, Planter, Color, Weight, HandleMaterial, BladeMaterial, PotType, Material, Shape, Litre
 from account.models import User
 
 # Create your models here.
@@ -83,7 +83,7 @@ class Product(models.Model):
     material_id = models.ForeignKey(Material, on_delete=models.SET_NULL, null=True, blank=True)
     shape_id = models.ForeignKey(Shape, on_delete=models.SET_NULL, null=True, blank=True)
     pot_type_id = models.ForeignKey(PotType, on_delete=models.SET_NULL, null=True, blank=True)
-    litre = models.FloatField(null=True, blank=True)
+    litre_id = models.ForeignKey(Litre, on_delete=models.SET_NULL, null=True, blank=True)
 
     name = models.CharField(max_length=100)
     cost = models.FloatField(default=0)

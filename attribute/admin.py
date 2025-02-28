@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Color, Size, Planter, PlanterSize, Weight, Material, Shape, HandleMaterial, BladeMaterial, PotType
+from .models import Color, Size, Planter, PlanterSize, Weight, Material, Shape, HandleMaterial, BladeMaterial, PotType, Litre
 
 # Register your models here.
 
@@ -39,6 +39,10 @@ class HandleMaterialAdmin(admin.ModelAdmin):
 @admin.register(BladeMaterial)
 class BladeMaterialAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
+
+@admin.register(Litre)
+class LitreAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'status')
 
 admin.site.register(PlanterSize, PlanterSizeAdmin)
 admin.site.register(Planter, PlanterAdmin)

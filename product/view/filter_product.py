@@ -144,11 +144,12 @@ def filter_product(request, pk):
                 # Only add to the filter dictionary if the parameter is provided
                 product_id = current_product.product_id
                 filter_params = {'product_id': product_id, 'visible_online': True}
-
+                print(":-------:",product_id, filter_params)
                 if size_id and not planter_size_id and not planter_id and not color_id:
                     filter_params['size_id'] = size_id
                     
                     product = Product.objects.filter(**filter_params).first()
+                    print("-------prod:", product)
                     
                     if not product:
                         return Response(data={'message': 'Product does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
