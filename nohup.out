@@ -4183,3 +4183,5 @@ Unauthorized: /order/wishlist/
 [28/Feb/2025 05:38:08] "GET /media/product_images/GroPot.webp HTTP/1.1" 304 0
 Bad Request: /product/filterProduct/1/
 [28/Feb/2025 05:38:35] "GET /product/filterProduct/1/?size_id=1 HTTP/1.1" 400 37
+Not Found: /
+[28/Feb/2025 06:02:15] "GET / HTTP/1.0" 404 4826
