@@ -11,6 +11,9 @@ from .view.subcategory_products import subcategory_products
 from .view.sort_by import sort_by
 from .view.update_default_product import update_default_product
 from .view.stock_check import check_product_quantity
+from .view.search_product import search_products
+
+
 app_name = 'product'
 
 urlpatterns = [
@@ -32,5 +35,7 @@ urlpatterns = [
     path('subcategoryProducts/<int:subcategory_id>/', subcategory_products, name='subcategory_products'),
     path('sortBy/', sort_by, name='sort_by'),
 
-    path('stockCheck/<int:product_id>/', check_product_quantity, name='stock_check')
+    path('stockCheck/<int:product_id>/', check_product_quantity, name='stock_check'),
+
+    path('searchProducts/', search_products, name='search_products')
 ]

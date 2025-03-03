@@ -5547,3 +5547,2740 @@ Bad Request: /product/filterProduct/34/
 [01/Mar/2025 08:29:19] "GET /product/filterProduct/33?litre_id=1&color_id=1 HTTP/1.1" 301 0
 [01/Mar/2025 08:29:19] "GET /product/filterProduct/33/?litre_id=1&color_id=1 HTTP/1.1" 200 1223
 Watching for file changes with StatReloader
+[01/Mar/2025 09:31:46,688] - Broken pipe from ('206.168.34.57', 36912)
+Not Found: /
+[01/Mar/2025 09:31:52] "GET / HTTP/1.1" 404 4826
+[01/Mar/2025 09:31:53,483] - Broken pipe from ('206.168.34.57', 36926)
+Not Found: /
+[01/Mar/2025 09:32:06] "GET / HTTP/1.1" 404 4826
+[01/Mar/2025 09:32:08] code 505, message Invalid HTTP version (2.0)
+[01/Mar/2025 09:32:08] "PRI * HTTP/2.0" 505 -
+Not Found: /favicon.ico
+[01/Mar/2025 09:32:20] "GET /favicon.ico HTTP/1.1" 404 4877
+[01/Mar/2025 09:32:23] code 400, message Bad request version ('À\x14À')
+[01/Mar/2025 09:32:23] You're accessing the development server over HTTPS, but it only supports HTTP.
+Unauthorized: /account/profile/
+Unauthorized: /account/profile/
+[01/Mar/2025 09:57:53] "GET /account/profile/ HTTP/1.1" 401 58
+[01/Mar/2025 09:57:53] "GET /account/profile/ HTTP/1.1" 401 58
+Not Found: /
+[01/Mar/2025 10:02:25] "GET / HTTP/1.1" 404 4826
+Not Found: /
+[01/Mar/2025 10:06:58] "GET / HTTP/1.1" 404 4826
+Not Found: /favicon.ico
+[01/Mar/2025 10:13:08] "GET /favicon.ico HTTP/1.1" 404 4877
+/root/biotechmaali/product/urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 01, 2025 - 09:27:25
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 134, in inner_run
+    self.check(display_num_errors=True)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/base.py", line 486, in check
+    all_issues = checks.run_checks(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/checks/registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/checks/urls.py", line 136, in check_custom_error_handlers
+    handler = resolver.resolve_error_handler(status_code)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 732, in resolve_error_handler
+    callback = getattr(self.urlconf_module, "handler%s" % view_type, None)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 711, in urlconf_module
+    return import_module(self.urlconf_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/root/biotechmaali/main/urls.py", line 27, in <module>
+    path('product/',include('product.urls')),
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/urls/conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 991, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1129, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1059, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/root/biotechmaali/product/urls.py", line 38
+    path('stockCheck/<int:product_id>/', check_product_quantity, name='stock_check')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+/root/biotechmaali/product/urls.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 134, in inner_run
+    self.check(display_num_errors=True)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/base.py", line 486, in check
+    all_issues = checks.run_checks(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/checks/registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/checks/urls.py", line 136, in check_custom_error_handlers
+    handler = resolver.resolve_error_handler(status_code)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 732, in resolve_error_handler
+    callback = getattr(self.urlconf_module, "handler%s" % view_type, None)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 711, in urlconf_module
+    return import_module(self.urlconf_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/root/biotechmaali/main/urls.py", line 27, in <module>
+    path('product/',include('product.urls')),
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/urls/conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 991, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1129, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1059, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/root/biotechmaali/product/urls.py", line 38
+    path('stockCheck/<int:product_id>/', check_product_quantity, name='stock_check')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Watching for file changes with StatReloader
+[01/Mar/2025 14:27:52] "GET /promotion/banner/ HTTP/1.1" 200 574
+[01/Mar/2025 14:27:52] "GET /category/ HTTP/1.1" 200 618
+[01/Mar/2025 14:27:52] "GET /blog/ HTTP/1.1" 200 2
+[01/Mar/2025 14:27:52] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[01/Mar/2025 14:27:52] "GET /store/store_list/ HTTP/1.1" 200 42
+[01/Mar/2025 14:27:52] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[01/Mar/2025 14:27:52] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[01/Mar/2025 14:27:52] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[01/Mar/2025 14:27:52] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[01/Mar/2025 14:27:52] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[01/Mar/2025 14:27:52] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[01/Mar/2025 14:27:52] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:52] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:52] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:52] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:53] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[01/Mar/2025 14:27:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:53] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:53] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:53] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:53] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:53] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:53] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:53] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:54] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:54] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:54] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:54] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:54] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[01/Mar/2025 14:27:55] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[01/Mar/2025 14:27:55] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1684
+[01/Mar/2025 14:27:55] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[01/Mar/2025 14:27:55] "GET /media/product_images/GroPot.webp HTTP/1.1" 304 0
+[01/Mar/2025 14:27:55] "GET /media/main_product_images/GroPot_ZKfJXUn.webp HTTP/1.1" 304 0
+[01/Mar/2025 14:27:55] "GET /media/main_product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd_ihTdTZk.webp HTTP/1.1" 304 0
+[01/Mar/2025 14:27:57] "GET /promotion/banner/ HTTP/1.1" 200 574
+[01/Mar/2025 14:27:58] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[01/Mar/2025 14:27:58] "GET /store/store_list/ HTTP/1.1" 200 42
+[01/Mar/2025 14:27:58] "GET /blog/ HTTP/1.1" 200 2
+[01/Mar/2025 14:27:58] "GET /category/ HTTP/1.1" 200 618
+[01/Mar/2025 14:27:58] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[01/Mar/2025 14:27:58] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:58] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[01/Mar/2025 14:27:58] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[01/Mar/2025 14:27:58] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:58] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[01/Mar/2025 14:27:58] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:58] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:58] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:58] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:58] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:58] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:59] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:59] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[01/Mar/2025 14:27:59] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[01/Mar/2025 14:27:59] "GET /product/defaultProduct/8/ HTTP/1.1" 200 1784
+[01/Mar/2025 14:27:59] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:59] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[01/Mar/2025 14:27:59] "GET /media/product_images/3_eb0fd7b5-63df-48f7-9813-1694bcae292f.webp HTTP/1.1" 304 0
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:59] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[01/Mar/2025 14:27:59] "GET /media/main_product_images/5_6b810506-af8a-41e4-8aca-9a002c3f4027.webp HTTP/1.1" 304 0
+[01/Mar/2025 14:27:59] "GET /media/main_product_images/DrainageHole-3.webp HTTP/1.1" 304 0
+[01/Mar/2025 14:27:59] "GET /media/main_product_images/Texture-3_5d81d0f9-fd2c-41c4-8c57-0158da6f0007.webp HTTP/1.1" 304 0
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:59] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:59] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[01/Mar/2025 14:27:59] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[01/Mar/2025 14:34:41,398] - Broken pipe from ('171.61.176.18', 57948)
+[01/Mar/2025 14:34:41,399] - Broken pipe from ('171.61.176.18', 57944)
+[01/Mar/2025 14:34:41,399] - Broken pipe from ('171.61.176.18', 57942)
+[01/Mar/2025 14:34:41,400] - Broken pipe from ('171.61.176.18', 57949)
+[01/Mar/2025 14:34:41,401] - Broken pipe from ('171.61.176.18', 57941)
+[01/Mar/2025 14:34:41,403] - Broken pipe from ('171.61.176.18', 57943)
+[01/Mar/2025 14:34:41,403] - Broken pipe from ('171.61.176.18', 57946)
+[01/Mar/2025 14:34:41,405] - Broken pipe from ('171.61.176.18', 57945)
+[01/Mar/2025 14:34:41,406] - Broken pipe from ('171.61.176.18', 57950)
+Not Found: /
+[01/Mar/2025 15:04:09] "GET / HTTP/1.1" 404 4826
+Not Found: /
+[01/Mar/2025 16:21:18] "GET / HTTP/1.0" 404 4821
+[01/Mar/2025 17:01:26] code 400, message Bad request version ('À\x14À')
+[01/Mar/2025 17:01:26] You're accessing the development server over HTTPS, but it only supports HTTP.
+[01/Mar/2025 17:01:26] code 400, message Bad request version ('±')
+[01/Mar/2025 17:01:26] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[01/Mar/2025 17:01:27] "GET / HTTP/1.1" 404 4826
+Not Found: /login
+[01/Mar/2025 17:01:27] "GET /login HTTP/1.1" 404 4859
+[01/Mar/2025 18:06:13] code 400, message Bad request syntax ('\x16\x03\x01\x01\x17\x01\x00\x01\x13\x03\x03u\xad"<>\x86\x8apv¾f¹\x9d×\x91/akdöâ£ª\x9e¡$\x07Ñú\x8apÎ ')
+[01/Mar/2025 18:06:13] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[01/Mar/2025 18:06:23] "GET / HTTP/1.1" 404 4826
+Not Found: /favicon.ico
+[01/Mar/2025 18:06:41] "GET /favicon.ico HTTP/1.1" 404 4877
+Not Found: /robots.txt
+[01/Mar/2025 18:06:42] "GET /robots.txt HTTP/1.1" 404 4874
+Not Found: /sitemap.xml
+[01/Mar/2025 18:06:42] "GET /sitemap.xml HTTP/1.1" 404 4877
+[01/Mar/2025 18:23:54] code 400, message Bad request syntax ('MGLNDD_46.202.160.239_8000')
+[01/Mar/2025 18:23:54] "MGLNDD_46.202.160.239_8000" 400 -
+Not Found: /
+[01/Mar/2025 19:30:56] "GET / HTTP/1.0" 404 4826
+Not Found: /
+[01/Mar/2025 19:30:58] "GET / HTTP/1.0" 404 4826
+Not Found: /
+[01/Mar/2025 19:31:02] "GET / HTTP/1.0" 404 4826
+Not Found: /
+[01/Mar/2025 19:43:15] "GET / HTTP/1.1" 404 4826
+[01/Mar/2025 20:49:34,140] - Broken pipe from ('199.45.155.88', 45416)
+Not Found: /
+[01/Mar/2025 20:49:37] "GET / HTTP/1.1" 404 4826
+[01/Mar/2025 20:49:38,251] - Broken pipe from ('199.45.155.88', 45460)
+Not Found: /
+[01/Mar/2025 20:49:42] "GET / HTTP/1.1" 404 4826
+[01/Mar/2025 20:49:42] code 505, message Invalid HTTP version (2.0)
+[01/Mar/2025 20:49:42] "PRI * HTTP/2.0" 505 -
+Not Found: /favicon.ico
+[01/Mar/2025 20:49:49] "GET /favicon.ico HTTP/1.1" 404 4877
+[01/Mar/2025 20:49:50] code 400, message Bad request version ('À\x14À')
+[01/Mar/2025 20:49:50] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[01/Mar/2025 21:16:40] "GET / HTTP/1.1" 404 4826
+Not Found: /
+[02/Mar/2025 00:24:50] "GET / HTTP/1.1" 404 4826
+Not Found: /
+[02/Mar/2025 00:26:29] "GET / HTTP/1.1" 404 4826
+[02/Mar/2025 00:34:12,798] - Broken pipe from ('167.94.146.50', 33572)
+Not Found: /
+[02/Mar/2025 00:34:16] "GET / HTTP/1.1" 404 4826
+[02/Mar/2025 00:34:16,167] - Broken pipe from ('167.94.146.50', 43772)
+Not Found: /
+[02/Mar/2025 00:34:19] "GET / HTTP/1.1" 404 4826
+[02/Mar/2025 00:34:19] code 505, message Invalid HTTP version (2.0)
+[02/Mar/2025 00:34:19] "PRI * HTTP/2.0" 505 -
+Not Found: /favicon.ico
+[02/Mar/2025 00:34:23] "GET /favicon.ico HTTP/1.1" 404 4877
+[02/Mar/2025 00:34:23] code 400, message Bad request version ('À\x14À')
+[02/Mar/2025 00:34:23] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[02/Mar/2025 01:12:23] "GET / HTTP/1.0" 404 4826
+Not Found: /
+[02/Mar/2025 01:12:23] "GET / HTTP/1.0" 404 4826
+Not Found: /
+[02/Mar/2025 02:08:20] "GET / HTTP/1.1" 404 4826
+Not Found: /favicon.ico
+[02/Mar/2025 02:08:56] "GET /favicon.ico HTTP/1.1" 404 4877
+Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Bad Request: /http:/api.ipify.org/
+[02/Mar/2025 02:09:18] "GET http://api.ipify.org/?format=json HTTP/1.1" 400 69161
+Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Bad Request: /www.shadowserver.org:443
+[02/Mar/2025 02:09:40] "CONNECT www.shadowserver.org:443 HTTP/1.1" 400 69339
+[02/Mar/2025 02:18:34] code 400, message Bad request version ('À\x14À')
+[02/Mar/2025 02:18:34] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[02/Mar/2025 02:29:44] "GET / HTTP/1.1" 404 4826
+[02/Mar/2025 02:30:43,704] - Broken pipe from ('198.235.24.244', 64818)
+Not Found: /status
+[02/Mar/2025 02:41:08] "GET /status HTTP/1.1" 404 4862
+Not Found: /stat
+[02/Mar/2025 02:41:08] "GET /stat HTTP/1.1" 404 4856
+[02/Mar/2025 03:19:25] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 03:19:25] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 03:19:25] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 03:19:25] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 03:19:25] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /account/profile/
+Unauthorized: /account/profile/
+[02/Mar/2025 03:19:25] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 03:19:25] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 03:19:25] "GET /category/ HTTP/1.1" 200 618
+Unauthorized: /order/wishlist/
+[02/Mar/2025 03:19:45] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 03:19:46] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[02/Mar/2025 03:19:46] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 03:19:46] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 03:19:46] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 03:19:46] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 03:19:47] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 03:19:47] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 03:19:47] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 03:19:47] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+Unauthorized: /account/profile/
+[02/Mar/2025 03:22:54] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 03:22:54] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 03:22:54] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 03:22:54] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 03:22:55] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 03:22:55] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 03:22:55] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 03:22:55] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 03:23:02] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+Unauthorized: /order/wishlist/
+[02/Mar/2025 03:23:02] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 03:23:02] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 03:23:02] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 03:23:02] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 03:23:02] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 03:23:02] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 03:23:03] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 03:23:03] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+[02/Mar/2025 03:23:46] "GET /media/banners/mobileBanner/sprout_plant-wall-800_400.jpg HTTP/1.1" 200 53292
+[02/Mar/2025 03:24:07] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[02/Mar/2025 03:24:07] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 200 62596
+Unauthorized: /order/orderHistory/
+[02/Mar/2025 03:25:28] "GET /order/orderHistory/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 04:59:56] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 04:59:56] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 04:59:56] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 04:59:56] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 04:59:56] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 04:59:56] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 04:59:56] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 04:59:56] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 04:59:56] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 04:59:56] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[02/Mar/2025 04:59:56] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 04:59:56] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 04:59:56] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 04:59:57] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 04:59:59] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 05:00:01] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 05:00:02] "GET /media/banners/mobileBanner/sprout_plant-wall-800_400.jpg HTTP/1.1" 200 53292
+[02/Mar/2025 05:00:05] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[02/Mar/2025 05:00:05] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 200 62596
+[02/Mar/2025 05:00:07] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 05:00:15] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[02/Mar/2025 05:00:20] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+Unauthorized: /order/wishlist/
+[02/Mar/2025 05:00:28] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[02/Mar/2025 05:00:28] "GET /media/main_product_images/1_2acf4756-e9fb-4bf2-b95c-affb211b1d50.webp HTTP/1.1" 200 65296
+[02/Mar/2025 05:00:39] "GET /product/defaultProduct/8 HTTP/1.1" 301 0
+[02/Mar/2025 05:00:39] "GET /product/defaultProduct/8/ HTTP/1.1" 200 1784
+[02/Mar/2025 05:00:41] "GET /media/product_images/3_eb0fd7b5-63df-48f7-9813-1694bcae292f.webp HTTP/1.1" 200 66280
+[02/Mar/2025 05:00:44] "GET /media/main_product_images/1_2acf4756-e9fb-4bf2-b95c-affb211b1d50.webp HTTP/1.1" 200 65296
+[02/Mar/2025 05:00:47] "GET /media/main_product_images/5_6b810506-af8a-41e4-8aca-9a002c3f4027.webp HTTP/1.1" 200 45674
+[02/Mar/2025 05:00:48] "GET /media/main_product_images/DrainageHole-3.webp HTTP/1.1" 200 34494
+[02/Mar/2025 05:00:49] "GET /media/main_product_images/Texture-3_5d81d0f9-fd2c-41c4-8c57-0158da6f0007.webp HTTP/1.1" 200 48880
+[02/Mar/2025 05:01:03] "GET /product/filterProduct/32?litre_id=1&color_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:01:03] "GET /product/filterProduct/32/?litre_id=1&color_id=2 HTTP/1.1" 200 1199
+[02/Mar/2025 05:01:03] "GET /media/product_images/DrainageHole-3.webp HTTP/1.1" 200 34494
+[02/Mar/2025 05:01:09] "GET /product/filterProduct/33?litre_id=1&color_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 05:01:09] "GET /product/filterProduct/33/?litre_id=1&color_id=1 HTTP/1.1" 200 1223
+[02/Mar/2025 05:01:12] "GET /product/filterProduct/32?litre_id=1&color_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:01:12] "GET /product/filterProduct/32/?litre_id=1&color_id=2 HTTP/1.1" 200 1199
+[02/Mar/2025 05:01:15] "GET /product/filterProduct/33?litre_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:01:15] "GET /product/filterProduct/33/?litre_id=2 HTTP/1.1" 200 1234
+[02/Mar/2025 05:01:18] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50_BahXuYo.webp HTTP/1.1" 200 75090
+[02/Mar/2025 05:01:18] "GET /product/filterProduct/34?litre_id=2&color_id=4 HTTP/1.1" 301 0
+[02/Mar/2025 05:01:18] "GET /product/filterProduct/34/?litre_id=2&color_id=4 HTTP/1.1" 200 1210
+[02/Mar/2025 05:01:18] "GET /media/product_images/DrainageHole-3_vINct7F.webp HTTP/1.1" 200 34494
+[02/Mar/2025 05:02:20] "GET /product/filterProduct/35?litre_id=2&color_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:02:20] "GET /product/filterProduct/35/?litre_id=2&color_id=3 HTTP/1.1" 200 1234
+[02/Mar/2025 05:02:23] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50_BahXuYo.webp HTTP/1.1" 200 75090
+[02/Mar/2025 05:02:26] "GET /media/main_product_images/1_2acf4756-e9fb-4bf2-b95c-affb211b1d50.webp HTTP/1.1" 200 65296
+[02/Mar/2025 05:02:26] "GET /media/main_product_images/5_6b810506-af8a-41e4-8aca-9a002c3f4027.webp HTTP/1.1" 200 45674
+[02/Mar/2025 05:02:27] "GET /media/main_product_images/Texture-3_5d81d0f9-fd2c-41c4-8c57-0158da6f0007.webp HTTP/1.1" 200 48880
+[02/Mar/2025 05:02:32] "GET /product/filterProduct/34?litre_id=2&color_id=4 HTTP/1.1" 301 0
+[02/Mar/2025 05:02:32] "GET /product/filterProduct/34/?litre_id=2&color_id=4 HTTP/1.1" 200 1210
+[02/Mar/2025 05:02:32] "GET /media/product_images/DrainageHole-3_vINct7F.webp HTTP/1.1" 200 34494
+[02/Mar/2025 05:02:36] "GET /product/filterProduct/35?litre_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 05:02:36] "GET /product/filterProduct/35/?litre_id=1 HTTP/1.1" 200 1223
+[02/Mar/2025 05:02:38] "GET /media/product_images/3_eb0fd7b5-63df-48f7-9813-1694bcae292f.webp HTTP/1.1" 200 66280
+[02/Mar/2025 05:02:39] "GET /product/filterProduct/32?litre_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:02:39] "GET /product/filterProduct/32/?litre_id=3 HTTP/1.1" 200 1171
+[02/Mar/2025 05:02:39] "GET /media/product_images/7_8280be14-f1e7-482a-8138-5f5c36e6abb7.webp HTTP/1.1" 200 60124
+[02/Mar/2025 05:02:49] "GET /product/defaultProduct/8 HTTP/1.1" 301 0
+[02/Mar/2025 05:02:49] "GET /product/defaultProduct/8/ HTTP/1.1" 200 1784
+[02/Mar/2025 05:02:55] "GET /product/filterProduct/32?litre_id=1&color_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:02:55] "GET /product/filterProduct/32/?litre_id=1&color_id=2 HTTP/1.1" 200 1199
+[02/Mar/2025 05:02:55] "GET /media/product_images/DrainageHole-3.webp HTTP/1.1" 200 34494
+[02/Mar/2025 05:02:58] "GET /product/defaultProduct/8 HTTP/1.1" 301 0
+[02/Mar/2025 05:02:58] "GET /product/defaultProduct/8/ HTTP/1.1" 200 1784
+[02/Mar/2025 05:03:00] "GET /product/filterProduct/32?litre_id=1&color_id=3 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/32/
+[02/Mar/2025 05:03:00] "GET /product/filterProduct/32/?litre_id=1&color_id=3 HTTP/1.1" 400 37
+[02/Mar/2025 05:03:03] "GET /product/filterProduct/32?litre_id=1&color_id=4 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/32/
+[02/Mar/2025 05:03:03] "GET /product/filterProduct/32/?litre_id=1&color_id=4 HTTP/1.1" 400 37
+[02/Mar/2025 05:03:06] "GET /product/filterProduct/32?litre_id=1&color_id=4 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/32/
+[02/Mar/2025 05:03:06] "GET /product/filterProduct/32/?litre_id=1&color_id=4 HTTP/1.1" 400 37
+[02/Mar/2025 05:03:10] "GET /product/filterProduct/32?litre_id=1&color_id=3 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/32/
+[02/Mar/2025 05:03:10] "GET /product/filterProduct/32/?litre_id=1&color_id=3 HTTP/1.1" 400 37
+[02/Mar/2025 05:03:13] "GET /product/filterProduct/32?litre_id=1&color_id=4 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/32/
+[02/Mar/2025 05:03:13] "GET /product/filterProduct/32/?litre_id=1&color_id=4 HTTP/1.1" 400 37
+[02/Mar/2025 05:03:16] "GET /product/filterProduct/32?litre_id=1&color_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:03:16] "GET /product/filterProduct/32/?litre_id=1&color_id=2 HTTP/1.1" 200 1199
+[02/Mar/2025 05:03:19] "GET /product/filterProduct/33?litre_id=1&color_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 05:03:19] "GET /product/filterProduct/33/?litre_id=1&color_id=1 HTTP/1.1" 200 1223
+[02/Mar/2025 05:03:23] "GET /product/filterProduct/32?litre_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:03:23] "GET /product/filterProduct/32/?litre_id=3 HTTP/1.1" 200 1171
+[02/Mar/2025 05:03:30] "GET /product/filterProduct/36?litre_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:03:30] "GET /product/filterProduct/36/?litre_id=2 HTTP/1.1" 200 1234
+[02/Mar/2025 05:03:32] "GET /product/filterProduct/34?litre_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 05:03:32] "GET /product/filterProduct/34/?litre_id=1 HTTP/1.1" 200 1223
+[02/Mar/2025 05:03:34] "GET /product/filterProduct/32?litre_id=1&color_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:03:34] "GET /product/filterProduct/32/?litre_id=1&color_id=2 HTTP/1.1" 200 1199
+[02/Mar/2025 05:03:37] "GET /product/filterProduct/33?litre_id=1&color_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 05:03:37] "GET /product/filterProduct/33/?litre_id=1&color_id=1 HTTP/1.1" 200 1223
+[02/Mar/2025 05:04:02] "GET /product/filterProduct/32?litre_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:04:02] "GET /product/filterProduct/32/?litre_id=2 HTTP/1.1" 200 1234
+[02/Mar/2025 05:04:09] "GET /product/defaultProduct/8 HTTP/1.1" 301 0
+[02/Mar/2025 05:04:09] "GET /product/defaultProduct/8/ HTTP/1.1" 200 1784
+[02/Mar/2025 05:04:23] "GET /product/defaultProduct/7 HTTP/1.1" 301 0
+[02/Mar/2025 05:04:23] "GET /product/defaultProduct/7/ HTTP/1.1" 200 1845
+[02/Mar/2025 05:04:23] "GET /media/product_images/red-chatura-plastic-pots-set-of-5-31257679069316.webp HTTP/1.1" 200 36318
+[02/Mar/2025 05:04:57] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[02/Mar/2025 05:04:59] "GET /media/main_product_images/red-chatura-plastic-pots-set-of-5-31257679069316.webp HTTP/1.1" 200 36318
+[02/Mar/2025 05:05:03] "GET /media/main_product_images/reca-40-multicolour-self-watering-planter-set-of-4-31257697845380.webp HTTP/1.1" 200 27422
+[02/Mar/2025 05:05:12] "GET /media/main_product_images/chatura-plastic-pots-set-of-5-31257678446724.webp HTTP/1.1" 200 21004
+[02/Mar/2025 05:05:29] "GET /product/filterProduct/26?color_id=2 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/26/
+[02/Mar/2025 05:05:29] "GET /product/filterProduct/26/?color_id=2 HTTP/1.1" 400 37
+[02/Mar/2025 05:05:36] "GET /product/filterProduct/26?color_id=2 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/26/
+[02/Mar/2025 05:05:36] "GET /product/filterProduct/26/?color_id=2 HTTP/1.1" 400 37
+[02/Mar/2025 05:05:40] "GET /product/filterProduct/26?planter_size_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:05:40] "GET /product/filterProduct/26/?planter_size_id=2 HTTP/1.1" 200 1387
+[02/Mar/2025 05:05:40] "GET /media/product_images/reca-40-multicolour-self-watering-planter-set-of-4-31257697878148.webp HTTP/1.1" 200 27502
+[02/Mar/2025 05:05:42] "GET /product/filterProduct/28?color_id=4 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/28/
+[02/Mar/2025 05:05:42] "GET /product/filterProduct/28/?color_id=4 HTTP/1.1" 400 37
+[02/Mar/2025 05:05:45] "GET /product/filterProduct/28?planter_size_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:05:45] "GET /product/filterProduct/28/?planter_size_id=3 HTTP/1.1" 200 1375
+[02/Mar/2025 05:05:45] "GET /media/product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[02/Mar/2025 05:05:47] "GET /product/filterProduct/30?color_id=3 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/30/
+[02/Mar/2025 05:05:47] "GET /product/filterProduct/30/?color_id=3 HTTP/1.1" 400 37
+[02/Mar/2025 05:06:51] "GET /product/filterProduct/30?color_id=3 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/30/
+[02/Mar/2025 05:06:52] "GET /product/filterProduct/30/?color_id=3 HTTP/1.1" 400 37
+Unauthorized: /account/profile/
+[02/Mar/2025 05:09:39] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:09:39] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 05:09:39] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 05:09:39] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:09:39] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:09:39] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:09:39] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:09:39] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 05:09:39] "GET /order/wishlist/ HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[02/Mar/2025 05:09:43] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[02/Mar/2025 05:09:44] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[02/Mar/2025 05:09:45] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1277
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 05:09:45] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[02/Mar/2025 05:09:47] "GET /product/filterProduct/18?size_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 05:09:47] "GET /product/filterProduct/18/?size_id=1 HTTP/1.1" 200 766
+[02/Mar/2025 05:09:48] "GET /product/filterProduct/20?size_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:09:49] "GET /product/filterProduct/20/?size_id=3 HTTP/1.1" 200 732
+[02/Mar/2025 05:09:51] "GET /media/product_images/2_15ebeba3-8a5d-4b0e-a820-652ab40697aa.webp HTTP/1.1" 200 155324
+[02/Mar/2025 05:09:54] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 05:09:56] "GET /media/product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 05:10:07] "GET /product/filterProduct/19?size_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:10:07] "GET /product/filterProduct/19/?size_id=2 HTTP/1.1" 200 736
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 05:10:07] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 05:10:11] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 05:10:14] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 05:10:19] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[02/Mar/2025 05:10:21] "GET /product/filterProduct/18?size_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 05:10:21] "GET /product/filterProduct/18/?size_id=1 HTTP/1.1" 200 766
+[02/Mar/2025 05:11:25] "GET /product/filterProduct/20?size_id=2 HTTP/1.1" 301 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 01, 2025 - 14:27:45
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 2 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 1 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 2 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None None 2
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 4 2
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 3 2
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 4 2
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None None 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None None 3
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 2 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 3 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 4 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 4 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 3 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 4 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 2 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 1 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None None 3
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None None 2
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None None 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 2 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 1 1
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None None 2
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- None 2 None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- None 2 None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- 2 None None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- None 4 None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- 3 None None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- None 3 None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- None 3 None
+current product ----: Heavy Duty Bypass Pruner
+-------------product_type: tool
+-------------product_id: Heavy Duty Bypass Pruner
+--------------------------------------------------------------------
+tool----------------- 1 None
+current product ----: Heavy Duty Bypass Pruner
+-------------product_type: tool
+-------------product_id: Heavy Duty Bypass Pruner
+--------------------------------------------------------------------
+tool----------------- 3 None
+current product ----: Heavy Duty Bypass Pruner
+-------------product_type: tool
+-------------product_id: Heavy Duty Bypass Pruner
+--------------------------------------------------------------------
+tool----------------- 2 None
+current product ----: Heavy Duty Bypass Pruner
+-------------product_type: tool
+-------------product_id: Heavy Duty Bypass Pruner
+--------------------------------------------------------------------
+tool----------------- 1 None
+[02/Mar/2025 05:11:25] "GET /product/filterProduct/20/?size_id=2 HTTP/1.1" 200 736
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 05:11:25] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[02/Mar/2025 05:11:27] "GET /product/filterProduct/18?size_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:11:27] "GET /product/filterProduct/18/?size_id=3 HTTP/1.1" 200 732
+[02/Mar/2025 05:11:34] "GET /product/defaultProduct/4 HTTP/1.1" 301 0
+[02/Mar/2025 05:11:35] "GET /product/defaultProduct/4/ HTTP/1.1" 200 1284
+[02/Mar/2025 05:11:35] "GET /media/product_images/1_5d5693a6-bc3a-40a9-8f55-533ecde46d39_Q532foI.webp HTTP/1.1" 200 39668
+[02/Mar/2025 05:11:36] "GET /product/filterProduct/14?weight_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:11:36] "GET /product/filterProduct/14/?weight_id=2 HTTP/1.1" 200 904
+[02/Mar/2025 05:11:37] "GET /media/product_images/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu.webp HTTP/1.1" 200 35312
+[02/Mar/2025 05:11:38] "GET /product/filterProduct/15?weight_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:11:38] "GET /product/filterProduct/15/?weight_id=3 HTTP/1.1" 200 905
+[02/Mar/2025 05:11:39] "GET /media/product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b_xsrxohb.webp HTTP/1.1" 200 59388
+[02/Mar/2025 05:11:39] "GET /product/filterProduct/16?weight_id=4 HTTP/1.1" 301 0
+[02/Mar/2025 05:11:39] "GET /product/filterProduct/16/?weight_id=4 HTTP/1.1" 200 905
+[02/Mar/2025 05:11:42] "GET /media/product_images/4_18d0087a-01da-4984-b3a5-57601ec05c85_3ArSlaB.webp HTTP/1.1" 200 78262
+[02/Mar/2025 05:11:44] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 05:11:52] "GET /media/main_product_images/2_8422a1c4-19dc-4355-8faa-035367bda194_Vgb2HQe.webp HTTP/1.1" 200 64706
+[02/Mar/2025 05:12:00] "GET /product/filterProduct/17?weight_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:12:00] "GET /product/filterProduct/17/?weight_id=3 HTTP/1.1" 200 905
+[02/Mar/2025 05:12:06] "GET /product/filterProduct/16?weight_id=4 HTTP/1.1" 301 0
+[02/Mar/2025 05:12:07] "GET /product/filterProduct/16/?weight_id=4 HTTP/1.1" 200 905
+[02/Mar/2025 05:12:12] "GET /product/filterProduct/17?weight_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:12:12] "GET /product/filterProduct/17/?weight_id=3 HTTP/1.1" 200 905
+[02/Mar/2025 05:12:14] "GET /product/filterProduct/16?weight_id=4 HTTP/1.1" 301 0
+[02/Mar/2025 05:12:14] "GET /product/filterProduct/16/?weight_id=4 HTTP/1.1" 200 905
+[02/Mar/2025 05:12:17] "GET /product/filterProduct/17?weight_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:12:17] "GET /product/filterProduct/17/?weight_id=2 HTTP/1.1" 200 904
+[02/Mar/2025 05:12:20] "GET /product/filterProduct/15?weight_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:12:20] "GET /product/filterProduct/15/?weight_id=3 HTTP/1.1" 200 905
+[02/Mar/2025 05:12:22] "GET /product/filterProduct/16?weight_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:12:22] "GET /product/filterProduct/16/?weight_id=2 HTTP/1.1" 200 904
+[02/Mar/2025 05:12:24] "GET /product/filterProduct/15?weight_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 05:12:24] "GET /product/filterProduct/15/?weight_id=1 HTTP/1.1" 200 904
+[02/Mar/2025 05:12:26] "GET /product/filterProduct/14?weight_id=4 HTTP/1.1" 301 0
+[02/Mar/2025 05:12:26] "GET /product/filterProduct/14/?weight_id=4 HTTP/1.1" 200 905
+[02/Mar/2025 05:12:28] "GET /product/filterProduct/17?weight_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 05:12:28] "GET /product/filterProduct/17/?weight_id=1 HTTP/1.1" 200 904
+[02/Mar/2025 05:12:45] "GET /product/defaultProduct/7 HTTP/1.1" 301 0
+[02/Mar/2025 05:12:45] "GET /product/defaultProduct/7/ HTTP/1.1" 200 1845
+[02/Mar/2025 05:12:45] "GET /media/product_images/red-chatura-plastic-pots-set-of-5-31257679069316.webp HTTP/1.1" 200 36318
+[02/Mar/2025 05:12:49] "GET /product/filterProduct/26?color_id=2 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/26/
+[02/Mar/2025 05:12:49] "GET /product/filterProduct/26/?color_id=2 HTTP/1.1" 400 37
+Unauthorized: /account/profile/
+[02/Mar/2025 05:18:23] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:18:23] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 05:18:23] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:18:23] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:18:23] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:18:23] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:18:23] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 05:18:23] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 05:18:24] "GET /order/wishlist/ HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[02/Mar/2025 05:19:01] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[02/Mar/2025 05:19:20] "GET /product/defaultProduct/7 HTTP/1.1" 301 0
+[02/Mar/2025 05:19:20] "GET /product/defaultProduct/7/ HTTP/1.1" 200 1845
+[02/Mar/2025 05:19:21] "GET /media/product_images/red-chatura-plastic-pots-set-of-5-31257679069316.webp HTTP/1.1" 200 36318
+[02/Mar/2025 05:19:26] "GET /product/filterProduct/26?planter_size_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:19:26] "GET /product/filterProduct/26/?planter_size_id=2 HTTP/1.1" 200 1387
+[02/Mar/2025 05:19:27] "GET /media/product_images/reca-40-multicolour-self-watering-planter-set-of-4-31257697878148.webp HTTP/1.1" 200 27502
+[02/Mar/2025 05:19:38] "GET /product/filterProduct/28?color_id=4 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/28/
+[02/Mar/2025 05:19:39] "GET /product/filterProduct/28/?color_id=4 HTTP/1.1" 400 37
+[02/Mar/2025 05:20:01] "GET /product/filterProduct/28?planter_size_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 05:20:01] "GET /product/filterProduct/28/?planter_size_id=1 HTTP/1.1" 200 1367
+[02/Mar/2025 05:20:06] "GET /product/filterProduct/26?planter_size_id=1&color_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:20:07] "GET /product/filterProduct/26/?planter_size_id=1&color_id=2 HTTP/1.1" 200 1384
+[02/Mar/2025 05:20:07] "GET /media/product_images/reca-40-multicolour-self-watering-planter-set-of-4-31257697845380.webp HTTP/1.1" 200 27422
+[02/Mar/2025 05:20:12] "GET /product/filterProduct/27?planter_size_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 05:20:12] "GET /product/filterProduct/27/?planter_size_id=2 HTTP/1.1" 200 1387
+[02/Mar/2025 05:20:14] "GET /product/filterProduct/28?planter_size_id=2&color_id=4 HTTP/1.1" 301 0
+[02/Mar/2025 05:20:14] "GET /product/filterProduct/28/?planter_size_id=2&color_id=4 HTTP/1.1" 200 1372
+[02/Mar/2025 05:20:15] "GET /media/product_images/chatura-self-watering-pots-set-of-5-31257673531524.webp HTTP/1.1" 200 31660
+[02/Mar/2025 05:20:20] "GET /product/filterProduct/29?planter_size_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:20:21] "GET /product/filterProduct/29/?planter_size_id=3 HTTP/1.1" 200 1375
+[02/Mar/2025 05:20:21] "GET /media/product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[02/Mar/2025 05:20:23] "GET /product/filterProduct/30?planter_size_id=3&color_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 05:20:23] "GET /product/filterProduct/30/?planter_size_id=3&color_id=3 HTTP/1.1" 200 1383
+[02/Mar/2025 05:20:24] "GET /media/product_images/red-chatura-self-watering-pots-set-of-5-31257674743940_HWuOxeM.webp HTTP/1.1" 200 48962
+[02/Mar/2025 05:24:33] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:24:33] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:24:33] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 05:24:59] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:24:59] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:24:59] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 05:25:03] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[02/Mar/2025 05:25:04] "GET /product/defaultProduct/3 HTTP/1.1" 301 0
+[02/Mar/2025 05:25:04] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1684
+[02/Mar/2025 05:25:05] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+[02/Mar/2025 05:25:20] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:25:20] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:25:20] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 05:25:25] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:25:25] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:25:25] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 05:25:28] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:25:28] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 05:25:28] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:25:30] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:25:30] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:25:30] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 05:25:31] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:25:31] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:25:31] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /account/profile/
+[02/Mar/2025 05:31:49] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 05:31:49] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:31:49] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:31:49] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 05:31:49] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:31:49] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:31:49] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 05:31:50] "GET /order/wishlist/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:31:51] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:33:09] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:33:10] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 05:33:10] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:33:10] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 05:33:10] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:33:10] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 05:33:10] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 05:33:10] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 05:33:11] "GET /order/wishlist/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:37:36] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:37:36] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:39:43] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:40:39] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:40:44] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:41:12] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:41:16] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:41:17] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:41:18] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:41:29] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:41:32] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:41:37] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:42:27] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:42:27] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:42:53] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:42:55] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:42:56] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:42:58] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:43:00] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:43:59] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:44:10] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:44:27] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:44:44] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:44:54] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:49:00] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:53:51] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:54:02] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:54:13] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:54:13] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:54:13] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:54:19] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:55:54] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:55:54] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:56:18] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:56:23] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:57:23] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 05:57:23] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 05:59:07] code 400, message Bad request version ('}')
+[02/Mar/2025 05:59:07] "ÿ             ñ%   { "Ret" : 100, "SessionID" : "0x0" }" 400 -
+Unauthorized: /account/profile/
+Unauthorized: /account/profile/
+[02/Mar/2025 06:11:32] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 06:11:32] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 06:11:39] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 06:11:39] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 06:34:31] code 400, message Bad request version ('À\x14À')
+[02/Mar/2025 06:34:31] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[02/Mar/2025 08:27:56] "GET / HTTP/1.0" 404 4826
+Unauthorized: /account/profile/
+[02/Mar/2025 09:03:57] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 09:03:57] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 09:07:42] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 09:07:42] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+Unauthorized: /account/profile/
+[02/Mar/2025 09:08:53] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 09:08:53] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 09:16:42] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 09:16:43] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 09:16:43] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 09:16:43] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 09:16:43] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 09:16:43] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 09:16:43] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /account/profile/
+[02/Mar/2025 09:16:43] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[02/Mar/2025 09:16:44] "GET /order/wishlist/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 09:17:00] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 09:17:00] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 09:17:01] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 09:17:01] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 09:17:01] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 09:17:01] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 09:17:01] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 09:17:01] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 09:17:02] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 09:17:40] code 400, message Bad request syntax ('nil')
+[02/Mar/2025 09:17:40] "nil" 400 -
+Not Found: /
+[02/Mar/2025 09:17:40] "GET / HTTP/1.0" 404 4821
+Not Found: /
+[02/Mar/2025 09:17:40] "GET / HTTP/1.1" 404 4826
+Not Found: /favicon.ico
+[02/Mar/2025 09:17:40] "GET /favicon.ico HTTP/1.1" 404 4877
+Unauthorized: /account/profile/
+[02/Mar/2025 09:25:30] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 09:25:30] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 09:25:30] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 09:25:30] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 09:25:30] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 09:25:30] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 09:25:30] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 09:25:30] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 09:25:31] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 09:25:32] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 09:25:32] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 09:25:32] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[02/Mar/2025 09:25:32] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 09:25:32] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 09:25:32] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 09:25:33] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 09:25:33] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 09:25:33] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+[02/Mar/2025 09:25:35] "GET /media/banners/mobileBanner/sprout_plant-wall-800_400.jpg HTTP/1.1" 200 53292
+Unauthorized: /account/profile/
+[02/Mar/2025 09:28:28] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 09:28:28] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 09:28:28] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 09:28:28] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 09:28:28] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 09:28:28] "GET /category/ HTTP/1.1" 200 618
+Unauthorized: /order/wishlist/
+[02/Mar/2025 09:28:31] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 09:28:31] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 09:28:31] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 09:28:31] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[02/Mar/2025 09:28:31] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 09:28:32] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 09:28:32] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 09:28:32] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 09:28:32] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+[02/Mar/2025 09:28:32] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 09:28:35] "GET /media/banners/mobileBanner/sprout_plant-wall-800_400.jpg HTTP/1.1" 200 53292
+Unauthorized: /account/profile/
+[02/Mar/2025 09:37:37] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 09:37:37] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 09:38:37] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 09:38:37] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 09:38:37] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 09:38:37] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 09:38:37] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 09:38:37] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 09:38:37] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 09:38:37] "GET /promotion/banner/ HTTP/1.1" 200 574
+Unauthorized: /order/wishlist/
+[02/Mar/2025 09:38:38] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 09:38:38] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 09:38:38] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 09:38:38] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 09:38:38] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 09:38:38] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[02/Mar/2025 09:38:38] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 09:38:39] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 09:38:39] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+[02/Mar/2025 09:38:39] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 09:38:42] "GET /media/banners/mobileBanner/sprout_plant-wall-800_400.jpg HTTP/1.1" 200 53292
+Unauthorized: /account/profile/
+[02/Mar/2025 10:00:42] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 10:00:42] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:00:42] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:00:42] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:00:42] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:00:42] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 10:00:42] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /account/profile/
+[02/Mar/2025 10:00:42] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[02/Mar/2025 10:00:42] "GET /order/wishlist/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 10:01:19] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 10:01:20] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 10:01:20] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:01:20] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:01:20] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:01:20] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:01:20] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 10:01:20] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 10:01:20] "GET /order/wishlist/ HTTP/1.1" 401 183
+Unauthorized: /order/wishlist/
+[02/Mar/2025 10:01:24] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[02/Mar/2025 10:01:26] "GET /product/defaultProduct/3 HTTP/1.1" 301 0
+[02/Mar/2025 10:01:26] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1684
+[02/Mar/2025 10:01:27] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+[02/Mar/2025 10:01:29] "GET /product/filterProduct/1?size_id=1&planter_size_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 10:01:29] "GET /product/filterProduct/1/?size_id=1&planter_size_id=2 HTTP/1.1" 200 1307
+[02/Mar/2025 10:01:30] "GET /media/product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd.webp HTTP/1.1" 200 48552
+[02/Mar/2025 10:01:33] "GET /product/filterProduct/2?size_id=1&planter_size_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 10:01:33] "GET /product/filterProduct/2/?size_id=1&planter_size_id=3 HTTP/1.1" 200 1267
+[02/Mar/2025 10:01:34] "GET /media/product_images/DSC_9031-Copy_3_Gm37JXC.webp HTTP/1.1" 200 76236
+[02/Mar/2025 10:01:36] "GET /product/filterProduct/24?size_id=1&planter_size_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 10:01:36] "GET /product/filterProduct/24/?size_id=1&planter_size_id=1 HTTP/1.1" 200 1321
+[02/Mar/2025 10:01:38] "GET /product/filterProduct/1?size_id=1&planter_size_id=1&planter_id=1&color_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 10:01:38] "GET /product/filterProduct/1/?size_id=1&planter_size_id=1&planter_id=1&color_id=2 HTTP/1.1" 200 1347
+[02/Mar/2025 10:01:39] "GET /media/product_images/peace-lily-plant-32515294756996.webp HTTP/1.1" 200 49992
+[02/Mar/2025 10:02:53] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 10:02:55] "GET /media/main_product_images/GroPot_ZKfJXUn.webp HTTP/1.1" 200 29802
+[02/Mar/2025 10:02:55] "GET /media/main_product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd_ihTdTZk.webp HTTP/1.1" 200 48552
+[02/Mar/2025 10:03:01] "GET /product/filterProduct/25?size_id=1&planter_size_id=1&planter_id=1&color_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 10:03:01] "GET /product/filterProduct/25/?size_id=1&planter_size_id=1&planter_id=1&color_id=1 HTTP/1.1" 200 1321
+[02/Mar/2025 10:03:01] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+[02/Mar/2025 10:07:50] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 10:07:50] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:07:50] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:07:50] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 10:07:50] "GET /category/ HTTP/1.1" 200 618
+Unauthorized: /account/profile/
+[02/Mar/2025 10:07:50] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:07:50] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 10:07:50] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /order/wishlist/
+[02/Mar/2025 10:07:50] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 10:07:50] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 10:07:50] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[02/Mar/2025 10:07:50] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 10:07:50] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 10:07:51] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 10:07:51] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+[02/Mar/2025 10:07:51] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 10:07:51] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 10:07:51] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 10:07:53] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[02/Mar/2025 10:07:53] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 200 62596
+[02/Mar/2025 10:07:57] "GET /media/banners/mobileBanner/sprout_plant-wall-800_400.jpg HTTP/1.1" 200 53292
+[02/Mar/2025 10:08:01] "GET /media/main_product_images/1_2acf4756-e9fb-4bf2-b95c-affb211b1d50.webp HTTP/1.1" 200 65296
+[02/Mar/2025 10:08:20] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 10:08:20] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:08:20] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:08:21] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 10:08:21] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:08:21] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:08:52] "GET /product/defaultProduct/3 HTTP/1.1" 301 0
+[02/Mar/2025 10:08:53] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1684
+[02/Mar/2025 10:08:53] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+Unauthorized: /order/wishlist/
+[02/Mar/2025 10:08:59] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[02/Mar/2025 10:09:00] "GET /product/defaultProduct/1 HTTP/1.1" 301 0
+[02/Mar/2025 10:09:00] "GET /product/defaultProduct/1/ HTTP/1.1" 200 1580
+[02/Mar/2025 10:09:01] "GET /media/product_images/3_1c337c64-3cd2-47b9-87dd-8db98589d093_rG3j7fa.webp HTTP/1.1" 200 100842
+[02/Mar/2025 10:09:07] "GET /product/defaultProduct/3 HTTP/1.1" 301 0
+[02/Mar/2025 10:09:07] "GET /product/defaultProduct/3 HTTP/1.1" 301 0
+[02/Mar/2025 10:09:07] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1684
+[02/Mar/2025 10:09:07] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1684
+[02/Mar/2025 10:09:08] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+[02/Mar/2025 10:09:21] "GET /product/defaultProduct/4 HTTP/1.1" 301 0
+[02/Mar/2025 10:09:21] "GET /product/defaultProduct/4/ HTTP/1.1" 200 1284
+[02/Mar/2025 10:09:21] "GET /media/product_images/1_5d5693a6-bc3a-40a9-8f55-533ecde46d39_Q532foI.webp HTTP/1.1" 200 39668
+[02/Mar/2025 10:09:23] "GET /product/defaultProduct/4 HTTP/1.1" 301 0
+[02/Mar/2025 10:09:23] "GET /product/defaultProduct/4/ HTTP/1.1" 200 1284
+[02/Mar/2025 10:09:23] "GET /media/product_images/1_5d5693a6-bc3a-40a9-8f55-533ecde46d39_Q532foI.webp HTTP/1.1" 200 39668
+[02/Mar/2025 10:09:25] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 10:09:29] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[02/Mar/2025 10:09:29] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1277
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 10:09:29] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[02/Mar/2025 10:09:33] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 10:09:33] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 10:09:35] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[02/Mar/2025 10:09:39] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:09:39] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 10:09:39] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:09:49] "GET /product/defaultProduct/6 HTTP/1.1" 301 0
+[02/Mar/2025 10:09:49] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1551
+[02/Mar/2025 10:09:49] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 200 75090
+[02/Mar/2025 10:09:53] "GET /product/filterProduct/21?litre_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 10:09:53] "GET /product/filterProduct/21/?litre_id=2 HTTP/1.1" 200 866
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 10:09:53] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[02/Mar/2025 10:09:55] "GET /product/filterProduct/22?litre_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 10:09:55] "GET /product/filterProduct/22/?litre_id=3 HTTP/1.1" 200 945
+[02/Mar/2025 10:09:55] "GET /media/product_images/6_12be073f-479c-4574-a6a9-e34c31516e69.webp HTTP/1.1" 200 78206
+[02/Mar/2025 10:09:59] "GET /product/filterProduct/23?litre_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 10:09:59] "GET /product/filterProduct/23/?litre_id=2 HTTP/1.1" 200 866
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 10:09:59] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[02/Mar/2025 10:10:03] "GET /product/defaultProduct/8 HTTP/1.1" 301 0
+[02/Mar/2025 10:10:04] "GET /product/defaultProduct/8/ HTTP/1.1" 200 1784
+[02/Mar/2025 10:10:04] "GET /media/product_images/3_eb0fd7b5-63df-48f7-9813-1694bcae292f.webp HTTP/1.1" 200 66280
+[02/Mar/2025 10:10:08] "GET /product/filterProduct/32?litre_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 10:10:08] "GET /product/filterProduct/32/?litre_id=2 HTTP/1.1" 200 1234
+[02/Mar/2025 10:10:08] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50_BahXuYo.webp HTTP/1.1" 200 75090
+[02/Mar/2025 10:10:10] "GET /product/filterProduct/34?litre_id=2&color_id=4 HTTP/1.1" 301 0
+[02/Mar/2025 10:10:10] "GET /product/filterProduct/34/?litre_id=2&color_id=4 HTTP/1.1" 200 1210
+[02/Mar/2025 10:10:10] "GET /media/product_images/DrainageHole-3_vINct7F.webp HTTP/1.1" 200 34494
+[02/Mar/2025 10:10:12] "GET /product/filterProduct/35?litre_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 10:10:13] "GET /product/filterProduct/35/?litre_id=3 HTTP/1.1" 200 1171
+[02/Mar/2025 10:10:13] "GET /media/product_images/7_8280be14-f1e7-482a-8138-5f5c36e6abb7.webp HTTP/1.1" 200 60124
+[02/Mar/2025 10:10:35] "POST /account/registerWithMobile/ HTTP/1.1" 201 74
+[02/Mar/2025 10:13:14] "POST /account/registerWithMobile/ HTTP/1.1" 201 74
+[02/Mar/2025 10:13:38] "POST /account/validateOtp/ HTTP/1.1" 200 89
+[02/Mar/2025 10:14:17] "POST /account/register/ HTTP/1.1" 200 625
+[02/Mar/2025 10:14:18] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 10:14:18] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:14:18] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:14:28] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[02/Mar/2025 10:14:30] "POST /api/token/verify/ HTTP/1.1" 200 2
+[02/Mar/2025 10:14:30] "POST /order/wishlist/ HTTP/1.1" 200 67
+[02/Mar/2025 10:14:30] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 24
+[02/Mar/2025 10:14:30] "GET /order/wishlist/ HTTP/1.1" 200 198
+[02/Mar/2025 10:14:32] "GET /order/wishlist/ HTTP/1.1" 200 198
+[02/Mar/2025 10:14:32] "GET /order/wishlist/ HTTP/1.1" 200 198
+[02/Mar/2025 10:14:32] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+Forbidden: /order/wishlist/4/
+[02/Mar/2025 10:14:38] "DELETE /order/wishlist/4/ HTTP/1.1" 403 64
+[02/Mar/2025 10:14:40] "GET /order/wishlist/ HTTP/1.1" 200 198
+Forbidden: /order/wishlist/4/
+[02/Mar/2025 10:14:42] "DELETE /order/wishlist/4/ HTTP/1.1" 403 64
+[02/Mar/2025 10:14:43] "GET /order/wishlist/ HTTP/1.1" 200 198
+[02/Mar/2025 10:14:44] "GET /product/defaultProduct/4 HTTP/1.1" 301 0
+[02/Mar/2025 10:14:44] "GET /product/defaultProduct/4/ HTTP/1.1" 200 1284
+[02/Mar/2025 10:14:45] "GET /media/product_images/1_5d5693a6-bc3a-40a9-8f55-533ecde46d39_Q532foI.webp HTTP/1.1" 200 39668
+Forbidden: /order/wishlist/4/
+[02/Mar/2025 10:14:48] "DELETE /order/wishlist/4/ HTTP/1.1" 403 64
+[02/Mar/2025 10:14:53] "GET /order/wishlist/ HTTP/1.1" 200 198
+[02/Mar/2025 10:14:59] "POST /order/cart/ HTTP/1.1" 201 49
+[02/Mar/2025 10:14:59] "GET /order/cart/ HTTP/1.1" 200 425
+[02/Mar/2025 10:15:01] "GET /order/cart/ HTTP/1.1" 200 425
+[02/Mar/2025 10:15:01] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+Forbidden: /order/placeOrder/
+[02/Mar/2025 10:15:03] "POST /order/placeOrder/ HTTP/1.1" 403 64
+Unauthorized: /order/wishlist/
+[02/Mar/2025 10:19:49] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[02/Mar/2025 10:19:51] "GET /product/defaultProduct/6 HTTP/1.1" 301 0
+[02/Mar/2025 10:19:52] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1551
+[02/Mar/2025 10:19:52] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 200 75090
+[02/Mar/2025 10:21:12] "GET /product/filterProduct/21?litre_id=2 HTTP/1.1" 301 0
+current product ----: Heavy Duty Bypass Pruner
+-------------product_type: tool
+-------------product_id: Heavy Duty Bypass Pruner
+--------------------------------------------------------------------
+tool----------------- 2 None
+current product ----: Heavy Duty Bypass Pruner
+-------------product_type: tool
+-------------product_id: Heavy Duty Bypass Pruner
+--------------------------------------------------------------------
+tool----------------- 3 None
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 2
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 3
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 4
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 3
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 4
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 3
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 4
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 2
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 3
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 2
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 1
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 4
+current product ----: Tomato Seeds
+-------------product_type: seed
+-------------product_id: Tomato Seeds
+--------------------------------------------------------------------
+seed----------------- 1
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- None 2 None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- 2 None None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- None 4 None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- 1 None None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- 1 2 None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- 2 None None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- 2 4 None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- 3 None None
+current product ----: Chatura Plastic Pots
+-------------product_type: pot
+-------------product_id: Chatura Plastic Pots
+--------------------------------------------------------------------
+pot----------------- 3 3 None
+current product ----: 20cm-50cm-roma-red
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 2 None None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+current product ----: 20cm-100cm-2-red
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 3 None None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+current product ----: Brazilian Wood Plant g
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 1 None None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+current product ----: 20cm-50cm-roma-red
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 1 1 2
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+current product ----: Brazilian Wood Plant b
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 1 1 1
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+current product ----: Roma Ceramic Pot
+-------------product_type: pot
+-------------product_id: Roma Ceramic Pot
+--------------------------------------------------------------------
+pot----------------- None None 2
+current product ----: Roma Ceramic Pot
+-------------product_type: pot
+-------------product_id: Roma Ceramic Pot
+--------------------------------------------------------------------
+pot----------------- None None 3
+current product ----: Roma Ceramic Pot
+-------------product_type: pot
+-------------product_id: Roma Ceramic Pot
+--------------------------------------------------------------------
+pot----------------- None None 2
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None None 2
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None 4 2
+current product ----: Pastel Ridge Heritage Planter
+-------------product_type: pot
+-------------product_id: Pastel Ridge Heritage Planter
+--------------------------------------------------------------------
+pot----------------- None None 3
+b'{"message":"3563626f4e49435238556d57","type":"success"}'
+b'{"message":"3563626f516e6e6744523572","type":"success"}'
+[02/Mar/2025 10:21:13] "GET /product/filterProduct/21/?litre_id=2 HTTP/1.1" 200 866
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 10:21:13] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[02/Mar/2025 10:21:18] "GET /product/filterProduct/22?litre_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 10:21:18] "GET /product/filterProduct/22/?litre_id=3 HTTP/1.1" 200 945
+[02/Mar/2025 10:21:18] "GET /media/product_images/6_12be073f-479c-4574-a6a9-e34c31516e69.webp HTTP/1.1" 200 78206
+[02/Mar/2025 10:21:20] "GET /product/filterProduct/23?litre_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 10:21:21] "GET /product/filterProduct/23/?litre_id=2 HTTP/1.1" 200 866
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 10:21:21] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[02/Mar/2025 10:21:25] "GET /product/defaultProduct/6 HTTP/1.1" 301 0
+[02/Mar/2025 10:21:25] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1551
+[02/Mar/2025 10:21:27] "GET /product/filterProduct/21?litre_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 10:21:27] "GET /product/filterProduct/21/?litre_id=3 HTTP/1.1" 200 945
+[02/Mar/2025 10:21:29] "GET /product/filterProduct/23?litre_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 10:21:29] "GET /product/filterProduct/23/?litre_id=1 HTTP/1.1" 200 896
+[02/Mar/2025 10:21:32] "GET /product/filterProduct/21?litre_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 10:21:33] "GET /product/filterProduct/21/?litre_id=2 HTTP/1.1" 200 866
+Not Found: /media/default/category_default.jpg
+[02/Mar/2025 10:21:33] "GET /media/default/category_default.jpg HTTP/1.1" 404 5176
+[02/Mar/2025 10:21:34] "GET /product/filterProduct/22?litre_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 10:21:35] "GET /product/filterProduct/22/?litre_id=1 HTTP/1.1" 200 896
+[02/Mar/2025 10:21:36] "GET /product/filterProduct/21?litre_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 10:21:36] "GET /product/filterProduct/21/?litre_id=3 HTTP/1.1" 200 945
+[02/Mar/2025 10:21:39] "GET /product/defaultProduct/6 HTTP/1.1" 301 0
+[02/Mar/2025 10:21:39] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1551
+[02/Mar/2025 10:22:05] "GET /product/defaultProduct/1 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:05] "GET /product/defaultProduct/1/ HTTP/1.1" 200 1580
+[02/Mar/2025 10:22:06] "GET /media/product_images/3_1c337c64-3cd2-47b9-87dd-8db98589d093_rG3j7fa.webp HTTP/1.1" 200 100842
+[02/Mar/2025 10:22:08] "GET /product/filterProduct/8?weight_id=2 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/8/
+[02/Mar/2025 10:22:08] "GET /product/filterProduct/8/?weight_id=2 HTTP/1.1" 400 37
+[02/Mar/2025 10:22:10] "GET /product/filterProduct/8?weight_id=1 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/8/
+[02/Mar/2025 10:22:10] "GET /product/filterProduct/8/?weight_id=1 HTTP/1.1" 400 37
+[02/Mar/2025 10:22:12] "GET /product/filterProduct/8?weight_id=4 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/8/
+[02/Mar/2025 10:22:12] "GET /product/filterProduct/8/?weight_id=4 HTTP/1.1" 400 37
+[02/Mar/2025 10:22:15] "GET /product/filterProduct/8?weight_id=1 HTTP/1.1" 301 0
+Bad Request: /product/filterProduct/8/
+[02/Mar/2025 10:22:16] "GET /product/filterProduct/8/?weight_id=1 HTTP/1.1" 400 37
+[02/Mar/2025 10:22:21] "GET /product/defaultProduct/4 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:21] "GET /product/defaultProduct/4/ HTTP/1.1" 200 1284
+[02/Mar/2025 10:22:21] "GET /media/product_images/1_5d5693a6-bc3a-40a9-8f55-533ecde46d39_Q532foI.webp HTTP/1.1" 200 39668
+[02/Mar/2025 10:22:23] "GET /product/filterProduct/14?weight_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:23] "GET /product/filterProduct/14/?weight_id=2 HTTP/1.1" 200 904
+[02/Mar/2025 10:22:23] "GET /media/product_images/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu.webp HTTP/1.1" 200 35312
+[02/Mar/2025 10:22:24] "GET /product/filterProduct/15?weight_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:25] "GET /product/filterProduct/15/?weight_id=3 HTTP/1.1" 200 905
+[02/Mar/2025 10:22:25] "GET /media/product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b_xsrxohb.webp HTTP/1.1" 200 59388
+[02/Mar/2025 10:22:26] "GET /product/filterProduct/16?weight_id=4 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:26] "GET /product/filterProduct/16/?weight_id=4 HTTP/1.1" 200 905
+[02/Mar/2025 10:22:28] "GET /media/product_images/4_18d0087a-01da-4984-b3a5-57601ec05c85_3ArSlaB.webp HTTP/1.1" 200 78262
+[02/Mar/2025 10:22:32] "GET /product/defaultProduct/7 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:32] "GET /product/defaultProduct/7/ HTTP/1.1" 200 1845
+[02/Mar/2025 10:22:32] "GET /media/product_images/red-chatura-plastic-pots-set-of-5-31257679069316.webp HTTP/1.1" 200 36318
+[02/Mar/2025 10:22:34] "GET /product/filterProduct/26?planter_size_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:34] "GET /product/filterProduct/26/?planter_size_id=2 HTTP/1.1" 200 1387
+[02/Mar/2025 10:22:34] "GET /media/product_images/reca-40-multicolour-self-watering-planter-set-of-4-31257697878148.webp HTTP/1.1" 200 27502
+[02/Mar/2025 10:22:36] "GET /product/filterProduct/28?planter_size_id=2&color_id=4 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:36] "GET /product/filterProduct/28/?planter_size_id=2&color_id=4 HTTP/1.1" 200 1372
+[02/Mar/2025 10:22:36] "GET /media/product_images/chatura-self-watering-pots-set-of-5-31257673531524.webp HTTP/1.1" 200 31660
+[02/Mar/2025 10:22:38] "GET /product/filterProduct/29?planter_size_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:38] "GET /product/filterProduct/29/?planter_size_id=3 HTTP/1.1" 200 1375
+[02/Mar/2025 10:22:38] "GET /media/product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[02/Mar/2025 10:22:39] "GET /product/filterProduct/30?planter_size_id=3&color_id=3 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:40] "GET /product/filterProduct/30/?planter_size_id=3&color_id=3 HTTP/1.1" 200 1383
+[02/Mar/2025 10:22:40] "GET /media/product_images/red-chatura-self-watering-pots-set-of-5-31257674743940_HWuOxeM.webp HTTP/1.1" 200 48962
+[02/Mar/2025 10:22:45] "GET /product/defaultProduct/8 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:46] "GET /product/defaultProduct/8/ HTTP/1.1" 200 1784
+[02/Mar/2025 10:22:46] "GET /media/product_images/3_eb0fd7b5-63df-48f7-9813-1694bcae292f.webp HTTP/1.1" 200 66280
+[02/Mar/2025 10:22:48] "GET /product/filterProduct/32?litre_id=1&color_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:48] "GET /product/filterProduct/32/?litre_id=1&color_id=2 HTTP/1.1" 200 1199
+[02/Mar/2025 10:22:48] "GET /media/product_images/DrainageHole-3.webp HTTP/1.1" 200 34494
+[02/Mar/2025 10:22:50] "GET /product/filterProduct/33?litre_id=1&color_id=1 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:50] "GET /product/filterProduct/33/?litre_id=1&color_id=1 HTTP/1.1" 200 1223
+[02/Mar/2025 10:22:52] "GET /product/filterProduct/32?litre_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:52] "GET /product/filterProduct/32/?litre_id=2 HTTP/1.1" 200 1234
+[02/Mar/2025 10:22:53] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50_BahXuYo.webp HTTP/1.1" 200 75090
+[02/Mar/2025 10:22:53] "GET /product/filterProduct/34?litre_id=2&color_id=4 HTTP/1.1" 301 0
+[02/Mar/2025 10:22:54] "GET /product/filterProduct/34/?litre_id=2&color_id=4 HTTP/1.1" 200 1210
+[02/Mar/2025 10:22:54] "GET /media/product_images/DrainageHole-3_vINct7F.webp HTTP/1.1" 200 34494
+[02/Mar/2025 10:33:15] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:33:15] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:33:16] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:33:16] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Not Found: /services/service_list/
+[02/Mar/2025 10:33:16] "GET /services/service_list/ HTTP/1.1" 404 6522
+[02/Mar/2025 10:33:16] "GET /blog/ HTTP/1.1" 200 2
+[02/Mar/2025 10:33:16] "GET /store/store_list/ HTTP/1.1" 200 42
+[02/Mar/2025 10:33:16] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 10:33:16] "GET /category/ HTTP/1.1" 200 618
+Not Found: /services/service_list/
+[02/Mar/2025 10:33:16] "GET /services/service_list/ HTTP/1.1" 404 6522
+[02/Mar/2025 10:33:16] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[02/Mar/2025 10:33:16] "GET /media/banners/webBanner/images_1_2Xx7Tbx.gif HTTP/1.1" 304 0
+[02/Mar/2025 10:33:16] "GET /media/banners/webBanner/sprout_plant-wallpaper-1600x1200.jpg HTTP/1.1" 304 0
+[02/Mar/2025 10:33:16] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[02/Mar/2025 10:33:16] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[02/Mar/2025 10:33:16] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[02/Mar/2025 10:33:16] "GET /blog/ HTTP/1.1" 200 2
+[02/Mar/2025 10:33:16] "GET /store/store_list/ HTTP/1.1" 200 42
+[02/Mar/2025 10:33:16] "GET /media/main_product_images/1_2.webp HTTP/1.1" 304 0
+[02/Mar/2025 10:33:16] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[02/Mar/2025 10:33:16] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 304 0
+[02/Mar/2025 10:33:16] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 304 0
+[02/Mar/2025 10:33:16] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 304 0
+[02/Mar/2025 10:33:16] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[02/Mar/2025 10:33:16] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 304 0
+[02/Mar/2025 10:33:16] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[02/Mar/2025 10:33:16] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[02/Mar/2025 10:33:16] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 304 0
+[02/Mar/2025 10:33:16] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 304 0
+[02/Mar/2025 10:33:17] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 304 0
+[02/Mar/2025 10:33:17] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 304 0
+[02/Mar/2025 10:33:17] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[02/Mar/2025 10:33:17] "GET /media/main_product_images/1_2acf4756-e9fb-4bf2-b95c-affb211b1d50.webp HTTP/1.1" 200 65296
+[02/Mar/2025 10:51:08] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:51:08] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:51:08] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:51:08] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Not Found: /services/service_list/
+[02/Mar/2025 10:51:08] "GET /services/service_list/ HTTP/1.1" 404 6522
+[02/Mar/2025 10:51:08] "GET /blog/ HTTP/1.1" 200 2
+[02/Mar/2025 10:51:08] "GET /store/store_list/ HTTP/1.1" 200 42
+[02/Mar/2025 10:51:09] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:51:09] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[02/Mar/2025 10:51:09] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[02/Mar/2025 10:51:09] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[02/Mar/2025 10:51:09] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[02/Mar/2025 10:51:09] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Not Found: /services/service_list/
+[02/Mar/2025 10:51:09] "GET /services/service_list/ HTTP/1.1" 404 6522
+[02/Mar/2025 10:51:09] "GET /blog/ HTTP/1.1" 200 2
+[02/Mar/2025 10:51:09] "GET /store/store_list/ HTTP/1.1" 200 42
+[02/Mar/2025 10:51:09] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[02/Mar/2025 10:51:09] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[02/Mar/2025 10:51:09] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[02/Mar/2025 10:51:09] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[02/Mar/2025 10:58:24] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 10:58:24] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 10:58:24] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /api/token/verify/
+[02/Mar/2025 11:00:09] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[02/Mar/2025 11:00:09] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /account/profile/
+[02/Mar/2025 11:00:21] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 11:00:21] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 11:00:21] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 11:00:21] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 11:00:21] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 11:00:21] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 11:00:21] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 11:00:21] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 11:00:21] "GET /order/wishlist/ HTTP/1.1" 401 183
+Unauthorized: /api/token/verify/
+[02/Mar/2025 11:00:23] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[02/Mar/2025 11:00:23] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[02/Mar/2025 11:00:29] "POST /account/registerWithMobile/ HTTP/1.1" 200 52
+[02/Mar/2025 11:00:53] "POST /account/validateOtp/ HTTP/1.1" 200 631
+[02/Mar/2025 11:00:54] "POST /api/token/verify/ HTTP/1.1" 200 2
+[02/Mar/2025 11:00:54] "GET /order/cart/ HTTP/1.1" 200 1564
+[02/Mar/2025 11:00:54] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+[02/Mar/2025 11:00:55] "GET /media/product_images/3_eb0fd7b5-63df-48f7-9813-1694bcae292f.webp HTTP/1.1" 200 66280
+[02/Mar/2025 11:00:55] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 200 75090
+Forbidden: /order/placeOrder/
+[02/Mar/2025 11:01:04] "POST /order/placeOrder/ HTTP/1.1" 403 64
+[02/Mar/2025 11:01:07] "GET /media/product_images/3_1c337c64-3cd2-47b9-87dd-8db98589d093_rG3j7fa.webp HTTP/1.1" 200 100842
+[02/Mar/2025 11:01:15] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 11:01:15] "GET /category/categoryWiseSubCategory/1 HTTP/1.1" 301 0
+[02/Mar/2025 11:01:15] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[02/Mar/2025 11:01:18] "GET /category/categoryWiseSubCategory/2 HTTP/1.1" 301 0
+[02/Mar/2025 11:01:18] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[02/Mar/2025 11:01:19] "GET /category/categoryWiseSubCategory/3 HTTP/1.1" 301 0
+[02/Mar/2025 11:01:19] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[02/Mar/2025 11:01:19] "GET /category/categoryWiseSubCategory/4 HTTP/1.1" 301 0
+[02/Mar/2025 11:01:20] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[02/Mar/2025 11:01:21] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 11:01:21] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 11:01:21] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 11:01:31] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+Bad Request: /order/cart/
+[02/Mar/2025 11:01:38] "POST /order/cart/ HTTP/1.1" 400 45
+[02/Mar/2025 11:01:40] "GET /order/cart/ HTTP/1.1" 200 1564
+[02/Mar/2025 11:01:43] "DELETE /order/cart/1/ HTTP/1.1" 200 21
+[02/Mar/2025 11:01:45] "DELETE /order/cart/2/ HTTP/1.1" 200 21
+[02/Mar/2025 11:01:46] "DELETE /order/cart/4/ HTTP/1.1" 200 21
+[02/Mar/2025 11:01:47] "DELETE /order/cart/5/ HTTP/1.1" 200 21
+[02/Mar/2025 11:01:53] "POST /order/cart/ HTTP/1.1" 201 49
+[02/Mar/2025 11:01:53] "GET /order/cart/ HTTP/1.1" 200 462
+[02/Mar/2025 11:01:55] "GET /order/cart/ HTTP/1.1" 200 462
+[02/Mar/2025 11:01:58] "PATCH /order/cart/ HTTP/1.1" 200 21
+[02/Mar/2025 11:01:59] "PATCH /order/cart/ HTTP/1.1" 200 21
+[02/Mar/2025 11:02:07] "GET /product/defaultProduct/3 HTTP/1.1" 301 0
+[02/Mar/2025 11:02:07] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1684
+[02/Mar/2025 11:02:09] "POST /api/token/verify/ HTTP/1.1" 200 2
+[02/Mar/2025 11:02:09] "POST /order/cart/ HTTP/1.1" 201 49
+[02/Mar/2025 11:02:09] "GET /order/cart/ HTTP/1.1" 200 848
+[02/Mar/2025 11:02:11] "GET /order/cart/ HTTP/1.1" 200 848
+[02/Mar/2025 11:03:24] "PATCH /order/cart/ HTTP/1.1" 200 21
+[02/Mar/2025 11:03:25] "PATCH /order/cart/ HTTP/1.1" 200 21
+[02/Mar/2025 11:03:26] "PATCH /order/cart/ HTTP/1.1" 200 21
+[02/Mar/2025 11:03:26] "PATCH /order/cart/ HTTP/1.1" 200 21
+[02/Mar/2025 11:03:27] "PATCH /order/cart/ HTTP/1.1" 200 21
+[02/Mar/2025 11:03:29] "PATCH /order/cart/ HTTP/1.1" 200 21
+[02/Mar/2025 11:03:30] "PATCH /order/cart/ HTTP/1.1" 200 21
+[02/Mar/2025 11:03:30] "PATCH /order/cart/ HTTP/1.1" 200 21
+Forbidden: /order/placeOrder/
+[02/Mar/2025 11:03:32] "POST /order/placeOrder/ HTTP/1.1" 403 64
+[02/Mar/2025 11:03:37] "DELETE /order/cart/7/ HTTP/1.1" 200 21
+[02/Mar/2025 11:03:38] "DELETE /order/cart/8/ HTTP/1.1" 200 21
+[02/Mar/2025 11:11:34] "GET /media/main_product_images/GroPot_ZKfJXUn.webp HTTP/1.1" 200 29802
+[02/Mar/2025 11:11:35] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 11:11:35] "GET /media/main_product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd_ihTdTZk.webp HTTP/1.1" 200 48552
+[02/Mar/2025 11:11:42] "GET /product/filterProduct/1?size_id=1&planter_size_id=2 HTTP/1.1" 301 0
+[02/Mar/2025 11:11:42] "GET /product/filterProduct/1/?size_id=1&planter_size_id=2 HTTP/1.1" 200 1307
+[02/Mar/2025 11:11:42] "GET /media/product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd.webp HTTP/1.1" 200 48552
+[02/Mar/2025 11:30:34] code 400, message Bad request syntax ('\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x03\x00\x00\x00')
+[02/Mar/2025 11:30:34] "  à          " 400 -
+[02/Mar/2025 11:32:24] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03ùB\x86\x7f]"¹)*£Àßß\x9eÑ-}Ý³LÃ`ö?£ð¤V}\x84?e\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+[02/Mar/2025 11:32:24] You're accessing the development server over HTTPS, but it only supports HTTP.
+Unauthorized: /account/profile/
+[02/Mar/2025 11:58:08] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 11:58:08] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 11:58:08] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 11:58:08] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 11:58:08] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 11:58:08] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 11:58:08] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 11:58:08] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 11:58:09] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 11:58:09] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 11:58:09] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 11:58:09] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[02/Mar/2025 11:58:09] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 11:58:09] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 11:58:09] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 11:58:09] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 11:58:11] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 11:58:11] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+[02/Mar/2025 11:58:12] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[02/Mar/2025 11:58:13] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 200 62596
+[02/Mar/2025 11:58:16] "GET /media/banners/mobileBanner/sprout_plant-wall-800_400.jpg HTTP/1.1" 200 53292
+[02/Mar/2025 11:58:20] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[02/Mar/2025 11:58:20] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1277
+[02/Mar/2025 11:58:22] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[02/Mar/2025 11:58:23] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1277
+[02/Mar/2025 11:58:25] "GET /media/main_product_images/1_2acf4756-e9fb-4bf2-b95c-affb211b1d50.webp HTTP/1.1" 200 65296
+Unauthorized: /order/wishlist/
+[02/Mar/2025 11:58:25] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
+[02/Mar/2025 11:58:26] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[02/Mar/2025 11:58:26] "GET /product/defaultProduct/5 HTTP/1.1" 301 0
+[02/Mar/2025 11:58:26] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1277
+[02/Mar/2025 11:58:26] "GET /product/defaultProduct/5/ HTTP/1.1" 200 1277
+Not Found: /
+[02/Mar/2025 12:24:06] "GET / HTTP/1.1" 404 4826
+[02/Mar/2025 12:26:35] code 400, message Bad request version ('À\x14À')
+[02/Mar/2025 12:26:35] You're accessing the development server over HTTPS, but it only supports HTTP.
+[02/Mar/2025 12:26:35] code 400, message Bad request version ('À\x14À')
+[02/Mar/2025 12:26:35] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[02/Mar/2025 12:26:36] "GET / HTTP/1.1" 404 4826
+Not Found: /login
+[02/Mar/2025 12:26:36] "GET /login HTTP/1.1" 404 4859
+Unauthorized: /account/profile/
+[02/Mar/2025 12:33:49] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 12:33:49] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 12:33:49] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 12:33:49] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 12:33:49] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 12:33:49] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 12:33:49] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 12:33:49] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 12:33:50] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 12:33:51] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 12:33:51] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 12:33:51] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[02/Mar/2025 12:33:51] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 12:33:51] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 12:33:52] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 12:33:52] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 12:33:52] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+[02/Mar/2025 12:33:52] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 12:33:54] "GET /media/banners/mobileBanner/sprout_plant-wall-800_400.jpg HTTP/1.1" 200 53292
+Not Found: /
+[02/Mar/2025 12:38:31] "GET / HTTP/1.0" 404 4826
+Unauthorized: /account/profile/
+[02/Mar/2025 13:19:19] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 13:19:19] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 13:23:10] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 13:23:10] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 13:23:33] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 13:23:33] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 13:24:21] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 13:24:21] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 13:39:07] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 13:39:07] "GET /account/profile/ HTTP/1.1" 401 183
+[02/Mar/2025 13:39:07] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 13:39:07] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 13:39:07] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 13:39:07] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 13:39:07] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 13:39:07] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 13:39:07] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+Unauthorized: /order/wishlist/
+[02/Mar/2025 13:39:07] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 13:39:07] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 13:39:07] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 13:39:07] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 13:39:07] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 13:39:07] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 13:39:07] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 13:39:07] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 13:39:07] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+[02/Mar/2025 13:39:09] "GET /media/banners/mobileBanner/sprout_plant-wall-800_400.jpg HTTP/1.1" 200 53292
+[02/Mar/2025 13:39:10] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[02/Mar/2025 13:39:10] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 200 62596
+[02/Mar/2025 13:39:22,217] - Broken pipe from ('152.58.208.139', 43118)
+[02/Mar/2025 13:39:22,218] - Broken pipe from ('152.58.208.139', 43070)
+[02/Mar/2025 13:39:22,221] - Broken pipe from ('152.58.208.139', 19734)
+[02/Mar/2025 13:39:22,221] - Broken pipe from ('152.58.208.139', 43116)
+[02/Mar/2025 13:39:22,222] - Broken pipe from ('152.58.208.139', 43072)
+[02/Mar/2025 13:39:22,222] - Broken pipe from ('152.58.208.139', 43082)
+[02/Mar/2025 13:39:22,222] - Broken pipe from ('152.58.208.139', 50436)
+[02/Mar/2025 13:39:22,222] - Broken pipe from ('152.58.208.139', 37054)
+[02/Mar/2025 13:39:22,222] - Broken pipe from ('152.58.208.139', 64054)
+Not Found: /
+[02/Mar/2025 13:42:09] "GET / HTTP/1.1" 404 4826
+[02/Mar/2025 13:42:17,323] - Broken pipe from ('205.210.31.198', 60792)
+[02/Mar/2025 14:33:21] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 14:33:21] "GET /store/store_list/ HTTP/1.1" 200 42
+[02/Mar/2025 14:33:21] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 14:33:21] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 14:33:21] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[02/Mar/2025 14:33:22] "GET /blog/ HTTP/1.1" 200 2
+[02/Mar/2025 14:33:22] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 14:33:22] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[02/Mar/2025 14:33:22] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[02/Mar/2025 14:33:22] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[02/Mar/2025 14:33:22] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[02/Mar/2025 14:33:22] "GET /media/main_product_images/1_2acf4756-e9fb-4bf2-b95c-affb211b1d50.webp HTTP/1.1" 200 65296
+[02/Mar/2025 14:33:22] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[02/Mar/2025 14:33:22] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 14:33:22] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 14:33:22] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 200 62596
+[02/Mar/2025 14:33:22] "GET /media/banners/webBanner/sprout_plant-wallpaper-1600x1200.jpg HTTP/1.1" 200 228739
+[02/Mar/2025 14:33:22] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 14:33:22] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 14:33:23] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 14:33:23] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 14:33:23] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[02/Mar/2025 14:33:23] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 14:33:24] "GET /media/banners/webBanner/images_1_2Xx7Tbx.gif HTTP/1.1" 200 1553378
+Unauthorized: /account/profile/
+[02/Mar/2025 14:41:47] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 14:41:47] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /account/profile/
+[02/Mar/2025 14:41:47] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 14:41:47] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 14:41:47] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 14:41:47] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 14:41:47] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 14:41:47] "GET /promotion/banner/ HTTP/1.1" 200 574
+Unauthorized: /order/wishlist/
+[02/Mar/2025 14:42:02] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 14:42:03] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 14:42:03] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[02/Mar/2025 14:42:04] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 14:42:04] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[02/Mar/2025 14:42:04] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 14:42:04] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[02/Mar/2025 14:42:04] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 14:42:04] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 14:42:04] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+[02/Mar/2025 14:42:06,696] - Broken pipe from ('35.163.184.129', 10287)
+[02/Mar/2025 14:42:44] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 14:42:44] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 14:42:44] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 14:42:44] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 14:42:44] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 14:42:44] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /account/profile/
+[02/Mar/2025 14:42:45] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 14:42:45] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /order/wishlist/
+[02/Mar/2025 14:42:55] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 14:42:56] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+[02/Mar/2025 14:42:56] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[02/Mar/2025 14:42:56] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[02/Mar/2025 14:42:56] "GET /media/banners/mobileBanner/images_WxkbpSQ.gif HTTP/1.1" 200 406240
+[02/Mar/2025 14:42:57] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[02/Mar/2025 14:42:57] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[02/Mar/2025 14:42:59] "GET /media/banners/mobileBanner/sprout_plant-wall-800_400.jpg HTTP/1.1" 200 53292
+Unauthorized: /account/profile/
+[02/Mar/2025 14:45:45] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 14:45:45] "GET /promotion/banner/ HTTP/1.1" 200 574
+Unauthorized: /account/profile/
+[02/Mar/2025 14:45:45] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 14:45:45] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 14:45:45] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 14:45:45] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 14:45:45] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 14:45:45] "GET /category/ HTTP/1.1" 200 618
+Unauthorized: /order/wishlist/
+[02/Mar/2025 14:45:57] "GET /order/wishlist/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[02/Mar/2025 14:47:33] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 14:47:34] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 14:47:34] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 14:47:34] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 14:47:34] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 14:47:34] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 14:47:34] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 14:47:34] "GET /category/ HTTP/1.1" 200 618
+Unauthorized: /order/wishlist/
+[02/Mar/2025 14:47:48] "GET /order/wishlist/ HTTP/1.1" 401 183
+Not Found: /
+[02/Mar/2025 14:48:31] "GET / HTTP/1.0" 404 4826
+Unauthorized: /account/profile/
+[02/Mar/2025 14:48:35] "GET /account/profile/ HTTP/1.1" 401 58
+Unauthorized: /account/profile/
+[02/Mar/2025 14:48:35] "GET /account/profile/ HTTP/1.1" 401 58
+[02/Mar/2025 14:48:36] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[02/Mar/2025 14:48:36] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 14:48:36] "GET /category/ HTTP/1.1" 200 618
+[02/Mar/2025 14:48:36] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 14:48:36] "GET /promotion/banner/ HTTP/1.1" 200 574
+[02/Mar/2025 14:48:36] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /order/wishlist/
+[02/Mar/2025 14:48:49] "GET /order/wishlist/ HTTP/1.1" 401 183
+[02/Mar/2025 16:00:22] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[02/Mar/2025 16:00:22] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[02/Mar/2025 16:17:51] "GET / HTTP/1.0" 404 4821
+[02/Mar/2025 17:32:42] code 400, message Bad request version ('À\x14À')
+[02/Mar/2025 17:32:42] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[02/Mar/2025 18:17:30] "GET / HTTP/1.1" 404 4821
+Not Found: /favicon.ico
+[02/Mar/2025 18:17:30] "GET /favicon.ico HTTP/1.1" 404 4872
+Not Found: /c/
+[02/Mar/2025 20:42:07] "GET /c/ HTTP/1.1" 404 4850
+Not Found: /
+[02/Mar/2025 22:41:05] "GET / HTTP/1.0" 404 4826
+Not Found: /
+[03/Mar/2025 01:10:01] "GET / HTTP/1.1" 404 4826
+Not Found: /aaa9
+[03/Mar/2025 01:16:28] "GET /aaa9 HTTP/1.1" 404 4856
+Not Found: /aab8
+[03/Mar/2025 01:16:37] "GET /aab8 HTTP/1.1" 404 4856
+Not Found: /
+[03/Mar/2025 01:16:45] "GET / HTTP/1.1" 404 4826
+Not Found: /favicon.ico
+[03/Mar/2025 01:17:08] "GET /favicon.ico HTTP/1.1" 404 4877
+Not Found: /
+[03/Mar/2025 01:28:47] "GET / HTTP/1.1" 404 4826
+Not Found: /favicon.ico
+[03/Mar/2025 01:29:03] "GET /favicon.ico HTTP/1.1" 404 4877
+Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Bad Request: /http:/api.ipify.org/
+[03/Mar/2025 01:29:06] "GET http://api.ipify.org/?format=json HTTP/1.1" 400 69103
+Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Bad Request: /www.shadowserver.org:443
+[03/Mar/2025 01:29:08] "CONNECT www.shadowserver.org:443 HTTP/1.1" 400 69282
+Not Found: /
+[03/Mar/2025 01:49:15] "GET / HTTP/1.1" 404 4826
+Not Found: /
+[03/Mar/2025 02:01:23] "GET / HTTP/1.0" 404 4826
+Not Found: /
+[03/Mar/2025 02:31:10] "GET / HTTP/1.1" 404 4826
+Not Found: /favicon.ico
+[03/Mar/2025 02:38:06] "GET /favicon.ico HTTP/1.1" 404 4877
+Not Found: /
+[03/Mar/2025 02:38:48] "GET / HTTP/1.1" 404 4826
+[03/Mar/2025 02:38:57,198] - Broken pipe from ('198.235.24.9', 65332)
+[03/Mar/2025 02:58:43] code 400, message Bad request version ('}')
+[03/Mar/2025 02:58:43] "ÿ             ñ%   { "Ret" : 100, "SessionID" : "0x0" }" 400 -
+[03/Mar/2025 03:11:36] code 400, message Bad request syntax ('nil')
+[03/Mar/2025 03:11:36] "nil" 400 -
+Not Found: /
+[03/Mar/2025 04:10:05] "GET / HTTP/1.0" 404 4826
+Not Found: /
+[03/Mar/2025 04:19:49] "GET / HTTP/1.0" 404 4826
+[03/Mar/2025 05:06:57] "OPTIONS /api/token/verify/ HTTP/1.1" 200 0
+[03/Mar/2025 05:06:57] "OPTIONS /api/token/verify/ HTTP/1.1" 200 0
+[03/Mar/2025 05:06:57] "GET /promotion/banner/ HTTP/1.1" 200 574
+[03/Mar/2025 05:06:57] "GET /promotion/banner/ HTTP/1.1" 200 574
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:06:57] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:06:57] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:06:58] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:06:58] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:06:58] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:06:58] "GET /store/store_list/ HTTP/1.1" 200 42
+[03/Mar/2025 05:06:58] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:06:58] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[03/Mar/2025 05:06:58] "GET /media/banners/webBanner/sprout_plant-wallpaper-1600x1200.jpg HTTP/1.1" 200 228739
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:06:58] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:06:58] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:06:58] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[03/Mar/2025 05:06:58] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:06:58] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:06:58] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:06:58] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:06:58] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[03/Mar/2025 05:06:58] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[03/Mar/2025 05:06:59] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+[03/Mar/2025 05:06:59] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:06:59] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:06:59] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:06:59] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:06:59] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:06:59] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:06:59] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:06:59] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:06:59] "GET /media/banners/webBanner/images_1_2Xx7Tbx.gif HTTP/1.1" 200 1553378
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:07:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:00] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[03/Mar/2025 05:07:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:07:00] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[03/Mar/2025 05:07:00] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:00] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+[03/Mar/2025 05:07:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:07:01] "GET /store/store_list/ HTTP/1.1" 200 42
+[03/Mar/2025 05:07:01] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:07:01] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:07:01] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:02] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:02] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:03] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:03] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:07:03] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:03] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:07:03] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:03] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:07:03] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:07:03] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:07:03] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:07:04] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[03/Mar/2025 05:07:04] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:07:04] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:07:04] "GET /media/main_product_images/1_2acf4756-e9fb-4bf2-b95c-affb211b1d50.webp HTTP/1.1" 200 65296
+[03/Mar/2025 05:07:04] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 200 62596
+[03/Mar/2025 05:07:04] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[03/Mar/2025 05:08:26] "OPTIONS /api/token/verify/ HTTP/1.1" 200 0
+[03/Mar/2025 05:08:26] "OPTIONS /api/token/verify/ HTTP/1.1" 200 0
+[03/Mar/2025 05:08:26] "GET /promotion/banner/ HTTP/1.1" 200 574
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:26] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:26] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:26] "GET /promotion/banner/ HTTP/1.1" 200 574
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:27] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:27] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:08:27] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:08:28] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:08:28] "GET /store/store_list/ HTTP/1.1" 200 42
+[03/Mar/2025 05:08:28] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:28] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:28] "OPTIONS /api/token/refresh/ HTTP/1.1" 200 0
+[03/Mar/2025 05:08:28] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 200 59388
+[03/Mar/2025 05:08:28] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:08:28] "OPTIONS /api/token/refresh/ HTTP/1.1" 200 0
+[03/Mar/2025 05:08:28] "OPTIONS /api/token/refresh/ HTTP/1.1" 200 0
+[03/Mar/2025 05:08:28] "GET /media/banners/webBanner/sprout_plant-wallpaper-1600x1200.jpg HTTP/1.1" 200 228739
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:28] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:08:28] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:28] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 200 40724
+[03/Mar/2025 05:08:28] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:29] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:29] "GET /media/main_product_images/1_2.webp HTTP/1.1" 200 142108
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:29] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:29] "GET /media/banners/webBanner/images_1_2Xx7Tbx.gif HTTP/1.1" 200 1553378
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:30] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:30] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:30] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:30] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:30] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:31] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:31] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:31] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:31] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:31] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:31] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:31] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:08:31] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:08:31] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[03/Mar/2025 05:08:31] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:08:31] "GET /store/store_list/ HTTP/1.1" 200 42
+[03/Mar/2025 05:08:31] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:08:32] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:32] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:32] "OPTIONS /api/token/refresh/ HTTP/1.1" 200 0
+[03/Mar/2025 05:08:32] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:32] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:32] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:08:32] "GET /media/category/0bdac179-76a8-4d4d-a10c-75930cc2be43-removebg-preview_gypfj7A.png HTTP/1.1" 200 150193
+[03/Mar/2025 05:08:32] "GET /media/category/pngtree-gift-circle-box-png-image_6215487_kl123Fi.png HTTP/1.1" 200 6098
+[03/Mar/2025 05:08:32] "GET /media/category/pngtree-seed-packet-icon-in-the-shape-of-a-round-circle-on-vector-png-image_695_RVTNrRq.png HTTP/1.1" 200 74077
+Unauthorized: /api/token/verify/
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:32] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:32] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:32] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:32] "GET /media/category/pngtree-simple-round-logo-of-a-plant-nursery-png-image_11888805_cwDvqDQ.png HTTP/1.1" 200 112492
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:32] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:32] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:32] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/verify/
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:33] "POST /api/token/verify/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:33] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:33] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:34] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:34] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:34] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:35] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[03/Mar/2025 05:08:35] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:08:35] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:08:35] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:08:35] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:35] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:35] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:35] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:35] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:35] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:35] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:35] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:35] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:35] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:35] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[03/Mar/2025 05:08:35] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[03/Mar/2025 05:08:36] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[03/Mar/2025 05:08:36] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 200 62596
+[03/Mar/2025 05:08:36] "GET /media/main_product_images/1_2acf4756-e9fb-4bf2-b95c-affb211b1d50.webp HTTP/1.1" 200 65296
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:26] "GET /promotion/banner/ HTTP/1.1" 200 574
+[03/Mar/2025 05:09:26] "GET /promotion/banner/ HTTP/1.1" 200 574
+[03/Mar/2025 05:09:27] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:27] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:27] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:09:27] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:09:27] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:09:27] "GET /store/store_list/ HTTP/1.1" 200 42
+[03/Mar/2025 05:09:27] "GET /blog/ HTTP/1.1" 200 2
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:27] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:27] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:09:27] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:09:27] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:27] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:27] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:09:27] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:09:27] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:09:27] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:27] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:28] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:28] "GET /store/store_list/ HTTP/1.1" 200 42
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:09:29] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:09:29] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:09:29] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[03/Mar/2025 05:09:29] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:09:29] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:09:29] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:35] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:35] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:10:35] "GET /promotion/banner/ HTTP/1.1" 200 574
+[03/Mar/2025 05:10:36] "GET /promotion/banner/ HTTP/1.1" 200 574
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:36] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:10:36] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[03/Mar/2025 05:10:36] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:10:36] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:10:36] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:10:36] "GET /store/store_list/ HTTP/1.1" 200 42
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:36] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:10:36] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[03/Mar/2025 05:10:36] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:10:37] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:10:37] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:10:37] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:10:37] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:10:37] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[03/Mar/2025 05:10:37] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:10:38] "GET /store/store_list/ HTTP/1.1" 200 42
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:10:38] "GET /blog/ HTTP/1.1" 200 2
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:10:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:10:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:10:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:10:38] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:10:38] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:10:38] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:10:38] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[03/Mar/2025 05:10:38] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:12:18] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:12:18] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1684
+[03/Mar/2025 05:12:18] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:12:18] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1684
+[03/Mar/2025 05:12:18] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:12:18] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+[03/Mar/2025 05:12:18] "GET /media/main_product_images/GroPot_ZKfJXUn.webp HTTP/1.1" 200 29802
+[03/Mar/2025 05:12:18] "GET /media/main_product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd_ihTdTZk.webp HTTP/1.1" 200 48552
+[03/Mar/2025 05:12:18] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:12:28] "GET /promotion/banner/ HTTP/1.1" 200 574
+[03/Mar/2025 05:12:28] "GET /promotion/banner/ HTTP/1.1" 200 574
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:12:28] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[03/Mar/2025 05:12:28] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:12:28] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:12:28] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:12:28] "GET /store/store_list/ HTTP/1.1" 200 42
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:12:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:28] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:12:29] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:29] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:29] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:29] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:29] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:12:29] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:29] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:29] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:29] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:12:29] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:29] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:12:29] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:12:29] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[03/Mar/2025 05:12:29] "GET /store/store_list/ HTTP/1.1" 200 42
+[03/Mar/2025 05:12:30] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:12:30] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:12:30] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[03/Mar/2025 05:12:30] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:12:30] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:12:30] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:12:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:12:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:12:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:12:30] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:12:30] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:12:30] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[03/Mar/2025 05:12:30] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:12:30] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:13:24] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:13:24] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:13:24] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:13:24] "GET /product/defaultProduct/4/ HTTP/1.1" 200 1284
+[03/Mar/2025 05:13:24] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:13:24] "GET /product/defaultProduct/4/ HTTP/1.1" 200 1284
+[03/Mar/2025 05:13:24] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:13:24] "GET /media/main_product_images/2_8422a1c4-19dc-4355-8faa-035367bda194_Vgb2HQe.webp HTTP/1.1" 200 64706
+[03/Mar/2025 05:13:24] "GET /media/product_images/1_5d5693a6-bc3a-40a9-8f55-533ecde46d39_Q532foI.webp HTTP/1.1" 200 39668
+[03/Mar/2025 05:13:24] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:31:49] "GET /promotion/banner/ HTTP/1.1" 200 574
+[03/Mar/2025 05:31:49] "GET /promotion/banner/ HTTP/1.1" 200 574
+[03/Mar/2025 05:31:49] "GET /category/ HTTP/1.1" 200 618
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:49] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:31:49] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[03/Mar/2025 05:31:49] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:31:49] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:31:50] "GET /store/store_list/ HTTP/1.1" 200 42
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:31:50] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:31:50] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:31:50] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:31:50] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:31:50] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:31:50] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:31:50] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:31:50] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "GET /store/store_list/ HTTP/1.1" 200 42
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:31:50] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:31:50] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:31:50] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:31:50] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:31:50] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:31:50] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[03/Mar/2025 05:31:50] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:21] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:21] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:32:21] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:32:21] "GET /product/defaultProduct/1/ HTTP/1.1" 200 1580
+[03/Mar/2025 05:32:21] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:32:21] "GET /product/defaultProduct/1/ HTTP/1.1" 200 1580
+[03/Mar/2025 05:32:21] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:32:21] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:32:21] "GET /media/main_product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd_4CyyVRl.webp HTTP/1.1" 200 48552
+[03/Mar/2025 05:32:21] "GET /media/main_product_images/GroPot_7PHaGZI.webp HTTP/1.1" 200 29802
+[03/Mar/2025 05:32:21] "GET /media/product_images/3_1c337c64-3cd2-47b9-87dd-8db98589d093_rG3j7fa.webp HTTP/1.1" 200 100842
+[03/Mar/2025 05:32:32] "GET /promotion/banner/ HTTP/1.1" 200 574
+[03/Mar/2025 05:32:33] "GET /promotion/banner/ HTTP/1.1" 200 574
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:32:33] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:32:33] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:32:33] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[03/Mar/2025 05:32:33] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:32:33] "GET /store/store_list/ HTTP/1.1" 200 42
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:32:33] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:32:34] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:32:34] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:32:34] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[03/Mar/2025 05:32:34] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:32:34] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:32:34] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:32:34] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[03/Mar/2025 05:32:34] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:32:34] "GET /store/store_list/ HTTP/1.1" 200 42
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:32:34] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:32:34] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:32:34] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:32:34] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:32:34] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:34] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:32:34] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:32:34] "GET /product/defaultProduct/1/ HTTP/1.1" 200 1580
+[03/Mar/2025 05:32:34] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:32:34] "GET /product/defaultProduct/1/ HTTP/1.1" 200 1580
+[03/Mar/2025 05:32:34] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:32:35] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:37:10] "GET /promotion/banner/ HTTP/1.1" 200 574
+[03/Mar/2025 05:37:11] "GET /promotion/banner/ HTTP/1.1" 200 574
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:37:11] "GET /blog/ HTTP/1.1" 200 2
+[03/Mar/2025 05:37:11] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:37:11] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[03/Mar/2025 05:37:11] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:37:11] "GET /store/store_list/ HTTP/1.1" 200 42
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:37:11] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:37:11] "GET /blog/ HTTP/1.1" 200 2
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:37:11] "GET /category/ HTTP/1.1" 200 618
+[03/Mar/2025 05:37:11] "GET /services/publicservice_list/ HTTP/1.1" 200 2
+[03/Mar/2025 05:37:11] "GET /store/store_list/ HTTP/1.1" 200 42
+[03/Mar/2025 05:37:11] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:37:11] "GET /product/homeProducts/ HTTP/1.1" 200 1619
+[03/Mar/2025 05:37:11] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:37:11] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:37:11] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:11] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[03/Mar/2025 05:37:12] "POST /api/token/verify/ HTTP/1.1" 400 41
+[03/Mar/2025 05:37:12] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 48
+[03/Mar/2025 05:37:12] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[03/Mar/2025 05:37:12] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[03/Mar/2025 05:37:12] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 48
+[03/Mar/2025 05:37:12] "GET /product/homeProducts/ HTTP/1.1" 200 1619
