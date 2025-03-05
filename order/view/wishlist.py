@@ -41,8 +41,8 @@ def wishlist(request, pk=None):
             'order.view_wishlist'
         ]
         
-        # if not any(request.user.has_perm(perm) for perm in required_permissions):
-        #     return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         product_id = request.query_params.get('prod_id', None)
         main_product_id_list = request.query_params.getlist('main_product_id_list', None)
@@ -81,8 +81,8 @@ def wishlist(request, pk=None):
             'order.add_wishlist', 'order.delete_wishlist'
         ]
         
-        # if not any(request.user.has_perm(perm) for perm in required_permissions):
-        #     return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         main_product_id = request.data.get('main_prod_id', None)
 

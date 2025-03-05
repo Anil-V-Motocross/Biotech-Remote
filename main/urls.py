@@ -36,6 +36,7 @@ urlpatterns = [
     path('services/',include('services.urls')),
     path('coupon/',include('coupon.urls')),
     path('blog/',include('blog.urls')),
+    # path('tracking/', include('tracking.urls')),
 
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),

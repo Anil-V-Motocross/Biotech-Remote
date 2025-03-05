@@ -45,7 +45,12 @@ def place_order(request):
         # Validate user profile
         user_profile = validate_user_profile(request.user)
         if user_profile.get('user_profile') == False:
-            return Response(data={'message': user_profile.get('message')}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={
+                'message': user_profile.get('message'), 
+                'profile_status':user_profile.get('profile_status'),
+                'address_status':user_profile.get('address_status')
+                }, 
+                status=status.HTTP_400_BAD_REQUEST)
         
         order_source = request.data.get('order_source')
         
