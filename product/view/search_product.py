@@ -6,6 +6,7 @@ from product.models import MainProduct, ProductCategory, ProductSubCategory, Mai
 from category.models import Category, SubCategory
 from django.db.models import Avg, Count, F
 from django.db.models.functions import Floor
+from product.serializers import MainProductSerializer
 
 # Serializer for MainProduct
 # class MainProductSerializer(serializers.ModelSerializer):
@@ -14,39 +15,39 @@ from django.db.models.functions import Floor
 #         fields = ['id', 'name', 'short_description', 'default_sale_price', 'default_price']
 
 
-class MainProductSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
-    product_rating = serializers.SerializerMethodField()
-    price = serializers.FloatField(source='default_price')
+# class MainProductSerializer(serializers.ModelSerializer):
+#     image = serializers.SerializerMethodField()
+#     product_rating = serializers.SerializerMethodField()
+#     price = serializers.FloatField(source='default_price')
 
-    class Meta:
-        model = MainProduct
-        fields = ['id', 'name', 'default_sale_price', 'price', 'image', 'product_rating']
+    # class Meta:
+    #     model = MainProduct
+    #     fields = ['id', 'name', 'default_sale_price', 'price', 'image', 'product_rating']
 
-    def get_image(self, obj):
-        image = MainProductImage.objects.filter(product=obj).first()
-        return image.image.url if image else None
+    # def get_image(self, obj):
+    #     image = MainProductImage.objects.filter(product=obj).first()
+    #     return image.image.url if image else None
 
-    def get_product_rating(self, obj):
-        product_rating = Rating.objects.filter(main_product_id=obj.id).aggregate(
-            avg_rating=Avg('product_rating'),
-            num_ratings=Count('id')
-        )
-        product_rating['avg_rating'] = round(product_rating['avg_rating'], 2) if product_rating['avg_rating'] else 0
+    # def get_product_rating(self, obj):
+    #     product_rating = Rating.objects.filter(main_product_id=obj.id).aggregate(
+    #         avg_rating=Avg('product_rating'),
+    #         num_ratings=Count('id')
+    #     )
+    #     product_rating['avg_rating'] = round(product_rating['avg_rating'], 2) if product_rating['avg_rating'] else 0
 
-        # Breakdown of star ratings
-        stars_given = list(
-            Rating.objects.filter(main_product_id=obj.id)
-            .annotate(rounded_rating=Floor(F('product_rating')))
-            .values('rounded_rating')
-            .annotate(count=Count('id'))
-            .order_by('-rounded_rating')
-        )
+    #     # Breakdown of star ratings
+    #     stars_given = list(
+    #         Rating.objects.filter(main_product_id=obj.id)
+    #         .annotate(rounded_rating=Floor(F('product_rating')))
+    #         .values('rounded_rating')
+    #         .annotate(count=Count('id'))
+    #         .order_by('-rounded_rating')
+    #     )
 
-        # Convert queryset to required list format
-        product_rating['stars_given'] = [{"stars": entry["rounded_rating"], "count": entry["count"]} for entry in stars_given]
+    #     # Convert queryset to required list format
+    #     # product_rating['stars_given'] = [{"stars": entry["rounded_rating"], "count": entry["count"]} for entry in stars_given]
 
-        return product_rating
+    #     return product_rating
 
 @api_view(['POST'])
 def search_products(request):

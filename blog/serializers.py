@@ -61,28 +61,33 @@ class BlogAdminSerializer(serializers.ModelSerializer):
 
 class BlogSerializer(serializers.ModelSerializer):
     category = serializers.StringRelatedField()  # Show category name instead of full details
-    excerpt = serializers.SerializerMethodField()
+    short_description = serializers.SerializerMethodField()
 
     class Meta:
         model = Blog
-        fields = ['id', 'title', 'slug', 'excerpt', 'content', 'category', 'image', 'author', 'published_at']
+        fields = ['id', 'title', 'slug', 'short_description', 'content', 'category', 'image', 'author', 'published_at']
 
-    def get_excerpt(self, obj):
+    def get_short_description(self, obj):
         """
-        Return an excerpt only when used in list view.
+        Generate a short description dynamically.
+        If `excerpt` is available, use it. Otherwise, take the first 150 characters of `content`.
         """
-        if self.context.get("list_view", False):
-            return obj.content[:150] + "..." if obj.content else ""  # First 150 chars
-        return None  # Don't include in detail view
-
+        return obj.excerpt or (obj.content[:150] + "..." if obj.content else "")
     def to_representation(self, instance):
         """
         Customize output based on the context.
         If it's a list view, exclude `content`, otherwise exclude `excerpt`.
         """
         data = super().to_representation(instance)
+
         if self.context.get("list_view", False):
+            # Ensure excerpt has a value, even if not stored in the DB
+            data["short_description"] = instance.excerpt or (instance.content[:150] + "..." if instance.content else "")
             data.pop("content", None)  # Remove `content` for list view
         else:
-            data.pop("excerpt", None)  # Remove `excerpt` for detail view
+            data.pop("short_description", None)  # Remove `excerpt` for detail view
+
         return data
+    
+
+

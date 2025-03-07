@@ -16,7 +16,7 @@ from account.permissions import DynamicPermission
 def blog_crud_operation(request, pk=None):
     # List all blogs
     if request.method == 'GET' and not pk:
-        if not request.user.has_perm('BlogMain.view_blog'):
+        if not request.user.has_perm('blog.view_blog'):
             return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
 
         blogs = Blog.objects.all()
@@ -25,7 +25,7 @@ def blog_crud_operation(request, pk=None):
 
     # Retrieve a single blog by ID
     if request.method == 'GET' and pk:
-        if not request.user.has_perm('BlogMain.view_blog'):
+        if not request.user.has_perm('blog.view_blog'):
             return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
 
         try:
@@ -37,7 +37,7 @@ def blog_crud_operation(request, pk=None):
 
     # Create a new blog
     if request.method == 'POST':
-        if not request.user.has_perm('BlogMain.add_blog'):
+        if not request.user.has_perm('blog.add_blog'):
             return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
 
         serializer = BlogAdminSerializer(data=request.data)
@@ -52,7 +52,7 @@ def blog_crud_operation(request, pk=None):
     # Update a blog
     if request.method == 'PATCH':
         print("request data ----:", request.data)
-        if not request.user.has_perm('BlogMain.change_blog'):
+        if not request.user.has_perm('blog.change_blog'):
             return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
 
         mutable_data = request.data.copy()
@@ -78,7 +78,7 @@ def blog_crud_operation(request, pk=None):
 
     # Delete a blog
     if request.method == 'DELETE':
-        if not request.user.has_perm('BlogMain.delete_blog'):
+        if not request.user.has_perm('blog.delete_blog'):
             return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
 
         try:

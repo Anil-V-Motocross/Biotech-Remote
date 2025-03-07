@@ -33,6 +33,9 @@ class MainProduct(models.Model):
     is_seasonal_collection = models.BooleanField(default=False)
     is_trending = models.BooleanField(default=False)
 
+    # Add-ons: A product can have multiple add-ons (other MainProducts)
+    add_ons = models.ManyToManyField('self', symmetrical=False, blank=True)
+
     def __str__(self):
         return self.name
     

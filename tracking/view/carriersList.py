@@ -1,6 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import requests
+import re
 
 @csrf_exempt
 def carriers_list(request):
@@ -28,10 +29,14 @@ def carriers_list(request):
                 print("successsssssss-------------------------------------")
                 if couriers:
                     # Search for a specific courier (for example, "Bluedart")
-                    courier_name_to_find = "bluedart"  # You can modify this based on your need
+                    courier_name_to_find = "professional"  # You can modify this based on your need
                     
                     # Find the courier with the specified name
-                    selected_courier = next((courier for courier in couriers if courier["courier_name"].lower() == courier_name_to_find.lower()), None)
+                    # selected_courier = next((courier for courier in couriers if courier["courier_name"].lower() == courier_name_to_find.lower()), None)
+                    selected_courier = next(
+        (courier for courier in couriers if re.search(courier_name_to_find, courier["courier_name"], re.IGNORECASE)), 
+        None
+    )
                     print("selected -----------:", selected_courier)
 
                     if selected_courier:

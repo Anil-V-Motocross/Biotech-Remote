@@ -15,7 +15,7 @@ class BlogListView(ListAPIView):
         Custom GET method for listing all published blogs.
         """
         try:
-            blogs = Blog.objects.filter(status="published").order_by('-published_at')
+            blogs = Blog.objects.filter(status="published", is_visible=True).order_by('-published_at')
 
             if not blogs.exists():
                 return Response(
@@ -45,7 +45,7 @@ class BlogDetailView(RetrieveAPIView):
         Custom GET method to retrieve a single blog by ID.
         """
         try:
-            blog = Blog.objects.get(id=pk, status="published")
+            blog = Blog.objects.get(id=pk, status="published", is_visible=True)
 
             serializer = self.get_serializer(blog, context={"list_view": False})
             return Response(

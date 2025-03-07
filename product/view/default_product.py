@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from product.models import Product
 from rest_framework import serializers
-from product.models import Product, MainProductImage, Rating, Review
+from product.models import Product, MainProductImage, Rating, Review,MainProduct
 from django.conf import settings
 from attribute.models import Size
 from attribute.models import PlanterSize, Weight
@@ -12,7 +12,7 @@ from attribute.models import Color
 from attribute.models import Material, HandleMaterial, BladeMaterial, Shape, PotType, Litre
 from django.db.models import Avg, Count, F
 from django.db.models.functions import Floor
-
+from product.serializers import AddOnProductSerializer
 
 class ReviewSerializer(serializers.ModelSerializer):
     date = serializers.DateTimeField(format='%d/%m/%Y')
@@ -87,7 +87,10 @@ class LitreSerializer(serializers.ModelSerializer):
         model = Litre
         fields = ['id', 'name']
 
-
+class AddProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MainProduct
+        fields = ['id', 'name', 'default_sale_price', 'default_price']
 
 class ProductSerializer(serializers.ModelSerializer):
     # type = serializers.ReadOnlyField(source='product_id.type')
@@ -98,11 +101,13 @@ class ProductSerializer(serializers.ModelSerializer):
     main_product_name = serializers.ReadOnlyField(source='product_id.name')
     whats_included = serializers.ReadOnlyField(source='product_id.whats_included')
     vedio_link = serializers.ReadOnlyField(source='product_id.vedio_link')
+    mrp = serializers.FloatField(source='sale_price')
 
     class Meta:
         model = Product
         fields = [
             'id', 
+            'mrp',
             'price', 
             'images', 
             'short_description', 
@@ -160,6 +165,8 @@ def default_product(request, product_id=None):
 
         # return the product type
         product_type = product.product_id.type
+
+        product_add_ons = AddOnProductSerializer(product.product_id.add_ons.all()[:3], many=True, context={'request': request})
         
         # return all unique size_id of the product
         product_size_ids = Product.objects.filter(product_id=product_id, visible_online=True).values_list('size_id', flat=True).distinct()
@@ -212,6 +219,7 @@ def default_product(request, product_id=None):
             # 'product_pot_type': pot_type.data if pot_type else None,
             'product_rating': product_rating,
             'product_reviews': product_reviews.data,
+            'product_add_ons': product_add_ons.data,
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
 

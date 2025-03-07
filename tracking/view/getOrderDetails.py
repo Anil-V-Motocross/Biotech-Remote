@@ -1,13 +1,13 @@
 import requests 
 from django.http import JsonResponse
 
-def get_order_details(order_id):
+def get_order_details(request):
     url = "https://shipway.in/api/getOrderShipmentDetails/"
 
     payload = {
         "username": "biotechmaaliit@gmail.com",
         "password": "79f78cc05ab89b88bf9c325db2977b71",
-        "order_id": order_id
+        "order_id": "OOID0011"
     }
 
     headers = {

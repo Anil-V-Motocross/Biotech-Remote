@@ -11,7 +11,14 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from account.permissions import DynamicPermission
 from rest_framework.decorators import permission_classes, authentication_classes
 
+class AddOnSerializer(serializers.ModelSerializer):
+    """Serializer to return only id and name for add-ons"""
+    class Meta:
+        model = MainProduct
+        fields = ['id', 'name']
+
 class MainProductSerializer(serializers.ModelSerializer):
+    add_ons = AddOnSerializer(many=True, read_only=True)
     class Meta:
         model = MainProduct
         fields = '__all__'
@@ -78,6 +85,25 @@ def main_product(request, pk=None):
         else:
             return Response(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+        # Handle Many-to-Many field (add_ons)
+        add_on_ids = request.data.get('add_ons', [])  # Default to an empty list if not provided
+
+        # Ensure add_ons is always a list
+        if isinstance(add_on_ids, str):
+            add_on_ids = add_on_ids.split(',')  # Convert comma-separated string to list
+
+        elif isinstance(add_on_ids, int):  
+            add_on_ids = [add_on_ids]  # Convert single integer to a list
+
+        # Convert string IDs to integers (if needed)
+        add_on_ids = [int(add_on_id) for add_on_id in add_on_ids]
+
+        # Assign Many-to-Many field
+        if add_on_ids:
+            product.add_ons.set(add_on_ids)
+
+
+
         # Handle images
         images = request.FILES.getlist('photos')
 
@@ -99,4 +125,57 @@ def main_product(request, pk=None):
         }
 
         return Response(data={"message": "success", "data": data}, status=status.HTTP_201_CREATED)
-    
+
+    # --- PATCH Method (Update) ---
+    if request.method == 'PATCH' and pk:
+        required_permissions = ['product.change_mainproduct']
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+
+        try:
+            product = MainProduct.objects.get(pk=pk)
+        except MainProduct.DoesNotExist:
+            return Response({'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+        # Update product fields
+        for field in ['name', 'short_description', 'ribbon', 'threshold', 'description', 'whats_included', 'vedio_link', 'type']:
+            if field in request.data:
+                setattr(product, field, request.data[field])
+
+        product.save()
+
+        # Update add_ons
+        if 'add_ons' in request.data:
+            add_on_ids = request.data['add_ons']
+            if isinstance(add_on_ids, str):
+                add_on_ids = add_on_ids.split(',')
+            elif isinstance(add_on_ids, int):
+                add_on_ids = [add_on_ids]
+
+            add_on_ids = [int(add_on_id) for add_on_id in add_on_ids]
+            product.add_ons.set(add_on_ids)
+
+        # Update images
+        images = request.FILES.getlist('image')
+        if images:
+            # MainProductImage.objects.filter(product=product).delete()  # Remove old images
+            for image in images:
+                MainProductImage.objects.create(product=product, image=image)
+
+        return Response({'message': 'Product updated successfully.', 'data': MainProductSerializer(product).data}, status=status.HTTP_200_OK)
+
+    # --- DELETE Method (Delete Product) ---
+    if request.method == 'DELETE' and pk:
+        required_permissions = ['product.delete_mainproduct']
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+
+        try:
+            product = MainProduct.objects.get(pk=pk)
+        except MainProduct.DoesNotExist:
+            return Response({'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+        product.delete()  # Automatically deletes related images due to ForeignKey CASCADE
+        return Response({'message': 'Product deleted successfully.'}, status=status.HTTP_204_NO_CONTENT)
+
+    return Response({'message': 'Invalid request method or missing ID.'}, status=status.HTTP_400_BAD_REQUEST)    

@@ -4,39 +4,39 @@ from django.http import JsonResponse
 def push_order_data(order):
     url = "https://shipway.in/api/PushOrderData" 
 
-    payload ={
-        "username": "biotechmaaliit@gmail.com",
-        "password": "79f78cc05ab89b88bf9c325db2977b71",
-        "carrier_id": 1,
-        "awb": order.tracking_id, #tracking_id
-        "order_id": order.order_id,
-        "first_name":order.customer_name,
-        "last_name": " ",
-        "email": order.email,
-        "phone": order.mobile,
-        "products": "First order product description",
-        "company": "Biotechmaali",
-        "shipment_type": 1,
-        "order_data": "Biotechmaali order data - plant type"
-
-    }
-    
     # payload ={
     #     "username": "biotechmaaliit@gmail.com",
     #     "password": "79f78cc05ab89b88bf9c325db2977b71",
     #     "carrier_id": 1,
-    #     "awb": "OTID0001", #tracking_id
-    #     "order_id": "OOID0001",
-    #     "first_name":"ANIL",
-    #     "last_name": "V",
-    #     "email": "anil@123.com",
-    #     "phone": "+917012115234",
+    #     "awb": order.tracking_id, #tracking_id
+    #     "order_id": order.order_id,
+    #     "first_name":order.customer_name,
+    #     "last_name": " ",
+    #     "email": order.email,
+    #     "phone": order.mobile,
     #     "products": "First order product description",
     #     "company": "Biotechmaali",
     #     "shipment_type": 1,
     #     "order_data": "Biotechmaali order data - plant type"
 
     # }
+    
+    payload ={
+        "username": "biotechmaaliit@gmail.com",
+        "password": "79f78cc05ab89b88bf9c325db2977b71",
+        "carrier_id": 13,
+        "awb": "BGM4000003359", #tracking_id
+        "order_id": "OOID0011",
+        "first_name":"KARAN",
+        "last_name": "JAVALI",
+        "email": "anilvmotocross@gmail.com",
+        "phone": "+917012115234",
+        "products": "First order product description",
+        "company": "Biotechmaali",
+        "shipment_type": 1,
+        "order_data": "Biotechmaali order data - Testing"
+
+    }
 
     headers = {
         "Content-Type":"application/json"

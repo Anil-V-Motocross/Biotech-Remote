@@ -9,7 +9,8 @@ from rest_framework import serializers
 from account.permissions import DynamicPermission
 from rest_framework.decorators import authentication_classes, permission_classes, api_view
 from account.permissions import DynamicPermission
-
+from tracking.view.pushOrderData import push_order_data
+from account.models import User
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
@@ -79,7 +80,13 @@ def order(request, pk=None):
             serializer = OrderSerializer(order, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
-                return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
+                push_response = push_order_data(order)
+                        
+                if push_response["status"] == "Success":
+                    return Response(data={'message': 'Order updated and pushed successfully'}, status=status.HTTP_200_OK)
+                else:
+                    return Response(data={'message': 'Order updated but push failed', 'error': push_response["message"]}, status=status.HTTP_400_BAD_REQUEST)
+                # return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
             if serializer.errors:
                 return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         return Response(data={'message': 'Order does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
