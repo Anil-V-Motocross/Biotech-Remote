@@ -8,12 +8,6 @@ from django.db.models import Avg, Count, F
 from django.db.models.functions import Floor
 from product.serializers import MainProductSerializer
 
-# Serializer for MainProduct
-# class MainProductSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = MainProduct
-#         fields = ['id', 'name', 'short_description', 'default_sale_price', 'default_price']
-
 
 # class MainProductSerializer(serializers.ModelSerializer):
 #     image = serializers.SerializerMethodField()

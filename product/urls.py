@@ -45,6 +45,7 @@ urlpatterns = [
     path('subcategory-products/<int:pk>/', subcategory_products, name='subcategory-products'),
 
     path('ratingAndReviews/', rating_review_create, name='rating_and_review'),
+    
     # admin
     path('adminProductSearch/', admin_search_products, name='admin_product_search'),
 ]
