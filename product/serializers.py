@@ -43,20 +43,6 @@ class MainProductSerializer(serializers.ModelSerializer):
 
         return product_rating
 
-    # def get_is_cart(self, obj):
-    #     """Check if the product exists in the user's cart."""
-    #     user = self.context.get('request').user
-    #     if user.is_authenticated:
-    #         return Cart.objects.filter(user_id=user, product_id=obj).exists()
-    #     return False
-
-    # def get_is_wishlist(self, obj):
-    #     """Check if the product exists in the user's wishlist."""
-    #     user = self.context.get('request').user
-    #     if user.is_authenticated:
-    #         return Wishlist.objects.filter(user_id=user, product_id=obj).exists()
-    #     return False
-
     def get_is_cart(self, obj):
         """Check if the product exists in the user's cart."""
         request = self.context.get('request', None)
