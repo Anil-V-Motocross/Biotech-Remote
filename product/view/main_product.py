@@ -93,7 +93,7 @@ def main_product(request, pk=None):
             add_on_ids = add_on_ids.split(',')  # Convert comma-separated string to list
 
         elif isinstance(add_on_ids, int):  
-            add_on_ids = [add_on_ids]  # Convert single integer to a list
+            add_on_ids = [add_on_ids]  
 
         # Convert string IDs to integers (if needed)
         add_on_ids = [int(add_on_id) for add_on_id in add_on_ids]

@@ -11,7 +11,7 @@ from attribute.models import Color
 from attribute.models import Weight
 from attribute.models import Material, Shape, PotType, Litre
 from rest_framework.exceptions import ValidationError
-
+from order.models import Cart, Wishlist
 
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -65,12 +65,13 @@ class ProductSerializer(serializers.ModelSerializer):
     # add short_description from MainProduct
     short_description = serializers.ReadOnlyField(source='product_id.short_description')
     main_product_name = serializers.ReadOnlyField(source='product_id.name')
-
+    is_cart = serializers.SerializerMethodField()
+    is_wishlist = serializers.SerializerMethodField()
 
 
     class Meta:
         model = Product
-        fields = ['id', 'price', 'images', 'short_description', 'main_product_name', 'size_id', 'planter_size_id', 'planter_id', 'weight_id', 'litre_id', 'color_id']
+        fields = ['id', 'price', 'is_cart', 'is_wishlist', 'images', 'short_description', 'main_product_name', 'size_id', 'planter_size_id', 'planter_id', 'weight_id', 'litre_id', 'color_id']
 
     def get_images(self, obj):
         # Start with the product's main image
@@ -94,6 +95,19 @@ class ProductSerializer(serializers.ModelSerializer):
             return request.build_absolute_uri(settings.MEDIA_URL + image_field.name)
         return None 
 
+    def get_is_cart(self, obj):
+        """Check if the product exists in the user's cart."""
+        user = self.context.get('request').user
+        if user.is_authenticated:
+            return Cart.objects.filter(user_id=user, product_id=obj).exists()
+        return False
+
+    def get_is_wishlist(self, obj):
+        """Check if the product exists in the user's wishlist."""
+        user = self.context.get('request').user
+        if user.is_authenticated:
+            return Wishlist.objects.filter(user_id=user, product_id=obj).exists()
+        return False
 
 @api_view(['GET'])
 def filter_product(request, pk):

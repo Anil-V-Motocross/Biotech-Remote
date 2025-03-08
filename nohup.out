@@ -28632,3 +28632,1970 @@ Traceback (most recent call last):
   File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/db/models/base.py", line 134, in __new__
     raise RuntimeError(
 RuntimeError: Model class tracking.models.Shipment doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+Performing system checks...
+
+March 08, 2025 - 00:17:55
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+[08/Mar/2025 00:18:21] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 00:18:21] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 00:18:21] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:18:21] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+Not Found: /blog/
+[08/Mar/2025 00:18:21] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 00:18:21] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 00:18:21] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:18:21] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:21] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 00:18:21] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 00:18:21] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:21] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:21] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:22] "GET /media/main_product_images/WhatsApp_Image_2025-03-07_at_13.45.51_2b87258a.jpg HTTP/1.1" 304 0
+[08/Mar/2025 00:18:22] "GET /media/main_product_images/GroPot_eqtHmKi.png HTTP/1.1" 304 0
+[08/Mar/2025 00:18:22] "GET /media/main_product_images/GroPot.png HTTP/1.1" 304 0
+[08/Mar/2025 00:18:22] "GET /media/category/Group_10912_3.png HTTP/1.1" 304 0
+[08/Mar/2025 00:18:22] "GET /media/category/Seeding-rafiki_1.png HTTP/1.1" 304 0
+[08/Mar/2025 00:18:22] "GET /media/category/Group_10912_2.png HTTP/1.1" 304 0
+[08/Mar/2025 00:18:22] "GET /media/category/Group.png HTTP/1.1" 304 0
+[08/Mar/2025 00:18:22] "GET /media/category/Plants-In-Home_1_2.png HTTP/1.1" 304 0
+[08/Mar/2025 00:18:22] "GET /media/category/Group_10911.png HTTP/1.1" 304 0
+[08/Mar/2025 00:18:34] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 00:18:34] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 00:18:34] "GET /category/ HTTP/1.1" 200 575
+Not Found: /blog/
+[08/Mar/2025 00:18:34] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 00:18:34] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 00:18:34] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:18:34] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:18:34] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:34] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:34] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 00:18:34] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 00:18:34] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:34] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:37] "GET /promotion/banner/ HTTP/1.1" 200 1046
+Not Found: /blog/
+[08/Mar/2025 00:18:37] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 00:18:37] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 00:18:37] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 00:18:37] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 00:18:37] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:18:37] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:18:38] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 00:18:38] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:38] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 00:18:38] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:38] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:38] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:43] "GET /promotion/banner/ HTTP/1.1" 200 1046
+Not Found: /blog/
+[08/Mar/2025 00:18:43] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 00:18:43] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 00:18:43] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 00:18:43] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 00:18:43] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:18:43] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:18:44] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:44] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:44] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:44] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 00:18:44] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 00:18:44] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:47] "GET /promotion/banner/ HTTP/1.1" 200 1046
+Not Found: /blog/
+[08/Mar/2025 00:18:47] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 00:18:47] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 00:18:47] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 00:18:47] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 00:18:47] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:18:47] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:18:47] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:47] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 00:18:47] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:47] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 00:18:47] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 00:18:47] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 00:19:15] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:19:15] "GET /product/defaultProduct/4/ HTTP/1.1" 200 2709
+[08/Mar/2025 00:19:15] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:19:17] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 00:19:17] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 00:19:17] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 00:19:17] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Not Found: /blog/
+[08/Mar/2025 00:19:17] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 00:19:17] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 00:19:17] "GET /media/banners/webBanner/vadim-kaipov-8ZELrodSvTc-unsplash_1.jpg HTTP/1.1" 304 0
+[08/Mar/2025 00:19:17] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:19:17] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 00:19:17] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 00:19:17] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 00:19:17] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 00:19:17] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 00:19:17] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "OPTIONS /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 0
+[08/Mar/2025 00:19:17] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:18] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:19] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:19] "GET /media/main_product_images/8_2457f3ee-da96-4423-a853-6bc321c46fd9.webp HTTP/1.1" 304 0
+[08/Mar/2025 00:19:19] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:19] "GET /media/main_product_images/WhatsApp_Image_2025-03-07_at_13.45.51_2b87258a.jpg HTTP/1.1" 304 0
+[08/Mar/2025 00:19:19] "GET /media/main_product_images/GroPot.png HTTP/1.1" 304 0
+[08/Mar/2025 00:19:19] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:19] "GET /media/main_product_images/GroPot_eqtHmKi.png HTTP/1.1" 304 0
+[08/Mar/2025 00:19:19] "GET /media/feey-8nONCr6eTeg-unsplash.jpg HTTP/1.1" 304 0
+[08/Mar/2025 00:19:19] "GET /media/feey-8J7xE4yqG3g-unsplash.jpg HTTP/1.1" 304 0
+[08/Mar/2025 00:19:19] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:19] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:19] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 200 23
+[08/Mar/2025 00:19:19] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:19:19] "GET /product/defaultProduct/4/ HTTP/1.1" 200 2709
+[08/Mar/2025 00:19:19] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 00:19:41] "POST /account/login-staff/ HTTP/1.1" 200 522
+[08/Mar/2025 00:19:41] "OPTIONS /account/get-permissions/ HTTP/1.1" 200 0
+[08/Mar/2025 00:19:41] "GET /account/get-permissions/ HTTP/1.1" 200 5303
+[08/Mar/2025 00:19:44] "OPTIONS /api/token/verify/ HTTP/1.1" 200 0
+[08/Mar/2025 00:19:44] "OPTIONS /product/ HTTP/1.1" 200 0
+[08/Mar/2025 00:19:44] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 00:19:45] "GET /product/ HTTP/1.1" 200 13119
+[08/Mar/2025 00:19:45] "OPTIONS /product/productsOfMainProduct/1/ HTTP/1.1" 200 0
+[08/Mar/2025 00:19:45] "GET /product/productsOfMainProduct/1/ HTTP/1.1" 200 2478
+[08/Mar/2025 00:19:45] "GET /media/product_images/1_5d5693a6-bc3a-40a9-8f55-533ecde46d39_Gmvziti.webp HTTP/1.1" 200 39668
+[08/Mar/2025 00:19:45] "GET /media/product_images/4_18d0087a-01da-4984-b3a5-57601ec05c85_rBMRa2a.webp HTTP/1.1" 200 78262
+[08/Mar/2025 00:19:45] "GET /media/product_images/2_8422a1c4-19dc-4355-8faa-035367bda194_9Ou09bm.webp HTTP/1.1" 200 64706
+[08/Mar/2025 00:19:45] "GET /media/product_images/2_8422a1c4-19dc-4355-8faa-035367bda194.webp HTTP/1.1" 200 64706
+[08/Mar/2025 00:19:45] "GET /media/product_images/3_1c337c64-3cd2-47b9-87dd-8db98589d093_xmaaH5L.webp HTTP/1.1" 200 100842
+[08/Mar/2025 00:19:45] "GET /media/product_images/4_18d0087a-01da-4984-b3a5-57601ec05c85_RHUlYeW.webp HTTP/1.1" 200 78262
+[08/Mar/2025 00:19:47] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 00:19:47] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 00:19:47] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 00:19:47] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 00:19:47] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 00:19:47] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 00:19:47] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 00:19:47] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 00:19:47] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 00:19:47] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 00:19:54] "OPTIONS /?name=se HTTP/1.1" 200 0
+Not Found: /
+[08/Mar/2025 00:19:54] "GET /?name=se HTTP/1.1" 404 5001
+[08/Mar/2025 00:19:54] "OPTIONS /?name=see HTTP/1.1" 200 0
+Not Found: /
+[08/Mar/2025 00:19:54] "GET /?name=see HTTP/1.1" 404 5002
+[08/Mar/2025 00:19:54] "OPTIONS /?name=seed HTTP/1.1" 200 0
+Not Found: /
+[08/Mar/2025 00:19:54] "GET /?name=seed HTTP/1.1" 404 5003
+[08/Mar/2025 00:19:54] "OPTIONS /?name=seeds HTTP/1.1" 200 0
+Not Found: /
+[08/Mar/2025 00:19:55] "GET /?name=seeds HTTP/1.1" 404 5004
+[08/Mar/2025 00:20:24,941] - Broken pipe from ('106.212.170.51', 57916)
+[08/Mar/2025 00:20:24,942] - Broken pipe from ('106.212.170.51', 57972)
+[08/Mar/2025 00:20:24,943] - Broken pipe from ('106.212.170.51', 57969)
+[08/Mar/2025 00:20:24,943] - Broken pipe from ('106.212.170.51', 57971)
+[08/Mar/2025 00:20:24,944] - Broken pipe from ('106.212.170.51', 57975)
+[08/Mar/2025 00:20:24,944] - Broken pipe from ('106.212.170.51', 57965)
+[08/Mar/2025 00:20:24,944] - Broken pipe from ('106.212.170.51', 57968)
+[08/Mar/2025 00:20:24,945] - Broken pipe from ('106.212.170.51', 57919)
+[08/Mar/2025 00:20:24,945] - Broken pipe from ('106.212.170.51', 57970)
+[08/Mar/2025 00:20:24,945] - Broken pipe from ('106.212.170.51', 57910)
+[08/Mar/2025 00:20:24,946] - Broken pipe from ('106.212.170.51', 57974)
+[08/Mar/2025 00:20:24,946] - Broken pipe from ('106.212.170.51', 57907)
+[08/Mar/2025 00:20:24,947] - Broken pipe from ('106.212.170.51', 57917)
+[08/Mar/2025 00:20:24,947] - Broken pipe from ('106.212.170.51', 57915)
+[08/Mar/2025 00:20:24,948] - Broken pipe from ('106.212.170.51', 57912)
+[08/Mar/2025 00:20:24,949] - Broken pipe from ('106.212.170.51', 57908)
+[08/Mar/2025 00:20:24,949] - Broken pipe from ('106.212.170.51', 57909)
+[08/Mar/2025 00:20:24,949] - Broken pipe from ('106.212.170.51', 57966)
+[08/Mar/2025 00:20:24,949] - Broken pipe from ('106.212.170.51', 57920)
+[08/Mar/2025 00:20:24,950] - Broken pipe from ('106.212.170.51', 57911)
+[08/Mar/2025 00:20:24,952] - Broken pipe from ('106.212.170.51', 57918)
+[08/Mar/2025 00:20:53] "OPTIONS /product/adminProductSearch/?name=seeds HTTP/1.1" 200 0
+[08/Mar/2025 00:20:53] "GET /product/adminProductSearch/?name=seeds HTTP/1.1" 200 61
+[08/Mar/2025 00:33:12] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 00:33:12] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 00:33:12] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 00:33:12] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 00:33:12] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 00:33:12] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 00:33:12] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 00:33:12] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 00:33:12] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 00:33:12] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 00:33:46] "OPTIONS /product/adminProductSearch/?name=se HTTP/1.1" 200 0
+[08/Mar/2025 00:33:47] "GET /product/adminProductSearch/?name=se HTTP/1.1" 200 61
+[08/Mar/2025 00:33:47] "OPTIONS /product/adminProductSearch/?name=see HTTP/1.1" 200 0
+[08/Mar/2025 00:33:47] "GET /product/adminProductSearch/?name=see HTTP/1.1" 200 61
+[08/Mar/2025 00:34:34] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 00:34:34] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 00:34:34] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 00:34:34] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 00:34:34] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 00:34:34] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 00:34:34] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 00:34:34] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 00:34:34] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 00:34:34] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 00:35:27] "OPTIONS /product/adminProductSearch/?name=se HTTP/1.1" 200 0
+[08/Mar/2025 00:35:27] "GET /product/adminProductSearch/?name=se HTTP/1.1" 200 61
+[08/Mar/2025 00:35:27] "OPTIONS /product/adminProductSearch/?name=see HTTP/1.1" 200 0
+[08/Mar/2025 00:35:27] "GET /product/adminProductSearch/?name=see HTTP/1.1" 200 61
+[08/Mar/2025 00:45:01] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 00:45:01] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 00:45:01] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 00:45:01] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 00:45:01] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 00:45:01] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 00:45:02] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 00:45:02] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 00:45:02] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 00:45:02] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 00:45:14] "OPTIONS /product/adminProductSearch/?name=se HTTP/1.1" 200 0
+[08/Mar/2025 00:45:14] "OPTIONS /product/adminProductSearch/?name=see HTTP/1.1" 200 0
+[08/Mar/2025 00:45:15] "OPTIONS /product/adminProductSearch/?name=seed HTTP/1.1" 200 0
+[08/Mar/2025 00:45:15] "OPTIONS /product/adminProductSearch/?name=seeds HTTP/1.1" 200 0
+[08/Mar/2025 00:45:15] "GET /product/adminProductSearch/?name=see HTTP/1.1" 200 61
+[08/Mar/2025 00:45:15] "GET /product/adminProductSearch/?name=se HTTP/1.1" 200 61
+[08/Mar/2025 00:45:15] "GET /product/adminProductSearch/?name=seed HTTP/1.1" 200 61
+[08/Mar/2025 00:45:15] "GET /product/adminProductSearch/?name=seeds HTTP/1.1" 200 61
+[08/Mar/2025 00:45:31] "OPTIONS /product/adminProductSearch/?name=seed HTTP/1.1" 200 0
+[08/Mar/2025 00:45:31] "GET /product/adminProductSearch/?name=seed HTTP/1.1" 200 61
+[08/Mar/2025 00:45:31] "OPTIONS /product/adminProductSearch/?name=see HTTP/1.1" 200 0
+[08/Mar/2025 00:45:32] "GET /product/adminProductSearch/?name=see HTTP/1.1" 200 61
+[08/Mar/2025 00:45:32] "OPTIONS /product/adminProductSearch/?name=se HTTP/1.1" 200 0
+[08/Mar/2025 00:45:32] "GET /product/adminProductSearch/?name=se HTTP/1.1" 200 61
+[08/Mar/2025 00:45:37] "OPTIONS /product/adminProductSearch/?name=pl HTTP/1.1" 200 0
+[08/Mar/2025 00:45:37] "GET /product/adminProductSearch/?name=pl HTTP/1.1" 200 298
+[08/Mar/2025 00:45:38] "OPTIONS /product/adminProductSearch/?name=pla HTTP/1.1" 200 0
+[08/Mar/2025 00:45:38] "GET /product/adminProductSearch/?name=pla HTTP/1.1" 200 298
+[08/Mar/2025 00:45:38] "OPTIONS /product/adminProductSearch/?name=plan HTTP/1.1" 200 0
+[08/Mar/2025 00:45:38] "GET /product/adminProductSearch/?name=plan HTTP/1.1" 200 259
+[08/Mar/2025 00:45:39] "OPTIONS /product/adminProductSearch/?name=plant HTTP/1.1" 200 0
+[08/Mar/2025 00:45:39] "GET /product/adminProductSearch/?name=plant HTTP/1.1" 200 259
+[08/Mar/2025 00:45:44] "OPTIONS /product/adminProductSearch/?name=plan HTTP/1.1" 200 0
+[08/Mar/2025 00:45:44] "GET /product/adminProductSearch/?name=plan HTTP/1.1" 200 259
+[08/Mar/2025 00:45:44] "OPTIONS /product/adminProductSearch/?name=pla HTTP/1.1" 200 0
+[08/Mar/2025 00:45:44] "OPTIONS /product/adminProductSearch/?name=pl HTTP/1.1" 200 0
+[08/Mar/2025 00:45:44] "GET /product/adminProductSearch/?name=pla HTTP/1.1" 200 298
+[08/Mar/2025 00:45:45] "GET /product/adminProductSearch/?name=pl HTTP/1.1" 200 298
+[08/Mar/2025 00:57:38] "OPTIONS /product/adminProductSearch/?type=Plant HTTP/1.1" 200 0
+[08/Mar/2025 00:57:39] "GET /product/adminProductSearch/?type=Plant HTTP/1.1" 200 31
+[08/Mar/2025 00:57:41] "OPTIONS /product/adminProductSearch/?type=Pot HTTP/1.1" 200 0
+[08/Mar/2025 00:57:41] "GET /product/adminProductSearch/?type=Pot HTTP/1.1" 200 31
+[08/Mar/2025 00:58:42] "OPTIONS /product/adminProductSearch/?type=Pot HTTP/1.1" 200 0
+[08/Mar/2025 00:58:42] "OPTIONS /product/adminProductSearch/?type=Pot HTTP/1.1" 200 0
+[08/Mar/2025 00:58:42] "GET /product/adminProductSearch/?type=Pot HTTP/1.1" 200 31
+[08/Mar/2025 00:58:42] "OPTIONS /product/adminProductSearch/?type=Pot HTTP/1.1" 200 0
+[08/Mar/2025 00:58:42] "OPTIONS /product/adminProductSearch/?type=Pot HTTP/1.1" 200 0
+[08/Mar/2025 00:58:42] "OPTIONS /product/adminProductSearch/?type=Pot HTTP/1.1" 200 0
+[08/Mar/2025 00:58:42] "GET /product/adminProductSearch/?type=Pot HTTP/1.1" 200 31
+[08/Mar/2025 00:58:42] "GET /product/adminProductSearch/?type=Pot HTTP/1.1" 200 31
+[08/Mar/2025 00:58:43] "GET /product/adminProductSearch/?type=Pot HTTP/1.1" 200 31
+[08/Mar/2025 00:58:43] "GET /product/adminProductSearch/?type=Pot HTTP/1.1" 200 31
+[08/Mar/2025 00:58:56] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 00:58:56] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 00:58:56] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 00:58:56] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 00:58:56] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 00:58:56] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 00:58:56] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 00:58:56] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 00:58:56] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 00:58:56] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 00:59:10] "OPTIONS /product/adminProductSearch/?type=Plant HTTP/1.1" 200 0
+[08/Mar/2025 00:59:10] "GET /product/adminProductSearch/?type=Plant HTTP/1.1" 200 31
+[08/Mar/2025 01:00:28] "OPTIONS /product/adminProductSearch/?type=Pot HTTP/1.1" 200 0
+[08/Mar/2025 01:00:28] "GET /product/adminProductSearch/?type=Pot HTTP/1.1" 200 31
+[08/Mar/2025 01:00:29] "OPTIONS /product/adminProductSearch/?type=Pot HTTP/1.1" 200 0
+[08/Mar/2025 01:00:29] "OPTIONS /product/adminProductSearch/?type=Pot HTTP/1.1" 200 0
+[08/Mar/2025 01:00:29] "GET /product/adminProductSearch/?type=Pot HTTP/1.1" 200 31
+[08/Mar/2025 01:00:29] "GET /product/adminProductSearch/?type=Pot HTTP/1.1" 200 31
+[08/Mar/2025 01:00:41] "OPTIONS /product/adminProductSearch/?type=Pot HTTP/1.1" 200 0
+[08/Mar/2025 01:00:41] "GET /product/adminProductSearch/?type=Pot HTTP/1.1" 200 31
+[08/Mar/2025 01:00:45] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:00:45] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:00:45] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 01:00:45] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:00:45] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 01:00:45] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 01:00:46] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:00:46] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 01:00:46] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 01:00:46] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 01:00:50] "OPTIONS /product/adminProductSearch/?type=pot HTTP/1.1" 200 0
+[08/Mar/2025 01:00:50] "GET /product/adminProductSearch/?type=pot HTTP/1.1" 200 152
+[08/Mar/2025 01:02:22] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:02:22] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:02:22] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 01:02:22] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 01:02:22] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 01:02:22] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:02:22] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 01:02:23] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 01:02:23] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 01:02:23] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:02:29] "OPTIONS /product/adminProductSearch/?type=pot HTTP/1.1" 200 0
+[08/Mar/2025 01:02:29] "GET /product/adminProductSearch/?type=pot HTTP/1.1" 200 152
+[08/Mar/2025 01:02:34] "OPTIONS /product/adminProductSearch/?type=plant HTTP/1.1" 200 0
+[08/Mar/2025 01:02:34] "GET /product/adminProductSearch/?type=plant HTTP/1.1" 200 211
+[08/Mar/2025 01:02:38] "OPTIONS /product/adminProductSearch/?type=seed HTTP/1.1" 200 0
+[08/Mar/2025 01:02:38] "GET /product/adminProductSearch/?type=seed HTTP/1.1" 200 86
+[08/Mar/2025 01:11:06] "OPTIONS /product/adminProductSearch/?type=plant HTTP/1.1" 200 0
+[08/Mar/2025 01:11:06] "GET /product/adminProductSearch/?type=plant HTTP/1.1" 200 211
+[08/Mar/2025 01:12:58] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 01:12:58] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:12:58] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 01:12:58] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 01:12:58] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:12:58] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:12:58] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 01:12:58] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 01:12:58] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:12:58] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 01:13:11] "OPTIONS /product/adminProductSearch/?type=plant HTTP/1.1" 200 0
+[08/Mar/2025 01:13:11] "GET /product/adminProductSearch/?type=plant HTTP/1.1" 200 211
+[08/Mar/2025 01:14:28] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:14:29] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:14:41] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:14:41] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:15:08] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:15:08] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 01:15:08] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 01:15:08] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 01:15:08] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:15:09] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 01:15:09] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 01:15:09] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 01:15:30] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 01:15:30] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 01:15:30] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:15:30] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:15:30] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 01:15:30] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:15:30] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 01:15:30] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 01:15:30] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:15:30] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 01:15:51] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:15:51] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:15:56] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:15:56] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:16:03] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:16:03] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:16:26] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:16:26] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:16:37] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:16:38] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:16:44] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:16:44] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:16:49] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:16:50] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:17:00] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:00] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:00] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:01] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 01:17:01] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 01:17:01] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 01:17:07] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:17:07] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:07] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:17:07] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:07] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:07] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:07] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 01:17:07] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 01:17:07] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 01:17:07] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:17:28] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:28] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:28] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:17:28] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:17:50] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:50] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:17:57] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:57] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:17:59] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:59] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:17:59] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:17:59] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:18:06] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:18:06] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:18:12] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:18:12] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:18:12] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:18:12] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:18:13] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:18:13] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:18:13] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:18:13] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:18:13] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:18:13] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:19:53] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:19:53] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:20:10] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:20:10] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:20:10] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:20:10] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:20:19] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:20:19] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:23:43] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:23:43] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:24:12] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 01:24:12] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 01:24:20] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 01:24:20] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 01:24:25] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 01:24:25] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 01:32:45] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 01:32:45] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 01:32:45] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 01:32:46] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 01:32:46] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 01:32:46] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 01:32:48] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 01:32:48] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 01:32:48] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 01:32:48] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 01:32:48] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 01:32:48] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 01:32:49] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 01:32:49] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 01:32:49] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 01:32:49] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 01:32:49] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 01:32:49] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 01:33:08] "OPTIONS /product/adminProductSearch/?type=plant HTTP/1.1" 200 0
+[08/Mar/2025 01:33:08] "GET /product/adminProductSearch/?type=plant HTTP/1.1" 200 211
+[08/Mar/2025 01:43:04] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:43:04] "POST /api/token/verify/ HTTP/1.1" 200 2
+[08/Mar/2025 01:43:04] "OPTIONS /attribute/planterSize/ HTTP/1.1" 200 0
+[08/Mar/2025 01:43:04] "OPTIONS /attribute/color/ HTTP/1.1" 200 0
+[08/Mar/2025 01:43:04] "OPTIONS /attribute/size/ HTTP/1.1" 200 0
+[08/Mar/2025 01:43:04] "OPTIONS /category/categoryWithSubCategory/ HTTP/1.1" 200 0
+[08/Mar/2025 01:43:04] "GET /attribute/size/ HTTP/1.1" 200 197
+[08/Mar/2025 01:43:04] "GET /attribute/planterSize/ HTTP/1.1" 200 207
+[08/Mar/2025 01:43:04] "GET /attribute/color/ HTTP/1.1" 200 306
+[08/Mar/2025 01:43:04] "GET /category/categoryWithSubCategory/ HTTP/1.1" 200 494
+[08/Mar/2025 01:44:43] "OPTIONS /product/adminProductSearch/?type=plant HTTP/1.1" 200 0
+[08/Mar/2025 01:44:44] "GET /product/adminProductSearch/?type=plant HTTP/1.1" 200 211
+[08/Mar/2025 03:45:46] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 03:45:46] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 03:45:51] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 03:45:51] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 03:45:57] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 03:45:57] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 03:46:02] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 03:46:02] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 03:46:07] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 03:46:07] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 07:38:50] code 400, message Bad request version ('À\x14À')
+[08/Mar/2025 07:38:50] You're accessing the development server over HTTPS, but it only supports HTTP.
+[08/Mar/2025 07:38:50] code 400, message Bad request version ('À\x14À')
+[08/Mar/2025 07:38:50] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[08/Mar/2025 07:38:51] "GET / HTTP/1.1" 404 4978
+Not Found: /login
+[08/Mar/2025 07:38:51] "GET /login HTTP/1.1" 404 5011
+[08/Mar/2025 07:52:11] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 07:52:11] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 07:52:18] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 07:52:18] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 07:52:24] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 07:52:24] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 07:52:29] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 07:52:29] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 07:52:34] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00g\x00¨Àp2\x17ðJe\x07\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[08/Mar/2025 07:52:34] "   TZ          0I    g ¨Àp2ðJe                                                 " 400 -
+[08/Mar/2025 10:09:00] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:09:00] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:09:00] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:09:00] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:09:00] "GET /account/profile/ HTTP/1.1" 200 187
+[08/Mar/2025 10:09:00] "GET /account/profile/ HTTP/1.1" 200 187
+[08/Mar/2025 10:09:00] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:09:00] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:09:03] "GET /order/wishlist/ HTTP/1.1" 200 45
+[08/Mar/2025 10:14:14] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:14:14] "GET /category/categoryWiseSubCategory/1 HTTP/1.1" 301 0
+[08/Mar/2025 10:14:14] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:14:15] "GET /media/subcategory/feey-qoegZJ3ybOY-unsplash.jpg HTTP/1.1" 200 1176797
+[08/Mar/2025 10:14:15] "GET /media/subcategory/stephanie-harvey-T0inbt7nRME-unsplash.jpg HTTP/1.1" 200 849851
+[08/Mar/2025 10:14:15] "GET /media/subcategory/zobia-shakar-3E8scbS9gj4-unsplash.jpg HTTP/1.1" 200 1668164
+[08/Mar/2025 10:14:16] "GET /media/subcategory/by-pils-8q-Yww0fl8M-unsplash.jpg HTTP/1.1" 200 2276175
+[08/Mar/2025 10:14:17] "GET /product/subcategoryProducts/5 HTTP/1.1" 301 0
+[08/Mar/2025 10:14:17] "GET /product/category-products/5 HTTP/1.1" 301 0
+Internal Server Error: /product/subcategoryProducts/5/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: subcategory_products() got an unexpected keyword argument 'subcategory_id'
+Internal Server Error: /product/category-products/5/
+[08/Mar/2025 10:14:17] "GET /product/category-products/5/ HTTP/1.1" 500 78
+[08/Mar/2025 10:14:17] "GET /product/subcategoryProducts/5/ HTTP/1.1" 500 93201
+[08/Mar/2025 10:14:45] "GET /category/categoryWiseSubCategory/2 HTTP/1.1" 301 0
+[08/Mar/2025 10:14:45] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:14:46] "GET /category/categoryWiseSubCategory/1 HTTP/1.1" 301 0
+[08/Mar/2025 10:14:46] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:14:46] "GET /media/subcategory/zobia-shakar-3E8scbS9gj4-unsplash.jpg HTTP/1.1" 200 1668164
+[08/Mar/2025 10:14:47] "GET /media/subcategory/feey-qoegZJ3ybOY-unsplash.jpg HTTP/1.1" 200 1176797
+Not Found: /product/subcategory-products5
+[08/Mar/2025 10:17:14] "GET /product/subcategoryProducts/5 HTTP/1.1" 301 0
+[08/Mar/2025 10:17:14] "GET /product/subcategory-products5 HTTP/1.1" 404 9905
+Internal Server Error: /product/subcategoryProducts/5/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: subcategory_products() got an unexpected keyword argument 'subcategory_id'
+[08/Mar/2025 10:17:14] "GET /product/subcategoryProducts/5/ HTTP/1.1" 500 93201
+[08/Mar/2025 10:32:39] "OPTIONS /api/token/verify/ HTTP/1.1" 200 0
+[08/Mar/2025 10:32:39] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:32:39] "OPTIONS /api/token/verify/ HTTP/1.1" 200 0
+Unauthorized: /api/token/verify/
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:39] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:39] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:39] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:32:40] "GET /category/ HTTP/1.1" 200 575
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:40] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:32:40] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Not Found: /blog/
+[08/Mar/2025 10:32:40] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:32:40] "GET /store/store_list/ HTTP/1.1" 200 469
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:40] "GET /media/banners/webBanner/vadim-kaipov-8ZELrodSvTc-unsplash_1.jpg HTTP/1.1" 304 0
+[08/Mar/2025 10:32:40] "GET /media/banners/webBanner/thomas-verbruggen-cVYLIzF6Gh0-unsplash.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:32:40] "GET /media/banners/webBanner/luisa-brimble-1KYprL0KevE-unsplash_1.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:32:40] "OPTIONS /api/token/refresh/ HTTP/1.1" 200 0
+[08/Mar/2025 10:32:40] "OPTIONS /api/token/refresh/ HTTP/1.1" 200 0
+[08/Mar/2025 10:32:40] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Not Found: /blog/
+[08/Mar/2025 10:32:40] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:32:40] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:32:40] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:32:40] "OPTIONS /api/token/refresh/ HTTP/1.1" 200 0
+[08/Mar/2025 10:32:40] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:32:40] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:32:40] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:32:40] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:32:40] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:40] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:32:40] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:32:40] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+Unauthorized: /api/token/verify/
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+Unauthorized: /api/token/verify/
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:40] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:41] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/verify/
+[08/Mar/2025 10:32:41] "POST /api/token/verify/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:41] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:32:41] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:32:41] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:32:41] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:32:41] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:32:41] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:41] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+Unauthorized: /api/token/refresh/
+Unauthorized: /api/token/refresh/
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:42] "POST /api/token/refresh/ HTTP/1.1" 401 65
+[08/Mar/2025 10:32:42] "GET /media/banners/webBanner/annie-spratt-S7viz8JWxwY-unsplash.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:32:42] "GET /media/category/Seeding-rafiki_1.png HTTP/1.1" 304 0
+[08/Mar/2025 10:32:42] "GET /media/category/Group_10912_3.png HTTP/1.1" 304 0
+[08/Mar/2025 10:32:42] "GET /media/category/Group_10912_2.png HTTP/1.1" 304 0
+[08/Mar/2025 10:32:42] "GET /media/category/Group.png HTTP/1.1" 304 0
+[08/Mar/2025 10:32:42] "GET /media/category/Group_10911.png HTTP/1.1" 304 0
+[08/Mar/2025 10:32:42] "GET /media/category/Plants-In-Home_1_2.png HTTP/1.1" 304 0
+[08/Mar/2025 10:32:42] "GET /media/main_product_images/1_2.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:32:42] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:32:42] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:32:42] "GET /media/main_product_images/1_2acf4756-e9fb-4bf2-b95c-affb211b1d50.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:32:42] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:32:43] "GET /media/main_product_images/8_2457f3ee-da96-4423-a853-6bc321c46fd9.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:32:43] "GET /media/main_product_images/WhatsApp_Image_2025-03-07_at_13.45.51_2b87258a.jpg HTTP/1.1" 304 0
+[08/Mar/2025 10:32:43] "GET /media/main_product_images/GroPot.png HTTP/1.1" 304 0
+[08/Mar/2025 10:32:43] "GET /media/main_product_images/GroPot_eqtHmKi.png HTTP/1.1" 304 0
+[08/Mar/2025 10:32:43] "GET /media/feey-8nONCr6eTeg-unsplash.jpg HTTP/1.1" 304 0
+[08/Mar/2025 10:32:43] "GET /media/feey-8J7xE4yqG3g-unsplash.jpg HTTP/1.1" 304 0
+[08/Mar/2025 10:32:43] "GET /media/leigh-skomal-cUJc1mb3KVg-unsplash.jpg HTTP/1.1" 304 0
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:17] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:17] "GET /promotion/banner/ HTTP/1.1" 200 1046
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:17] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:17] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:33:17] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:33:17] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:17] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:17] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:33:17] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+Not Found: /blog/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:17] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:17] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:33:17] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Not Found: /blog/
+[08/Mar/2025 10:33:17] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:33:17] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:33:17] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:33:17] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:33:17] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:33:17] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:33:18] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:33:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:24] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:34:24] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:34:30] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:34:30] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:34:30] "GET /category/ HTTP/1.1" 200 575
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+Not Found: /blog/
+[08/Mar/2025 10:34:30] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:34:30] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:34:30] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:34:30] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Not Found: /blog/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:30] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:34:30] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:30] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:34:30] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:34:30] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:34:30] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:34:30] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:34:30] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:34:30] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:34:30] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:34:30] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:34:30] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:34:31] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:34:31] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:34:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:34:35] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:34:35] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:34:35] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:34:35] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:34:35] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:34:35] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:36:01] "GET /category/categoryWiseSubCategory/1 HTTP/1.1" 301 0
+[08/Mar/2025 10:36:01] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:36:01] "GET /media/subcategory/feey-qoegZJ3ybOY-unsplash.jpg HTTP/1.1" 200 1176797
+[08/Mar/2025 10:36:02] "GET /media/subcategory/stephanie-harvey-T0inbt7nRME-unsplash.jpg HTTP/1.1" 200 849851
+[08/Mar/2025 10:36:02] "GET /media/subcategory/zobia-shakar-3E8scbS9gj4-unsplash.jpg HTTP/1.1" 200 1668164
+[08/Mar/2025 10:36:02] "GET /media/subcategory/by-pils-8q-Yww0fl8M-unsplash.jpg HTTP/1.1" 200 2276175
+Not Found: /product/subcategory-products5
+[08/Mar/2025 10:36:28] "GET /product/subcategoryProducts/5 HTTP/1.1" 301 0
+[08/Mar/2025 10:36:28] "GET /product/subcategory-products5 HTTP/1.1" 404 9905
+Internal Server Error: /product/subcategoryProducts/5/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: subcategory_products() got an unexpected keyword argument 'subcategory_id'
+[08/Mar/2025 10:36:28] "GET /product/subcategoryProducts/5/ HTTP/1.1" 500 93201
+[08/Mar/2025 10:37:19] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:37:19] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:37:19] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Not Found: /blog/
+[08/Mar/2025 10:37:19] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:37:19] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:37:19] "GET /media/banners/webBanner/luisa-brimble-1KYprL0KevE-unsplash_1.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/banners/webBanner/thomas-verbruggen-cVYLIzF6Gh0-unsplash.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:37:19] "GET /media/banners/webBanner/annie-spratt-S7viz8JWxwY-unsplash.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/banners/webBanner/vadim-kaipov-8ZELrodSvTc-unsplash_1.jpg HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:37:19] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:37:19] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:37:19] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:37:19] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:37:19] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:37:19] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:37:19] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/main_product_images/2_22f8bed9-78ed-4d4b-bd1d-ef2e2d8b222b.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/main_product_images/1_2.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/main_product_images/1_33b8bfaa-0a57-4586-bcc6-df156a6c694e.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/main_product_images/1_2acf4756-e9fb-4bf2-b95c-affb211b1d50.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/main_product_images/8_2457f3ee-da96-4423-a853-6bc321c46fd9.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/main_product_images/WhatsApp_Image_2025-03-07_at_13.45.51_2b87258a.jpg HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/main_product_images/GroPot.png HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/main_product_images/GroPot_eqtHmKi.png HTTP/1.1" 304 0
+[08/Mar/2025 10:37:19] "GET /media/feey-8nONCr6eTeg-unsplash.jpg HTTP/1.1" 304 0
+[08/Mar/2025 10:37:20] "GET /media/feey-8J7xE4yqG3g-unsplash.jpg HTTP/1.1" 304 0
+[08/Mar/2025 10:37:20] "GET /media/leigh-skomal-cUJc1mb3KVg-unsplash.jpg HTTP/1.1" 304 0
+[08/Mar/2025 10:37:20] "GET /media/category/Group_10912_3.png HTTP/1.1" 304 0
+[08/Mar/2025 10:37:20] "GET /media/category/Seeding-rafiki_1.png HTTP/1.1" 304 0
+[08/Mar/2025 10:37:20] "GET /media/category/Group_10912_2.png HTTP/1.1" 304 0
+[08/Mar/2025 10:37:20] "GET /media/category/Group.png HTTP/1.1" 304 0
+[08/Mar/2025 10:37:20] "GET /media/category/Plants-In-Home_1_2.png HTTP/1.1" 304 0
+[08/Mar/2025 10:37:20] "GET /media/category/Group_10911.png HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /admin/ HTTP/1.1" 200 99350
+[08/Mar/2025 10:37:22] "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /static/vendor/bootswatch/flatly/bootstrap.min.css HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /static/jazzmin/css/main.css HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /static/vendor/adminlte/img/AdminLTELogo.png HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /static/vendor/bootswatch/darkly/bootstrap.min.css HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /static/vendor/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /static/jazzmin/js/main.js HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 304 0
+[08/Mar/2025 10:37:22] "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 304 0
+[08/Mar/2025 10:40:08] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:42:23] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:42:23] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:42:37] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:42:38] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:42:38] "GET /category/ HTTP/1.1" 200 575
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:38] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+Not Found: /blog/
+[08/Mar/2025 10:42:38] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:42:38] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:42:38] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Not Found: /blog/
+[08/Mar/2025 10:42:38] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:42:38] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:42:38] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:42:38] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:42:38] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:42:38] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:42:38] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:42:38] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:42:38] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:42:38] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:42:38] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:42:38] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:42:38] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:40] "GET /media/main_product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:42:40] "GET /media/main_product_images/DSC_8818_afd3420f-0b8c-410a-95f8-38394ed69ec2.webp HTTP/1.1" 304 0
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:40] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:42:40] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:42:40] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:42:40] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:42:40] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:42:40] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:42:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:42:49] "OPTIONS /account/get-permissions/ HTTP/1.1" 200 0
+[08/Mar/2025 10:42:49] "GET /account/get-permissions/ HTTP/1.1" 200 5303
+[08/Mar/2025 10:43:17] "OPTIONS /account/get-permissions/ HTTP/1.1" 200 0
+[08/Mar/2025 10:43:17] "GET /account/get-permissions/ HTTP/1.1" 200 5303
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:45] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:45] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:45] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:43:46] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:43:46] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:43:46] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:43:46] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:46] "POST /api/token/verify/ HTTP/1.1" 400 41
+Not Found: /blog/
+[08/Mar/2025 10:43:46] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:43:46] "GET /store/store_list/ HTTP/1.1" 200 469
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:46] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:46] "GET /category/ HTTP/1.1" 200 575
+Not Found: /blog/
+[08/Mar/2025 10:43:46] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:43:46] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:43:46] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:43:46] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:43:46] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:43:46] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:47] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:47] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:43:47] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:48] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:48] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:48] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:43:48] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:43:48] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:43:48] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:48] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:48] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:48] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:48] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:48] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:48] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:43:48] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:48] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:43:48] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:43:48] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:43:48] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:43:48] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:43:48] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:43:48] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:44:06] "POST /account/login-staff/ HTTP/1.1" 200 522
+[08/Mar/2025 10:44:06] "OPTIONS /account/get-permissions/ HTTP/1.1" 200 0
+[08/Mar/2025 10:44:06] "GET /account/get-permissions/ HTTP/1.1" 200 5303
+[08/Mar/2025 10:44:10] "OPTIONS /services/servicelist/ HTTP/1.1" 200 0
+[08/Mar/2025 10:44:10] "GET /services/servicelist/ HTTP/1.1" 200 605
+[08/Mar/2025 10:44:11] "GET /media/feey-8nONCr6eTeg-unsplash.jpg HTTP/1.1" 304 0
+[08/Mar/2025 10:44:11] "GET /media/feey-8J7xE4yqG3g-unsplash.jpg HTTP/1.1" 304 0
+[08/Mar/2025 10:44:11] "GET /media/leigh-skomal-cUJc1mb3KVg-unsplash.jpg HTTP/1.1" 304 0
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:35] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:35] "GET /promotion/banner/ HTTP/1.1" 200 1046
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:35] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:35] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:44:35] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:44:35] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:35] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:35] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:44:35] "GET /store/store_list/ HTTP/1.1" 200 469
+Not Found: /blog/
+[08/Mar/2025 10:44:35] "GET /blog/ HTTP/1.1" 404 7203
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:35] "POST /api/token/verify/ HTTP/1.1" 400 41
+Not Found: /blog/
+[08/Mar/2025 10:44:35] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:44:35] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:44:35] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:44:35] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:44:35] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:44:35] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:44:35] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:44:35] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:44:35] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:44:35] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:44:35] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:44:35] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:44:35] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:38] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:44:38] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:44:38] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:44:38] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:38] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:44:38] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:38] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:44:53] "GET /services/publicservice_list/ HTTP/1.1" 200 564
+[08/Mar/2025 10:45:56] "GET /product/subcategory-products/5 HTTP/1.1" 301 0
+[08/Mar/2025 10:45:56] "GET /product/subcategory-products/5/ HTTP/1.1" 200 551
+[08/Mar/2025 10:46:37] "OPTIONS /services/servicelist/ HTTP/1.1" 200 0
+[08/Mar/2025 10:46:43] "OPTIONS /services/servicelist/ HTTP/1.1" 200 0
+Bad Request: /services/servicelist/
+[08/Mar/2025 10:46:44] "POST /services/servicelist/ HTTP/1.1" 400 93
+Bad Request: /services/servicelist/
+[08/Mar/2025 10:46:44] "POST /services/servicelist/ HTTP/1.1" 400 93
+[08/Mar/2025 10:46:51] "GET /category/categoryWiseSubCategory/2 HTTP/1.1" 301 0
+[08/Mar/2025 10:46:51] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:46:52] "GET /category/categoryWiseSubCategory/1 HTTP/1.1" 301 0
+[08/Mar/2025 10:46:52] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:46:53] "GET /media/subcategory/feey-qoegZJ3ybOY-unsplash.jpg HTTP/1.1" 200 1176797
+[08/Mar/2025 10:46:53] "GET /media/subcategory/stephanie-harvey-T0inbt7nRME-unsplash.jpg HTTP/1.1" 200 849851
+[08/Mar/2025 10:46:53] "GET /media/subcategory/by-pils-8q-Yww0fl8M-unsplash.jpg HTTP/1.1" 200 2276175
+[08/Mar/2025 10:46:54] "GET /media/subcategory/zobia-shakar-3E8scbS9gj4-unsplash.jpg HTTP/1.1" 200 1668164
+[08/Mar/2025 10:46:57] "OPTIONS /services/servicelist/ HTTP/1.1" 200 0
+[08/Mar/2025 10:46:57] "POST /services/servicelist/ HTTP/1.1" 201 238
+[08/Mar/2025 10:46:57] "OPTIONS /services/servicelist/ HTTP/1.1" 200 0
+[08/Mar/2025 10:46:58] "GET /services/servicelist/ HTTP/1.1" 200 815
+[08/Mar/2025 10:46:58] "GET /media/thomas-verbruggen-cVYLIzF6Gh0-unsplash.webp HTTP/1.1" 200 2152070
+Not Found: /product/subcategory-products5
+[08/Mar/2025 10:47:02] "GET /product/subcategory-products5 HTTP/1.1" 404 9905
+[08/Mar/2025 10:47:02] "GET /product/subcategoryProducts/5 HTTP/1.1" 301 0
+Internal Server Error: /product/subcategoryProducts/5/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: subcategory_products() got an unexpected keyword argument 'subcategory_id'
+[08/Mar/2025 10:47:04] "GET /product/subcategoryProducts/5/ HTTP/1.1" 500 93201
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:17] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:17] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:17] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:47:17] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:47:18] "GET /category/ HTTP/1.1" 200 575
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:18] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:47:18] "GET /services/publicservice_list/ HTTP/1.1" 200 774
+[08/Mar/2025 10:47:18] "GET /store/store_list/ HTTP/1.1" 200 469
+Not Found: /blog/
+[08/Mar/2025 10:47:18] "GET /blog/ HTTP/1.1" 404 7203
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:18] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Not Found: /blog/
+[08/Mar/2025 10:47:18] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:47:18] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:47:18] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:47:18] "GET /services/publicservice_list/ HTTP/1.1" 200 774
+[08/Mar/2025 10:47:18] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:47:18] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:47:18] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:47:18] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:47:18] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:47:18] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:47:18] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:47:18] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:19] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:19] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:47:19] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:47:19] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:47:19] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:47:19] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:47:19] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:47:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:20] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:47:21] "GET /media/thomas-verbruggen-cVYLIzF6Gh0-unsplash.webp HTTP/1.1" 200 2152070
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:24] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:48:24] "GET /promotion/banner/ HTTP/1.1" 200 1046
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:25] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:48:25] "GET /promotion/banner/ HTTP/1.1" 200 1046
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:48:26] "GET /category/ HTTP/1.1" 200 575
+Not Found: /blog/
+[08/Mar/2025 10:48:26] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:48:26] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:48:26] "GET /services/publicservice_list/ HTTP/1.1" 200 774
+[08/Mar/2025 10:48:26] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Not Found: /blog/
+[08/Mar/2025 10:48:26] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:48:26] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:48:26] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:48:26] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:48:26] "GET /services/publicservice_list/ HTTP/1.1" 200 774
+[08/Mar/2025 10:48:26] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:48:26] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:48:26] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:48:26] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:48:26] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:48:26] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:48:26] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:48:26] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:26] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:27] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:27] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:27] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:48:30] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:48:30] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:48:30] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:48:30] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:48:30] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:48:30] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:48:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:48:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:48:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:48:33] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:48:34] "GET /media/thomas-verbruggen-cVYLIzF6Gh0-unsplash.webp HTTP/1.1" 304 0
+Unauthorized: /account/profile/
+[08/Mar/2025 10:49:16] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[08/Mar/2025 10:49:16] "GET /account/profile/ HTTP/1.1" 401 183
+[08/Mar/2025 10:49:16] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:49:16] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:49:16] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:49:16] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:49:16] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:49:16] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Unauthorized: /order/wishlist/
+[08/Mar/2025 10:49:17] "GET /order/wishlist/ HTTP/1.1" 401 183
+[08/Mar/2025 10:49:17] "GET /services/publicservice_list/ HTTP/1.1" 200 774
+[08/Mar/2025 10:49:25] "GET /product/category-products/2 HTTP/1.1" 301 0
+[08/Mar/2025 10:49:25] "GET /product/category-products/2/ HTTP/1.1" 200 225
+[08/Mar/2025 10:49:31] "GET /product/category-products/1 HTTP/1.1" 301 0
+[08/Mar/2025 10:49:32] "GET /product/category-products/1/ HTTP/1.1" 200 959
+[08/Mar/2025 10:49:34] "GET /product/category-products/3 HTTP/1.1" 301 0
+[08/Mar/2025 10:49:34] "GET /product/category-products/3/ HTTP/1.1" 200 647
+[08/Mar/2025 10:49:34] "GET /media/main_product_images/red-chatura-self-watering-pots-set-of-5-31257674743940.webp HTTP/1.1" 200 48962
+[08/Mar/2025 10:49:42] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:49:42] "GET /category/categoryWiseSubCategory/1 HTTP/1.1" 301 0
+[08/Mar/2025 10:49:42] "GET /services/publicservice_list/ HTTP/1.1" 200 774
+[08/Mar/2025 10:49:42] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:49:42] "GET /media/thomas-verbruggen-cVYLIzF6Gh0-unsplash.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:49:43] "GET /media/subcategory/stephanie-harvey-T0inbt7nRME-unsplash.jpg HTTP/1.1" 200 849851
+[08/Mar/2025 10:49:43] "GET /media/subcategory/feey-qoegZJ3ybOY-unsplash.jpg HTTP/1.1" 200 1176797
+[08/Mar/2025 10:49:44] "GET /media/subcategory/by-pils-8q-Yww0fl8M-unsplash.jpg HTTP/1.1" 200 2276175
+[08/Mar/2025 10:49:44] "GET /media/subcategory/zobia-shakar-3E8scbS9gj4-unsplash.jpg HTTP/1.1" 200 1668164
+[08/Mar/2025 10:49:45] "GET /product/subcategoryProducts/5 HTTP/1.1" 301 0
+[08/Mar/2025 10:49:57] "GET /product/subcategory-products/5 HTTP/1.1" 301 0
+Internal Server Error: /product/subcategoryProducts/5/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: subcategory_products() got an unexpected keyword argument 'subcategory_id'
+[08/Mar/2025 10:49:57] "GET /product/subcategoryProducts/5/ HTTP/1.1" 500 93201
+[08/Mar/2025 10:49:57] "GET /product/subcategory-products/5/ HTTP/1.1" 200 551
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:39] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:50:39] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:50:39] "GET /category/ HTTP/1.1" 200 575
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:39] "GET /services/publicservice_list/ HTTP/1.1" 200 774
+Not Found: /blog/
+[08/Mar/2025 10:50:39] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:50:39] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:50:39] "GET /store/store_list/ HTTP/1.1" 200 469
+Bad Request: /api/token/verify/
+Not Found: /blog/
+[08/Mar/2025 10:50:39] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:39] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:50:39] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:50:39] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:50:39] "GET /services/publicservice_list/ HTTP/1.1" 200 774
+[08/Mar/2025 10:50:39] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:50:39] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:50:39] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:50:40] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:50:40] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:50:40] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:50:40] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:50:40] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:50:40] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:40] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:41] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:50:41] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:50:41] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:50:41] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:50:41] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:50:41] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:50:41] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:50:42] "GET /media/thomas-verbruggen-cVYLIzF6Gh0-unsplash.webp HTTP/1.1" 304 0
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:51:58] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:51:58] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:51:59] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:51:59] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[08/Mar/2025 10:51:59] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:51:59] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:51:59] "POST /api/token/verify/ HTTP/1.1" 400 41
+Not Found: /blog/
+[08/Mar/2025 10:51:59] "GET /services/publicservice_list/ HTTP/1.1" 200 774
+[08/Mar/2025 10:51:59] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:51:59] "GET /store/store_list/ HTTP/1.1" 200 469
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:51:59] "POST /api/token/verify/ HTTP/1.1" 400 41
+Not Found: /blog/
+[08/Mar/2025 10:51:59] "GET /blog/ HTTP/1.1" 404 7203
+[08/Mar/2025 10:51:59] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:51:59] "GET /category/ HTTP/1.1" 200 575
+[08/Mar/2025 10:51:59] "GET /services/publicservice_list/ HTTP/1.1" 200 774
+[08/Mar/2025 10:51:59] "GET /store/store_list/ HTTP/1.1" 200 469
+[08/Mar/2025 10:51:59] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:51:59] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:51:59] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:51:59] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:51:59] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:51:59] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:51:59] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:52:00] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:00] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:52:01] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[08/Mar/2025 10:52:01] "POST /api/token/verify/ HTTP/1.1" 400 41
+[08/Mar/2025 10:52:01] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:52:01] "GET /category/categoryWiseSubCategory/3/ HTTP/1.1" 200 493
+[08/Mar/2025 10:52:01] "GET /category/categoryWiseSubCategory/4/ HTTP/1.1" 200 48
+[08/Mar/2025 10:52:01] "GET /category/categoryWiseSubCategory/6/ HTTP/1.1" 200 48
+[08/Mar/2025 10:52:01] "GET /category/categoryWiseSubCategory/7/ HTTP/1.1" 200 48
+[08/Mar/2025 10:52:01] "GET /media/thomas-verbruggen-cVYLIzF6Gh0-unsplash.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:52:02] "GET /category/categoryWiseSubCategory/2 HTTP/1.1" 301 0
+[08/Mar/2025 10:52:02] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:52:03] "GET /category/categoryWiseSubCategory/1 HTTP/1.1" 301 0
+[08/Mar/2025 10:52:03] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:52:04] "GET /media/subcategory/feey-qoegZJ3ybOY-unsplash.jpg HTTP/1.1" 200 1176797
+[08/Mar/2025 10:52:04] "GET /media/subcategory/stephanie-harvey-T0inbt7nRME-unsplash.jpg HTTP/1.1" 200 849851
+[08/Mar/2025 10:52:10] "GET /product/subcategoryProducts/6 HTTP/1.1" 301 0
+[08/Mar/2025 10:52:10] "GET /product/subcategory-products/6 HTTP/1.1" 301 0
+Internal Server Error: /product/subcategoryProducts/6/
+Traceback (most recent call last):
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: subcategory_products() got an unexpected keyword argument 'subcategory_id'
+[08/Mar/2025 10:52:11] "GET /product/subcategoryProducts/6/ HTTP/1.1" 500 93201
+[08/Mar/2025 10:52:11] "GET /product/subcategory-products/6/ HTTP/1.1" 200 757
+[08/Mar/2025 10:52:56] "GET /services/publicservice_list/ HTTP/1.1" 200 774
+[08/Mar/2025 10:54:09] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:54:09] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1717
+[08/Mar/2025 10:54:09] "GET /product/homeProducts/ HTTP/1.1" 200 2449
+[08/Mar/2025 10:54:09] "GET /media/product_images/GroPot.webp HTTP/1.1" 304 0
+[08/Mar/2025 10:55:10] "GET /category/categoryWiseSubCategory/2 HTTP/1.1" 301 0
+[08/Mar/2025 10:55:10] "GET /category/categoryWiseSubCategory/2/ HTTP/1.1" 200 48
+[08/Mar/2025 10:55:11] "GET /category/categoryWiseSubCategory/1 HTTP/1.1" 301 0
+[08/Mar/2025 10:55:11] "GET /category/categoryWiseSubCategory/1/ HTTP/1.1" 200 567
+[08/Mar/2025 10:55:12] "GET /media/subcategory/zobia-shakar-3E8scbS9gj4-unsplash.jpg HTTP/1.1" 200 1668164
+[08/Mar/2025 10:55:12] "GET /media/subcategory/by-pils-8q-Yww0fl8M-unsplash.jpg HTTP/1.1" 200 2276175

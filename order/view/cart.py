@@ -62,6 +62,7 @@ def cart(request, pk=None):
         ]
         
         main_product_id = request.data.get('main_prod_id', None)
+        print("isdd;;",main_product_id)
 
         if main_product_id:
             product_id = Product.objects.filter(product_id=main_product_id, is_default=True).first()

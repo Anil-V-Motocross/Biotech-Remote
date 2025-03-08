@@ -3,18 +3,20 @@ from product.models import MainProduct, MainProductImage, Rating, Review
 from django.db.models import Avg, Count, F
 from django.db.models.functions import Floor
 from order.models import Order
-
-
+from order.models import Cart, Wishlist
+from product.models import Product
 
 class MainProductSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
     product_rating = serializers.SerializerMethodField()
     mrp = serializers.FloatField(source='default_sale_price')
     price = serializers.FloatField(source='default_price')
+    is_cart = serializers.SerializerMethodField()
+    is_wishlist = serializers.SerializerMethodField()
 
     class Meta:
         model = MainProduct
-        fields = ['id', 'name', 'mrp', 'price', 'image', 'product_rating']
+        fields = ['id', 'name', 'is_cart', 'is_wishlist', 'mrp', 'price', 'image', 'product_rating']
 
     def get_image(self, obj):
         image = MainProductImage.objects.filter(product=obj).first()
@@ -40,17 +42,53 @@ class MainProductSerializer(serializers.ModelSerializer):
         # product_rating['stars_given'] = [{"stars": entry["rounded_rating"], "count": entry["count"]} for entry in stars_given]
 
         return product_rating
-    
+
+    # def get_is_cart(self, obj):
+    #     """Check if the product exists in the user's cart."""
+    #     user = self.context.get('request').user
+    #     if user.is_authenticated:
+    #         return Cart.objects.filter(user_id=user, product_id=obj).exists()
+    #     return False
+
+    # def get_is_wishlist(self, obj):
+    #     """Check if the product exists in the user's wishlist."""
+    #     user = self.context.get('request').user
+    #     if user.is_authenticated:
+    #         return Wishlist.objects.filter(user_id=user, product_id=obj).exists()
+    #     return False
+
+    def get_is_cart(self, obj):
+        """Check if the product exists in the user's cart."""
+        request = self.context.get('request', None)
+        if request and request.user.is_authenticated:
+            # Get the default product (variant) of this MainProduct
+            product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
+            
+            if product_instance:
+                return Cart.objects.filter(user_id=request.user, product_id=product_instance).exists()
+        return False
+
+    def get_is_wishlist(self, obj):
+        """Check if the product exists in the user's wishlist."""
+        request = self.context.get('request', None)
+        if request and request.user.is_authenticated:
+            # Get the default product (variant) of this MainProduct
+            product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
+            
+            if product_instance:
+                return Wishlist.objects.filter(user_id=request.user, product_id=product_instance).exists()
+        return False
+
 class AddOnProductSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
     product_rating = serializers.SerializerMethodField()
     price = serializers.FloatField(source='default_price')
     mrp = serializers.FloatField(source='default_sale_price')
-    product_id = serializers.SerializerMethodField() 
+
 
     class Meta:
         model = MainProduct
-        fields = ['id', 'name', 'product_id', 'mrp', 'price', 'image', 'product_rating']
+        fields = ['id', 'name', 'mrp', 'price', 'image', 'product_rating']
 
     def get_image(self, obj):
         image = MainProductImage.objects.filter(product=obj).first()
@@ -77,7 +115,7 @@ class AddOnProductSerializer(serializers.ModelSerializer):
     def get_product_id(self, obj):
         """Retrieve the ID of the default product for this MainProduct."""
         default_product = obj.product_set.filter(is_default=True).first()  # Fetch the default product
-        return default_product.id if default_product else None  # Return ID or None
+        return default_product.id if default_product else None  
 
 
 

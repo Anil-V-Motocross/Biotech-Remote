@@ -1,24 +1,40 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-from product.models import MainProduct, MainProductImage
+from product.models import MainProduct, MainProductImage, Product
 from rest_framework import serializers
+from order.models import Cart, Wishlist
+from django.conf import settings
 
-from rest_framework import serializers
+# class MainProductImageSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = MainProductImage
+#         fields = ['id', 'image']
+
 
 class MainProductImageSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()  # Override image field to return correct format
+
     class Meta:
         model = MainProductImage
         fields = ['id', 'image']
-    
+
+    def get_image(self, obj):
+        """Return the relative media URL instead of the full absolute URL."""
+        if obj.image:
+            return f"{settings.MEDIA_URL}{obj.image.name}"  # Only return the media path
+        return None
+
 
 # Serializer for MainProduct, with related images
 class MainProductSerializer(serializers.ModelSerializer):
     images = MainProductImageSerializer(many=True, read_only=True)  # Include related images
+    is_cart = serializers.SerializerMethodField()
+    is_wishlist = serializers.SerializerMethodField()
 
     class Meta:
         model = MainProduct
-        fields = ['id', 'name', 'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending', 'images']
+        fields = ['id', 'name', 'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending', 'images', 'is_cart', 'is_wishlist']
 
     def to_representation(self, instance):
         # Call the parent class to get the default representation
@@ -42,15 +58,34 @@ class MainProductSerializer(serializers.ModelSerializer):
 
         return representation
 
+    def get_is_cart(self, obj):
+        """Check if the product exists in the user's cart."""
+        request = self.context.get('request', None)
+        if request and request.user.is_authenticated:
+            # Get the default product (variant) of this MainProduct
+            product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
+            
+            if product_instance:
+                return Cart.objects.filter(user_id=request.user, product_id=product_instance).exists()
+        return False
+
+    def get_is_wishlist(self, obj):
+        """Check if the product exists in the user's wishlist."""
+        request = self.context.get('request', None)
+        if request and request.user.is_authenticated:
+            # Get the default product (variant) of this MainProduct
+            product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
+            
+            if product_instance:
+                return Wishlist.objects.filter(user_id=request.user, product_id=product_instance).exists()
+        return False
+
 
 @api_view(['GET'])
 def home_products(request):
     if request.method == 'GET':
-
         products = MainProduct.objects.all()
-
-        serializer = MainProductSerializer(products, many=True)
-
+        serializer = MainProductSerializer(products, many=True, context={'request': request})
         data = {
             'products': serializer.data
         }

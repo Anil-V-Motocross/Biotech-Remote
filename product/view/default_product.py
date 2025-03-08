@@ -13,6 +13,7 @@ from attribute.models import Material, HandleMaterial, BladeMaterial, Shape, Pot
 from django.db.models import Avg, Count, F
 from django.db.models.functions import Floor
 from product.serializers import AddOnProductSerializer
+from order.models import Cart, Wishlist, OrderItem
 
 class ReviewSerializer(serializers.ModelSerializer):
     date = serializers.DateTimeField(format='%d/%m/%Y')
@@ -102,13 +103,17 @@ class ProductSerializer(serializers.ModelSerializer):
     whats_included = serializers.ReadOnlyField(source='product_id.whats_included')
     vedio_link = serializers.ReadOnlyField(source='product_id.vedio_link')
     mrp = serializers.FloatField(source='sale_price')
-
+    is_cart = serializers.SerializerMethodField()
+    is_wishlist = serializers.SerializerMethodField()
+    is_purchased = serializers.SerializerMethodField()
     class Meta:
         model = Product
         fields = [
             'id', 
             'mrp',
             'price', 
+            'is_cart',
+            'is_wishlist',
             'images', 
             'short_description', 
             'main_product_name', 
@@ -124,8 +129,10 @@ class ProductSerializer(serializers.ModelSerializer):
             'litre_id',
             'color_id', 
             'whats_included', 
-            'vedio_link'
+            'vedio_link',
+            'is_purchased'
         ]
+
 
     def get_images(self, obj):
         # Start with the product's main image
@@ -149,6 +156,30 @@ class ProductSerializer(serializers.ModelSerializer):
             return request.build_absolute_uri(settings.MEDIA_URL + image_field.name)
         return None 
 
+    def get_is_cart(self, obj):
+        """Check if the product exists in the user's cart."""
+        user = self.context.get('request').user
+        if user.is_authenticated:
+            return Cart.objects.filter(user_id=user, product_id=obj).exists()
+        return False
+
+    def get_is_wishlist(self, obj):
+        """Check if the product exists in the user's wishlist."""
+        user = self.context.get('request').user
+        if user.is_authenticated:
+            return Wishlist.objects.filter(user_id=user, product_id=obj).exists()
+        return False
+ 
+    def get_is_purchased(self, obj):
+        """Check if the product was purchased by the user and has a delivered order status."""
+        user = self.context.get('request').user
+        if user.is_authenticated:
+            return OrderItem.objects.filter(
+                product_id=obj,
+                order_id__customer_id=user,
+                order_id__status="delivered"  # Ensures the order is delivered
+            ).exists()
+        return False
 
 @api_view(['GET'])
 def default_product(request, product_id=None):

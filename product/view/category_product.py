@@ -20,7 +20,7 @@ def category_products(request, pk):
         products = MainProduct.objects.filter(id__in=main_product_ids)
 
         # Serialize & return response
-        serializer = MainProductSerializer(products, many=True)
+        serializer = MainProductSerializer(products, many=True, context={'request': request})
         return Response(data={"message": "success", "products": serializer.data}, status=200)
 
     except Exception as e:
@@ -40,7 +40,7 @@ def category_products(request, pk):
         products = MainProduct.objects.filter(id__in=main_product_ids)
 
         # Serialize & return response
-        serializer = MainProductSerializer(products, many=True)
+        serializer = MainProductSerializer(products, many=True, context={'request': request})
         return Response(data={"message": "success", "products": serializer.data}, status=200)
 
     except Exception as e:
@@ -63,7 +63,7 @@ def subcategory_products(request, pk):
         print("Filtered MainProducts:", products)
 
         # Serialize & return response
-        serializer = MainProductSerializer(products, many=True)
+        serializer = MainProductSerializer(products, many=True, context={'request': request})
         return Response(data={"message": "success", "products": serializer.data}, status=200)
 
     except Exception as e:
