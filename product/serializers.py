@@ -70,11 +70,12 @@ class AddOnProductSerializer(serializers.ModelSerializer):
     product_rating = serializers.SerializerMethodField()
     price = serializers.FloatField(source='default_price')
     mrp = serializers.FloatField(source='default_sale_price')
-
+    is_cart = serializers.SerializerMethodField()
+    is_wishlist = serializers.SerializerMethodField()
 
     class Meta:
         model = MainProduct
-        fields = ['id', 'name', 'mrp', 'price', 'image', 'product_rating']
+        fields = ['id', 'name', 'mrp', 'price', 'image', 'product_rating', 'is_cart', 'is_wishlist']
 
     def get_image(self, obj):
         image = MainProductImage.objects.filter(product=obj).first()
@@ -98,10 +99,32 @@ class AddOnProductSerializer(serializers.ModelSerializer):
 
         return product_rating
 
-    def get_product_id(self, obj):
-        """Retrieve the ID of the default product for this MainProduct."""
-        default_product = obj.product_set.filter(is_default=True).first()  # Fetch the default product
-        return default_product.id if default_product else None  
+    def get_is_cart(self, obj):
+        """Check if the product exists in the user's cart."""
+        request = self.context.get('request', None)
+        if request and request.user.is_authenticated:
+            # Get the default product (variant) of this MainProduct
+            product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
+            
+            if product_instance:
+                return Cart.objects.filter(user_id=request.user, product_id=product_instance).exists()
+        return False
+
+    def get_is_wishlist(self, obj):
+        """Check if the product exists in the user's wishlist."""
+        request = self.context.get('request', None)
+        if request and request.user.is_authenticated:
+            # Get the default product (variant) of this MainProduct
+            product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
+            
+            if product_instance:
+                return Wishlist.objects.filter(user_id=request.user, product_id=product_instance).exists()
+        return False
+
+    # def get_product_id(self, obj):
+    #     """Retrieve the ID of the default product for this MainProduct."""
+    #     default_product = obj.product_set.filter(is_default=True).first()  # Fetch the default product
+    #     return default_product.id if default_product else None  
 
 
 

@@ -85,12 +85,14 @@ def wishlist(request, pk=None):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
         main_product_id = request.data.get('main_prod_id', None)
+        print('wishlist main id-----:', main_product_id)
 
         if main_product_id:
             product_id = Product.objects.filter(product_id=main_product_id, is_default=True).first()
             product_id = product_id.id
         else:
             product_id = request.data.get('prod_id')
+            print('wishlist produ id ----:', product_id)
         
         # Check if the product is already in the wishlist for the user
         # if exists then delete
@@ -117,17 +119,58 @@ def wishlist(request, pk=None):
             else:
                 return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
                 
-    if request.method == 'DELETE' and pk:
-        required_permissions = [
-            'order.delete_wishlist'
-        ]
+    # if request.method == 'DELETE' and pk:
+    #     required_permissions = [
+    #         'order.delete_wishlist'
+    #     ]
         
+    #     if not any(request.user.has_perm(perm) for perm in required_permissions):
+    #         return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        
+    #     if Wishlist.objects.filter(id=pk, user_id=request.user.id).exists():
+    #         wishlist = Wishlist.objects.get(id=pk, user_id=request.user.id)
+    #         wishlist.delete()
+    #         return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
+    #     return Response(data={'message': 'Wishlist does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'DELETE':
+        required_permissions = ['order.delete_wishlist']
+
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
-        
-        if Wishlist.objects.filter(id=pk, user_id=request.user.id).exists():
-            wishlist = Wishlist.objects.get(id=pk, user_id=request.user.id)
-            wishlist.delete()
-            return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
-        return Response(data={'message': 'Wishlist does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Case 1: Delete by Wishlist ID (Existing Logic)
+        if pk:
+            if Wishlist.objects.filter(id=pk, user_id=request.user.id).exists():
+                wishlist = Wishlist.objects.get(id=pk, user_id=request.user.id)
+                wishlist.delete()
+                return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
+            return Response(data={'message': 'Wishlist does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Case 2: Delete by Main Product ID (New Logic)
+        main_product_id = request.GET.get('main_product_id')
+
+        if main_product_id:
+            main_product_id = main_product_id.rstrip('/')  # Fix trailing slash issue
+
+            try:
+                main_product_id = int(main_product_id)  # Ensure it's an integer
+            except ValueError:
+                return Response({'message': 'Invalid main_product_id. Must be an integer.'}, status=status.HTTP_400_BAD_REQUEST)
+
+            # Find the default product linked to this main product
+            default_product = Product.objects.filter(product_id_id=main_product_id, is_default=True).first()
+
+            if default_product:
+                # Check if the default product exists in the user's wishlist
+                wishlist_item = Wishlist.objects.filter(product_id=default_product, user_id=request.user.id).first()
+
+                if wishlist_item:
+                    wishlist_item.delete()
+                    return Response(data={'message': 'Default product removed from wishlist.'}, status=status.HTTP_200_OK)
+                return Response(data={'message': 'Default product not found in wishlist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+            return Response(data={'message': 'No default product found for this Main Product.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(data={'message': 'Invalid request parameters.'}, status=status.HTTP_400_BAD_REQUEST)
     

@@ -9,5 +9,5 @@ urlpatterns = [
     path('coupons/', AvailableCouponsView.as_view(), name='available-coupons'),
     path('coupons/<int:coupon_id>/', SingleCouponView.as_view(), name='available-coupons'),
     path('admin/coupons/', coupon_crud_operation, name='coupon-get-create'),
-    path('admin/coupons/<int:id>/', coupon_crud_operation, name='coupon-update-delete'),
+    path('admin/coupons/<int:pk>/', coupon_crud_operation, name='coupon-update-delete'),
 ]

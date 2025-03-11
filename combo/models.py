@@ -1,5 +1,8 @@
 from django.db import models
 from product.models import Product
+from django.dispatch import receiver
+from django.db.models.signals import m2m_changed
+
 
 class ComboOffer(models.Model):
     title = models.CharField(max_length=150, unique=True)
@@ -25,20 +28,20 @@ class ComboOffer(models.Model):
     def save(self, *args, **kwargs):
         """Save instance and update total_price and final_price."""
         # Calculate prices before saving
-        if self.pk:  # Check if the instance already exists
-            total_price, final_price = self.calculate_prices()
-            self.total_price = total_price
-            self.final_price = final_price
-            print("self.pk", total_price,final_price)
+        # if self.pk:  # Check if the instance already exists
+        #     total_price, final_price = self.calculate_prices()
+        #     self.total_price = total_price
+        #     self.final_price = final_price
+        #     print("self.pk", total_price,final_price)
         super().save(*args, **kwargs)  # Save the instance
 
-        # If the instance is being created (not updated), we need to save again to update the prices
-        if not self.pk:
-            total_price, final_price = self.calculate_prices()
-            self.total_price = total_price
-            self.final_price = final_price
-            print("not self.pk ---:", total_price, final_price)
-            super().save(update_fields=['total_price', 'final_price'])  # Save updated values
+        # # If the instance is being created (not updated), we need to save again to update the prices
+        # if not self.pk:
+        #     total_price, final_price = self.calculate_prices()
+        #     self.total_price = total_price
+        #     self.final_price = final_price
+        #     print("not self.pk ---:", total_price, final_price)
+        #     super().save(update_fields=['total_price', 'final_price'])  # Save updated values
 
     def __str__(self):
         return f"{self.title} - {self.final_price}"
@@ -52,3 +55,10 @@ class ComboOffer(models.Model):
     def computed_final_price(self):
         """Compute final price dynamically without storing."""
         return self.computed_total_price - (self.discount or 0)
+
+# **Signal to update prices after ManyToManyField changes**
+@receiver(m2m_changed, sender=ComboOffer.products.through)
+def update_combooffer_prices(sender, instance, action, **kwargs):
+    if action in ["post_add", "post_remove", "post_clear"]:  # After changes
+        instance.total_price, instance.final_price = instance.calculate_prices()
+        instance.save(update_fields=['total_price', 'final_price'])    

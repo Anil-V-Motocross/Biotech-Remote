@@ -14,11 +14,12 @@ class DeliveryAddressSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     delivery_address = serializers.SerializerMethodField()
+    product_details  = serializers.SerializerMethodField()
 
     class Meta:
         model = Order
         fields = ['id', 'order_id', 'date', 'total_price', 'total_discount', 'tracking_id', 'grand_total', 
-                  'payment_method', 'customer_name', 'delivery_option', 'status', 'razorpay_order_id', 'delivery_address']
+                  'payment_method', 'customer_name', 'delivery_option', 'status', 'razorpay_order_id', 'delivery_address', 'product_details']
 
     def get_delivery_address(self, obj):
         try:
@@ -26,6 +27,18 @@ class OrderSerializer(serializers.ModelSerializer):
             return DeliveryAddressSerializer(delivery_address).data if delivery_address else None
         except DeliveryAddress.DoesNotExist:
             return None
+
+    def get_product_details(self, obj):
+        """
+        Returns the first product's name and image from the order, if available.
+        """
+        order_item = obj.orderitem_set.first()  # Get the first order item
+        if order_item:
+            return {
+                "product_name": order_item.product_id.name if order_item.product_id else None,
+                "product_image": order_item.image.url if order_item.image else None
+            }
+        return None
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, DynamicPermission])   

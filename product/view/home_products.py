@@ -5,6 +5,8 @@ from product.models import MainProduct, MainProductImage, Product
 from rest_framework import serializers
 from order.models import Cart, Wishlist
 from django.conf import settings
+from django.db.models import Avg, Count, F
+from product.models import Rating
 
 # class MainProductImageSerializer(serializers.ModelSerializer):
 #     class Meta:
@@ -31,10 +33,11 @@ class MainProductSerializer(serializers.ModelSerializer):
     images = MainProductImageSerializer(many=True, read_only=True)  # Include related images
     is_cart = serializers.SerializerMethodField()
     is_wishlist = serializers.SerializerMethodField()
+    product_rating = serializers.SerializerMethodField()
 
     class Meta:
         model = MainProduct
-        fields = ['id', 'name', 'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending', 'images', 'is_cart', 'is_wishlist']
+        fields = ['id', 'name', 'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending', 'images', 'is_cart', 'is_wishlist', 'product_rating']
 
     def to_representation(self, instance):
         # Call the parent class to get the default representation
@@ -50,8 +53,10 @@ class MainProductSerializer(serializers.ModelSerializer):
 
         if default_product:
             representation['price'] = default_product.price
+            representation['mrp'] = default_product.sale_price
         else:
             representation['price'] = None
+            representation['mrp'] = None
 
         # Optionally, remove the 'images' field if you don't need it in the response
         representation.pop('images', None)
@@ -80,6 +85,23 @@ class MainProductSerializer(serializers.ModelSerializer):
                 return Wishlist.objects.filter(user_id=request.user, product_id=product_instance).exists()
         return False
 
+    def get_product_rating(self, obj):
+        product_rating = Rating.objects.filter(main_product_id=obj.id).aggregate(
+            avg_rating=Avg('product_rating'),
+            num_ratings=Count('id')
+        )
+        product_rating['avg_rating'] = round(product_rating['avg_rating'], 2) if product_rating['avg_rating'] else 0
+
+        # # Breakdown of star ratings
+        # stars_given = list(
+        #     Rating.objects.filter(main_product_id=obj.id)
+        #     .annotate(rounded_rating=Floor(F('product_rating')))
+        #     .values('rounded_rating')
+        #     .annotate(count=Count('id'))
+        #     .order_by('-rounded_rating')
+        # )
+
+        return product_rating
 
 @api_view(['GET'])
 def home_products(request):

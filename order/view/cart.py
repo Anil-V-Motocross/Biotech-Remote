@@ -154,16 +154,58 @@ def cart(request, pk=None):
         
         return Response(data={'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
-    if request.method == 'DELETE' and pk:
-        required_permissions = [
-            'order.delete_cart'
-        ]
+    # if request.method == 'DELETE' and pk:
+    #     required_permissions = [
+    #         'order.delete_cart'
+    #     ]
         
+    #     if not any(request.user.has_perm(perm) for perm in required_permissions):
+    #         return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        
+    #     if Cart.objects.filter(id=pk, user_id=request.user.id).exists():
+    #         cart = Cart.objects.get(id=pk, user_id=request.user.id)
+    #         cart.delete()
+    #         return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
+    #     return Response(data={'message': 'Cart does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+    if request.method == 'DELETE':
+        required_permissions = ['order.delete_cart']
+
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
-        
-        if Cart.objects.filter(id=pk, user_id=request.user.id).exists():
-            cart = Cart.objects.get(id=pk, user_id=request.user.id)
-            cart.delete()
-            return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
-        return Response(data={'message': 'Cart does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Case 1: Delete by Cart ID (Existing Logic)
+        if pk:
+            if Cart.objects.filter(id=pk, user_id=request.user.id).exists():
+                cart = Cart.objects.get(id=pk, user_id=request.user.id)
+                cart.delete()
+                return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
+            return Response(data={'message': 'Cart does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Case 2: Delete by Main Product ID (New Logic)
+        main_product_id = request.GET.get('main_product_id')
+
+        if main_product_id:
+            main_product_id = main_product_id.rstrip('/')  # Fix trailing slash issue
+
+            try:
+                main_product_id = int(main_product_id)  # Ensure it's an integer
+            except ValueError:
+                return Response({'message': 'Invalid main_product_id. Must be an integer.'}, status=status.HTTP_400_BAD_REQUEST)
+
+            # Find the default product linked to this main product
+            default_product = Product.objects.filter(product_id_id=main_product_id, is_default=True).first()
+
+            if default_product:
+                # Check if the default product exists in the user's cart
+                cart_item = Cart.objects.filter(product_id=default_product, user_id=request.user.id).first()
+
+                if cart_item:
+                    cart_item.delete()
+                    return Response(data={'message': 'Default product removed from cart.'}, status=status.HTTP_200_OK)
+                return Response(data={'message': 'Default product not found in cart.'}, status=status.HTTP_400_BAD_REQUEST)
+
+            return Response(data={'message': 'No default product found for this Main Product.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(data={'message': 'Invalid request parameters.'}, status=status.HTTP_400_BAD_REQUEST)
