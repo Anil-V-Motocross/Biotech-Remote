@@ -12,14 +12,14 @@ class Servicelist(models.Model):
 
 
 class Service_enquiry(models.Model):
-    name=models.TextField()
-    contact_no=models.IntegerField()
-    services=models.TextField()
-    location=models.TextField()
-    message=models.TextField()
-    comment=models.TextField()
-    status=models.BooleanField()
+    name = models.TextField()
+    contact_no = models.IntegerField()
+    services = models.TextField()
+    location = models.TextField()
+    message = models.TextField(blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    status = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.contact_no}"
     

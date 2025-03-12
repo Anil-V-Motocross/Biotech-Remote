@@ -7,28 +7,34 @@ from combo.serializers import ComboOfferSerializer
 @api_view(['GET'])
 def combo_offer_list(request):
     """
-    Retrieve all active combo offers.
+    Retrieve all active combo offers and shop the look offers separately.
     """
     try:
-        offers = ComboOffer.objects.filter(is_active=True).order_by('-date_created')
+        # Get separate lists
+        combo_offers = ComboOffer.objects.filter(is_active=True, is_shop_the_look=False).order_by('-date_created')
+        shop_the_look_offers = ComboOffer.objects.filter(is_active=True, is_shop_the_look=True).order_by('-date_created')
 
-        if not offers.exists():
-            return Response(
-                {"message": "No combo offers available."},
-                status=status.HTTP_404_NOT_FOUND
-            )
+        # Serialize results
+        combo_serializer = ComboOfferSerializer(combo_offers, many=True)
+        shop_the_look_serializer = ComboOfferSerializer(shop_the_look_offers, many=True)
 
-        serializer = ComboOfferSerializer(offers, many=True)
-        return Response(
-            {"message": "Combo offers retrieved successfully", "data": {"combo_offers": serializer.data}},
+        return Response(data=
+            {
+                "message": "Offers retrieved successfully",
+                "data": {
+                    "combo_offers": combo_serializer.data,
+                    "shop_the_look": shop_the_look_serializer.data
+                }
+            },
             status=status.HTTP_200_OK
         )
 
     except Exception as e:
         return Response(
-            {"message": "An error occurred while retrieving combo offers", "error": str(e)},
+            {"message": "An error occurred while retrieving offers", "error": str(e)},
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
+
 
 
 @api_view(['GET'])

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MainProduct, MainProductImage, ProductCategory, ProductSubCategory, ProductTag, Product, Rating, Review
+from .models import MainProduct, MainProductImage, ProductCategory, ProductSubCategory, ProductTag, Product, Rating, Review, ProductViewCount, RecentlyViewedProduct
 from django.utils.html import format_html
 
 class MainProductAdmin(admin.ModelAdmin):  # Use ModelAdmin for the main admin class
@@ -32,10 +32,24 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('product_id', 'size_id', 'planter_size_id', 'planter_id', 'color_id', 'weight_id')
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'main_product_id', 'user_id', 'product_rating', 'date')
+    list_display = ('id', 'main_product_id', 'user_id', 'product_rating', 'date_created')
     
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('id', 'main_product_id', 'user_id', 'date')
+    list_display = ('id', 'main_product_id', 'user_id', 'review_title', 'date_created')
+
+
+@admin.register(RecentlyViewedProduct)
+class RecentlyViewedProductAdmin(admin.ModelAdmin):
+    list_display = ('user', 'product', 'viewed_at')
+    search_fields = ('user__username', 'product__name')
+    list_filter = ('viewed_at',)
+    ordering = ('-viewed_at',)
+
+@admin.register(ProductViewCount)
+class ProductViewCountAdmin(admin.ModelAdmin):
+    list_display = ('id', 'product', 'count')
+    search_fields = ('product__name',)
+    ordering = ('-count',)
 
 admin.site.register(MainProduct, MainProductAdmin)
 admin.site.register(MainProductImage, MainProductImageAdmin)

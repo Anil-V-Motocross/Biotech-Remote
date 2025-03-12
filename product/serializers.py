@@ -132,26 +132,32 @@ class AddOnProductSerializer(serializers.ModelSerializer):
 class RatingReviewSerializer(serializers.Serializer):
     main_product_id = serializers.IntegerField()
     product_rating = serializers.DecimalField(max_digits=3, decimal_places=2, required=False)
-    product_review = serializers.CharField(required=False)
+    review_title = serializers.CharField(max_length=50, required=False)
+    product_review = serializers.CharField(max_length=300, required=False)
+    recommend = serializers.BooleanField(required=False)
 
     def validate(self, data):
-        user = self.context['request'].user  # Get logged-in user
+        user = self.context['request'].user
         product_id = data.get('main_product_id')
 
-        # Check if the user has an order for this product
-        orders = Order.objects.filter(
-            customer_id=user,
-            orderitem__product_id__product_id=product_id  # Linking Order -> OrderItem -> Product -> MainProduct
-        ).distinct()
+        if self.context['request'].method == 'POST':
 
-        if not orders.exists():
-            raise serializers.ValidationError("You have not purchased this product.")
+            products = Product.objects.filter(product_id=product_id).values_list('id', flat=True)
 
-        # Check if the product was delivered
-        delivered_orders = orders.filter(shipment__shipment_status="Delivered")
+            # Ensure the user has purchased and received the product
+            orders = Order.objects.filter(
+                customer_id=user,
+                orderitem__product_id__in=products  # ✅ Now filtering with a list of product IDs
+            ).distinct()
 
-        if not delivered_orders.exists():
-            raise serializers.ValidationError("You can only review this product after delivery.")
+            if not orders.exists():
+                raise serializers.ValidationError("You have not purchased this product.")
+
+            # Check if the product was delivered
+            delivered_orders = orders.filter(status="delivered")
+
+            if not delivered_orders.exists():
+                raise serializers.ValidationError("You can only review this product after delivery.")
 
         return data
 
@@ -162,7 +168,7 @@ class RatingReviewSerializer(serializers.Serializer):
         # Handle Rating
         rating = validated_data.get('product_rating')
         if rating is not None:
-            rating_obj, created = Rating.objects.update_or_create(
+            rating_obj, _ = Rating.objects.update_or_create(
                 main_product_id_id=product_id,
                 user_id=user,
                 defaults={'product_rating': rating}
@@ -170,11 +176,18 @@ class RatingReviewSerializer(serializers.Serializer):
 
         # Handle Review
         review_text = validated_data.get('product_review')
-        if review_text:
-            review_obj, created = Review.objects.update_or_create(
+        review_title = validated_data.get('review_title')
+        recommend = validated_data.get('recommend', True) 
+
+        if review_text or review_title:
+            review_obj, _ = Review.objects.update_or_create(
                 main_product_id_id=product_id,
                 user_id=user,
-                defaults={'product_review': review_text}
+                defaults={
+                    'review_title': review_title,
+                    'product_review': review_text,
+                    'recommend': recommend
+                }
             )
 
         return {"message": "Rating and/or review submitted successfully."}

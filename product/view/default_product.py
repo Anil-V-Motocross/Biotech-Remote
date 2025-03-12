@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from product.models import Product
 from rest_framework import serializers
-from product.models import Product, MainProductImage, Rating, Review,MainProduct
+from product.models import Product, MainProductImage, Rating, Review, MainProduct, ProductViewCount, RecentlyViewedProduct
 from django.conf import settings
 from attribute.models import Size
 from attribute.models import PlanterSize, Weight
@@ -14,6 +14,8 @@ from django.db.models import Avg, Count, F
 from django.db.models.functions import Floor
 from product.serializers import AddOnProductSerializer
 from order.models import Cart, Wishlist, OrderItem
+from django.utils.timezone import now
+
 
 class ReviewSerializer(serializers.ModelSerializer):
     date = serializers.DateTimeField(format='%d/%m/%Y')
@@ -190,7 +192,22 @@ def default_product(request, product_id=None):
         # Check if the product exists
         if product is None:
             return Response(data={'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
-        
+        main_product = MainProduct.objects.get(id=product_id)
+        if main_product:
+            # Update view count or create a new entry
+            view_count, created = ProductViewCount.objects.get_or_create(product=main_product)
+            view_count.count += 1  # Increment count
+            view_count.save()           
+
+        # user = request.user
+        # print("Userrrrr ----- :", user)
+
+        # if user.is_authenticated:
+        #     print("userrrrr ----- :", user)
+        #     recently_viewed, created = RecentlyViewedProduct.objects.update_or_create(
+        #         user=user, product=product, defaults={'viewed_at': now()}
+        #     )  
+        #     print("recently viewed -----:", recently_viewed)
         # Serialize the single product (do not use `many=True`)
         serializer = ProductSerializer(product, context={'request': request})
 

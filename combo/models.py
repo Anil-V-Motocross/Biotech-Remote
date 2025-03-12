@@ -15,6 +15,8 @@ class ComboOffer(models.Model):
     discount = models.FloatField(default=0)  # User provides discount
     final_price = models.FloatField(null=True, blank=True)  # Allow NULL values
 
+    is_shop_the_look = models.BooleanField(default=False)
+
     is_active = models.BooleanField(default=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
@@ -27,24 +29,12 @@ class ComboOffer(models.Model):
 
     def save(self, *args, **kwargs):
         """Save instance and update total_price and final_price."""
-        # Calculate prices before saving
-        # if self.pk:  # Check if the instance already exists
-        #     total_price, final_price = self.calculate_prices()
-        #     self.total_price = total_price
-        #     self.final_price = final_price
-        #     print("self.pk", total_price,final_price)
         super().save(*args, **kwargs)  # Save the instance
 
-        # # If the instance is being created (not updated), we need to save again to update the prices
-        # if not self.pk:
-        #     total_price, final_price = self.calculate_prices()
-        #     self.total_price = total_price
-        #     self.final_price = final_price
-        #     print("not self.pk ---:", total_price, final_price)
-        #     super().save(update_fields=['total_price', 'final_price'])  # Save updated values
-
     def __str__(self):
-        return f"{self.title} - {self.final_price}"
+        if self.is_shop_the_look:
+            return f"Shop The Look: {self.title}"
+        return f"Combo Offer: {self.title} - {self.final_price}"
 
     @property
     def computed_total_price(self):

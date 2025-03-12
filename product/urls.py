@@ -14,7 +14,9 @@ from .view.stock_check import check_product_quantity
 from .view.search_product import search_products
 from .view.category_product import category_products, subcategory_products
 from .view.ratings_and_reviews import rating_review_create
-from .view.search_main_product_in_admin   import admin_search_products
+from .view.search_main_product_in_admin  import admin_search_products
+from .view.recently_viewed import RecentlyViewedProductsView
+
 
 app_name = 'product'
 
@@ -29,11 +31,11 @@ urlpatterns = [
     path('product/', product, name='product'),
     path('updateDefaultProduct/<int:product_id>/', update_default_product, name='update_default_product'),
 
-
     # customer urls
     path('homeProducts/', home_products, name='home_products'),
     path('defaultProduct/<int:product_id>/', default_product, name='default_product'),
     path('filterProduct/<int:pk>/', filter_product, name='filter_product'),
+    path('recentlyViewed/', RecentlyViewedProductsView.as_view(), name='recently_viewed_products'),
     
     path('subcategoryProducts/<int:subcategory_id>/', subcategory_products, name='subcategory_products'),
     path('sortBy/', sort_by, name='sort_by'),
@@ -45,6 +47,7 @@ urlpatterns = [
     path('subcategory-products/<int:pk>/', subcategory_products, name='subcategory-products'),
 
     path('ratingAndReviews/', rating_review_create, name='rating_and_review'),
+    path('ratingAndReviews/<int:main_product_id>/', rating_review_create, name='rating_and_review'),
     
     # admin
     path('adminProductSearch/', admin_search_products, name='admin_product_search'),

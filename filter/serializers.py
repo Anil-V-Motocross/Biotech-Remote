@@ -6,6 +6,7 @@ from order.models import Cart, Wishlist
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source='product_id.id', read_only=True)
     name = serializers.SerializerMethodField()
     image = serializers.SerializerMethodField()
     mrp = serializers.FloatField(source ='sale_price')

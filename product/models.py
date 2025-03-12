@@ -111,7 +111,8 @@ class Rating(models.Model):
     main_product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     product_rating = models.DecimalField(max_digits=3, decimal_places=2)
-    date = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"Rating {self.product_rating} by {self.user_id} for {self.main_product_id}"
@@ -119,8 +120,32 @@ class Rating(models.Model):
 class Review(models.Model):
     main_product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    product_review = models.TextField()
-    date = models.DateTimeField(auto_now_add=True)
+    review_title = models.CharField(max_length=50)
+    product_review = models.TextField(max_length=300)  
+    recommend = models.BooleanField(default=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"Review by {self.user_id} for {self.main_product_id}"
+
+
+
+class RecentlyViewedProduct(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recently_viewed")
+    product = models.ForeignKey(MainProduct, on_delete=models.CASCADE, related_name="viewed_products")
+    viewed_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-viewed_at']  # Most recent first
+        unique_together = ('user', 'product')  # Prevent duplicate entries
+
+    def __str__(self):
+        return f"{self.user.username} viewed {self.product.name}"
+
+class ProductViewCount(models.Model):
+    product = models.OneToOneField(MainProduct, on_delete=models.CASCADE, related_name="view_count")
+    count = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.product.name} - {self.count} views"

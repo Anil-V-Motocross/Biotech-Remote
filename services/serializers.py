@@ -6,9 +6,14 @@ from .models import Service_enquiry, Servicelist  # This is okay
 
 
 class ServiceEnquirySerializer(serializers.ModelSerializer):
+    message = serializers.CharField(required=False, allow_blank=True)
+    comment = serializers.CharField(required=False, allow_blank=True)
+    status = serializers.BooleanField(required=False)
+
     class Meta:
         model = Service_enquiry
-        fields = '__all__'  # Or specify fields like ['name', 'contact_no', ...]
+        fields = '__all__'
+
 
 
 class ServiceListSerializer(serializers.ModelSerializer):

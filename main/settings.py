@@ -200,8 +200,9 @@ SIMPLE_JWT = {
 # }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://*:8000", "http://*:3001", "http://*:3000",
+    "http://*:8000", "http://*:3001", "http://*:3000", "http://localhost:3000",
 ]
+
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_METHODS = ['GET', 'POST', 'PATCH', 'DELETE']
@@ -212,3 +213,4 @@ CORS_ALLOW_HEADERS = ['*']
 # Limit the maximum request size for file uploads to 10 MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10 MB in bytes
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10 MB in bytes
+
