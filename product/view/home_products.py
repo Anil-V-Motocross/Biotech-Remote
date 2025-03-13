@@ -92,15 +92,6 @@ class MainProductSerializer(serializers.ModelSerializer):
         )
         product_rating['avg_rating'] = round(product_rating['avg_rating'], 2) if product_rating['avg_rating'] else 0
 
-        # # Breakdown of star ratings
-        # stars_given = list(
-        #     Rating.objects.filter(main_product_id=obj.id)
-        #     .annotate(rounded_rating=Floor(F('product_rating')))
-        #     .values('rounded_rating')
-        #     .annotate(count=Count('id'))
-        #     .order_by('-rounded_rating')
-        # )
-
         return product_rating
 
 @api_view(['GET'])

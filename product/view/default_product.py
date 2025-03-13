@@ -18,20 +18,20 @@ from django.utils.timezone import now
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    date = serializers.DateTimeField(format='%d/%m/%Y')
+    date_created = serializers.DateTimeField(format='%d/%m/%Y')
     latest_rating = serializers.SerializerMethodField()
     user_name = serializers.CharField(source='user_id.first_name', read_only=True)  # Access the related field
 
 
     class Meta:
         model = Review
-        fields = ['id', 'user_id', 'user_name', 'product_review', 'date', 'latest_rating']
+        fields = ['id', 'user_id', 'user_name', 'product_review', 'date_created', 'latest_rating']
 
     def get_latest_rating(self, obj):
         # Retrieve the latest rating for the product and user
         rating = Rating.objects.filter(
             main_product_id=obj.main_product_id, user_id=obj.user_id
-            ).order_by('-date').first()
+            ).order_by('-date_created').first()
 
         return rating.product_rating if rating else None
 

@@ -3,13 +3,15 @@ from .view.order import order
 from .view.cart import cart
 from .view.wishlist import wishlist
 from .view.user_orders import user_orders
-from .view.place_order import place_order
-from .view.order_summary import order_summary
+# from .view.place_order import place_order
+# from .view.order_summary import order_summary
+from .view.order_summary2 import order_summary
 from .view.proceed_to_payment import proceed_to_payment
 from .view.verify_payment import verify_payment
 from .view.order_history import order_history
 from .view.order_history_items import order_history_items
 from .view.order_items import order_items
+from .view.place_order2 import place_order
 
 app_name = 'order'
 

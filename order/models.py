@@ -20,7 +20,7 @@ class Order(models.Model):
     total_discount = models.FloatField(default=0)
     grand_total = models.FloatField(default=0)
 
-    tracking_id = models.CharField(max_length=50)
+    tracking_id = models.CharField(max_length=50, null=True, blank=True)
 
     delivery_option_types=[
         ('Standard', 'Standard'),

@@ -63,9 +63,8 @@ def coupon_crud_operation(request, pk=None):
 
         try:
             coupon = Coupon.objects.get(id=pk)
-            print("coupon --------:", coupon)
             serializer = CouponAdminSerializer(coupon, data=request.data, partial=True)
-            print("coupon serializer --------:", request.data)
+
             if serializer.is_valid():
                 serializer.save()
                 return Response({'message': 'Coupon updated successfully', 'data': serializer.data}, status=status.HTTP_200_OK)

@@ -4,5 +4,5 @@ from .dynamic_filters import DynamicFilterView
 
 urlpatterns = [
     path('filters/', DynamicFilterView.as_view(), name='dynamic-filters'),
-    path('productsFitler/', ProductFilterListView.as_view(), name='product-list-filter'),
+    path('productsFilter/', ProductFilterListView.as_view(), name='product-list-filter'),
 ]

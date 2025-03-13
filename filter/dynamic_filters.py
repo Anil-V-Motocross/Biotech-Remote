@@ -90,8 +90,8 @@ class DynamicFilterView(APIView):
             filters.update({
                 "subcategories": list(ProductSubCategory.objects.filter(product_id__type="pot").values_list("subcategory_id__name", flat=True).distinct()),
                 "price": {
-                    "min": Product.objects.filter(product_id__type="pot").order_by("sale_price").first().sale_price,
-                    "max": Product.objects.filter(product_id__type="pot").order_by("-sale_price").first().sale_price,
+                    "price_min": Product.objects.filter(product_id__type="pot").order_by("sale_price").first().sale_price,
+                    "price_max": Product.objects.filter(product_id__type="pot").order_by("-sale_price").first().sale_price,
                 } if Product.objects.filter(product_id__type="pot").exists() else {"min": 0, "max": 0},
                 "planter_size": list(PlanterSize.objects.values_list("name", flat=True).distinct()),
                 "litre_size": list(Litre.objects.values_list("name", flat=True).distinct()),

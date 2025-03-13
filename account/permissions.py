@@ -2,6 +2,9 @@ from rest_framework.permissions import BasePermission
 
 class DynamicPermission(BasePermission):
     def has_permission(self, request, view):
+        # Only allow staff users
+        # if not request.user.is_staff:
+        #     return False
         # Retrieve required permissions (single or multiple)
         required_permissions = getattr(view, 'required_permissions', [])
 

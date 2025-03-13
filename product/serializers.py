@@ -196,3 +196,28 @@ class MainProductMinimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = MainProduct
         fields = ['id', 'name']
+
+class ProductMinimalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['id', 'name']
+
+
+class ProductInventorySerializer(serializers.ModelSerializer):
+    mrp = serializers.FloatField(source='sale_price')  
+
+    # Convert ForeignKey IDs to their names
+    size = serializers.CharField(source='size_id.name', required=False, allow_null=True)
+    planter_size = serializers.CharField(source='planter_size_id.name', required=False, allow_null=True)
+    planter = serializers.CharField(source='planter_id.name', required=False, allow_null=True)
+    color = serializers.CharField(source='color_id.color_name', required=False, allow_null=True)
+    weight = serializers.CharField(source='weight_id.size_grams', required=False, allow_null=True)
+    litre = serializers.CharField(source='litre_id.name', required=False, allow_null=True)
+    
+    class Meta:
+        model = Product
+        fields = [
+            'name', 'stock', 'cost', 'price', 'mrp', 'profit', 'discount', 'sku', 'image',
+            'date_added', 'size', 'planter_size', 'planter', 'color', 'weight', 'litre',
+        ]        
+   

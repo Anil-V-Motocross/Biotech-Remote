@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import ComboOffer, Product  
 
 class ComboOfferSerializer(serializers.ModelSerializer):
+    products = serializers.SerializerMethodField()
     class Meta:
         model = ComboOffer
         fields = [
@@ -11,8 +12,13 @@ class ComboOfferSerializer(serializers.ModelSerializer):
             'total_price',
             'discount',
             'final_price',
+            'products',
             'image'
         ]
+
+    def get_products(self, obj):
+        """Retrieve names of products included in the combo offer."""
+        return list(obj.products.values_list('name', flat=True))
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,19 +37,15 @@ class AdminComboOfferSerializer(serializers.ModelSerializer):
         model = ComboOffer
         fields = '__all__'        
 
-    # def validate_products(self, value):
-    #     """Ensure at least two products are selected."""
-    #     if len(value) < 2:
-    #         raise serializers.ValidationError("A combo offer must contain at least two products.")
-    #     return value 
-
     def validate(self, data):
         """Ensure correct product count based on type."""
+        request = self.context.get('request', None)
         products = data.get('products', [])
         is_shop_the_look = data.get('is_shop_the_look', False)
 
-        if not is_shop_the_look and len(products) < 2:
-            raise serializers.ValidationError({"products": "A combo offer must contain at least two products."})
+        if request and request.method == 'POST':
+            if not is_shop_the_look and len(products) < 2:
+                raise serializers.ValidationError({"products": "A combo offer must contain at least two products."})
 
         return data
 

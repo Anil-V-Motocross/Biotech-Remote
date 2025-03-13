@@ -81,7 +81,7 @@ def combo_offer_crud_operation(request, pk=None):
     if request.method == 'POST':
         if not request.user.has_perm('combo.add_combooffer'):
             return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
-
+        print("shop the look -------\n:", request.data)
         serializer = AdminComboOfferSerializer(data=request.data)
         if serializer.is_valid():
             if len(serializer.validated_data.get('products', [])) < 2:

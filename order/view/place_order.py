@@ -80,7 +80,7 @@ def place_order(request):
             else:
                 stock_status = "In Stock"
                 
-                sale_price = float(product.sale_price)  # Get the price of the product (convert to float for calculation)
+            sale_price = float(product.sale_price)  # Get the price of the product (convert to float for calculation)
             total = quantity * sale_price
             
             order_item = {
