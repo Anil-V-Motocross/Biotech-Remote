@@ -6,7 +6,7 @@ from django.utils import timezone
 import random, string
 from order.models import Order
 from django.core.exceptions import ValidationError
-
+from django.db.models import Sum
 
 # === PAYMENT METHOD MODEL ===
 # class PaymentMethod(models.Model):
@@ -130,6 +130,7 @@ class CouponUsage(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='coupon_usages')
     coupon = models.ForeignKey(Coupon, on_delete=models.CASCADE, related_name='user_usages')
     used_at = models.DateTimeField(auto_now_add=True)
+    usage_count = models.PositiveIntegerField(default=1)
 
 
     class Meta:
@@ -138,7 +139,6 @@ class CouponUsage(models.Model):
     @classmethod
     def usage_count_for_user(cls, user, coupon):
         """Get the count of times a user has used a specific coupon."""
-        return cls.objects.filter(user=user, coupon=coupon).count()  # Count the number of times a user has used a coupon
-    
+        return cls.objects.filter(user=user, coupon=coupon).aggregate(total_usage=Sum('usage_count'))['total_usage'] or 0
     def __str__(self):
         return f"{self.user} used {self.coupon.code} on {self.used_at}"

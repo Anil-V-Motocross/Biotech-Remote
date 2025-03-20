@@ -12,6 +12,8 @@ from .view.order_history import order_history
 from .view.order_history_items import order_history_items
 from .view.order_items import order_items
 from .view.place_order2 import place_order
+from .view.validate_coupon import validate_coupon
+
 
 app_name = 'order'
 
@@ -36,6 +38,8 @@ urlpatterns = [
     path("orderHistoryItems/<int:order_id>/", order_history_items, name="order_history_items"), # this will retun all orders of a user`
     
     path('userOrders/<int:customer_id>/', user_orders, name='user_orders'),  # Need to be ckeck whos is using it
+
+    path('applyCoupon/', validate_coupon, name='validate_coupon')
     
     #test
     # path("create-order/", create_order, name="create_order"),

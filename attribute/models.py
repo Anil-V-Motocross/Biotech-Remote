@@ -47,7 +47,13 @@ class Weight(models.Model):
 
     def __str__(self):
         return self.size_grams
-    
+
+class Litre(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    status = models.BooleanField(default=True) 
+
+    def __str__(self):
+        return self.name    
 
 class Material(models.Model):
     name = models.CharField(max_length=50, unique=True)  # e.g., "Ceramic", "Plastic", "Metal"
@@ -84,9 +90,3 @@ class BladeMaterial(models.Model):
     def __str__(self):
         return self.name    
 
-class Litre(models.Model):
-    name = models.CharField(max_length=50, unique=True)
-    status = models.BooleanField(default=True) 
-
-    def __str__(self):
-        return self.name

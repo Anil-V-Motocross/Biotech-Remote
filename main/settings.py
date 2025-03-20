@@ -64,7 +64,8 @@ INSTALLED_APPS = [
     'blog',
     'tracking',
     "wallet",
-    'combo'
+    'combo',
+    'dealoftheweek',
 ]
 
 MIDDLEWARE = [

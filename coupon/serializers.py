@@ -17,8 +17,6 @@ class CouponSerializer(serializers.ModelSerializer):
             'start_date',
             'end_date',
             'minimum_order_value',
-            'is_stackable',
-            'redemption_message',
         ]
 
 

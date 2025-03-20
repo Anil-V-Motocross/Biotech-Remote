@@ -1,24 +1,64 @@
 from rest_framework import serializers
 from .models import ComboOffer, Product  
 
+# class ComboOfferSerializer(serializers.ModelSerializer):
+#     products = serializers.SerializerMethodField()
+#     class Meta:
+#         model = ComboOffer
+#         fields = [
+#             'id',
+#             'title',
+#             'description', 
+#             'total_price',
+#             'discount',
+#             'final_price',
+#             'products',
+#             'image'
+#         ]
+
+#     def get_products(self, obj):
+#         """Retrieve names of products included in the combo offer."""
+#         return list(obj.products.values_list('name', flat=True))
+
+class ShopTheLookSerializer(serializers.ModelSerializer):
+    """Serializer for individual product details"""
+    id = serializers.IntegerField(source='product_id.id', read_only=True)
+
+    size = serializers.CharField(source='size_id.name', allow_null=True)
+    planter_size = serializers.CharField(source='planter_size_id.name', allow_null=True)
+    planter = serializers.CharField(source='planter_id.name', allow_null=True)
+    color = serializers.CharField(source='color_id.color_name', allow_null=True)
+    weight = serializers.CharField(source='weight_id.size_grams', allow_null=True)
+    litre = serializers.CharField(source='litre_id.name', allow_null=True)
+
+    mrp = serializers.FloatField(source='sale_price')
+
+    class Meta:
+        model = Product
+        fields = [
+            'id', 'name', 'mrp', 'price', 'discount',
+            'image', 'size', 'planter_size', 'planter',
+            'color', 'weight', 'litre'
+        ]
+
+
 class ComboOfferSerializer(serializers.ModelSerializer):
     products = serializers.SerializerMethodField()
+
     class Meta:
         model = ComboOffer
         fields = [
-            'id',
-            'title',
-            'description', 
-            'total_price',
-            'discount',
-            'final_price',
-            'products',
-            'image'
+            'id', 'title', 'description', 'total_price', 'discount',
+            'final_price', 'products', 'image'
         ]
 
     def get_products(self, obj):
-        """Retrieve names of products included in the combo offer."""
-        return list(obj.products.values_list('name', flat=True))
+        """Return detailed product info for 'shop_the_look' offers, else just names."""
+        if obj.is_shop_the_look:
+            return ShopTheLookSerializer(obj.products.all(), many=True).data  # Full product details
+        return list(obj.products.values_list('name', flat=True))  # Only product names
+
+
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:

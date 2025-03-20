@@ -18,7 +18,7 @@ class MainProductImageAdmin(admin.ModelAdmin):
 
 
 class ProductCategoryAdmin(admin.ModelAdmin):
-    list_display = ('product_id', 'category_id')
+    list_display = ('id', 'product_id', 'category_id')
 
 class ProductSubCategoryAdmin(admin.ModelAdmin):
     list_display = ('product_id', 'subcategory_id')
