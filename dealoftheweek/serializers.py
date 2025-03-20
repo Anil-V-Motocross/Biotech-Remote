@@ -9,6 +9,11 @@ class DealOfTheWeekSerializer(serializers.ModelSerializer):
         fields = ['main_products']
 
 class AdminDealOfTheWeekSerializer(serializers.ModelSerializer):
+    main_products = serializers.SerializerMethodField()  # Override `main_products`
+
     class Meta:
         model = DealOfTheWeek
-        fields = '__all__'
+        fields = '__all__'  
+
+    def get_main_products(self, obj):
+        return obj.main_products.name if obj.main_products else None

@@ -12,6 +12,8 @@ from account.models import User
 import datetime
 from django.db.models import Max
 
+from btcoins.models import BTCoinsWallet, BTCoinsSettings, BTCoinsTransaction, Referral
+from django.db import transaction
 
 def generate_bmu():
     current_year = datetime.datetime.now().year
@@ -195,57 +197,162 @@ class InitialInfoSerializer(serializers.ModelSerializer):
     
 
 # Take other fields of InitialInfo
+# @api_view(['POST'])
+# def register(request):
+#     if request.method == 'POST':
+#         mobile = request.data.get('mobile', None)
+#         name = request.data.get('name', None)
+#         referral_code = request.data.get('referal_code', None)
+
+#         if not mobile or not name:
+#             return Response(data={'message': 'Mobile number, name, code are required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+#         if referral_code and not User.objects.filter(bmu=referral_code).exists():
+#             return Response(data={"message": "referal code not exists."}, status=status.HTTP_400_BAD_REQUEST)
+        
+#         # check mobile is exists in User model with mobile
+#         if User.objects.filter(mobile=mobile).exists():
+#             return Response(data={'message': 'Mobile number already exists.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+#         if InitialInfo.objects.filter(mobile=mobile).exists():
+#             # make email field by concatenating mobile number and save in User model and delete in InitialInfo model
+#             data = {
+#                     "password": gererate_password(),
+#                     "first_name": name,
+#                     "bmu": generate_bmu(),
+#                     "mobile": mobile,
+#                     "email": f"{mobile}@example.com",
+#                     "referral_code": referral_code,
+#                     "is_active": True
+#                 }
+#             user = User.objects.create_user(**data)
+#             user.save()
+            
+#             # Add the user to the 'Customer' group
+#             customer_group, created = Group.objects.get_or_create(name='Customer')
+#             user.groups.add(customer_group)
+            
+#             InitialInfo.objects.filter(mobile=mobile).delete()
+#             # attech jwt token
+#             refresh = RefreshToken.for_user(user)
+#             token = {
+#                 'refresh': str(refresh),
+#                 'access': str(refresh.access_token),
+#             }
+#             # attach user de
+#             data = {
+#                 'user': {
+#                     'id': user.id,
+#                     'first_name': user.first_name,
+#                     'mobile': user.mobile,
+#                     'bmu': user.bmu
+#                 },
+#                 'token': token
+#             }
+#             return Response(data={'data': data, 'message': 'User registered successfully.'}, status=status.HTTP_200_OK)
+#         return Response(data={'message': 'Mobile number does not registered.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
 @api_view(['POST'])
 def register(request):
     if request.method == 'POST':
         mobile = request.data.get('mobile', None)
         name = request.data.get('name', None)
-        referal_code = request.data.get('referal_code', None)
+        referral_code = request.data.get('referral_code', None)  
 
         if not mobile or not name:
-            return Response(data={'message': 'Mobile number, name, code are required.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={"message": "Mobile number and name are required."}, status=status.HTTP_400_BAD_REQUEST)
         
-        if referal_code and not User.objects.filter(bmu=referal_code).exists():
-            return Response(data={"message": "referal code not exists."}, status=status.HTTP_400_BAD_REQUEST)
-        
-        # check mobile is exists in User model with mobile
+        # Check if mobile number is already registered
         if User.objects.filter(mobile=mobile).exists():
-            return Response(data={'message': 'Mobile number already exists.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={"message": "Mobile number already exists."}, status=status.HTTP_400_BAD_REQUEST)
         
+        # Validate referral code if provided
+        referrer = None
+        if referral_code:
+            try:
+                referrer_wallet = BTCoinsWallet.objects.get(referral_code=referral_code)
+                referrer = referrer_wallet.user
+            except BTCoinsWallet.DoesNotExist:
+                return Response(data={"message": "Invalid referral code."}, status=status.HTTP_400_BAD_REQUEST)
+
         if InitialInfo.objects.filter(mobile=mobile).exists():
-            # make email field by concatenating mobile number and save in User model and delete in InitialInfo model
-            data = {
-                    "password": gererate_password(),
-                    "first_name": name,
-                    "bmu": generate_bmu(),
-                    "mobile": mobile,
-                    "email": f"{mobile}@example.com",
-                    "referal_code": referal_code,
-                    "is_active": True
+            with transaction.atomic():  # Ensure atomicity
+                # Create the user
+                user = User.objects.create_user(
+                    password=gererate_password(),
+                    first_name=name,
+                    bmu=generate_bmu(),
+                    mobile=mobile,
+                    email=f"{mobile}@example.com",
+                    referral_code=referral_code,
+                    is_active=True
+                )
+                user.save()
+
+                # Assign to "Customer" group
+                customer_group, _ = Group.objects.get_or_create(name='Customer')
+                user.groups.add(customer_group)
+
+                # Create BTCoins Wallet for the new user
+                referred_wallet, _ = BTCoinsWallet.objects.get_or_create(user=user)
+
+                # Referral Logic: Add coins if a referral code is used
+                if referrer:
+                    bt_settings = BTCoinsSettings.get_settings()
+
+                    # # Update referrer's wallet
+                    # referrer_wallet.total_coins += bt_settings.referral_coins_referrer
+                    # referrer_wallet.save()
+
+                    # # Update referred user's wallet
+                    # referred_wallet.total_coins += bt_settings.referral_coins_referred
+                    # referred_wallet.save()
+
+                    # Log Transactions
+                    referrer_wallet = referrer.btcoins_wallet
+                    if referrer_wallet.referral_used_count < bt_settings.referral_limit:
+                        BTCoinsTransaction.objects.create(
+                            user=referrer,
+                            transaction_type="EARN",
+                            reference="Referral Bonus",
+                            coins=bt_settings.referral_coins_referrer
+                        )
+
+                        BTCoinsTransaction.objects.create(
+                            user=user,
+                            transaction_type="EARN",
+                            reference="Welcome Bonus",
+                            coins=bt_settings.referral_coins_referred
+                        )
+
+                    # Create Referral Entry
+                    Referral.objects.create(referrer=referrer, referred_user=user)
+
+                # Delete InitialInfo entry
+                InitialInfo.objects.filter(mobile=mobile).delete()
+
+                # Generate JWT Token
+                refresh = RefreshToken.for_user(user)
+                token = {
+                    'refresh': str(refresh),
+                    'access': str(refresh.access_token),
                 }
-            user = User.objects.create_user(**data)
-            user.save()
-            
-            # Add the user to the 'Customer' group
-            customer_group, created = Group.objects.get_or_create(name='Customer')
-            user.groups.add(customer_group)
-            
-            InitialInfo.objects.filter(mobile=mobile).delete()
-            # attech jwt token
-            refresh = RefreshToken.for_user(user)
-            token = {
-                'refresh': str(refresh),
-                'access': str(refresh.access_token),
-            }
-            # attach user de
-            data = {
-                'user': {
-                    'id': user.id,
-                    'first_name': user.first_name,
-                    'mobile': user.mobile,
-                    'bmu': user.bmu
-                },
-                'token': token
-            }
-            return Response(data={'data': data, 'message': 'User registered successfully.'}, status=status.HTTP_200_OK)
-        return Response(data={'message': 'Mobile number does not registered.'}, status=status.HTTP_400_BAD_REQUEST)
+
+                # Response Data
+                response_data = {
+                    'user': {
+                        'id': user.id,
+                        'first_name': user.first_name,
+                        'mobile': user.mobile,
+                        'bmu': user.bmu
+                    },
+                    'token': token
+                }
+                return Response(
+                    data={"data": response_data, "message": "User registered successfully."},
+                    status=status.HTTP_201_CREATED
+                )
+
+        return Response({"message": "Mobile number is not registered."}, status=status.HTTP_400_BAD_REQUEST)

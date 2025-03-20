@@ -37,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=False, verbose_name='status')
     is_staff = models.BooleanField(default=False)
 
-    referal_code = models.CharField(max_length=15, null=True, blank=True)
+    referral_code = models.CharField(max_length=15, null=True, blank=True)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

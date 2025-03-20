@@ -87130,3 +87130,1346 @@ Unauthorized: /order/wishlist/
 Unauthorized: /order/wishlist/
 [20/Mar/2025 08:37:00] "GET /order/wishlist/?main_product_id_list=true HTTP/1.1" 401 183
 [20/Mar/2025 10:48:15] "GET /admin/dealoftheweek/dealoftheweek/ HTTP/1.1" 200 43861
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+March 20, 2025 - 13:51:57
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+[20/Mar/2025 13:52:13] "GET /admin/btcoins/btcoinswallet/ HTTP/1.1" 200 43756
+[20/Mar/2025 13:52:13] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 14:45:56] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 14:45:56] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 14:45:56] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 14:45:56] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 14:45:56] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 14:45:56] "GET /account/profile/ HTTP/1.1" 200 184
+[20/Mar/2025 14:45:56] "GET /account/profile/ HTTP/1.1" 200 184
+[20/Mar/2025 14:45:56] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 14:45:56] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 14:46:01] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 14:46:01] "GET /category/categoryWiseSubCategory/10 HTTP/1.1" 301 0
+[20/Mar/2025 14:46:02] "GET /category/categoryWiseSubCategory/10/ HTTP/1.1" 200 328
+[20/Mar/2025 14:46:02] "GET /media/subcategory/stephanie-harvey-T0inbt7nRME-unsplash_eo3sfVb.jpg HTTP/1.1" 200 849851
+[20/Mar/2025 14:46:03] "GET /media/subcategory/by-pils-8q-Yww0fl8M-unsplash_VtAwNeJ.jpg HTTP/1.1" 200 2276175
+[20/Mar/2025 14:46:04] "GET /product/subcategory-products/11 HTTP/1.1" 301 0
+Subcategory: Indoor Plant
+Main Product IDs in SubCategory: []
+Filtered MainProducts: <QuerySet []>
+[20/Mar/2025 14:46:04] "GET /product/subcategory-products/11/ HTTP/1.1" 200 35
+[20/Mar/2025 14:46:06] "GET /product/subcategory-products/12 HTTP/1.1" 301 0
+Subcategory: outdoor Plan
+Main Product IDs in SubCategory: []
+Filtered MainProducts: <QuerySet []>
+[20/Mar/2025 14:46:06] "GET /product/subcategory-products/12/ HTTP/1.1" 200 35
+[20/Mar/2025 14:46:09] "GET /category/categoryWiseSubCategory/10 HTTP/1.1" 301 0
+[20/Mar/2025 14:46:09] "GET /category/categoryWiseSubCategory/10/ HTTP/1.1" 200 328
+[20/Mar/2025 14:46:10] "GET /category/categoryWiseSubCategory/11 HTTP/1.1" 301 0
+[20/Mar/2025 14:46:10] "GET /category/categoryWiseSubCategory/11/ HTTP/1.1" 200 477
+[20/Mar/2025 14:46:10] "GET /media/subcategory/1_7288ff4d-b41e-4ba0-94ea-599446c11b36_a5BPVdO.webp HTTP/1.1" 200 55112
+[20/Mar/2025 14:46:10] "GET /media/subcategory/tom-crew-NUUjVj4YQLA-unsplash_xMmYx38.jpg HTTP/1.1" 200 1600709
+[20/Mar/2025 14:46:11] "GET /media/subcategory/nathalie-klippert-9II6ibogNLk-unsplash_g1x2Eae.jpg HTTP/1.1" 200 1553788
+[20/Mar/2025 14:46:11] "GET /product/subcategory-products/13 HTTP/1.1" 301 0
+Subcategory: Earthen pots
+Main Product IDs in SubCategory: []
+Filtered MainProducts: <QuerySet []>
+[20/Mar/2025 14:46:11] "GET /product/subcategory-products/13/ HTTP/1.1" 200 35
+[20/Mar/2025 14:46:13] "GET /product/subcategory-products/14 HTTP/1.1" 301 0
+Subcategory: Ceramic pots
+Main Product IDs in SubCategory: [21, 23, 25, 27]
+Filtered MainProducts: <QuerySet [<MainProduct: Tiny Ceramic Planter>, <MainProduct: Tulip Ceramic Planter>, <MainProduct: Pipe Ceramic Pot>, <MainProduct: Apple Ceramic Pot>]>
+[20/Mar/2025 14:46:13] "GET /product/subcategory-products/14/ HTTP/1.1" 200 949
+🔹 API called: RecentlyViewedProductsView
+✅ User: Sherin Jose
+✅ Recently viewed products count: 0
+[20/Mar/2025 14:46:14] "GET /product/defaultProduct/23 HTTP/1.1" 301 0
+✅ Mostly viewed products count: 4
+✅ Successfully returning products
+[20/Mar/2025 14:46:14] "GET /product/recentlyViewed/ HTTP/1.1" 200 932
+[20/Mar/2025 14:46:14] "GET /product/defaultProduct/23/ HTTP/1.1" 200 2057
+[20/Mar/2025 14:46:15] "GET /media/product_images/8_508951a3-6d5a-4c91-97d8-9c075c1f49a5.webp HTTP/1.1" 200 18656
+🔹 Received order request: {'order_source': 'product', 'prod_id': 67, 'quantity': 1}
+✅ User profile validation result: {'user_profile': True, 'message': 'User profile is valid.', 'profile_status': True, 'address_status': True}
+🔹 Order source: product
+🔹 Product purchase: Product ID: 67, Quantity: 1
+✅ Adding product to order: Tulip Ceramic Planter-50cm, Total: 198.0, Discount: 1.0
+✅ Generated order ID: BMO2025032000001
+🔹 Order Data: {'order_id': 'BMO2025032000001', 'date': '2025-03-20', 'customer_id': 3, 'customer_name': 'Sherin', 'email': 'sherin@fhh.com', 'mobile': '6282441950', 'total_price': 198.0, 'total_discount': 1.0, 'coupon_applied': False, 'applied_coupon': None, 'coupon_discount': 0, 'grand_total': 197.0, 'status': 'Initiated', 'is_combo_purchase': False, 'is_shop_the_look': False}
+✅ Order created successfully
+Order instance ID: 233
+✅ Order items created successfully
+[20/Mar/2025 14:46:16] "POST /order/placeOrder/ HTTP/1.1" 200 758
+[20/Mar/2025 14:46:17] "GET /media/order_items/8_508951a3-6d5a-4c91-97d8-9c075c1f49a5_KJXZIQs.webp HTTP/1.1" 200 18656
+[20/Mar/2025 14:46:17] "GET /account/address/ HTTP/1.1" 200 219
+Received request for available coupons. User: Sherin Jose, Order ID: 233
+Fetching order details for user: Sherin Jose, Order ID: 233
+Order found: 233
+Is First Order: False, Ordered Product IDs: [67], Ordered Categories: [11]
+Order details fetched: 233, Is First Order: False
+Ordered Product IDs: {23}, Ordered Categories: [11]
+Found 5 active coupons before filtering.
+Checking applicability for coupon 5
+Coupon 5 is NOT applicable.
+Coupon ID: 5, Applicable: False
+Checking applicability for coupon 6
+Coupon 6 is NOT applicable.
+Coupon ID: 6, Applicable: False
+Checking applicability for coupon 7
+Coupon 7 is applicable based on applicable categories.
+Coupon ID: 7, Applicable: True
+Checking applicability for coupon 9
+Coupon 9 is NOT applicable.
+Coupon ID: 9, Applicable: False
+Checking applicability for coupon 10
+Coupon 10 is NOT applicable.
+Coupon ID: 10, Applicable: False
+Returning 5 applicable coupons.
+[20/Mar/2025 14:46:23] "GET /coupon/coupons/?order_id=233 HTTP/1.1" 200 1463
+
+🚀 [START] Applying Coupon 🚀
+
+🔍 User: Sherin Jose
+🔍 Coupon Code: None
+🔍 Selected Coupon ID: 7
+🔍 Order ID: 233
+🔍 Order Total: 198
+🔍 Extracted Product IDs from Order: [67]
+✅ Coupon Found: POTSPLANTS200
+🔍 User Usage Count: 1 / 3
+🔍 Selected Products: <QuerySet [<Product: Tulip Ceramic Planter-50cm>]>
+🔍 Extracted MainProduct IDs: [23]
+🔍 Coupon Applicable Categories (IDs): {10, 11}
+🔍 Selected Product Categories (IDs): {11}
+✅ Coupon is applicable based on categories
+❌ Order total (198) is below minimum (900.00)
+Bad Request: /order/applyCoupon/
+[20/Mar/2025 14:46:30] "POST /order/applyCoupon/ HTTP/1.1" 400 48
+[20/Mar/2025 14:47:40] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 14:47:40] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 14:47:40] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 14:47:40] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 14:57:16] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 14:57:16] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 14:57:16] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 14:57:16] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 14:57:20,180] - Broken pipe from ('103.175.137.148', 3783)
+[20/Mar/2025 14:57:21] "GET /product/defaultProduct/4 HTTP/1.1" 301 0
+[20/Mar/2025 14:57:21] "GET /product/defaultProduct/4/ HTTP/1.1" 200 2858
+[20/Mar/2025 14:57:21] "GET /media/product_images/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu.webp HTTP/1.1" 200 35312
+🔹 Received order request: {'order_source': 'product', 'prod_id': 15, 'quantity': 1}
+✅ User profile validation result: {'user_profile': True, 'message': 'User profile is valid.', 'profile_status': True, 'address_status': True}
+🔹 Order source: product
+🔹 Product purchase: Product ID: 15, Quantity: 1
+✅ Adding product to order: Tomato Seeds 15, Total: 1299.0, Discount: 12.0
+✅ Generated order ID: BMO2025032000002
+🔹 Order Data: {'order_id': 'BMO2025032000002', 'date': '2025-03-20', 'customer_id': 3, 'customer_name': 'Sherin', 'email': 'sherin@fhh.com', 'mobile': '6282441950', 'total_price': 1299.0, 'total_discount': 12.0, 'coupon_applied': False, 'applied_coupon': None, 'coupon_discount': 0, 'grand_total': 1287.0, 'status': 'Initiated', 'is_combo_purchase': False, 'is_shop_the_look': False}
+✅ Order created successfully
+Order instance ID: 234
+✅ Order items created successfully
+[20/Mar/2025 14:57:22] "POST /order/placeOrder/ HTTP/1.1" 200 761
+[20/Mar/2025 14:57:23] "GET /media/order_items/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu_PWV8vPF.webp HTTP/1.1" 200 35312
+Received request for available coupons. User: Sherin Jose, Order ID: 234
+Fetching order details for user: Sherin Jose, Order ID: 234
+Order found: 234
+Is First Order: False, Ordered Product IDs: [15], Ordered Categories: [13]
+Order details fetched: 234, Is First Order: False
+Ordered Product IDs: {4}, Ordered Categories: [13]
+Found 5 active coupons before filtering.
+Checking applicability for coupon 5
+Coupon 5 is applicable based on applicable products.
+Coupon ID: 5, Applicable: True
+Checking applicability for coupon 6
+Coupon 6 is NOT applicable.
+Coupon ID: 6, Applicable: False
+Checking applicability for coupon 7
+Coupon 7 is NOT applicable.
+Coupon ID: 7, Applicable: False
+Checking applicability for coupon 9
+Coupon 9 is applicable based on applicable categories.
+Coupon ID: 9, Applicable: True
+Checking applicability for coupon 10
+Coupon 10 is NOT applicable.
+Coupon ID: 10, Applicable: False
+Returning 5 applicable coupons.
+[20/Mar/2025 14:57:25] "GET /coupon/coupons/?order_id=234 HTTP/1.1" 200 1462
+
+🚀 [START] Applying Coupon 🚀
+
+🔍 User: Sherin Jose
+🔍 Coupon Code: None
+🔍 Selected Coupon ID: 9
+🔍 Order ID: 234
+🔍 Order Total: 1299
+🔍 Extracted Product IDs from Order: [15]
+✅ Coupon Found: SEEDS180
+🔍 User Usage Count: 0 / 1
+🔍 Selected Products: <QuerySet [<Product: Tomato Seeds 15>]>
+🔍 Extracted MainProduct IDs: [4]
+🔍 Coupon Applicable Categories (IDs): {13}
+🔍 Selected Product Categories (IDs): {13}
+✅ Coupon is applicable based on categories
+❌ Coupon cannot be combined with other discounts
+Bad Request: /order/applyCoupon/
+[20/Mar/2025 14:57:32] "POST /order/applyCoupon/ HTTP/1.1" 400 63
+[20/Mar/2025 15:04:45] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 3
+[20/Mar/2025 15:04:45] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 15:04:45] "GET /order/cart/ HTTP/1.1" 200 427
+[20/Mar/2025 15:04:45] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 4
+[20/Mar/2025 15:04:46] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 15:04:46] "GET /order/cart/ HTTP/1.1" 200 799
+[20/Mar/2025 15:04:47] "GET /order/cart/ HTTP/1.1" 200 799
+[20/Mar/2025 15:04:47] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+🔹 Received order request: {'order_source': 'cart'}
+✅ User profile validation result: {'user_profile': True, 'message': 'User profile is valid.', 'profile_status': True, 'address_status': True}
+🔹 Order source: cart
+🔹 Cart order: Found 2 items
+✅ Generated order ID: BMO2025032000003
+🔹 Order Data: {'order_id': 'BMO2025032000003', 'date': '2025-03-20', 'customer_id': 3, 'customer_name': 'Sherin', 'email': 'sherin@fhh.com', 'mobile': '6282441950', 'total_price': 2019.0, 'total_discount': 22.0, 'coupon_applied': False, 'applied_coupon': None, 'coupon_discount': 0, 'grand_total': 1997.0, 'status': 'Initiated', 'is_combo_purchase': False, 'is_shop_the_look': False}
+✅ Order created successfully
+Order instance ID: 235
+✅ Order items created successfully
+🛒 Cart cleared
+[20/Mar/2025 15:04:50] "POST /order/placeOrder/ HTTP/1.1" 200 1013
+[20/Mar/2025 15:04:50] "GET /media/order_items/GroPot_Hglez6J.webp HTTP/1.1" 200 29802
+[20/Mar/2025 15:04:50] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 15:04:50] "GET /media/order_items/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu_nXfzVoh.webp HTTP/1.1" 200 35312
+Received request for available coupons. User: Sherin Jose, Order ID: 235
+Fetching order details for user: Sherin Jose, Order ID: 235
+Order found: 235
+Is First Order: False, Ordered Product IDs: [1, 15], Ordered Categories: [10, 13]
+Order details fetched: 235, Is First Order: False
+Ordered Product IDs: {3, 4}, Ordered Categories: [10, 13]
+Found 5 active coupons before filtering.
+Checking applicability for coupon 5
+Coupon 5 is applicable based on applicable products.
+Coupon ID: 5, Applicable: True
+Checking applicability for coupon 6
+Coupon 6 is NOT applicable.
+Coupon ID: 6, Applicable: False
+Checking applicability for coupon 7
+Coupon 7 is applicable based on applicable categories.
+Coupon ID: 7, Applicable: True
+Checking applicability for coupon 9
+Coupon 9 is applicable based on applicable categories.
+Coupon ID: 9, Applicable: True
+Checking applicability for coupon 10
+Coupon 10 is applicable based on applicable categories.
+Coupon ID: 10, Applicable: True
+Returning 5 applicable coupons.
+[20/Mar/2025 15:04:53] "GET /coupon/coupons/?order_id=235 HTTP/1.1" 200 1460
+
+🚀 [START] Applying Coupon 🚀
+
+🔍 User: Sherin Jose
+🔍 Coupon Code: None
+🔍 Selected Coupon ID: 7
+🔍 Order ID: 235
+🔍 Order Total: 2019
+🔍 Extracted Product IDs from Order: [1, 15]
+✅ Coupon Found: POTSPLANTS200
+🔍 User Usage Count: 1 / 3
+🔍 Selected Products: <QuerySet [<Product: 20cm-50cm-roma-red>, <Product: Tomato Seeds 15>]>
+🔍 Extracted MainProduct IDs: [3, 4]
+🔍 Coupon Applicable Categories (IDs): {10, 11}
+🔍 Selected Product Categories (IDs): {10, 13}
+✅ Coupon is applicable based on categories
+✅ Percentage Discount Applied: 200.00
+✅ New Order Total After Discount: 1819.00
+
+🎉 [END] Coupon Applied Successfully 🎉
+
+✅ Order updated with applied coupon
+[20/Mar/2025 15:05:04] "POST /order/applyCoupon/ HTTP/1.1" 200 1122
+[20/Mar/2025 15:10:16] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 15:10:16] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 15:10:16] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 15:10:18] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 15:10:18] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 15:10:18] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 15:10:18] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 15:10:25] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 3
+[20/Mar/2025 15:10:25] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 15:10:26] "GET /order/cart/ HTTP/1.1" 200 427
+[20/Mar/2025 15:10:27] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 4
+[20/Mar/2025 15:10:27] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 15:10:27] "GET /order/cart/ HTTP/1.1" 200 799
+[20/Mar/2025 15:10:30] "GET /order/cart/ HTTP/1.1" 200 799
+🔹 Received order request: {'order_source': 'cart'}
+✅ User profile validation result: {'user_profile': True, 'message': 'User profile is valid.', 'profile_status': True, 'address_status': True}
+🔹 Order source: cart
+🔹 Cart order: Found 2 items
+✅ Generated order ID: BMO2025032000004
+🔹 Order Data: {'order_id': 'BMO2025032000004', 'date': '2025-03-20', 'customer_id': 3, 'customer_name': 'Sherin', 'email': 'sherin@fhh.com', 'mobile': '6282441950', 'total_price': 2019.0, 'total_discount': 22.0, 'coupon_applied': False, 'applied_coupon': None, 'coupon_discount': 0, 'grand_total': 1997.0, 'status': 'Initiated', 'is_combo_purchase': False, 'is_shop_the_look': False}
+✅ Order created successfully
+Order instance ID: 236
+✅ Order items created successfully
+🛒 Cart cleared
+[20/Mar/2025 15:10:35] "POST /order/placeOrder/ HTTP/1.1" 200 1013
+[20/Mar/2025 15:10:35] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 15:10:36] "GET /media/order_items/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu_feTwVwS.webp HTTP/1.1" 200 35312
+[20/Mar/2025 15:10:36] "GET /media/order_items/GroPot_6WCLETG.webp HTTP/1.1" 200 29802
+[20/Mar/2025 15:24:01] "OPTIONS /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 0
+[20/Mar/2025 15:24:02] "GET /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 729
+[20/Mar/2025 15:24:03] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 15:24:03] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 15:24:03] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 15:24:06] "OPTIONS /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 0
+[20/Mar/2025 15:24:06] "GET /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 729
+[20/Mar/2025 15:24:08] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 3
+[20/Mar/2025 15:24:09] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 15:24:09] "GET /order/cart/ HTTP/1.1" 200 427
+[20/Mar/2025 15:24:11] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 4
+[20/Mar/2025 15:24:11] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 15:24:11] "GET /order/cart/ HTTP/1.1" 200 799
+[20/Mar/2025 15:24:13] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 5
+[20/Mar/2025 15:24:13] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 15:24:13] "GET /order/cart/ HTTP/1.1" 200 1149
+[20/Mar/2025 15:24:14] "GET /order/cart/ HTTP/1.1" 200 1149
+Not Found: /media/default/category_default.jpg
+[20/Mar/2025 15:24:14] "GET /media/product_images/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu.webp HTTP/1.1" 200 35312
+[20/Mar/2025 15:24:14] "GET /media/default/category_default.jpg HTTP/1.1" 404 5785
+[20/Mar/2025 15:24:14] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+[20/Mar/2025 15:24:19] "DELETE /order/cart/262/ HTTP/1.1" 200 21
+🔹 Received order request: {'order_source': 'cart'}
+✅ User profile validation result: {'user_profile': True, 'message': 'User profile is valid.', 'profile_status': True, 'address_status': True}
+🔹 Order source: cart
+🔹 Cart order: Found 2 items
+✅ Generated order ID: BMO2025032000005
+🔹 Order Data: {'order_id': 'BMO2025032000005', 'date': '2025-03-20', 'customer_id': 3, 'customer_name': 'Sherin', 'email': 'sherin@fhh.com', 'mobile': '6282441950', 'total_price': 2019.0, 'total_discount': 22.0, 'coupon_applied': False, 'applied_coupon': None, 'coupon_discount': 0, 'grand_total': 1997.0, 'status': 'Initiated', 'is_combo_purchase': False, 'is_shop_the_look': False}
+✅ Order created successfully
+Order instance ID: 237
+✅ Order items created successfully
+🛒 Cart cleared
+[20/Mar/2025 15:24:24] "POST /order/placeOrder/ HTTP/1.1" 200 1013
+[20/Mar/2025 15:24:25] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 15:24:25] "GET /media/order_items/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu_VPA7dPq.webp HTTP/1.1" 200 35312
+[20/Mar/2025 15:24:25] "GET /media/order_items/GroPot_aO38HVe.webp HTTP/1.1" 200 29802
+[20/Mar/2025 15:28:00] "OPTIONS /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 0
+[20/Mar/2025 15:28:00] "GET /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 729
+[20/Mar/2025 15:28:31] "OPTIONS /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 0
+[20/Mar/2025 15:28:31] "GET /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 729
+[20/Mar/2025 15:28:44] "OPTIONS /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 0
+[20/Mar/2025 15:28:44] "GET /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 729
+[20/Mar/2025 15:29:20] "OPTIONS /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 0
+[20/Mar/2025 15:29:21] "GET /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 729
+[20/Mar/2025 15:29:26] "OPTIONS /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 0
+[20/Mar/2025 15:29:26] "GET /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 729
+[20/Mar/2025 15:33:29] "OPTIONS /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 0
+[20/Mar/2025 15:33:29] "OPTIONS /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 0
+[20/Mar/2025 15:33:29] "GET /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 729
+[20/Mar/2025 15:33:29] "GET /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 729
+[20/Mar/2025 15:35:44] "OPTIONS /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 0
+[20/Mar/2025 15:35:44] "GET /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 729
+[20/Mar/2025 15:36:01] "OPTIONS /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 0
+[20/Mar/2025 15:36:01] "GET /dealOfTheWeek/adminDeals/ HTTP/1.1" 200 729
+[20/Mar/2025 15:41:06] "OPTIONS /product/adminProductSearch/?search_in=product&type=pot HTTP/1.1" 200 0
+[20/Mar/2025 15:41:06] "GET /product/adminProductSearch/?search_in=product&type=pot HTTP/1.1" 200 2675
+/root/biotechmaali/account/models.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 134, in inner_run
+    self.check(display_num_errors=True)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/base.py", line 563, in check
+    raise SystemCheckError(msg)
+django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+
+ERRORS:
+<class 'account.admin.CustomUserAdmin'>: (admin.E108) The value of 'list_display[6]' refers to 'referal_code', which is not a callable or attribute of 'CustomUserAdmin', or an attribute, method, or field on 'account.User'.
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 2 issues (0 silenced).
+/root/biotechmaali/account/models.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 134, in inner_run
+    self.check(display_num_errors=True)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/base.py", line 563, in check
+    raise SystemCheckError(msg)
+django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+
+ERRORS:
+<class 'account.admin.CustomUserAdmin'>: (admin.E108) The value of 'list_display[6]' refers to 'referal_code', which is not a callable or attribute of 'CustomUserAdmin', or an attribute, method, or field on 'account.User'.
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 2 issues (0 silenced).
+/root/biotechmaali/btcoins/models.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 134, in inner_run
+    self.check(display_num_errors=True)
+  File "/root/biotechmaali/venv/lib/python3.12/site-packages/django/core/management/base.py", line 563, in check
+    raise SystemCheckError(msg)
+django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+
+ERRORS:
+<class 'account.admin.CustomUserAdmin'>: (admin.E108) The value of 'list_display[6]' refers to 'referal_code', which is not a callable or attribute of 'CustomUserAdmin', or an attribute, method, or field on 'account.User'.
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 2 issues (0 silenced).
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+March 20, 2025 - 19:22:44
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+[20/Mar/2025 19:22:58] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 19:22:58] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 19:22:58] "OPTIONS /product/homeProducts/ HTTP/1.1" 200 0
+[20/Mar/2025 19:22:58] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 19:22:59] "OPTIONS /product/homeProducts/ HTTP/1.1" 200 0
+[20/Mar/2025 19:22:59] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:22:59] "GET /store/store_list/ HTTP/1.1" 200 495
+[20/Mar/2025 19:22:59] "GET /blog/blogs/ HTTP/1.1" 200 1841
+[20/Mar/2025 19:22:59] "OPTIONS /product/homeProducts/ HTTP/1.1" 200 0
+[20/Mar/2025 19:22:59] "OPTIONS /product/homeProducts/ HTTP/1.1" 200 0
+[20/Mar/2025 19:22:59] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:22:59] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 19:22:59] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 19:22:59] "GET /blog/blogs/ HTTP/1.1" 200 1841
+[20/Mar/2025 19:22:59] "GET /store/store_list/ HTTP/1.1" 200 495
+[20/Mar/2025 19:22:59] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 19:22:59] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 19:22:59] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 19:23:00] "GET /category/categoryWiseSubCategory/15/ HTTP/1.1" 200 48
+[20/Mar/2025 19:23:00] "GET /category/categoryWiseSubCategory/12/ HTTP/1.1" 200 48
+[20/Mar/2025 19:23:00] "GET /category/categoryWiseSubCategory/11/ HTTP/1.1" 200 477
+[20/Mar/2025 19:23:00] "GET /category/categoryWiseSubCategory/14/ HTTP/1.1" 200 48
+[20/Mar/2025 19:23:00] "GET /category/categoryWiseSubCategory/13/ HTTP/1.1" 200 189
+[20/Mar/2025 19:23:00] "GET /category/categoryWiseSubCategory/10/ HTTP/1.1" 200 328
+[20/Mar/2025 19:23:00] "GET /category/categoryWiseSubCategory/15/ HTTP/1.1" 200 48
+[20/Mar/2025 19:23:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:01] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:01] "GET /category/categoryWiseSubCategory/12/ HTTP/1.1" 200 48
+[20/Mar/2025 19:23:01] "GET /category/categoryWiseSubCategory/11/ HTTP/1.1" 200 477
+[20/Mar/2025 19:23:01] "GET /category/categoryWiseSubCategory/10/ HTTP/1.1" 200 328
+[20/Mar/2025 19:23:01] "GET /category/categoryWiseSubCategory/14/ HTTP/1.1" 200 48
+[20/Mar/2025 19:23:01] "GET /category/categoryWiseSubCategory/13/ HTTP/1.1" 200 189
+[20/Mar/2025 19:23:01] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:23:02] "POST /api/token/verify/ HTTP/1.1" 200 2
+Received request for available coupons. User: Sherin Jose, Order ID: 245
+Fetching order details for user: Sherin Jose, Order ID: 245
+Order found: 245
+Is First Order: False, Ordered Product IDs: [26, 32], Ordered Categories: [11]
+Order details fetched: 245, Is First Order: False
+Ordered Product IDs: {8, 7}, Ordered Categories: [11]
+Found 5 active coupons before filtering.
+Checking applicability for coupon 5
+Coupon 5 is applicable based on applicable products.
+Coupon ID: 5, Applicable: True
+Checking applicability for coupon 6
+Coupon 6 is NOT applicable.
+Coupon ID: 6, Applicable: False
+Checking applicability for coupon 7
+Coupon 7 is applicable based on applicable categories.
+Coupon ID: 7, Applicable: True
+Checking applicability for coupon 9
+Coupon 9 is NOT applicable.
+Coupon ID: 9, Applicable: False
+Checking applicability for coupon 10
+Coupon 10 is NOT applicable.
+Coupon ID: 10, Applicable: False
+Returning 5 applicable coupons.
+[20/Mar/2025 19:34:43] "GET /coupon/coupons/?order_id=245 HTTP/1.1" 200 1462
+Received request for available coupons. User: Sherin Jose, Order ID: 245
+Fetching order details for user: Sherin Jose, Order ID: 245
+Order found: 245
+Is First Order: False, Ordered Product IDs: [26, 32], Ordered Categories: [11]
+Order details fetched: 245, Is First Order: False
+Ordered Product IDs: {8, 7}, Ordered Categories: [11]
+Found 5 active coupons before filtering.
+Checking applicability for coupon 5
+Coupon 5 is applicable based on applicable products.
+Coupon ID: 5, Applicable: True
+Checking applicability for coupon 6
+Coupon 6 is NOT applicable.
+Coupon ID: 6, Applicable: False
+Checking applicability for coupon 7
+Coupon 7 is applicable based on applicable categories.
+Coupon ID: 7, Applicable: True
+Checking applicability for coupon 9
+Coupon 9 is NOT applicable.
+Coupon ID: 9, Applicable: False
+Checking applicability for coupon 10
+Coupon 10 is NOT applicable.
+Coupon ID: 10, Applicable: False
+Returning 5 applicable coupons.
+[20/Mar/2025 19:34:51] "GET /coupon/coupons/?order_id=245 HTTP/1.1" 200 1462
+Received request for available coupons. User: Sherin Jose, Order ID: 245
+Fetching order details for user: Sherin Jose, Order ID: 245
+Order found: 245
+Is First Order: False, Ordered Product IDs: [26, 32], Ordered Categories: [11]
+Order details fetched: 245, Is First Order: False
+Ordered Product IDs: {8, 7}, Ordered Categories: [11]
+Found 5 active coupons before filtering.
+Checking applicability for coupon 5
+Coupon 5 is applicable based on applicable products.
+Coupon ID: 5, Applicable: True
+Checking applicability for coupon 6
+Coupon 6 is NOT applicable.
+Coupon ID: 6, Applicable: False
+Checking applicability for coupon 7
+Coupon 7 is applicable based on applicable categories.
+Coupon ID: 7, Applicable: True
+Checking applicability for coupon 9
+Coupon 9 is NOT applicable.
+Coupon ID: 9, Applicable: False
+Checking applicability for coupon 10
+Coupon 10 is NOT applicable.
+Coupon ID: 10, Applicable: False
+Returning 5 applicable coupons.
+[20/Mar/2025 19:36:05] "GET /coupon/coupons/?order_id=245 HTTP/1.1" 200 1462
+[20/Mar/2025 19:40:11] "GET /account/profile/ HTTP/1.1" 200 184
+[20/Mar/2025 19:40:12] "GET /account/profile/ HTTP/1.1" 200 184
+[20/Mar/2025 19:40:12] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 19:40:12] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 19:40:12] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 19:40:12] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 19:40:12] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:40:12] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 19:40:12] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 19:40:24] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 4
+[20/Mar/2025 19:40:25] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 19:40:25] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:40:25] "GET /order/cart/ HTTP/1.1" 200 411
+isdd;; 3
+[20/Mar/2025 19:40:25] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 19:40:26] "GET /order/cart/ HTTP/1.1" 200 799
+[20/Mar/2025 19:40:29] "GET /order/cart/ HTTP/1.1" 200 799
+[20/Mar/2025 19:40:29] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+[20/Mar/2025 19:40:29] "GET /media/product_images/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu.webp HTTP/1.1" 200 35312
+[20/Mar/2025 19:40:31] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:40:32] "PATCH /order/cart/ HTTP/1.1" 200 21
+🔹 Received order request: {'order_source': 'cart'}
+✅ User profile validation result: {'user_profile': True, 'message': 'User profile is valid.', 'profile_status': True, 'address_status': True}
+🔹 Order source: cart
+🔹 Cart order: Found 2 items
+✅ Generated order ID: BMO2025032000014
+🔹 Order Data: {'order_id': 'BMO2025032000014', 'date': '2025-03-20', 'customer_id': 3, 'customer_name': 'Sherin', 'email': 'sherin@fhh.com', 'mobile': '6282441950', 'total_price': 4038.0, 'total_discount': 44.0, 'coupon_applied': False, 'applied_coupon': None, 'coupon_discount': 0, 'grand_total': 3994.0, 'status': 'Initiated', 'is_combo_purchase': False, 'is_shop_the_look': False}
+✅ Order created successfully
+Order instance ID: 246
+✅ Order items created successfully
+🛒 Cart cleared
+[20/Mar/2025 19:40:33] "POST /order/placeOrder/ HTTP/1.1" 200 1014
+[20/Mar/2025 19:40:33] "GET /media/order_items/GroPot_RQN7heO.webp HTTP/1.1" 200 29802
+[20/Mar/2025 19:40:33] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 19:40:33] "GET /media/order_items/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu_ARRP4pL.webp HTTP/1.1" 200 35312
+[20/Mar/2025 19:40:34] "GET /account/address/ HTTP/1.1" 200 219
+[20/Mar/2025 19:40:43] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:40:43] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:40:43] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 19:40:46] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 19:40:46] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 19:40:46] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 19:40:46] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 19:40:51] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 10
+[20/Mar/2025 19:40:51] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 19:40:52] "GET /order/cart/ HTTP/1.1" 200 434
+[20/Mar/2025 19:40:52] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 9
+[20/Mar/2025 19:40:52] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 19:40:52] "GET /order/cart/ HTTP/1.1" 200 849
+[20/Mar/2025 19:40:54] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 12
+[20/Mar/2025 19:40:54] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 19:40:54] "GET /order/cart/ HTTP/1.1" 200 1117
+[20/Mar/2025 19:41:01] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 25
+[20/Mar/2025 19:41:01] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 19:41:01] "GET /order/cart/ HTTP/1.1" 200 1540
+[20/Mar/2025 19:41:04] "GET /order/cart/ HTTP/1.1" 200 1540
+[20/Mar/2025 19:41:04] "GET /media/product_images/8_2457f3ee-da96-4423-a853-6bc321c46fd9.webp HTTP/1.1" 200 32354
+[20/Mar/2025 19:41:04] "GET /media/product_images/DSC_6239.webp HTTP/1.1" 200 37174
+[20/Mar/2025 19:41:04] "GET /media/product_images/WhatsApp_Image_2025-03-07_at_13.45.51_2b87258a.jpg HTTP/1.1" 200 102136
+[20/Mar/2025 19:41:04] "GET /media/product_images/GroPot_E0EhCF8.png HTTP/1.1" 200 575090
+[20/Mar/2025 19:41:06] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:41:07] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:41:09] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:41:10] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:41:10] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:41:10] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:41:11] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:41:11] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:41:12] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:41:13] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:41:14] "PATCH /order/cart/ HTTP/1.1" 200 21
+[20/Mar/2025 19:41:15] "PATCH /order/cart/ HTTP/1.1" 200 21
+🔹 Received order request: {'order_source': 'cart'}
+✅ User profile validation result: {'user_profile': True, 'message': 'User profile is valid.', 'profile_status': True, 'address_status': True}
+🔹 Order source: cart
+🔹 Cart order: Found 4 items
+✅ Generated order ID: BMO2025032000015
+🔹 Order Data: {'order_id': 'BMO2025032000015', 'date': '2025-03-20', 'customer_id': 3, 'customer_name': 'Sherin', 'email': 'sherin@fhh.com', 'mobile': '6282441950', 'total_price': 4253.0, 'total_discount': 18.0, 'coupon_applied': False, 'applied_coupon': None, 'coupon_discount': 0, 'grand_total': 4235.0, 'status': 'Initiated', 'is_combo_purchase': False, 'is_shop_the_look': False}
+✅ Order created successfully
+Order instance ID: 247
+✅ Order items created successfully
+🛒 Cart cleared
+[20/Mar/2025 19:41:21] "POST /order/placeOrder/ HTTP/1.1" 200 1527
+[20/Mar/2025 19:41:22] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 19:41:22] "GET /media/order_items/8_2457f3ee-da96-4423-a853-6bc321c46fd9_RY2Nbc5.webp HTTP/1.1" 200 32354
+[20/Mar/2025 19:41:22] "GET /media/order_items/DSC_6239.webp HTTP/1.1" 200 37174
+[20/Mar/2025 19:41:22] "GET /media/order_items/WhatsApp_Image_2025-03-07_at_13_Yvd7AlL.45.51_2b87258a.jpg HTTP/1.1" 200 102136
+[20/Mar/2025 19:41:22] "GET /media/order_items/GroPot_E0EhCF8_bZARa3z.png HTTP/1.1" 200 575090
+Received request for available coupons. User: Sherin Jose, Order ID: 247
+Fetching order details for user: Sherin Jose, Order ID: 247
+Order found: 247
+Is First Order: False, Ordered Product IDs: [40, 38, 51, 73], Ordered Categories: [13, 10, 10, 11, 10]
+Order details fetched: 247, Is First Order: False
+Ordered Product IDs: {9, 10, 12, 25}, Ordered Categories: [13, 10, 10, 11, 10]
+Found 5 active coupons before filtering.
+Checking applicability for coupon 5
+Coupon 5 is NOT applicable.
+Coupon ID: 5, Applicable: False
+Checking applicability for coupon 6
+Coupon 6 is NOT applicable.
+Coupon ID: 6, Applicable: False
+Checking applicability for coupon 7
+Coupon 7 is applicable based on applicable categories.
+Coupon ID: 7, Applicable: True
+Checking applicability for coupon 9
+Coupon 9 is applicable based on applicable categories.
+Coupon ID: 9, Applicable: True
+Checking applicability for coupon 10
+Coupon 10 is applicable based on applicable categories.
+Coupon ID: 10, Applicable: True
+Returning 5 applicable coupons.
+[20/Mar/2025 19:41:54] "GET /coupon/coupons/?order_id=247 HTTP/1.1" 200 1461
+
+🚀 [START] Applying Coupon 🚀
+
+🔍 User: Sherin Jose
+🔍 Coupon Code: None
+🔍 Selected Coupon ID: 7
+🔍 Order ID: 247
+🔍 Order Total: 4253
+🔍 Extracted Product IDs from Order: [40, 38, 51, 73]
+✅ Coupon Found: POTSPLANTS200
+🔍 User Usage Count: 1 / 3
+🔍 Selected Products: <QuerySet [<Product: Tomato-100-Gm>, <Product: 20cm-50cm-1-red>, <Product: 20cm-50cm-1-red>, <Product: Pipe Ceramic Pot-50cm>]>
+🔍 Extracted MainProduct IDs: [9, 10, 12, 25]
+🔍 Coupon Applicable Categories (IDs): {10, 11}
+🔍 Selected Product Categories (IDs): {10, 11, 13}
+✅ Coupon is applicable based on categories
+✅ Percentage Discount Applied: 200.00
+✅ New Order Total After Discount: 4053.00
+
+🎉 [END] Coupon Applied Successfully 🎉
+
+✅ Order updated with applied coupon
+[20/Mar/2025 19:41:58] "POST /order/applyCoupon/ HTTP/1.1" 200 1636
+Not Found: /
+[20/Mar/2025 19:56:52] "GET / HTTP/1.1" 404 5586
+Not Found: /
+[20/Mar/2025 19:57:17] "GET / HTTP/1.1" 404 5586
+Not Found: /
+[20/Mar/2025 19:58:15] "GET / HTTP/1.1" 404 5586
+Not Found: /
+[20/Mar/2025 20:00:30] "GET / HTTP/1.1" 404 5586
+Not Found: /
+[20/Mar/2025 20:02:15] "GET / HTTP/1.1" 404 5586
+[20/Mar/2025 20:33:09] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x1abw5ÿ\x8c\x8fø&\x95\x88\x8a\x89\x90\x05ÂuA\x86\x01où³z=Ür{¸ùMq\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+[20/Mar/2025 20:33:09] You're accessing the development server over HTTPS, but it only supports HTTP.
+[20/Mar/2025 20:33:10] code 400, message Bad request version ('À\x14À')
+[20/Mar/2025 20:33:10] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[20/Mar/2025 20:33:11] "GET / HTTP/1.1" 404 5586
+Not Found: /login
+[20/Mar/2025 20:33:11] "GET /login HTTP/1.1" 404 5619
+[20/Mar/2025 21:05:13] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00')
+[20/Mar/2025 21:05:13] "    c                           " 400 -
+[20/Mar/2025 21:12:35] "GET /media/order_items/DSC_6239.webp HTTP/1.1" 200 37174
+[20/Mar/2025 21:12:35] "GET /media/order_items/8_2457f3ee-da96-4423-a853-6bc321c46fd9_RY2Nbc5.webp HTTP/1.1" 200 32354
+[20/Mar/2025 21:12:35] "GET /media/order_items/WhatsApp_Image_2025-03-07_at_13_Yvd7AlL.45.51_2b87258a.jpg HTTP/1.1" 200 102136
+Unauthorized: /account/profile/
+[20/Mar/2025 21:12:51] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /account/profile/
+[20/Mar/2025 21:12:52] "GET /account/profile/ HTTP/1.1" 401 183
+Unauthorized: /api/token/verify/
+[20/Mar/2025 21:12:52] "POST /api/token/verify/ HTTP/1.1" 401 65
+[20/Mar/2025 21:12:52] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 21:12:52] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 21:12:52] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 21:12:52] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 21:12:52] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 21:12:52] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 21:12:53] "POST /api/token/refresh/ HTTP/1.1" 200 241
+[20/Mar/2025 21:13:07] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 21:13:07] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 21:13:07] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 21:13:10] "GET /product/category-products/11 HTTP/1.1" 301 0
+[20/Mar/2025 21:13:10] "GET /product/category-products/11/ HTTP/1.1" 200 2368
+[20/Mar/2025 21:13:13] "GET /product/defaultProduct/6 HTTP/1.1" 301 0
+🔹 API called: RecentlyViewedProductsView
+✅ User: Sherin Jose
+✅ Recently viewed products count: 0
+✅ Mostly viewed products count: 4
+✅ Successfully returning products
+[20/Mar/2025 21:13:13] "GET /product/recentlyViewed/ HTTP/1.1" 200 932
+[20/Mar/2025 21:13:13] "GET /product/defaultProduct/6/ HTTP/1.1" 200 1641
+[20/Mar/2025 21:13:13] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 200 75090
+[20/Mar/2025 21:13:16] "GET /product/filterProduct/21?litre_id=2 HTTP/1.1" 301 0
+current product ----: Roma Ceramic Pot
+-------------product_type: pot
+-------------product_id: Roma Ceramic Pot
+--------------------------------------------------------------------
+pot----------------- None None 2
+[20/Mar/2025 21:13:16] "GET /product/filterProduct/21/?litre_id=2 HTTP/1.1" 200 902
+Not Found: /media/default/category_default.jpg
+[20/Mar/2025 21:13:16] "GET /media/default/category_default.jpg HTTP/1.1" 404 5936
+[20/Mar/2025 21:13:27] "GET /product/defaultProduct/3 HTTP/1.1" 301 0
+[20/Mar/2025 21:13:27] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1916
+[20/Mar/2025 21:13:28] "GET /media/product_images/GroPot.webp HTTP/1.1" 200 29802
+[20/Mar/2025 21:13:36] "GET /product/filterProduct/1?size_id=3 HTTP/1.1" 301 0
+current product ----: 20cm-50cm-roma-red
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 3 None None None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+-------prod: 60cm-200cm-7-green
+[20/Mar/2025 21:13:36] "GET /product/filterProduct/1/?size_id=3 HTTP/1.1" 200 1246
+[20/Mar/2025 21:13:36] "GET /media/product_images/DSC_9124_cfe94c59-66ce-45c0-93b1-e1049ad834a1.webp HTTP/1.1" 200 33372
+[20/Mar/2025 21:13:40] "GET /product/filterProduct/4?size_id=1 HTTP/1.1" 301 0
+current product ----: 60cm-200cm-7-green
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 None None None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+-------prod: 20cm-50cm-roma-red
+[20/Mar/2025 21:13:40] "GET /product/filterProduct/4/?size_id=1 HTTP/1.1" 200 1356
+[20/Mar/2025 21:13:42] "GET /product/filterProduct/1?size_id=1&planter_size_id=2 HTTP/1.1" 301 0
+current product ----: 20cm-50cm-roma-red
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 2 None None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+[20/Mar/2025 21:13:42] "GET /product/filterProduct/1/?size_id=1&planter_size_id=2 HTTP/1.1" 200 1343
+[20/Mar/2025 21:13:42] "GET /media/product_images/GroPot_cff1f8cf-e233-4cbf-9cfa-8ef815e851dd.webp HTTP/1.1" 200 48552
+[20/Mar/2025 21:13:45] "GET /product/filterProduct/2?size_id=1&planter_size_id=2&planter_id=5 HTTP/1.1" 301 0
+current product ----: 20cm-100cm-2-red
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 2 5 None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+[20/Mar/2025 21:13:45] "GET /product/filterProduct/2/?size_id=1&planter_size_id=2&planter_id=5 HTTP/1.1" 200 1315
+[20/Mar/2025 21:13:46] "GET /media/product_images/GroPot_9t4q41h.webp HTTP/1.1" 200 29802
+[20/Mar/2025 21:13:49] "GET /product/filterProduct/3?size_id=1&planter_size_id=2&planter_id=2 HTTP/1.1" 301 0
+current product ----: 20cm-100cm-5-blue
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 2 2 None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+[20/Mar/2025 21:13:49] "GET /product/filterProduct/3/?size_id=1&planter_size_id=2&planter_id=2 HTTP/1.1" 200 1343
+[20/Mar/2025 21:13:51] "GET /product/filterProduct/2?size_id=1&planter_size_id=2&planter_id=5 HTTP/1.1" 301 0
+current product ----: 20cm-100cm-2-red
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 2 5 None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+[20/Mar/2025 21:13:52] "GET /product/filterProduct/2/?size_id=1&planter_size_id=2&planter_id=5 HTTP/1.1" 200 1315
+[20/Mar/2025 21:13:54] "GET /product/filterProduct/3?size_id=1&planter_size_id=3 HTTP/1.1" 301 0
+current product ----: 20cm-100cm-5-blue
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 3 None None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+[20/Mar/2025 21:13:55] "GET /product/filterProduct/3/?size_id=1&planter_size_id=3 HTTP/1.1" 200 1303
+[20/Mar/2025 21:13:55] "GET /media/product_images/DSC_9031-Copy_3_Gm37JXC.webp HTTP/1.1" 200 76236
+[20/Mar/2025 21:13:58] "GET /product/filterProduct/24?size_id=1&planter_size_id=2 HTTP/1.1" 301 0
+current product ----: Brazilian Wood Plant g
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 2 None None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+[20/Mar/2025 21:13:58] "GET /product/filterProduct/24/?size_id=1&planter_size_id=2 HTTP/1.1" 200 1343
+[20/Mar/2025 21:14:00] "GET /product/filterProduct/2?size_id=1&planter_size_id=2&planter_id=5 HTTP/1.1" 301 0
+current product ----: 20cm-100cm-2-red
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 2 5 None
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+[20/Mar/2025 21:14:00] "GET /product/filterProduct/2/?size_id=1&planter_size_id=2&planter_id=5 HTTP/1.1" 200 1315
+[20/Mar/2025 21:14:27] "GET /product/defaultProduct/3 HTTP/1.1" 301 0
+[20/Mar/2025 21:14:27] "GET /product/defaultProduct/3/ HTTP/1.1" 200 1916
+[20/Mar/2025 21:14:42] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 4
+[20/Mar/2025 21:14:43] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 21:14:43] "GET /order/cart/ HTTP/1.1" 200 411
+[20/Mar/2025 21:14:46] "GET /order/cart/ HTTP/1.1" 200 411
+[20/Mar/2025 21:14:46] "GET /media/product_images/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu.webp HTTP/1.1" 200 35312
+[20/Mar/2025 21:15:40] "GET /product/filterProduct/1?size_id=1&planter_size_id=1&planter_id=1&color_id=2 HTTP/1.1" 301 0
+current product ----: 20cm-50cm-roma-red
+-------------product_type: plant
+-------------product_id: Brazilian Wood Plant 2
+--------------------------------------------------------------------
+plant----------------- 1 1 1 2
+:-------: Brazilian Wood Plant 2 {'product_id': <MainProduct: Brazilian Wood Plant 2>, 'visible_online': True}
+[20/Mar/2025 21:16:00] "GET /product/filterProduct/1/?size_id=1&planter_size_id=1&planter_id=1&color_id=2 HTTP/1.1" 200 1383
+[20/Mar/2025 21:16:01] "GET /product/defaultProduct/4 HTTP/1.1" 301 0
+[20/Mar/2025 21:16:02] "GET /product/defaultProduct/4/ HTTP/1.1" 200 2857
+Not Found: /
+[20/Mar/2025 21:32:28] "GET / HTTP/1.1" 404 5586
+[20/Mar/2025 21:59:35] "GET /admin/account/user/ HTTP/1.1" 200 57919
+[20/Mar/2025 21:59:50] "GET /admin/account/user/4/change/ HTTP/1.1" 200 58935
+[20/Mar/2025 21:59:50] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 22:00:02] "POST /admin/account/user/4/change/ HTTP/1.1" 302 0
+[20/Mar/2025 22:00:04] "GET /admin/account/user/ HTTP/1.1" 200 58479
+[20/Mar/2025 22:00:04] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 22:00:34] "GET /admin/btcoins/btcoinstransaction/ HTTP/1.1" 200 51648
+[20/Mar/2025 22:00:38] "GET /admin/btcoins/btcoinswallet/ HTTP/1.1" 200 44318
+[20/Mar/2025 22:01:08] "OPTIONS /account/registerWithMobile/ HTTP/1.1" 200 0
+b'{"message":"3563747661684c4651684558","type":"success"}'
+[20/Mar/2025 22:01:08] "POST /account/registerWithMobile/ HTTP/1.1" 201 74
+[20/Mar/2025 22:01:08] "OPTIONS /api/token/verify/ HTTP/1.1" 200 0
+[20/Mar/2025 22:01:08] "OPTIONS /api/token/verify/ HTTP/1.1" 200 0
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:01:09] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:01:09] "POST /api/token/verify/ HTTP/1.1" 400 41
+[20/Mar/2025 22:01:23] "OPTIONS /account/validateOtp/ HTTP/1.1" 200 0
+[20/Mar/2025 22:01:23] "POST /account/validateOtp/ HTTP/1.1" 200 89
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:01:23] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:01:23] "POST /api/token/verify/ HTTP/1.1" 400 41
+[20/Mar/2025 22:01:44] "OPTIONS /account/register/ HTTP/1.1" 200 0
+Creating referral: 24 → 25
+Before adding coins: Referrer Wallet Coins: 0
+After adding coins: Referrer Wallet Coins: 200
+[20/Mar/2025 22:01:45] "POST /account/register/ HTTP/1.1" 201 630
+[20/Mar/2025 22:01:56] "GET /admin/btcoins/btcoinstransaction/ HTTP/1.1" 200 52898
+[20/Mar/2025 22:01:56] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 22:02:11] "GET /admin/btcoins/btcoinswallet/ HTTP/1.1" 200 44881
+[20/Mar/2025 22:02:11] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 22:02:29] "GET /admin/account/user/ HTTP/1.1" 200 58880
+[20/Mar/2025 22:02:30] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 22:02:34] "GET /admin/account/user/ HTTP/1.1" 200 58880
+[20/Mar/2025 22:02:34] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 22:02:51] "POST /admin/account/user/ HTTP/1.1" 200 40458
+[20/Mar/2025 22:02:56] "POST /admin/account/user/ HTTP/1.1" 302 0
+[20/Mar/2025 22:02:56] "GET /admin/account/user/ HTTP/1.1" 200 57456
+[20/Mar/2025 22:02:56] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 22:03:04] "GET /admin/btcoins/btcoinssettings/ HTTP/1.1" 200 44363
+[20/Mar/2025 22:03:05] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 22:03:07] "GET /admin/btcoins/btcoinssettings/1/change/ HTTP/1.1" 200 46252
+[20/Mar/2025 22:03:07] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 22:03:12] "POST /admin/btcoins/btcoinssettings/1/change/ HTTP/1.1" 302 0
+[20/Mar/2025 22:03:12] "GET /admin/btcoins/btcoinssettings/ HTTP/1.1" 200 44964
+[20/Mar/2025 22:03:12] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+b'{"message":"35637476634b7a71684d3130","type":"success"}'
+[20/Mar/2025 22:03:37] "POST /account/registerWithMobile/ HTTP/1.1" 201 74
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:03:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:03:37] "POST /api/token/verify/ HTTP/1.1" 400 41
+[20/Mar/2025 22:03:56] "POST /account/validateOtp/ HTTP/1.1" 200 89
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:03:57] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:03:57] "POST /api/token/verify/ HTTP/1.1" 400 41
+[20/Mar/2025 22:04:12] "GET /admin/btcoins/btcoinswallet/ HTTP/1.1" 200 43765
+[20/Mar/2025 22:04:12] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Creating referral: 15 → 26
+Before adding coins: Referrer Wallet Coins: 1700
+After adding coins: Referrer Wallet Coins: 1900
+[20/Mar/2025 22:04:26] "POST /account/register/ HTTP/1.1" 201 628
+[20/Mar/2025 22:04:36] "GET /admin/btcoins/btcoinswallet/ HTTP/1.1" 200 44320
+[20/Mar/2025 22:04:36] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+b'{"message":"3563747665636b61464f4747","type":"success"}'
+[20/Mar/2025 22:05:03] "POST /account/registerWithMobile/ HTTP/1.1" 201 74
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:05:04] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:05:04] "POST /api/token/verify/ HTTP/1.1" 400 41
+[20/Mar/2025 22:05:18] "POST /account/validateOtp/ HTTP/1.1" 200 89
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:05:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:05:18] "POST /api/token/verify/ HTTP/1.1" 400 41
+Creating referral: 26 → 27
+Before adding coins: Referrer Wallet Coins: 50
+After adding coins: Referrer Wallet Coins: 250
+[20/Mar/2025 22:05:30] "POST /account/register/ HTTP/1.1" 201 630
+[20/Mar/2025 22:05:36] "GET /admin/btcoins/btcoinswallet/ HTTP/1.1" 200 44881
+[20/Mar/2025 22:05:36] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 22:05:40] "GET /account/profile/ HTTP/1.1" 200 184
+[20/Mar/2025 22:05:40] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 22:05:40] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 22:05:40] "GET /promotion/banner/ HTTP/1.1" 200 1046
+[20/Mar/2025 22:05:40] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 22:05:40] "GET /category/ HTTP/1.1" 200 607
+[20/Mar/2025 22:05:40] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 22:05:40] "GET /product/homeProducts/ HTTP/1.1" 200 6966
+[20/Mar/2025 22:05:42] "GET /account/profile/ HTTP/1.1" 200 184
+[20/Mar/2025 22:05:46] "GET /admin/btcoins/btcoinstransaction/ HTTP/1.1" 200 54142
+[20/Mar/2025 22:05:46] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[20/Mar/2025 22:05:58] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 4
+Bad Request: /order/cart/
+[20/Mar/2025 22:05:58] "POST /order/cart/ HTTP/1.1" 400 45
+Unauthorized: /btcoins/btcoinsTransactions/
+[20/Mar/2025 22:06:01] "GET /btcoins/btcoinsTransactions/ HTTP/1.1" 401 51
+b'{"message":"35637476664155646f626e69","type":"success"}'
+[20/Mar/2025 22:06:27] "POST /account/registerWithMobile/ HTTP/1.1" 200 52
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:06:27] "POST /api/token/verify/ HTTP/1.1" 400 41
+Bad Request: /api/token/verify/
+[20/Mar/2025 22:06:27] "POST /api/token/verify/ HTTP/1.1" 400 41
+[20/Mar/2025 22:06:40] "POST /account/validateOtp/ HTTP/1.1" 200 633
+[20/Mar/2025 22:06:45] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 22:06:45] "OPTIONS /order/cart/ HTTP/1.1" 200 0
+[20/Mar/2025 22:06:45] "OPTIONS /order/cart/ HTTP/1.1" 200 0
+[20/Mar/2025 22:06:45] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 22:06:45] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 22:06:45] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 22:07:13] "GET /btcoins/btcoinsTransactions/ HTTP/1.1" 200 273
+[20/Mar/2025 22:10:01] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 5
+[20/Mar/2025 22:10:01] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 22:10:01] "GET /order/cart/ HTTP/1.1" 200 761
+[20/Mar/2025 22:10:04] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 6
+[20/Mar/2025 22:10:05] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 22:10:05] "GET /order/cart/ HTTP/1.1" 200 1123
+[20/Mar/2025 22:10:12] "POST /api/token/verify/ HTTP/1.1" 200 2
+isdd;; 7
+[20/Mar/2025 22:10:13] "POST /order/cart/ HTTP/1.1" 201 49
+[20/Mar/2025 22:10:13] "GET /order/cart/ HTTP/1.1" 200 1511
+[20/Mar/2025 22:10:19] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 22:10:19] "POST /api/token/verify/ HTTP/1.1" 200 2
+Not Found: /media/default/category_default.jpg
+[20/Mar/2025 22:10:19] "GET /media/default/category_default.jpg HTTP/1.1" 404 5936
+[20/Mar/2025 22:10:19] "GET /media/product_images/red-chatura-plastic-pots-set-of-5-31257679069316.webp HTTP/1.1" 200 36318
+[20/Mar/2025 22:10:19] "GET /media/product_images/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu.webp HTTP/1.1" 200 35312
+[20/Mar/2025 22:10:19] "GET /media/product_images/4_b9adf128-0f34-459e-be0c-3f9270af5f50.webp HTTP/1.1" 200 75090
+[20/Mar/2025 22:10:19] "GET /order/cart/ HTTP/1.1" 200 1511
+[20/Mar/2025 22:10:22] "DELETE /order/cart/293/ HTTP/1.1" 200 21
+🔹 Received order request: {'order_source': 'cart'}
+✅ User profile validation result: {'user_profile': True, 'message': 'User profile is valid.', 'profile_status': True, 'address_status': True}
+🔹 Order source: cart
+🔹 Cart order: Found 3 items
+✅ Generated order ID: BMO2025032000016
+🔹 Order Data: {'order_id': 'BMO2025032000016', 'date': '2025-03-20', 'customer_id': 3, 'customer_name': 'Sherin', 'email': 'sherin@fhh.com', 'mobile': '6282441950', 'total_price': 3297.0, 'total_discount': 52.0, 'coupon_applied': False, 'applied_coupon': None, 'coupon_discount': 0, 'grand_total': 3245.0, 'status': 'Initiated', 'is_combo_purchase': False, 'is_shop_the_look': False}
+✅ Order created successfully
+Order instance ID: 248
+✅ Order items created successfully
+🛒 Cart cleared
+[20/Mar/2025 22:10:24] "POST /order/placeOrder/ HTTP/1.1" 200 1336
+[20/Mar/2025 22:10:25] "GET /media/order_items/1_99d944f7-ef76-4676-9d23-570eddfa217c_krr0lzu_LH2wV6Y.webp HTTP/1.1" 200 35312
+[20/Mar/2025 22:10:25] "GET /media/order_items/4_b9adf128-0f34-459e-be0c-3f9270af5f50_dERTWFx.webp HTTP/1.1" 200 75090
+[20/Mar/2025 22:10:25] "GET /media/order_items/red-chatura-plastic-pots-set-of-5-31257679069316_r0Bt31r.webp HTTP/1.1" 200 36318
+[20/Mar/2025 22:10:25] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 22:10:25] "GET /account/address/ HTTP/1.1" 200 219
+Received request for available coupons. User: Sherin Jose, Order ID: 248
+Fetching order details for user: Sherin Jose, Order ID: 248
+Order found: 248
+Is First Order: False, Ordered Product IDs: [15, 21, 26], Ordered Categories: [13, 11, 11]
+Order details fetched: 248, Is First Order: False
+Ordered Product IDs: {4, 6, 7}, Ordered Categories: [13, 11, 11]
+Found 5 active coupons before filtering.
+Checking applicability for coupon 5
+Coupon 5 is applicable based on applicable products.
+Coupon ID: 5, Applicable: True
+Checking applicability for coupon 6
+Coupon 6 is NOT applicable.
+Coupon ID: 6, Applicable: False
+Checking applicability for coupon 7
+Coupon 7 is applicable based on applicable categories.
+Coupon ID: 7, Applicable: True
+Checking applicability for coupon 9
+Coupon 9 is applicable based on applicable categories.
+Coupon ID: 9, Applicable: True
+Checking applicability for coupon 10
+Coupon 10 is NOT applicable.
+Coupon ID: 10, Applicable: False
+Returning 5 applicable coupons.
+[20/Mar/2025 22:10:42] "GET /coupon/coupons/?order_id=248 HTTP/1.1" 200 1461
+
+🚀 [START] Applying Coupon 🚀
+
+🔍 User: Sherin Jose
+🔍 Coupon Code: None
+🔍 Selected Coupon ID: 7
+🔍 Order ID: 248
+🔍 Order Total: 3297
+🔍 Extracted Product IDs from Order: [15, 21, 26]
+✅ Coupon Found: POTSPLANTS200
+🔍 User Usage Count: 1 / 3
+🔍 Selected Products: <QuerySet [<Product: Tomato Seeds 15>, <Product: Roma Ceramic Pot>, <Product: Chatura Plastic Pots>]>
+🔍 Extracted MainProduct IDs: [4, 6, 7]
+🔍 Coupon Applicable Categories (IDs): {10, 11}
+🔍 Selected Product Categories (IDs): {11, 13}
+✅ Coupon is applicable based on categories
+✅ Percentage Discount Applied: 200.00
+✅ New Order Total After Discount: 3097.00
+
+🎉 [END] Coupon Applied Successfully 🎉
+
+✅ Order updated with applied coupon
+[20/Mar/2025 22:10:44] "POST /order/applyCoupon/ HTTP/1.1" 200 1445
+[20/Mar/2025 22:12:56] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 22:12:56] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 22:13:00] "POST /api/token/verify/ HTTP/1.1" 200 2
+[20/Mar/2025 22:13:00] "GET /order/cart/ HTTP/1.1" 200 40
+[20/Mar/2025 22:13:04] "PATCH /order/orderSummary/ HTTP/1.1" 200 1200
+Received request for available coupons. User: Sherin Jose, Order ID: 248
+Fetching order details for user: Sherin Jose, Order ID: 248
+Order found: 248
+Is First Order: False, Ordered Product IDs: [15, 21, 26], Ordered Categories: [13, 11, 11]
+Order details fetched: 248, Is First Order: False
+Ordered Product IDs: {4, 6, 7}, Ordered Categories: [13, 11, 11]
+Found 5 active coupons before filtering.
+Checking applicability for coupon 5
+Coupon 5 is applicable based on applicable products.
+Coupon ID: 5, Applicable: True
+Checking applicability for coupon 6
+Coupon 6 is NOT applicable.
+Coupon ID: 6, Applicable: False
+Checking applicability for coupon 7
+Coupon 7 is applicable based on applicable categories.
+Coupon ID: 7, Applicable: True
+Checking applicability for coupon 9
+Coupon 9 is applicable based on applicable categories.
+Coupon ID: 9, Applicable: True
+Checking applicability for coupon 10
+Coupon 10 is NOT applicable.
+Coupon ID: 10, Applicable: False
+Returning 5 applicable coupons.
+[20/Mar/2025 22:13:11] "GET /coupon/coupons/?order_id=248 HTTP/1.1" 200 1461
+
+🚀 [START] Applying Coupon 🚀
+
+🔍 User: Sherin Jose
+🔍 Coupon Code: None
+🔍 Selected Coupon ID: 7
+🔍 Order ID: 248
+🔍 Order Total: 3297
+🔍 Extracted Product IDs from Order: [15, 21, 26]
+✅ Coupon Found: POTSPLANTS200
+🔍 User Usage Count: 1 / 3
+🔍 Selected Products: <QuerySet [<Product: Tomato Seeds 15>, <Product: Roma Ceramic Pot>, <Product: Chatura Plastic Pots>]>
+🔍 Extracted MainProduct IDs: [4, 6, 7]
+🔍 Coupon Applicable Categories (IDs): {10, 11}
+🔍 Selected Product Categories (IDs): {11, 13}
+✅ Coupon is applicable based on categories
+✅ Percentage Discount Applied: 200.00
+✅ New Order Total After Discount: 3097.00
+
+🎉 [END] Coupon Applied Successfully 🎉
+
+✅ Order updated with applied coupon
+[20/Mar/2025 22:13:14] "POST /order/applyCoupon/ HTTP/1.1" 200 1445
+
+🚀 [START] Applying Coupon 🚀
+
+🔍 User: Sherin Jose
+🔍 Coupon Code: None
+🔍 Selected Coupon ID: 5
+🔍 Order ID: 248
+🔍 Order Total: 3297
+🔍 Extracted Product IDs from Order: [15, 21, 26]
+✅ Coupon Found: NEW150
+🔍 User Usage Count: 0 / 1
+🔍 Selected Products: <QuerySet [<Product: Tomato Seeds 15>, <Product: Roma Ceramic Pot>, <Product: Chatura Plastic Pots>]>
+🔍 Extracted MainProduct IDs: [4, 6, 7]
+🔍 Coupon Applicable Products: {<MainProduct: Tomato Seeds>, <MainProduct: Heavy Duty Bypass Pruner>, <MainProduct: Pastel Ridge Heritage Planter>, <MainProduct: Gardening Pots>, <MainProduct: Self Watering Planter>}
+🔍 Selected Main Products: {<MainProduct: Tomato Seeds>, <MainProduct: Roma Ceramic Pot>, <MainProduct: Chatura Plastic Pots>}
+✅ Coupon is applicable based on specific products
+❌ Coupon cannot be combined with other discounts
+Bad Request: /order/applyCoupon/
+[20/Mar/2025 22:13:16] "POST /order/applyCoupon/ HTTP/1.1" 400 63
+
+🚀 [START] Applying Coupon 🚀
+
+🔍 User: Sherin Jose
+🔍 Coupon Code: None
+🔍 Selected Coupon ID: 9
+🔍 Order ID: 248
+🔍 Order Total: 3297
+🔍 Extracted Product IDs from Order: [15, 21, 26]
+✅ Coupon Found: SEEDS180
+🔍 User Usage Count: 0 / 1
+🔍 Selected Products: <QuerySet [<Product: Tomato Seeds 15>, <Product: Roma Ceramic Pot>, <Product: Chatura Plastic Pots>]>
+🔍 Extracted MainProduct IDs: [4, 6, 7]
+🔍 Coupon Applicable Categories (IDs): {13}
+🔍 Selected Product Categories (IDs): {11, 13}
+✅ Coupon is applicable based on categories
+❌ Coupon cannot be combined with other discounts
+Bad Request: /order/applyCoupon/
+[20/Mar/2025 22:13:33] "POST /order/applyCoupon/ HTTP/1.1" 400 63
+
+🚀 [START] Applying Coupon 🚀
+
+🔍 User: Sherin Jose
+🔍 Coupon Code: None
+🔍 Selected Coupon ID: 9
+🔍 Order ID: 248
+🔍 Order Total: 3297
+🔍 Extracted Product IDs from Order: [15, 21, 26]
+✅ Coupon Found: SEEDS180
+🔍 User Usage Count: 0 / 1
+🔍 Selected Products: <QuerySet [<Product: Tomato Seeds 15>, <Product: Roma Ceramic Pot>, <Product: Chatura Plastic Pots>]>
+🔍 Extracted MainProduct IDs: [4, 6, 7]
+🔍 Coupon Applicable Categories (IDs): {13}
+🔍 Selected Product Categories (IDs): {11, 13}
+✅ Coupon is applicable based on categories
+❌ Coupon cannot be combined with other discounts
+Bad Request: /order/applyCoupon/
+[20/Mar/2025 22:13:37] "POST /order/applyCoupon/ HTTP/1.1" 400 63
+
+🚀 [START] Applying Coupon 🚀
+
+🔍 User: Sherin Jose
+🔍 Coupon Code: None
+🔍 Selected Coupon ID: 7
+🔍 Order ID: 248
+🔍 Order Total: 3297
+🔍 Extracted Product IDs from Order: [15, 21, 26]
+✅ Coupon Found: POTSPLANTS200
+🔍 User Usage Count: 1 / 3
+🔍 Selected Products: <QuerySet [<Product: Tomato Seeds 15>, <Product: Roma Ceramic Pot>, <Product: Chatura Plastic Pots>]>
+🔍 Extracted MainProduct IDs: [4, 6, 7]
+🔍 Coupon Applicable Categories (IDs): {10, 11}
+🔍 Selected Product Categories (IDs): {11, 13}
+✅ Coupon is applicable based on categories
+✅ Percentage Discount Applied: 200.00
+✅ New Order Total After Discount: 3097.00
+
+🎉 [END] Coupon Applied Successfully 🎉
+
+✅ Order updated with applied coupon
+[20/Mar/2025 22:13:41] "POST /order/applyCoupon/ HTTP/1.1" 200 1445
+
+🚀 [START] Applying Coupon 🚀
+
+🔍 User: Sherin Jose
+🔍 Coupon Code: None
+🔍 Selected Coupon ID: 7
+🔍 Order ID: 248
+🔍 Order Total: 3297
+🔍 Extracted Product IDs from Order: [15, 21, 26]
+✅ Coupon Found: POTSPLANTS200
+🔍 User Usage Count: 1 / 3
+🔍 Selected Products: <QuerySet [<Product: Tomato Seeds 15>, <Product: Roma Ceramic Pot>, <Product: Chatura Plastic Pots>]>
+🔍 Extracted MainProduct IDs: [4, 6, 7]
+🔍 Coupon Applicable Categories (IDs): {10, 11}
+🔍 Selected Product Categories (IDs): {11, 13}
+✅ Coupon is applicable based on categories
+✅ Percentage Discount Applied: 200.00
+✅ New Order Total After Discount: 3097.00
+
+🎉 [END] Coupon Applied Successfully 🎉
+
+✅ Order updated with applied coupon
+[20/Mar/2025 22:13:46] "POST /order/applyCoupon/ HTTP/1.1" 200 1445
+[20/Mar/2025 22:14:37] "PATCH /order/orderSummary/ HTTP/1.1" 200 1200
+[20/Mar/2025 22:14:54] "PATCH /order/orderSummary/ HTTP/1.1" 200 1200
+Bad Request: /order/proceedToPayment/
+[20/Mar/2025 22:14:56] "PATCH /order/proceedToPayment/ HTTP/1.1" 400 35
+/root/biotechmaali/btcoins/views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+March 20, 2025 - 22:15:35
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+/root/biotechmaali/dealoftheweek/views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+March 20, 2025 - 22:18:17
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+/root/biotechmaali/dealoftheweek/views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+March 20, 2025 - 22:18:35
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+/root/biotechmaali/btcoins/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+March 20, 2025 - 22:20:50
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+/root/biotechmaali/btcoins/views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+March 20, 2025 - 22:23:17
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+/root/biotechmaali/btcoins/views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+March 20, 2025 - 22:23:57
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+/root/biotechmaali/btcoins/views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+March 20, 2025 - 22:26:06
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+/root/biotechmaali/btcoins/views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) django-ckeditor bundles CKEditor 4.22.1 which isn't supported anymore and which does have unfixed security issues, see for example https://ckeditor.com/cke4/release/CKEditor-4.24.0-LTS . You should consider strongly switching to a different editor (maybe CKEditor 5 respectively django-ckeditor-5 after checking whether the CKEditor 5 license terms work for you) or switch to the non-free CKEditor 4 LTS package. See https://ckeditor.com/ckeditor-4-support/ for more on this. (Note! This notice has been added by the django-ckeditor developers and we are not affiliated with CKSource and were not involved in the licensing change, so please refrain from complaining to us. Thanks.)
+
+System check identified 1 issue (0 silenced).
+March 20, 2025 - 22:30:17
+Django version 5.1.3, using settings 'main.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
