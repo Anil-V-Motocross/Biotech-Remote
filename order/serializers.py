@@ -9,7 +9,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ['order_id', 'customer_name', 'total_price', 'total_discount', 'grand_total', 'email',
+        fields = ['id', 'order_id', 'customer_name', 'total_price', 'total_discount', 'grand_total', 'email',
                   'mobile', 'tracking_id', 'delivery_option', 'payment_method', 'status', 'razorpay_order_id', 'coupon_discount']
         
         

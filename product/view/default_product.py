@@ -93,7 +93,7 @@ class LitreSerializer(serializers.ModelSerializer):
 class AddProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = MainProduct
-        fields = ['id', 'name', 'default_sale_price', 'default_price']
+        fields = ['id', 'name', 'default_selling_price', 'default_mrp']
 
 class ProductSerializer(serializers.ModelSerializer):
     # type = serializers.ReadOnlyField(source='product_id.type')
@@ -104,7 +104,6 @@ class ProductSerializer(serializers.ModelSerializer):
     main_product_name = serializers.ReadOnlyField(source='product_id.name')
     whats_included = serializers.ReadOnlyField(source='product_id.whats_included')
     vedio_link = serializers.ReadOnlyField(source='product_id.vedio_link')
-    mrp = serializers.FloatField(source='sale_price')
     is_cart = serializers.SerializerMethodField()
     is_wishlist = serializers.SerializerMethodField()
     is_purchased = serializers.SerializerMethodField()
@@ -113,7 +112,8 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = [
             'id', 
             'mrp',
-            'price', 
+            'selling_price', 
+            'discount',
             'is_cart',
             'is_wishlist',
             'images', 

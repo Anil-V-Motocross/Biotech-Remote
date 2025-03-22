@@ -18,7 +18,7 @@ class MainProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MainProduct
-        fields = ['id', 'name', 'default_price', 'default_sale_price', 'default_discount', 'default_sku', 'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending', 'images']
+        fields = ['id', 'name', 'default_mrp', 'default_selling_price', 'default_discount_amount', 'default_sku', 'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending', 'images']
 
     def to_representation(self, instance):
         # Call the parent class to get the default representation

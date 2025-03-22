@@ -3,7 +3,7 @@ from .models import MainProduct, MainProductImage, ProductCategory, ProductSubCa
 from django.utils.html import format_html
 
 class MainProductAdmin(admin.ModelAdmin):  # Use ModelAdmin for the main admin class
-    list_display = ('id', 'type', 'name', 'default_price', 'default_sale_price', 'default_discount', 'default_sku', 'ribbon', 'threshold', 'vedio_link')
+    list_display = ('id', 'type', 'name', 'default_mrp', 'default_selling_price', 'default_discount', 'default_sku', 'ribbon', 'threshold', 'vedio_link')
     filter_horizontal = ('add_ons',)
     
 class MainProductImageAdmin(admin.ModelAdmin):

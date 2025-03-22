@@ -47,7 +47,31 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.id)
-    
+
+class OrderStatus(models.Model):
+    STATUS_CHOICES = [
+        ('INITIATED', 'Initiated'),
+        ('ORDER_CONFIRMED', 'Order Confirmed'),
+        ('DISPATCHED', 'Dispatched'),
+        ('ON_THE_WAY', 'On the Way'),
+        ('OUT_FOR_DELIVERY', 'Out for Delivery'),
+        ('DELIVERED', 'Delivered'),
+        ('CANCELLED', 'Cancelled'),
+        ('RETURNED', 'Returned'),
+    ]
+
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='status_history')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    notes = models.TextField(blank=True, null=True)  # Optional: Track reasons (e.g., "Customer requested return")
+
+    def __str__(self):
+        return f"{self.order.order_id} - {self.get_status_display()} at {self.timestamp}"
+
+    class Meta:
+        ordering = ['-timestamp']
+
+
 class OrderItem(models.Model):
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -55,8 +79,8 @@ class OrderItem(models.Model):
     sku = models.CharField(max_length=40)
     image = models.ImageField(upload_to='order_items/', blank=True, null=True)
     quantity = models.IntegerField(default=0)
-    price = models.FloatField(default=0)
-    sale_price = models.FloatField(default=0)
+    mrp = models.FloatField(default=0)
+    selling_price = models.FloatField(default=0)
     discount = models.FloatField(db_default=0)
     total = models.FloatField(default=0)
 

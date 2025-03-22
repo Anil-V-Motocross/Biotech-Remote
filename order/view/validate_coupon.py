@@ -29,10 +29,15 @@ def validate_coupon(request):
 
     try:
         order = Order.objects.get(id=order_id, customer_id=user)
-        order_total = Decimal(order.total_price)
+        order_total = Decimal(order.grand_total)
     except Order.DoesNotExist:
         print("❌ Order not found")
         return Response(data={'error': 'Order not found'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    # Check if order is a combo purchase
+    if order.is_combo_purchase:
+        print("❌ Coupon cannot be applied to a combo purchase.")
+        return Response(data={'error': 'Coupon cannot be applied to a combo purchase'}, status=status.HTTP_400_BAD_REQUEST)
 
     print(f"🔍 Order Total: {order_total}")
 
@@ -129,10 +134,10 @@ def validate_coupon(request):
         return Response(data={'error': f'Minimum order value should be {coupon.minimum_order_value}'}, status=status.HTTP_400_BAD_REQUEST)
 
     # Check stackable condition
-    if not coupon.is_stackable and CouponUsage.objects.filter(user=user).exists():
-        print("❌ Coupon cannot be combined with other discounts")
-        return Response(data={'error': 'This coupon cannot be combined with other discounts'}, status=status.HTTP_400_BAD_REQUEST)
-
+    if not coupon.is_stackable and CouponUsage.objects.filter(order=order).exists():
+        print("❌ Coupon cannot be combined with another coupon in the same order")
+        return Response(data={'error': 'A coupon has already been applied to this order'}, status=status.HTTP_400_BAD_REQUEST)
+    
     # Calculate discount
     discount_amount = 0
     if coupon.discount_type == 'FLAT':
@@ -144,6 +149,7 @@ def validate_coupon(request):
             discount_amount = min(discount_amount, coupon.max_discount_value)
         print(f"✅ Percentage Discount Applied: {discount_amount}")
 
+    # earlier_discount = order.total_discount
     new_total = order_total - discount_amount
     print(f"✅ New Order Total After Discount: {new_total}")
 
@@ -161,6 +167,7 @@ def validate_coupon(request):
     print("\n🎉 [END] Coupon Applied Successfully 🎉\n")
 
     # **🔹 Update Order Model**
+    
     order.coupon_applied = True
     order.applied_coupon = coupon
     order.coupon_discount = discount_amount

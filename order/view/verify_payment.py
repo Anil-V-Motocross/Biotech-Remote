@@ -28,19 +28,20 @@ def verify_payment(request):
         razorpay_client.utility.verify_payment_signature(data)
         
         order = Order.objects.get(id=order_id)
-        if order.coupon_applied:
+        if order.coupon_applied and order.applied_coupon:
             # Save coupon usage
             coupon = order.applied_coupon
             # Ensure only one coupon usage per user per coupon
             coupon_usage, created = CouponUsage.objects.get_or_create(
-                user=order.customer_id, coupon=coupon,
-                defaults={'usage_count': 1}
+                user=order.customer_id, 
+                coupon=coupon,
+                order=order
             )
 
-            if not created:
-                coupon_usage.usage_count += 1
-                coupon_usage.save()
-            print("✅ Coupon usage updated successfully.")    
+            if created:
+                print(f"✅ Coupon '{coupon.code}' usage recorded for user {order.customer_id}.")
+            else:
+                print(f"⚠️ Coupon '{coupon.code}' was already used in this order.")    
 
         return Response({"message": "Payment successful"}, status=status.HTTP_200_OK)
     except razorpay.errors.SignatureVerificationError:

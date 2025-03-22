@@ -129,16 +129,17 @@ class Coupon(models.Model):
 class CouponUsage(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='coupon_usages')
     coupon = models.ForeignKey(Coupon, on_delete=models.CASCADE, related_name='user_usages')
+    order = models.ForeignKey('order.Order', on_delete=models.CASCADE, related_name='coupon_usages')
     used_at = models.DateTimeField(auto_now_add=True)
-    usage_count = models.PositiveIntegerField(default=1)
+    # usage_count = models.PositiveIntegerField(default=1)
 
 
     class Meta:
-        unique_together = ('user', 'coupon')  # Prevent the same user from using the same coupon more than once
+        unique_together = ('user', 'coupon', 'order')  
 
     @classmethod
     def usage_count_for_user(cls, user, coupon):
         """Get the count of times a user has used a specific coupon."""
-        return cls.objects.filter(user=user, coupon=coupon).aggregate(total_usage=Sum('usage_count'))['total_usage'] or 0
+        return cls.objects.filter(user=user, coupon=coupon).count()
     def __str__(self):
         return f"{self.user} used {self.coupon.code} on {self.used_at}"

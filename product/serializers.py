@@ -9,14 +9,14 @@ from product.models import Product
 class MainProductSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
     product_rating = serializers.SerializerMethodField()
-    mrp = serializers.FloatField(source='default_sale_price')
-    price = serializers.FloatField(source='default_price')
+    mrp = serializers.FloatField(source='default_mrp')
+    selling_price = serializers.FloatField(source='default_selling_price')
     is_cart = serializers.SerializerMethodField()
     is_wishlist = serializers.SerializerMethodField()
 
     class Meta:
         model = MainProduct
-        fields = ['id', 'name', 'is_cart', 'is_wishlist', 'mrp', 'price', 'image', 'product_rating']
+        fields = ['id', 'name', 'is_cart', 'is_wishlist', 'mrp', 'selling_price', 'image', 'product_rating']
 
     def get_image(self, obj):
         image = MainProductImage.objects.filter(product=obj).first()
@@ -68,14 +68,14 @@ class MainProductSerializer(serializers.ModelSerializer):
 class AddOnProductSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
     product_rating = serializers.SerializerMethodField()
-    price = serializers.FloatField(source='default_price')
-    mrp = serializers.FloatField(source='default_sale_price')
+    selling_price = serializers.FloatField(source='default_selling_price')
+    mrp = serializers.FloatField(source='default_mrp')
     is_cart = serializers.SerializerMethodField()
     is_wishlist = serializers.SerializerMethodField()
 
     class Meta:
         model = MainProduct
-        fields = ['id', 'name', 'mrp', 'price', 'image', 'product_rating', 'is_cart', 'is_wishlist']
+        fields = ['id', 'name', 'mrp', 'selling_price', 'image', 'product_rating', 'is_cart', 'is_wishlist']
 
     def get_image(self, obj):
         image = MainProductImage.objects.filter(product=obj).first()
@@ -204,7 +204,6 @@ class ProductMinimalSerializer(serializers.ModelSerializer):
 
 
 class ProductInventorySerializer(serializers.ModelSerializer):
-    mrp = serializers.FloatField(source='sale_price')  
 
     # Convert ForeignKey IDs to their names
     size = serializers.CharField(source='size_id.name', required=False, allow_null=True)
@@ -217,7 +216,7 @@ class ProductInventorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = [
-            'name', 'stock', 'cost', 'price', 'mrp', 'profit', 'discount', 'sku', 'image',
+            'name', 'stock', 'cost', 'selling_price', 'mrp', 'profit', 'discount', 'sku', 'image',
             'date_added', 'size', 'planter_size', 'planter', 'color', 'weight', 'litre',
         ]        
    

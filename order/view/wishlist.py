@@ -11,12 +11,12 @@ from product.models import Product
 class WishlistSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='product_id.product_id.name', read_only=True)
     image = serializers.CharField(source='product_id.image.url', read_only=True)  # Assuming product has the image field
-    price = serializers.CharField(source='product_id.price', read_only=True)  # Price from the Product model
+    selling_price = serializers.CharField(source='product_id.selling_price', read_only=True)  # Price from the Product model
     stock_status = serializers.SerializerMethodField()  # Adding a custom field for stock status
-    mrp = serializers.FloatField(source='product_id.sale_price',read_only=True)
+    mrp = serializers.FloatField(source='product_id.mrp',read_only=True)
     class Meta:
         model = Wishlist
-        fields = ['id', 'user_id', 'product_id', 'name', 'image', 'price', 'mrp', 'stock_status']
+        fields = ['id', 'user_id', 'product_id', 'name', 'image', 'selling_price', 'mrp', 'stock_status']
 
     def get_stock_status(self, instance):
         # Access the Product associated with the Cart item

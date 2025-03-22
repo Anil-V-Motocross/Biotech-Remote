@@ -80,15 +80,15 @@ def place_order(request):
             else:
                 stock_status = "In Stock"
                 
-            sale_price = float(product.sale_price)  # Get the price of the product (convert to float for calculation)
+            sale_price = float(product.selling_price)  # Get the price of the product (convert to float for calculation)
             total = quantity * sale_price
             
             order_item = {
                 'product_id': product_id,
                 'sku': product.sku,
                 'quantity': quantity,
-                'sale_price': product.sale_price,
-                'price': product.price,
+                'sale_price': product.selling_price,
+                'price': product.mrp,
                 'discount': product.discount,
                 'total': total,
                 'stock_status': stock_status
@@ -117,14 +117,14 @@ def place_order(request):
                     
                     # Calculate price and total
                     quantity = item.quantity
-                    sale_price = float(item.product_id.sale_price)  # Get the price of the product (convert to float for calculation)
+                    sale_price = float(item.product_id.selling_price)  # Get the price of the product (convert to float for calculation)
                 total = quantity * sale_price
                 order_items.append({
                     'product_id': item.product_id.id,
                     'sku': item.product_id.sku,
                     'quantity': item.quantity,
                     'sale_price': sale_price,
-                    'price': item.product_id.price,
+                    'price': item.product_id.mrp,
                     'discount': item.product_id.discount,
                     'total': total,
                     'stock_status': stock_status

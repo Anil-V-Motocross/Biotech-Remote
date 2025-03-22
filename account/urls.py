@@ -5,6 +5,7 @@ from .views.role import create_group_and_assign_permissions, get_permissions
 from .views.register_mobile import register_mobile, validate_otp, register
 from .views.all_users import all_users
 from .views.profile import profile, address
+from .views.users_search import UserSearchView
 
 name = 'account'
 
@@ -16,6 +17,7 @@ urlpatterns = [
     path('login-staff/', login_staff, name='login_staff'),
     path('all_users/', all_users, name='all_users'),
     path('all_users/<int:pk>/', all_users, name='all_users'),
+    path('user_search/', UserSearchView.as_view(), name='search_users'),
 
     path('create-group/', create_group_and_assign_permissions, name='create_group_and_assign_permissions'),
     path('get-permissions/', get_permissions, name='get_permissions'),

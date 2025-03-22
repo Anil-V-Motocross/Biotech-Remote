@@ -28,9 +28,9 @@ def update_default_product(request, product_id):
             selected_product.save()
             
             # Updating main product default fields
-            main_product.default_sale_price = selected_product.price
-            main_product.default_price = selected_product.price
-            main_product.default_discount = selected_product.discount
+            main_product.default_selling_price = selected_product.selling_price
+            main_product.default_mrp = selected_product.mrp
+            main_product.default_discount_amount = selected_product.discount_amount
             main_product.default_sku = selected_product.sku
             main_product.save()
             

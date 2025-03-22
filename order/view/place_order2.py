@@ -13,7 +13,7 @@ from order.view.util import generate_bmo_id
 from order.serializers import PlaceOrderSerializer, OrderItemSerializer
 import time
 from account.models import User
-
+from decimal import Decimal
 
 
 
@@ -77,24 +77,26 @@ def place_order(request):
             print("❌ Product out of stock:", product_id)
             return Response(data={'message': 'Product out of stock.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        sale_price = float(product.sale_price)
+        sale_price = float(product.mrp)
         total = quantity * sale_price
-        discount = float(product.discount) * quantity
+        # discount = float(product.discount) * quantity
+        discount_amount = (float(product.mrp) * float(product.discount) / 100) * quantity
 
-        print(f"✅ Adding product to order: {product.name}, Total: {total}, Discount: {discount}")
+
+        print(f"✅ Adding product to order: {product.name}, Total: {total}, Discount: {discount_amount}")
 
         order_items.append({
             'product_id': product_id,
             'sku': product.sku,
             'quantity': quantity,
             'sale_price': sale_price,
-            'price': product.price,
-            'discount': discount,
+            'price': product.mrp,
+            'discount': discount_amount,
             'total': total
         })
 
         total_price += total
-        total_discount += discount
+        total_discount += discount_amount
 
     # ✅ Case 2: Cart Order
     elif order_source == 'cart':
@@ -110,22 +112,24 @@ def place_order(request):
                 print(f"❌ Product {item.product_id.name} is out of stock.")
                 return Response(data={'message': f'Product {item.product_id.name} is out of stock.'}, status=status.HTTP_400_BAD_REQUEST)
 
-            sale_price = float(item.product_id.sale_price)
+            sale_price = float(item.product_id.mrp)
             total = item.quantity * sale_price
-            discount = float(item.product_id.discount) * item.quantity
+            # discount = float(item.product_id.discount) * item.quantity
+            discount_amount = (float(item.product_id.mrp) * float(item.product_id.discount) / 100) * item.quantity
+
 
             order_items.append({
                 'product_id': item.product_id.id,
                 'sku': item.product_id.sku,
                 'quantity': item.quantity,
                 'sale_price': sale_price,
-                'price': item.product_id.price,
-                'discount': discount,
+                'price': item.product_id.mrp,
+                'discount': discount_amount,
                 'total': total
             })
 
             total_price += total
-            total_discount += discount
+            total_discount += discount_amount
 
     # ✅ Case 3: Combo Offer
     elif order_source == 'combo':
@@ -145,8 +149,12 @@ def place_order(request):
         is_combo_purchase = True
 
         for combo_product in combo.products.all():
-            sale_price = combo_product.sale_price
-            discount = combo_product.discount
+            print("Combo product Details  :",combo_product)
+
+            sale_price = combo_product.selling_price
+            # discount = combo_product.discount
+            discount = (float(combo_product.mrp) * float(combo_product.discount) / 100) 
+
             total = sale_price
 
             print(f"✅ Adding combo product: {combo_product.name}, Total: {total}, Discount: {discount}")
@@ -156,14 +164,14 @@ def place_order(request):
                 'sku': combo_product.sku,
                 'quantity': 1,
                 'sale_price': sale_price,
-                'price': combo_product.price,
+                'price': combo_product.mrp,
                 'discount': discount,
                 'total': total,
                 'combo_offer': combo_id
             })
 
-            total_price += total
-            total_discount += discount
+        total_price = combo.final_price
+        total_discount = combo.discount
 
     # ✅ Generate Order ID & Fetch Customer
     order_id = generate_bmo_id()
@@ -182,7 +190,13 @@ def place_order(request):
         if coupon_code:
             coupon = Coupon.objects.filter(code=coupon_code, is_active=True).first()
             if coupon and total_price >= coupon.minimum_order_value:
-                coupon_discount = coupon.discount_amount
+                if coupon.discount_type == 'FLAT':
+                    discount_amount = min(total_price, coupon.discount_value)
+                elif coupon.discount_type == 'PERCENTAGE':
+                    discount_amount = (coupon.discount_value / Decimal(100)) * total_price
+                    if coupon.max_discount_value:
+                        discount_amount = min(discount_amount, coupon.max_discount_value)
+                coupon_discount = discount_amount
                 applied_coupon = coupon
             else:
                 return Response(data={'message': 'Invalid or ineligible coupon.'}, status=status.HTTP_400_BAD_REQUEST)

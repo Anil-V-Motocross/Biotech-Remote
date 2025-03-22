@@ -50,13 +50,15 @@ class DealOfTheWeekListCreateView(generics.ListCreateAPIView):
             return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
 
         deals = self.get_queryset()
+        
+
         serializer = self.get_serializer(deals, many=True)
         return Response({'message': 'Deals retrieved successfully', 'data': serializer.data}, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
         if not request.user.is_staff or not request.user.has_perm('dealoftheweek.add_dealoftheweek'):
             return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
-
+        print("deals - data :", request.data)
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

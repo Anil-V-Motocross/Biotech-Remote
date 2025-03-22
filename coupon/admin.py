@@ -23,7 +23,7 @@ class CouponAdmin(admin.ModelAdmin):
 
 @admin.register(CouponUsage)
 class CouponUsageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'coupon', 'usage_count', 'used_at')
+    list_display = ('id', 'user', 'coupon', 'order', 'used_at')
     search_fields = ('user__username', 'coupon__code')
     list_filter = ('used_at',)
 

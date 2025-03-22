@@ -31,12 +31,10 @@ class ShopTheLookSerializer(serializers.ModelSerializer):
     weight = serializers.CharField(source='weight_id.size_grams', allow_null=True)
     litre = serializers.CharField(source='litre_id.name', allow_null=True)
 
-    mrp = serializers.FloatField(source='sale_price')
-
     class Meta:
         model = Product
         fields = [
-            'id', 'name', 'mrp', 'price', 'discount',
+            'id', 'name', 'mrp', 'selling_price', 'discount',
             'image', 'size', 'planter_size', 'planter',
             'color', 'weight', 'litre'
         ]

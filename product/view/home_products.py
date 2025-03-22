@@ -54,10 +54,10 @@ class MainProductSerializer(serializers.ModelSerializer):
         default_product = instance.product_set.filter(is_default=True).first()
 
         if default_product:
-            representation['price'] = default_product.price
-            representation['mrp'] = default_product.sale_price
+            representation['selling_price'] = default_product.selling_price
+            representation['mrp'] = default_product.mrp
         else:
-            representation['price'] = None
+            representation['selling_price'] = None
             representation['mrp'] = None
 
         # Optionally, remove the 'images' field if you don't need it in the response

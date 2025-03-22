@@ -71,7 +71,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['id', 'price', 'is_cart', 'is_wishlist', 'images', 'short_description', 'main_product_name', 'size_id', 'planter_size_id', 'planter_id', 'weight_id', 'litre_id', 'color_id']
+        fields = ['id', 'selling_price', 'mrp', 'is_cart', 'is_wishlist', 'images', 'short_description', 'main_product_name', 'size_id', 'planter_size_id', 'planter_id', 'weight_id', 'litre_id', 'color_id']
 
     def get_images(self, obj):
         # Start with the product's main image

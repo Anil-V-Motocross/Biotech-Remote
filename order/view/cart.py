@@ -12,14 +12,26 @@ from account.permissions import DynamicPermission
 class CartSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='product_id.product_id.name', read_only=True)
     image = serializers.CharField(source='product_id.image.url', read_only=True)  # Assuming product has the image field
-    price = serializers.CharField(source='product_id.price', read_only=True)  # Price from the Product model
+    price = serializers.CharField(source='product_id.mrp', read_only=True)  # Price from the Product model
     short_description = serializers.CharField(source='product_id.product_id.short_description', read_only=True)
     stock_status = serializers.SerializerMethodField()  # Adding a custom field for stock status
-    discount = serializers.CharField(source='product_id.discount', read_only=True)
+    discount = serializers.SerializerMethodField()
 
     class Meta:
         model = Cart
         fields = ['id', 'user_id', 'product_id','quantity', 'name', 'image', 'price', 'discount', 'short_description', 'stock_status']
+
+    def get_discount(self, instance):
+        product = instance.product_id
+        mrp = float(product.mrp)
+        discount_per = float(product.discount)
+        
+        if discount_per > 0:
+            discount =((discount_per / 100) * mrp)
+        else:
+            discount = 0
+
+        return round(discount, 2) 
 
     def get_stock_status(self, instance):
         # Access the Product associated with the Cart item
@@ -51,6 +63,7 @@ def cart(request, pk=None):
         
         cart = Cart.objects.filter(user_id=request.user.id).all()
         serializer = CartSerializer(cart, many=True)
+        print("⭐cart details :", serializer.data)
         data = {
             'cart': serializer.data
         }

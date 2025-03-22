@@ -1,6 +1,7 @@
 from django.db import models
 from attribute.models import Size, PlanterSize, Planter, Color, Weight, HandleMaterial, BladeMaterial, PotType, Material, Shape, Litre
 from account.models import User
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -15,9 +16,9 @@ class MainProduct(models.Model):
         ('tool', 'Garden Tool'),
     ]
     type = models.CharField(max_length=10, choices=type_choices, default='plant')
-    default_sale_price = models.FloatField(default=0)
-    default_price = models.FloatField(default=0)
-    default_discount = models.FloatField(default=0)
+    default_mrp = models.FloatField(default=0)
+    default_selling_price = models.FloatField(default=0)
+    default_discount = models.FloatField(default=0) # In percentage
     default_sku = models.FloatField(default=0)
 
     short_description = models.TextField()
@@ -89,11 +90,13 @@ class Product(models.Model):
     litre_id = models.ForeignKey(Litre, on_delete=models.SET_NULL, null=True, blank=True)
 
     name = models.CharField(max_length=100)
-    cost = models.FloatField(default=0)
-    sale_price = models.FloatField(default=0)
-    price = models.FloatField(default=0)
+
+    cost = models.FloatField(default=0) # Cost price (how much it costs to procure/make)
+    mrp = models.FloatField(default=0)
+    selling_price = models.FloatField(default=0) # Final price after discounts
+    discount = models.FloatField(default=0) # In percentage
     profit = models.FloatField(default=0)
-    discount = models.FloatField(default=0)
+
     stock = models.IntegerField(default=0)
     sku = models.CharField(max_length=40)
     image = models.ImageField(upload_to='product_images/', default='default/category_default.jpg')
@@ -105,7 +108,25 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+    def clean(self):
+        """Custom validation for price calculations"""
+
+        # Ensure discount is between 0 and 100
+        if not (0 <= self.discount <= 100):
+            raise ValidationError({'discount': 'Discount percentage must be between 0 and 100.'})
+
+        # Calculate expected selling price from MRP and discount
+        calculated_selling_price = self.mrp * (1 - self.discount / 100)
+
+        if round(self.selling_price, 2) != round(calculated_selling_price, 2):
+            raise ValidationError({'selling_price': 'Selling Price must be MRP - (Discount% of MRP).'})
+
+        # Validate profit calculation
+        calculated_profit = self.selling_price - self.cost
+
+        if round(self.profit, 2) != round(calculated_profit, 2):
+            raise ValidationError({'profit': 'Profit must be equal to Selling Price - Cost Price.'})
 
 class Rating(models.Model):
     main_product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)

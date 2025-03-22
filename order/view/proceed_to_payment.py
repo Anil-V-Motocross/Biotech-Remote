@@ -58,9 +58,10 @@ def proceed_to_payment(request):
                 order.razorpay_order_id = razorpay_order.get('id')
                 order.save()
                 data = {
-                    'razorpay_order': razorpay_order
+                    'razorpay_order': razorpay_order,
+                    'order_id':order.id
                 }
-                return Response(razorpay_order)
+                return Response(data)
             elif payment_method == 'Cash':
                 return Response(data={'message': 'Payment successful.'}, status=status.HTTP_200_OK)
             else:
