@@ -1,10 +1,12 @@
 from product.serializers import MainProductSerializer
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from product.models import MainProduct
 from django.shortcuts import get_object_or_404
 from category.models import Category, SubCategory
 from product.models import ProductCategory, MainProduct, ProductSubCategory
+from account.token_permissions import OptionalTokenAuthentication
+from rest_framework.permissions import AllowAny
 
 
 @api_view(['GET'])
@@ -28,6 +30,8 @@ def category_products(request, pk):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
+@authentication_classes([OptionalTokenAuthentication])
 def category_products(request, pk):
     try:
         # Check if the category exists
@@ -48,6 +52,8 @@ def category_products(request, pk):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
+@authentication_classes([OptionalTokenAuthentication])
 def subcategory_products(request, pk):
     try:
         # Check if the subcategory exists

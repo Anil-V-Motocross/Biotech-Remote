@@ -11,15 +11,17 @@ from account.permissions import DynamicPermission
 
 class CartSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='product_id.product_id.name', read_only=True)
+    main_prod = serializers.CharField(source='product_id.product_id.id', read_only=True)
     image = serializers.CharField(source='product_id.image.url', read_only=True)  # Assuming product has the image field
-    price = serializers.CharField(source='product_id.mrp', read_only=True)  # Price from the Product model
+    mrp = serializers.CharField(source='product_id.mrp', read_only=True)  # Price from the Product model
+    selling_price = serializers.CharField(source='product_id.selling_price', read_only=True)
     short_description = serializers.CharField(source='product_id.product_id.short_description', read_only=True)
     stock_status = serializers.SerializerMethodField()  # Adding a custom field for stock status
     discount = serializers.SerializerMethodField()
 
     class Meta:
         model = Cart
-        fields = ['id', 'user_id', 'product_id','quantity', 'name', 'image', 'price', 'discount', 'short_description', 'stock_status']
+        fields = ['id', 'user_id', 'main_prod', 'product_id','quantity', 'name', 'image', 'mrp', 'selling_price', 'discount', 'short_description', 'stock_status']
 
     def get_discount(self, instance):
         product = instance.product_id

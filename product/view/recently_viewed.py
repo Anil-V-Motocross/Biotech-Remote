@@ -8,11 +8,13 @@ from product.serializers import MainProductSerializer
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+from account.token_permissions import OptionalTokenAuthentication
 
 class RecentlyViewedProductsView(generics.ListAPIView):
     serializer_class = MainProductSerializer
     permission_classes = [AllowAny]  # Allow all users, even without authentication
-
+    authentication_classes = [OptionalTokenAuthentication] 
+    
     def get_queryset(self):
         print("🔹 API called: RecentlyViewedProductsView")  # Debugging
 

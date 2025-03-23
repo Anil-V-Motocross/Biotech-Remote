@@ -1,4 +1,4 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.response import Response
 from rest_framework import status
 from product.models import Product, MainProductImage
@@ -12,6 +12,8 @@ from attribute.models import Weight
 from attribute.models import Material, Shape, PotType, Litre
 from rest_framework.exceptions import ValidationError
 from order.models import Cart, Wishlist
+from rest_framework.permissions import AllowAny
+from account.token_permissions import OptionalTokenAuthentication
 
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -110,6 +112,8 @@ class ProductSerializer(serializers.ModelSerializer):
         return False
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
+@authentication_classes([OptionalTokenAuthentication])
 def filter_product(request, pk):
     if request.method == 'GET' and pk:
         
@@ -125,10 +129,6 @@ def filter_product(request, pk):
                 return Response({'message': 'Product not found'}, status=status.HTTP_400_BAD_REQUEST)
             product_id = current_product.product_id
             product_type = product_id.type
-            print("-------------product_type:", product_type)
-            print("-------------product_id:", product_id)
-
-            print('--------------------------------------------------------------------')
 
             if product_type == 'seed':
                 filter_params = {}

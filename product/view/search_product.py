@@ -1,49 +1,16 @@
 from rest_framework.response import Response
-from rest_framework import serializers
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rapidfuzz import process, fuzz
 from product.models import MainProduct, ProductCategory, ProductSubCategory, MainProductImage, Rating
 from category.models import Category, SubCategory
-from django.db.models import Avg, Count, F
-from django.db.models.functions import Floor
 from product.serializers import MainProductSerializer
+from account.token_permissions import OptionalTokenAuthentication
+from rest_framework.permissions import AllowAny
 
-
-# class MainProductSerializer(serializers.ModelSerializer):
-#     image = serializers.SerializerMethodField()
-#     product_rating = serializers.SerializerMethodField()
-#     price = serializers.FloatField(source='default_price')
-
-    # class Meta:
-    #     model = MainProduct
-    #     fields = ['id', 'name', 'default_sale_price', 'price', 'image', 'product_rating']
-
-    # def get_image(self, obj):
-    #     image = MainProductImage.objects.filter(product=obj).first()
-    #     return image.image.url if image else None
-
-    # def get_product_rating(self, obj):
-    #     product_rating = Rating.objects.filter(main_product_id=obj.id).aggregate(
-    #         avg_rating=Avg('product_rating'),
-    #         num_ratings=Count('id')
-    #     )
-    #     product_rating['avg_rating'] = round(product_rating['avg_rating'], 2) if product_rating['avg_rating'] else 0
-
-    #     # Breakdown of star ratings
-    #     stars_given = list(
-    #         Rating.objects.filter(main_product_id=obj.id)
-    #         .annotate(rounded_rating=Floor(F('product_rating')))
-    #         .values('rounded_rating')
-    #         .annotate(count=Count('id'))
-    #         .order_by('-rounded_rating')
-    #     )
-
-    #     # Convert queryset to required list format
-    #     # product_rating['stars_given'] = [{"stars": entry["rounded_rating"], "count": entry["count"]} for entry in stars_given]
-
-    #     return product_rating
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
+@authentication_classes([OptionalTokenAuthentication])
 def search_products(request):
     try:
         query = request.data.get('search', '').strip().lower()
@@ -90,7 +57,7 @@ def search_products(request):
         )
 
         # Serialize & return response
-        serializer = MainProductSerializer(sorted_products, many=True)
+        serializer = MainProductSerializer(sorted_products, many=True, context={'request': request})
         return Response(data={"message": "success", "products": serializer.data}, status=200)
 
     except Exception as e:

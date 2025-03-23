@@ -1,13 +1,19 @@
 from django.contrib import admin
-from .models import Order, OrderItem, Cart, Wishlist, DeliveryAddress
+from .models import Order, OrderItem, Cart, Wishlist, DeliveryAddress, OrderStatus
 
 # Register your models here.
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'order_id', 'grand_total', 'date', 'customer_id', 'customer_name', 'email', 'mobile', 'tracking_id', 'payment_method', 'delivery_option', 'status', 'razorpay_order_id')
     
+@admin.register(OrderStatus)
+class OrderStatusAdmin(admin.ModelAdmin):
+    list_display = ('order', 'status', 'timestamp', 'notes')
+    list_filter = ('status',)
+    search_fields = ('order__order_id', 'status', 'notes')
+
 
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ('id', 'order_id', 'product_id', 'quantity', 'price', 'total')
+    list_display = ('id', 'order_id', 'product_id', 'quantity', 'mrp', 'total')
 
 class CartAdmin(admin.ModelAdmin):
     list_display = ('id', 'user_id', 'product_id', 'quantity')

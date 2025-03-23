@@ -8,7 +8,7 @@ from django.conf import settings
 from django.db.models import Avg, Count, F
 from product.models import Rating
 from rest_framework.permissions import AllowAny
-
+from account.token_permissions import AllowAnyWithOptionalToken, OptionalTokenAuthentication
 
 # class MainProductImageSerializer(serializers.ModelSerializer):
 #     class Meta:
@@ -65,37 +65,11 @@ class MainProductSerializer(serializers.ModelSerializer):
 
         return representation
 
-    # def get_is_cart(self, obj):
-    #     """Check if the product exists in the user's cart."""
-    #     request = self.context.get('request', None)
-    #     if not request or not request.user.is_authenticated:
-    #         return False
-    #     if request and request.user.is_authenticated:
-    #         # Get the default product (variant) of this MainProduct
-    #         product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
-            
-    #         if product_instance:
-    #             return Cart.objects.filter(user_id=request.user, product_id=product_instance).exists()
-    #     return False
-
-    # def get_is_wishlist(self, obj):
-    #     """Check if the product exists in the user's wishlist."""
-    #     request = self.context.get('request', None)
-    #     if not request or not request.user.is_authenticated:
-    #         return False        
-    #     if request and request.user.is_authenticated:
-    #         # Get the default product (variant) of this MainProduct
-    #         product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
-            
-    #         if product_instance:
-    #             return Wishlist.objects.filter(user_id=request.user, product_id=product_instance).exists()
-    #     return False
-
     def get_is_cart(self, obj):
         """Check if the product exists in the user's cart."""
-        request = self.context.get('request', None)
+        request = self.context.get('request')
         if not request or not request.user.is_authenticated:
-            return False  # If no request or user not authenticated, return False
+            return False  
 
         product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
         if product_instance:
@@ -105,9 +79,9 @@ class MainProductSerializer(serializers.ModelSerializer):
 
     def get_is_wishlist(self, obj):
         """Check if the product exists in the user's wishlist."""
-        request = self.context.get('request', None)
+        request = self.context.get('request')
         if not request or not request.user.is_authenticated:
-            return False  # If no request or user not authenticated, return False
+            return False
 
         product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
         if product_instance:
@@ -127,9 +101,11 @@ class MainProductSerializer(serializers.ModelSerializer):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-@authentication_classes([])
+@authentication_classes([OptionalTokenAuthentication])
 def home_products(request):
     if request.method == 'GET':
+        print("🔑 Authenticated User:", request.user)
+        print("🔐 Authentication Method:", request.auth) 
         products = MainProduct.objects.all()
         serializer = MainProductSerializer(products, many=True, context={'request': request})
         data = {

@@ -3,13 +3,12 @@ from product.models import Product, Rating, Color, Size, PlanterSize, Planter, W
 from django.conf import settings
 from django.db.models import Avg, Count
 from order.models import Cart, Wishlist
-
+from product.models import MainProduct
 
 class ProductSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(source='product_id.id', read_only=True)
     name = serializers.SerializerMethodField()
     image = serializers.SerializerMethodField()
-    mrp = serializers.FloatField(source ='sale_price')
     product_rating = serializers.SerializerMethodField()
     is_cart = serializers.SerializerMethodField()
     is_wishlist = serializers.SerializerMethodField()
@@ -31,7 +30,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "mrp",
-            "price",
+            "selling_price",
             "image",
             "is_cart",
             "is_wishlist",
@@ -60,32 +59,34 @@ class ProductSerializer(serializers.ModelSerializer):
         return None  
 
     def get_product_rating(self, obj):
-        product_rating = Rating.objects.filter(main_product_id=obj.id).aggregate(
+        product_rating = Rating.objects.filter(main_product_id=obj.product_id).aggregate(
             avg_rating=Avg('product_rating'),
             num_ratings=Count('id')
         )
         product_rating['avg_rating'] = round(product_rating['avg_rating'], 2) if product_rating['avg_rating'] else 0
 
-        return product_rating
+        return product_rating  
 
     def get_is_cart(self, obj):
-        """Check if the product exists in the user's cart."""
+        """Check if the product exists in the user's cart."""        
         request = self.context.get('request', None)
         if request and request.user.is_authenticated:
-            # Get the default product (variant) of this MainProduct
-            product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
-            
+            product_instance = Product.objects.filter(name=obj).first()
+
             if product_instance:
-                return Cart.objects.filter(user_id=request.user, product_id=product_instance).exists()
+                exists = Cart.objects.filter(user_id=request.user, product_id=product_instance).exists()
+                return exists
+
         return False
-    
+
     def get_is_wishlist(self, obj):
-        """Check if the product exists in the user's wishlist."""
+        """Check if the product exists in the user's wishlist."""     
         request = self.context.get('request', None)
-        if request and request.user.is_authenticated:
-            # Get the default product (variant) of this MainProduct
-            product_instance = Product.objects.filter(product_id=obj, is_default=True).first()
-            
+        if request and request.user.is_authenticated:           
+            product_instance = Product.objects.filter(name=obj).first()
+
             if product_instance:
-                return Wishlist.objects.filter(user_id=request.user, product_id=product_instance).exists()
-        return False    
+                exists = Wishlist.objects.filter(user_id=request.user, product_id=product_instance).exists()
+                return exists
+
+        return False

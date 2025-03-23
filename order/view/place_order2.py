@@ -77,7 +77,7 @@ def place_order(request):
             print("❌ Product out of stock:", product_id)
             return Response(data={'message': 'Product out of stock.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        sale_price = float(product.mrp)
+        sale_price = float(product.selling_price)
         total = quantity * sale_price
         # discount = float(product.discount) * quantity
         discount_amount = (float(product.mrp) * float(product.discount) / 100) * quantity
@@ -89,8 +89,8 @@ def place_order(request):
             'product_id': product_id,
             'sku': product.sku,
             'quantity': quantity,
-            'sale_price': sale_price,
-            'price': product.mrp,
+            'selling_price': sale_price,
+            'mrp': product.mrp,
             'discount': discount_amount,
             'total': total
         })
@@ -112,7 +112,7 @@ def place_order(request):
                 print(f"❌ Product {item.product_id.name} is out of stock.")
                 return Response(data={'message': f'Product {item.product_id.name} is out of stock.'}, status=status.HTTP_400_BAD_REQUEST)
 
-            sale_price = float(item.product_id.mrp)
+            sale_price = float(item.product_id.selling_price)
             total = item.quantity * sale_price
             # discount = float(item.product_id.discount) * item.quantity
             discount_amount = (float(item.product_id.mrp) * float(item.product_id.discount) / 100) * item.quantity
@@ -122,8 +122,8 @@ def place_order(request):
                 'product_id': item.product_id.id,
                 'sku': item.product_id.sku,
                 'quantity': item.quantity,
-                'sale_price': sale_price,
-                'price': item.product_id.mrp,
+                'selling_price': sale_price,
+                'mrp': item.product_id.mrp,
                 'discount': discount_amount,
                 'total': total
             })
@@ -163,8 +163,8 @@ def place_order(request):
                 'product_id': combo_product.id,
                 'sku': combo_product.sku,
                 'quantity': 1,
-                'sale_price': sale_price,
-                'price': combo_product.mrp,
+                'selling_price': sale_price,
+                'mrp': combo_product.mrp,
                 'discount': discount,
                 'total': total,
                 'combo_offer': combo_id

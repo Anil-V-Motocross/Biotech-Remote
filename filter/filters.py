@@ -32,8 +32,8 @@ from django.db.models import Q
 class ProductFilter(django_filters.FilterSet):
     product_type = django_filters.CharFilter(field_name="product_id__type", lookup_expr="iexact")
     subcategories = django_filters.CharFilter(field_name="product_id__productsubcategory__subcategory_id__name", lookup_expr="icontains")
-    price_min = django_filters.NumberFilter(field_name="sale_price", lookup_expr="gte")
-    price_max = django_filters.NumberFilter(field_name="sale_price", lookup_expr="lte")
+    price_min = django_filters.NumberFilter(field_name="mrp", lookup_expr="gte")
+    price_max = django_filters.NumberFilter(field_name="mrp", lookup_expr="lte")
 
     size = django_filters.CharFilter(method="filter_by_combinations")
     planter_size = django_filters.CharFilter(method="filter_by_combinations")
