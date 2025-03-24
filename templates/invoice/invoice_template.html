@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice #{{ order.order_id }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .company-info {
+            width: 60%;
+        }
+        .invoice-info {
+            width: 35%;
+            text-align: right;
+        }
+        .invoice-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .summary {
+            float: right;
+            width: 300px;
+            margin-top: 1rem;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        .total-row {
+            font-weight: bold;
+            border-top: 2px solid #333;
+            padding-top: 0.5rem;
+        }
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="company-info">
+            <h2>Farm Ammino Agritech Private Limited</h2>
+            <p>123 Business Street, Business City</p>
+            <p>Bangalore, Karnataka 560001</p>
+            <p>Phone: (123) 456-7890 | Email: info@yourcompany.com</p>
+            <p>GSTIN: 22AAAAA0000A1Z5</p>
+        </div>
+        
+        <div class="invoice-info">
+            <h3>INVOICE</h3>
+            <p><strong>Invoice #:</strong> {{ order.order_id }}</p>
+            <p><strong>Date:</strong> {{ order.date|date:"d M Y" }}</p>
+            {% if order.razorpay_order_id %}
+            <p><strong>Payment ID:</strong> {{ order.razorpay_order_id }}</p>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="customer-info">
+        <h3>Bill To:</h3>
+        <p>{{ order.customer_name }}</p>
+        <p>Email: {{ order.email }}</p>
+        <p>Phone: {{ order.mobile }}</p>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>SKU</th>
+                <th>Qty</th>
+                <th>Unit Price</th>
+                <th>Discount</th>
+                <th class="text-right">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order_items %}
+            <tr>
+                <td>{{ item.product_id.name }}</td>
+                <td>{{ item.sku }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>₹{{ item.selling_price }}</td>
+                <td>₹{{ item.discount }}</td>
+                <td class="text-right">₹{{ item.total }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="summary">
+        <div class="summary-row">
+            <span>Subtotal:</span>
+            <span>₹{{ order.total_price }}</span>
+        </div>
+        {% if order.coupon_discount > 0 %}
+        <div class="summary-row">
+            <span>Coupon Discount:</span>
+            <span>-₹{{ order.coupon_discount }}</span>
+        </div>
+        {% endif %}
+        {% if order.total_discount > 0 %}
+        <div class="summary-row">
+            <span>Additional Discount:</span>
+            <span>-₹{{ order.total_discount }}</span>
+        </div>
+        {% endif %}
+        <div class="summary-row">
+            <span>Shipping:</span>
+            <span>₹0.00</span>
+        </div>
+        <div class="summary-row total-row">
+            <span>Total:</span>
+            <span>₹{{ order.grand_total }}</span>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Thank you for your business!</p>
+        <p>Payment Method: {{ order.payment_method }} | Delivery: {{ order.delivery_option }}</p>
+    </div>
+</body>
+</html>
