@@ -17,6 +17,7 @@ class BTCoinsSettings(models.Model):
     max_coins_earned_per_order = models.PositiveIntegerField(default=100)  # Max coins user can earn per order
     max_coins_redeemed_per_order = models.PositiveIntegerField(default=200)  
     coin_expiry_days = models.PositiveIntegerField(default=365)  
+    coins_per_100_rupees = models.PositiveIntegerField(default=10)
 
     def __str__(self):
         return "BTCoins Global Settings"
@@ -111,6 +112,13 @@ class BTCoinsTransaction(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     expires_at = models.DateTimeField(null=True, blank=True)  # Expiry date for earned coins
     notified = models.BooleanField(default=False)  # To track if the user was notified about expiry
+
+    def save(self, *args, **kwargs):
+        """ Automatically set expires_at for earned coins """
+        if self.transaction_type == "EARN" and not self.expires_at:
+            settings = BTCoinsSettings.get_settings()
+            self.expires_at = timezone.now() + timedelta(days=settings.coin_expiry_days)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.user.first_name} - {self.transaction_type} - {self.coins} Coins"

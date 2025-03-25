@@ -154,7 +154,7 @@ class RatingReviewSerializer(serializers.Serializer):
                 raise serializers.ValidationError("You have not purchased this product.")
 
             # Check if the product was delivered
-            delivered_orders = orders.filter(status="delivered")
+            delivered_orders = orders.filter(status_history__status="DELIVERED").distinct()
 
             if not delivered_orders.exists():
                 raise serializers.ValidationError("You can only review this product after delivery.")

@@ -13,7 +13,7 @@ from .view.order_history_items import order_history_items
 from .view.order_items import order_items
 from .view.place_order2 import place_order
 from .view.validate_coupon import validate_coupon
-
+from .view.invoice import OrderInvoicePDFView
 
 app_name = 'order'
 
@@ -39,7 +39,9 @@ urlpatterns = [
     
     path('userOrders/<int:customer_id>/', user_orders, name='user_orders'),  # Need to be ckeck whos is using it
 
-    path('applyCoupon/', validate_coupon, name='validate_coupon')
+    path('applyCoupon/', validate_coupon, name='validate_coupon'),
+
+    path('invoice/<int:order_id>/', OrderInvoicePDFView.as_view(), name='order-invoice-pdf'),
     
     #test
     # path("create-order/", create_order, name="create_order"),

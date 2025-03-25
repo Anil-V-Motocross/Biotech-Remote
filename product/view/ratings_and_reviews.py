@@ -29,8 +29,8 @@ def rating_review_create(request, main_product_id):
         customer_id=user,
         orderitem__product_id__in=products
     )
-
-    delivered_orders = orders.filter(status="delivered")
+    
+    delivered_orders = orders.filter(status_history__status="DELIVERED").distinct()
 
     has_purchased = delivered_orders.exists()
 

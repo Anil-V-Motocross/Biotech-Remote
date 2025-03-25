@@ -67,6 +67,9 @@ INSTALLED_APPS = [
     'combo',
     'dealoftheweek',
     'btcoins',
+
+    'django_weasyprint',
+
 ]
 
 MIDDLEWARE = [
@@ -85,7 +88,7 @@ ROOT_URLCONF = 'main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -156,7 +159,7 @@ USE_TZ = True
 # STATIC_URL = 'static/'
 # STATIC_ROOT = "/var/www/git-demo/static/"
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 

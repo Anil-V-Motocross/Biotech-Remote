@@ -15,6 +15,7 @@ class DeliveryAddressSerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     delivery_address = serializers.SerializerMethodField()
     product_details  = serializers.SerializerMethodField()
+    status = serializers.SerializerMethodField()
 
     class Meta:
         model = Order
@@ -39,6 +40,33 @@ class OrderSerializer(serializers.ModelSerializer):
                 "product_image": order_item.image.url if order_item.image else None
             }
         return None
+    
+    def get_status(self, obj):
+        """ Fetch the latest status of the order """
+        latest_status = obj.status_history.first()  # Get the latest status based on ordering in Meta class
+        return latest_status.status if latest_status else None
+
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated, DynamicPermission])   
+# @authentication_classes([JWTAuthentication])
+# def order_history(request):
+#     if request.method == 'GET':
+#         required_permissions = [
+#             'order.view_order'
+#         ]
+        
+#         if not any(request.user.has_perm(perm) for perm in required_permissions):
+#             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        
+#         orders = Order.objects.filter(customer_id=request.user.id).order_by('-id') 
+#         serializer = OrderSerializer(orders, many=True)
+#         data = {
+#             'orders': serializer.data
+#         }
+#         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+    
+#     return Response(data={'message': 'Invalid request method.'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, DynamicPermission])   
@@ -52,8 +80,16 @@ def order_history(request):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        orders = Order.objects.filter(customer_id=request.user.id).order_by('-id') 
-        serializer = OrderSerializer(orders, many=True)
+        # Filter orders for the current user
+        orders = Order.objects.filter(customer_id=request.user.id).order_by('-id')
+
+        # Exclude orders where the latest OrderStatus is "INITIATED"
+        filtered_orders = [
+            order for order in orders
+            if not order.status_history.first() or order.status_history.first().status != 'INITIATED'
+        ]
+
+        serializer = OrderSerializer(filtered_orders, many=True)
         data = {
             'orders': serializer.data
         }

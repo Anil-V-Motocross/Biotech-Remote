@@ -6,7 +6,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.decorators import authentication_classes
 import os
 from dotenv import load_dotenv
-from order.models import Order
+from order.models import Order, OrderStatus
 from coupon.models import CouponUsage
 
 
@@ -28,6 +28,9 @@ def verify_payment(request):
         razorpay_client.utility.verify_payment_signature(data)
         
         order = Order.objects.get(id=order_id)
+
+        order_status = OrderStatus.objects.create(order=order, status="PROCESSING")
+
         if order.coupon_applied and order.applied_coupon:
             # Save coupon usage
             coupon = order.applied_coupon

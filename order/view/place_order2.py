@@ -217,7 +217,6 @@ def place_order(request):
         "applied_coupon": applied_coupon.id if applied_coupon else None,
         "coupon_discount": coupon_discount,
         "grand_total": grand_total,
-        "status": "Initiated",
         "is_combo_purchase": is_combo_purchase,
         "is_shop_the_look": is_shop_the_look 
     }

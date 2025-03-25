@@ -9,7 +9,7 @@ class BTCoinsWalletAdmin(admin.ModelAdmin):
 
 @admin.register(BTCoinsTransaction)
 class BTCoinsTransactionAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "transaction_type", "reference", "coins", "created_at")
+    list_display = ("id", "user", "transaction_type", "reference", "coins", "created_at", "expires_at")
     list_filter = ("transaction_type", "created_at")
     search_fields = ("user__first_name", "reference")
 

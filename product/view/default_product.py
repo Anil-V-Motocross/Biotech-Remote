@@ -179,7 +179,7 @@ class ProductSerializer(serializers.ModelSerializer):
             return OrderItem.objects.filter(
                 product_id=obj,
                 order_id__customer_id=user,
-                order_id__status="delivered"  # Ensures the order is delivered
+                order_id__status_history__status="DELIVERED" # Ensures the order is delivered
             ).exists()
         return False
 

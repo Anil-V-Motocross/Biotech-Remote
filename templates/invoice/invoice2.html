@@ -1,0 +1,335 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Invoice</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        .title { font-size: 20px; font-weight: bold; margin: 5px 0; }
+        .content { font-size: 16px; margin: 3px 0; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            font-size: 12px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 10px;
+        }
+        .header-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .gst-number {
+            flex: 1;
+            font-weight: bold;
+        }
+        .invoice-title {
+            flex: 1;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .company-header {
+            display: flex;
+            align-items: flex-start;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 80px;
+            margin-right: 20px;
+        }
+        .company-info {
+            flex: 1;
+            text-align: center;
+        }
+        .company-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .info-box {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+        }
+        .info-table {
+            width: 100%;
+        }
+        .info-table td {
+            padding: 4px 0;
+        }
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .invoice-table th, .invoice-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .invoice-table th {
+            background: #f5f5f5;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .totals-table {
+            width: 50%;
+            margin-left: auto;
+            margin-bottom: 20px;
+        }
+        .totals-table td {
+            padding: 4px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .amount-words {
+            margin-bottom: 20px;
+        }
+        .footer {
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .signature-line {
+            border-top: 2px solid black;
+            width: 160px;
+            margin-left: auto;
+            margin-top: 60px;
+        }
+        .page-number {
+            text-align: right;
+            font-size: 10px;
+            margin-top: 15px;
+        }
+        .text-bold {
+            font-weight: bold;
+        }
+        .terms-list {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- GST and Title Section -->
+        <div class="header-section">
+            <p class="gst-number">GSTIN: 29AAFCF3808H1ZK</p>
+            <h2 class="invoice-title">TAX INVOICE</h2>
+            <div style="flex: 1"></div>
+        </div>
+
+        <!-- Header Section -->
+        <div class="company-header">
+            <img src="{% static 'logo/BiotechMaali.png' %}" alt="Biotech Logo" class="logo"/>
+            <div class="company-info">
+                <h1 class="company-name">Farm Ammino Agritech Private Limited</h1>
+                <p>
+                    1st floor, 282/C, 10th Main Rd, 5th Block, Jayanagar,<br>
+                    Bengaluru, Karnataka - 560041, India
+                </p>
+                <p>
+                    Phone No: 7892978318<br>
+                    Email: contactbiotechmail@gmail.com<br>
+                    Website: thebiotechmail.com
+                </p>
+            </div>
+            <div style="width: 80px"></div>
+        </div>
+
+        <!-- Invoice Details Grid -->
+        <div class="grid-2">
+            <div class="info-box">
+                <table class="info-table">
+                    <tr>
+                        <td>Invoice No.</td>
+                        <td>: {{ order.order_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Bill Type</td>
+                        <td>: Credit</td>
+                    </tr>
+                    <tr>
+                        <td>Place of Supply</td>
+                        <td>: Karnataka</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="info-box">
+                <table class="info-table">
+                    <tr>
+                        <td>Invoice Date</td>
+                        <td>: {{ order.date|date:"d M Y" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Payment ID</td>
+                        <td>: {{ order.razorpay_order_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Due Date</td>
+                        <td>: -</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Customer Details Grid -->
+        <div class="grid-2">
+            <div class="info-box">
+                <h3 class="text-bold">Customer Name & Billing Address</h3>
+                <p>{{ order.customer_name }}</p>
+                <p>Email: {{ order.email }}</p>
+                <p>Phone: {{ order.mobile }}</p>
+            </div>
+            <div class="info-box">
+                <h3 class="text-bold">Shipping Address</h3>
+                <p>Karnataka</p>
+                <p>State Code: KA</p>
+            </div>
+        </div>
+
+        <!-- Invoice Table -->
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Sl No</th>
+                    <th>Description</th>
+                    <th>HSN/SAC</th>
+                    <th class="text-right">Qty</th>
+                    <th>UOM</th>
+                    <th class="text-right">Rate</th>
+                    <th>Discount</th>
+                    <th class="text-right">Tax %</th>
+                    <th class="text-right">Amount (INR)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order_items %}
+                <tr>
+                    <td>1</td>
+                    <td>{{ item.product_id.name }}</td>
+                    <td>{{ item.hsn_code }}</td>
+                    <td class="text-right">{{ item.quantity }}</td>
+                    <td>NOS</td>
+                    <td class="text-right">₹{{ item.selling_price }}</td>
+                    <td class="text-right">₹{{ item.discount }}</td>
+                    <td class="text-right">18%</td>
+                    <td class="text-right">₹{{ item.total }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Tax Details -->
+        <table class="totals-table">
+            <tr>
+                <td>Sub Total</td>
+                <td class="text-right">₹{{ order.total_price }}</td>
+            </tr>
+            {% if order.coupon_discount > 0 %}
+            <tr>
+                <td>Coupon Discount:</td>
+                <td class="text-right">-₹{{ order.coupon_discount }}</td>
+            </tr>
+            {% endif %}
+            {% if order.total_discount > 0 %}
+            <tr>
+                <td>Additional Discount:</td>
+                <td class="text-right">-₹{{ order.total_discount }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td>CGST (9%)</td>
+                <td class="text-right">₹819.00</td>
+            </tr>
+            <tr>
+                <td>SGST (9%)</td>
+                <td class="text-right">₹819.00</td>
+            </tr>
+            <tr>
+                <td>Shipping:</td>
+                <td>₹0.00</td>
+            </tr>
+            <tr class="text-bold">
+                <td>Total Amount</td>
+                <td class="text-right">₹{{ order.grand_total }}</td>
+            </tr>
+        </table>
+
+        <!-- Amount in Words -->
+        <div class="amount-words">
+            <p class="text-bold">Amount in Words:</p>
+            <p>INR Nine Thousand One Hundred Only</p>
+        </div>
+
+        <div class="footer">
+            <p>Thank you for your business!</p>
+            <p>Payment Method: {{ order.payment_method }} | Delivery: {{ order.delivery_option }}</p>
+        </div>
+
+        <!-- Bank Details and Terms -->
+        <div class="footer">
+            <div class="footer-grid">
+                <div>
+                    <h4 class="text-bold">Bank Details:</h4>
+                    <p>FARM AMMINO AGRITECH PRIVATE LIMITED</p>
+                    <p>A/C: 50200075596357</p>
+                    <p>IFSC: HDFC0000261</p>
+                    <p>CURRENT ACCOUNT</p>
+                </div>
+                <div style="text-align: right">
+                    <p>For Farm Ammino Agritech Private Limited</p>
+                    <div class="signature-line"></div>
+                    <p>Authorized Signatory</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 15px">
+                <p class="text-bold">Declaration:</p>
+                <p>We declare that this invoice shows the actual price of the goods/services described and that all particulars are true and correct.</p>
+                <p class="text-bold" style="margin-top: 8px">Terms and Conditions:</p>
+                <ol class="terms-list">
+                    <li>Payment via UPI to be made to 7892978318</li>
+                    <li>Returns/Returns are not accepted & could be replaced</li>
+                    <li>Goods once delivered to the address provided by the customer within the specified time</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Page Number -->
+        <div class="page-number">
+            Page: 1/1
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<!-- If something breaks, restore your static files:
+
+rm -rf /root/biotechmaali/static
+tar -xzvf static_backup_2025-03-25.tar.gz -C / -->

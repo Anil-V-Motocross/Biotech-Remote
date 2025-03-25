@@ -34,7 +34,7 @@ class Order(models.Model):
     ]
     payment_method = models.CharField(max_length=10, choices=payment_method_types, null=True, blank=True)
 
-    status = models.CharField(max_length=50)
+    # status = models.CharField(max_length=50)
     razorpay_order_id = models.CharField(max_length=50, null=True, blank=True)
 
     # Track if order is a combo purchase
@@ -51,6 +51,7 @@ class Order(models.Model):
 class OrderStatus(models.Model):
     STATUS_CHOICES = [
         ('INITIATED', 'Initiated'),
+        ('PROCESSING', 'Processing'),
         ('ORDER_CONFIRMED', 'Order Confirmed'),
         ('DISPATCHED', 'Dispatched'),
         ('ON_THE_WAY', 'On the Way'),
@@ -61,7 +62,7 @@ class OrderStatus(models.Model):
     ]
 
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='status_history')
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='INITIATED')
     timestamp = models.DateTimeField(auto_now_add=True)
     notes = models.TextField(blank=True, null=True)  # Optional: Track reasons (e.g., "Customer requested return")
 
