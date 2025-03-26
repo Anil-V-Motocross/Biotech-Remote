@@ -10,9 +10,14 @@
         @page {
             size: A4;
             margin: 1cm;
+            @bottom-right {
+                content: "Page " counter(page) " of " counter(pages);
+                font-size: 10px;
+                color: #666;
+            }
         }
-        .title { font-size: 20px; font-weight: bold; margin: 5px 0; }
-        .content { font-size: 16px; margin: 3px 0; }
+        .title { font-size: 10px; font-weight: bold; margin: 5px 0; }
+        .content { font-size: 10px; margin: 3px 0; }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -23,12 +28,12 @@
             max-width: 800px;
             margin: 0 auto;
             background: white;
-            padding: 10px;
+            padding: 5px;
         }
         .header-section {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            /* margin-bottom: 10px; */
         }
         .gst-number {
             flex: 1;
@@ -37,15 +42,15 @@
         .invoice-title {
             flex: 1;
             text-align: center;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
         }
         .company-header {
             display: flex;
             align-items: flex-start;
             border-bottom: 1px solid #ddd;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            /* padding-bottom: 15px; */
+            margin-bottom: 5px;
         }
         .logo {
             width: 80px;
@@ -54,22 +59,24 @@
         .company-info {
             flex: 1;
             text-align: center;
+            font-size: 10px;
         }
         .company-name {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             margin-bottom: 8px;
         }
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 10px;
             margin-bottom: 20px;
         }
         .info-box {
             border: 1px solid #ddd;
             border-radius: 4px;
-            padding: 10px;
+            padding: 2px 10px;
+            font-size: 10px;
         }
         .info-table {
             width: 100%;
@@ -81,6 +88,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            font-size: 10px;
         }
         .invoice-table th, .invoice-table td {
             border: 1px solid #ddd;
@@ -97,6 +105,7 @@
             width: 50%;
             margin-left: auto;
             margin-bottom: 20px;
+            font-size: 10px;
         }
         .totals-table td {
             padding: 4px 0;
@@ -104,10 +113,12 @@
         }
         .amount-words {
             margin-bottom: 20px;
+            font-size: 10px;
         }
         .footer {
             border-top: 1px solid #ddd;
             padding-top: 15px;
+            font-size: 10px;
         }
         .footer-grid {
             display: grid;
@@ -120,10 +131,8 @@
             margin-left: auto;
             margin-top: 60px;
         }
-        .page-number {
-            text-align: right;
-            font-size: 10px;
-            margin-top: 15px;
+        .pdf-page-number {
+            display: none;
         }
         .text-bold {
             font-weight: bold;
@@ -131,6 +140,7 @@
         .terms-list {
             padding-left: 20px;
         }
+
     </style>
 </head>
 <body>
@@ -144,7 +154,8 @@
 
         <!-- Header Section -->
         <div class="company-header">
-            <img src="{% static 'logo/BiotechMaali.png' %}" alt="Biotech Logo" class="logo"/>
+            <!-- <img src="{% static 'logo/BiotechMaali.png' %}" alt="Biotech Logo" class="logo"/> -->
+            <img src="file://{{ STATIC_ROOT }}/logo/BiotechMaali.png" alt="Biotech Logo" class="logo"/>
             <div class="company-info">
                 <h1 class="company-name">Farm Ammino Agritech Private Limited</h1>
                 <p>
@@ -181,7 +192,7 @@
             <div class="info-box">
                 <table class="info-table">
                     <tr>
-                        <td>Invoice Date</td>
+                        <td>Ordered Date</td>
                         <td>: {{ order.date|date:"d M Y" }}</td>
                     </tr>
                     <tr>
@@ -189,8 +200,8 @@
                         <td>: {{ order.razorpay_order_id }}</td>
                     </tr>
                     <tr>
-                        <td>Due Date</td>
-                        <td>: -</td>
+                        <td>Order ID</td>
+                        <td>: {{ order.order_id }}</td>
                     </tr>
                 </table>
             </div>
@@ -199,15 +210,17 @@
         <!-- Customer Details Grid -->
         <div class="grid-2">
             <div class="info-box">
-                <h3 class="text-bold">Customer Name & Billing Address</h3>
-                <p>{{ order.customer_name }}</p>
-                <p>Email: {{ order.email }}</p>
-                <p>Phone: {{ order.mobile }}</p>
+                <h3 class="text-bold ">Customer Name & Billing Address</h3>
+                <span>{{ order.customer_name }}</span></br>
+                <span>Email: {{ order.email }}</span></br>
+                <span>Phone: {{ order.mobile }}</span></br>
             </div>
             <div class="info-box">
                 <h3 class="text-bold">Shipping Address</h3>
-                <p>Karnataka</p>
-                <p>State Code: KA</p>
+                <span>{{ delivery_address.first_name }} {{ delivery_address.last_name}}</span></br>
+                <span>{{ delivery_address.address}}</span></br>
+                <span>{{ delivery_address.state}}</span></br>
+                <span>{{ delivery_address.city }} - {{ delivery_address.pincode }}</span>
             </div>
         </div>
 
@@ -229,12 +242,12 @@
             <tbody>
                 {% for item in order_items %}
                 <tr>
-                    <td>1</td>
+                    <td>{{ forloop.counter }}</td>
                     <td>{{ item.product_id.name }}</td>
                     <td>{{ item.hsn_code }}</td>
                     <td class="text-right">{{ item.quantity }}</td>
                     <td>NOS</td>
-                    <td class="text-right">₹{{ item.selling_price }}</td>
+                    <td class="text-right">₹{{ item.mrp }}</td>
                     <td class="text-right">₹{{ item.discount }}</td>
                     <td class="text-right">18%</td>
                     <td class="text-right">₹{{ item.total }}</td>
@@ -270,8 +283,8 @@
                 <td class="text-right">₹819.00</td>
             </tr>
             <tr>
-                <td>Shipping:</td>
-                <td>₹0.00</td>
+                <td>Shipping</td>
+                <td class="text-right">₹0.00</td>
             </tr>
             <tr class="text-bold">
                 <td>Total Amount</td>
@@ -281,13 +294,13 @@
 
         <!-- Amount in Words -->
         <div class="amount-words">
-            <p class="text-bold">Amount in Words:</p>
-            <p>INR Nine Thousand One Hundred Only</p>
+            <span class="text-bold">Amount in Words:</span></br>
+            <span>INR {{ amount_in_words }}</span>
         </div>
 
         <div class="footer">
-            <p>Thank you for your business!</p>
-            <p>Payment Method: {{ order.payment_method }} | Delivery: {{ order.delivery_option }}</p>
+            <span>Thank you for your business!</span></br>
+            <span>Payment Method: {{ order.payment_method }} | Delivery: {{ order.delivery_option }}</span>
         </div>
 
         <!-- Bank Details and Terms -->
@@ -295,10 +308,10 @@
             <div class="footer-grid">
                 <div>
                     <h4 class="text-bold">Bank Details:</h4>
-                    <p>FARM AMMINO AGRITECH PRIVATE LIMITED</p>
-                    <p>A/C: 50200075596357</p>
-                    <p>IFSC: HDFC0000261</p>
-                    <p>CURRENT ACCOUNT</p>
+                    <span>FARM AMMINO AGRITECH PRIVATE LIMITED</span></br>
+                    <span>A/C: 50200075596357</span></br>
+                    <span>IFSC: HDFC0000261</span></br>
+                    <span>CURRENT ACCOUNT</span></br>
                 </div>
                 <div style="text-align: right">
                     <p>For Farm Ammino Agritech Private Limited</p>
@@ -320,9 +333,9 @@
         </div>
 
         <!-- Page Number -->
-        <div class="page-number">
-            Page: 1/1
-        </div>
+        <div class="pdf-page-number" style="position: fixed; bottom: 20px; right: 20px; font-size: 10px; color: #666;">
+            Page <pdf:pagenumber> of <pdf:pagecount>
+        </div>                
     </div>
 </body>
 </html>

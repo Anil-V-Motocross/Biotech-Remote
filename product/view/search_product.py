@@ -6,6 +6,13 @@ from category.models import Category, SubCategory
 from product.serializers import MainProductSerializer
 from account.token_permissions import OptionalTokenAuthentication
 from rest_framework.permissions import AllowAny
+from rest_framework.pagination import PageNumberPagination
+
+
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 10  # Default page size
+    page_size_query_param = 'page_size'
+    max_page_size = 100 
 
 
 @api_view(['POST'])
@@ -56,9 +63,25 @@ def search_products(request):
             key=lambda p: matched_product_ids.index(p.id) if p.id in matched_product_ids else len(matched_product_ids)
         )
 
+        # **Apply Pagination Manually**
+        paginator = PageNumberPagination()
+        paginated_products = paginator.paginate_queryset(sorted_products, request)
+
+        # Serialize data
+        serializer = MainProductSerializer(paginated_products, many=True, context={'request': request})
+
+        # **Keep the response format the same, but include pagination metadata**
+        return Response({
+            "message": "success",
+            "products": serializer.data,
+            "count": paginator.page.paginator.count,  # Total items
+            "next": paginator.get_next_link(),  # Next page URL
+            "previous": paginator.get_previous_link()  # Previous page URL
+        }, status=200)
+
         # Serialize & return response
-        serializer = MainProductSerializer(sorted_products, many=True, context={'request': request})
-        return Response(data={"message": "success", "products": serializer.data}, status=200)
+        # serializer = MainProductSerializer(sorted_products, many=True, context={'request': request})
+        # return Response(data={"message": "success", "products": serializer.data}, status=200)
 
     except Exception as e:
         return Response(data={"message": "An error occurred", "error": str(e)}, status=500)

@@ -6,7 +6,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.decorators import authentication_classes
 import os
 from dotenv import load_dotenv
-from order.models import Order, OrderStatus
+from order.models import Order, OrderStatus, Cart, OrderItem
 from coupon.models import CouponUsage
 
 
@@ -45,6 +45,13 @@ def verify_payment(request):
                 print(f"✅ Coupon '{coupon.code}' usage recorded for user {order.customer_id}.")
             else:
                 print(f"⚠️ Coupon '{coupon.code}' was already used in this order.")    
+
+        cart_items = set(Cart.objects.filter(user_id=request.user.id).values_list('product_id', flat=True))
+        order_items = set(OrderItem.objects.filter(order_id=order).values_list('product_id', flat=True))
+
+        # Check if all order items exactly match the cart items
+        if order_items == cart_items:  
+            Cart.objects.filter(user_id=request.user.id).delete()       
 
         return Response({"message": "Payment successful"}, status=status.HTTP_200_OK)
     except razorpay.errors.SignatureVerificationError:

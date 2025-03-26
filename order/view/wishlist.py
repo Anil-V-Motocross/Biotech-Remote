@@ -7,6 +7,7 @@ from order.models import Wishlist
 from account.permissions import DynamicPermission
 from rest_framework import serializers
 from product.models import Product
+from order.models import Cart
 
 class WishlistSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='product_id.product_id.name', read_only=True)
@@ -15,9 +16,11 @@ class WishlistSerializer(serializers.ModelSerializer):
     selling_price = serializers.CharField(source='product_id.selling_price', read_only=True)  # Price from the Product model
     stock_status = serializers.SerializerMethodField()  # Adding a custom field for stock status
     mrp = serializers.FloatField(source='product_id.mrp',read_only=True)
+    is_cart = serializers.SerializerMethodField()
+
     class Meta:
         model = Wishlist
-        fields = ['id', 'user_id', 'main_prod', 'product_id', 'name', 'image', 'selling_price', 'mrp', 'stock_status']
+        fields = ['id', 'user_id', 'main_prod', 'product_id', 'name', 'image', 'selling_price', 'mrp', 'stock_status', 'is_cart']
 
     def get_stock_status(self, instance):
         # Access the Product associated with the Cart item
@@ -31,7 +34,13 @@ class WishlistSerializer(serializers.ModelSerializer):
             return "Out Of Stock"
         else:
             return "In Stock"
-        
+
+    def get_is_cart(self, obj):
+        """Check if the product exists in the user's cart."""
+        request = self.context.get('request', None)
+        if request and request.user.is_authenticated:
+            return Cart.objects.filter(user_id=request.user, product_id=obj.product_id.id).exists()
+        return False     
 
 @api_view(['GET', 'POST', 'DELETE'])
 @permission_classes([IsAuthenticated, DynamicPermission])
@@ -71,7 +80,7 @@ def wishlist(request, pk=None):
                 return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
         
         wishlists = Wishlist.objects.filter(user_id=request.user.id).all()
-        serializer = WishlistSerializer(wishlists, many=True)
+        serializer = WishlistSerializer(wishlists, many=True, context={'request': request})
         data = {
             'wishlists': serializer.data
         }

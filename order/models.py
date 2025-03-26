@@ -4,6 +4,7 @@ from account.models import User
 from django.core.files.base import ContentFile
 import os
 from combo.models import ComboOffer
+from decimal import Decimal
 
 # Create your models here.
 
@@ -80,10 +81,11 @@ class OrderItem(models.Model):
     sku = models.CharField(max_length=40)
     image = models.ImageField(upload_to='order_items/', blank=True, null=True)
     quantity = models.IntegerField(default=0)
-    mrp = models.FloatField(default=0)
-    selling_price = models.FloatField(default=0)
-    discount = models.FloatField(db_default=0)
-    total = models.FloatField(default=0)
+
+    mrp = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal("0.00"))
+    selling_price = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal("0.00"))
+    discount = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal("0.00"))
+    total = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal("0.00"))
 
     hsn_code = models.CharField(max_length=10, blank=True, null=True)
     

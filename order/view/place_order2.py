@@ -77,11 +77,13 @@ def place_order(request):
             print("❌ Product out of stock:", product_id)
             return Response(data={'message': 'Product out of stock.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        sale_price = float(product.selling_price)
-        total = quantity * sale_price
+        mrp = float(product.mrp)
+
+        total = quantity * mrp
         # discount = float(product.discount) * quantity
         discount_amount = (float(product.mrp) * float(product.discount) / 100) * quantity
 
+        discounted_total_amount = total - discount_amount
 
         print(f"✅ Adding product to order: {product.name}, Total: {total}, Discount: {discount_amount}")
 
@@ -89,10 +91,10 @@ def place_order(request):
             'product_id': product_id,
             'sku': product.sku,
             'quantity': quantity,
-            'selling_price': sale_price,
+            'selling_price': product.selling_price,
             'mrp': product.mrp,
             'discount': discount_amount,
-            'total': total
+            'total': discounted_total_amount
         })
 
         total_price += total
@@ -112,20 +114,21 @@ def place_order(request):
                 print(f"❌ Product {item.product_id.name} is out of stock.")
                 return Response(data={'message': f'Product {item.product_id.name} is out of stock.'}, status=status.HTTP_400_BAD_REQUEST)
 
-            sale_price = float(item.product_id.selling_price)
-            total = item.quantity * sale_price
+            mrp = float(item.product_id.mrp)
+            total = item.quantity * mrp
             # discount = float(item.product_id.discount) * item.quantity
             discount_amount = (float(item.product_id.mrp) * float(item.product_id.discount) / 100) * item.quantity
 
-
+            discounted_total_amount = total - discount_amount            
+            
             order_items.append({
                 'product_id': item.product_id.id,
                 'sku': item.product_id.sku,
                 'quantity': item.quantity,
-                'selling_price': sale_price,
+                'selling_price': item.product_id.selling_price,
                 'mrp': item.product_id.mrp,
                 'discount': discount_amount,
-                'total': total
+                'total': discounted_total_amount
             })
 
             total_price += total
@@ -249,10 +252,10 @@ def place_order(request):
 
     print("✅ Order items created successfully")
 
-    # ✅ Clear Cart
-    if order_source == 'cart':
-        Cart.objects.filter(user_id=request.user.id).delete()
-        print("🛒 Cart cleared")
+    # # ✅ Clear Cart
+    # if order_source == 'cart':
+    #     Cart.objects.filter(user_id=request.user.id).delete()
+    #     print("🛒 Cart cleared")
 
     # ✅ Return Order Details
     order_items_serializer = OrderItemSerializer(order_item_instances, many=True)
