@@ -100,7 +100,7 @@ def store(request, pk=None):
     return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-# Publiv APIs
+# Client APIs
 @api_view(['GET'])
 def store_list(request):
     if request.method == 'GET':

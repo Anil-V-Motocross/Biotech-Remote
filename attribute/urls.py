@@ -5,6 +5,7 @@ from .view.planter import planter
 from .view.planterSize import planter_size
 from .view.plantersByPlanterSize import get_planters_by_planter_size
 from .view.weight import weight
+from .view.litre import litre
 
 app_name = 'attribute'
 
@@ -23,6 +24,9 @@ urlpatterns = [
 
     path('weight/', weight, name='weight'),
     path('weight/<int:pk>/', weight, name='weight'),
+
+    path('litre/', litre, name='litre-list-create'),
+    path('litre/<int:pk>/', litre, name='litre-detail'),
 
     # Get all planters by planter size
     path('plantersByPlanterSize/<int:pk>/', get_planters_by_planter_size, name='get_planters_by_planter_size'),

@@ -240,7 +240,7 @@ def validate_coupon(request):
         order.grand_total = order_total
         order.save()
 
-    print(f"🔍 Order Total after removing coupon : {order_total}")
+        print(f"🔍 Order Total after removing coupon : {order_total}")
     
     # Fetch the coupon (either manually entered or selected)
     try:
@@ -250,20 +250,55 @@ def validate_coupon(request):
             coupon = Coupon.objects.get(id=selected_coupon_id, active=True)
         else:
             print("⚠️ No coupon code or ID provided!")
-            return Response({'error': 'Please enter or select a coupon'}, status=status.HTTP_400_BAD_REQUEST)
+            # return Response({'error': 'Please enter or select a coupon'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({
+                'error': 'Please enter or select a coupon',
+                'success': False,
+                'discount_amount': 0,
+                'new_total': order_total,
+                'coupon_code': None,
+                'order': PlaceOrderSerializer(order).data,
+                'order_items': OrderItemSerializer(OrderItem.objects.filter(order_id=order.id), many=True).data
+            }, status=status.HTTP_400_BAD_REQUEST)
         print(f"✅ Coupon Found: {coupon}")
     except Coupon.DoesNotExist:
         print("❌ Coupon does not exist or is inactive")
-        return Response({'error': 'Invalid or inactive coupon'}, status=status.HTTP_400_BAD_REQUEST)
+        # return Response({'error': 'Invalid or inactive coupon'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({
+            'success': False,
+            'error': 'Invalid or inactive coupon',
+            'discount_amount': 0,
+            'new_total': order_total,
+            'coupon_code': None,
+            'order': PlaceOrderSerializer(order).data,
+            'order_items': OrderItemSerializer(OrderItem.objects.filter(order_id=order.id), many=True).data
+        }, status=status.HTTP_400_BAD_REQUEST)
 
     if not (coupon.start_date <= now() <= coupon.end_date):
         print("❌ Coupon has expired")
-        return Response({'error': 'Coupon has expired'}, status=status.HTTP_400_BAD_REQUEST)
-
+        # return Response({'error': 'Coupon has expired'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({
+                    'success': False,
+                    'error': 'Coupon has expired',
+                    'discount_amount': 0,
+                    'new_total': order_total,
+                    'coupon_code': None,
+                    'order': PlaceOrderSerializer(order).data,
+                    'order_items': OrderItemSerializer(OrderItem.objects.filter(order_id=order.id), many=True).data
+                }, status=status.HTTP_400_BAD_REQUEST)
     user_usage_count = CouponUsage.usage_count_for_user(user, coupon)
     if user_usage_count >= coupon.user_limit:
         print("❌ User has already used this coupon the maximum number of times")
-        return Response({'error': 'You have already used this coupon the maximum number of times'}, status=status.HTTP_400_BAD_REQUEST)
+        # return Response({'error': 'You have already used this coupon the maximum number of times'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({
+            'success': False,
+            'error': 'You have already used this coupon the maximum number of times',
+            'discount_amount': 0,
+            'new_total': order_total,
+            'coupon_code': None,
+            'order': PlaceOrderSerializer(order).data,
+            'order_items': OrderItemSerializer(OrderItem.objects.filter(order_id=order.id), many=True).data
+        }, status=status.HTTP_400_BAD_REQUEST)
 
     product_ids = list(OrderItem.objects.filter(order_id=order).values_list('product_id', flat=True))
     selected_products = Product.objects.filter(id__in=product_ids).select_related('product_id')
@@ -284,15 +319,42 @@ def validate_coupon(request):
 
     if not applicable:
         print("❌ Coupon is not applicable to selected products")
-        return Response({'error': 'Coupon is not valid for the selected products'}, status=status.HTTP_400_BAD_REQUEST)
+        # return Response({'error': 'Coupon is not valid for the selected products'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({
+            'success': False,
+            'error': 'Coupon is not valid for the selected products',
+            'discount_amount': 0,
+            'new_total': order_total,
+            'coupon_code': None,
+            'order': PlaceOrderSerializer(order).data,
+            'order_items': OrderItemSerializer(OrderItem.objects.filter(order_id=order.id), many=True).data
+        }, status=status.HTTP_400_BAD_REQUEST)
 
     if order_total < Decimal(coupon.minimum_order_value or 0):
         print(f"❌ Order total ({order_total}) is below minimum ({coupon.minimum_order_value})")
-        return Response({'error': f'Minimum order value should be {coupon.minimum_order_value}'}, status=status.HTTP_400_BAD_REQUEST)
+        # return Response({'error': f'Minimum order value should be {coupon.minimum_order_value}'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({
+            'success': False,
+            'error': f'Minimum order value should be {coupon.minimum_order_value}',
+            'discount_amount': 0,
+            'new_total': order_total,
+            'coupon_code': None,
+            'order': PlaceOrderSerializer(order).data,
+            'order_items': OrderItemSerializer(OrderItem.objects.filter(order_id=order.id), many=True).data
+        }, status=status.HTTP_400_BAD_REQUEST)
 
     if not coupon.is_stackable and CouponUsage.objects.filter(order=order).exists():
         print("❌ Coupon cannot be combined with another coupon in the same order")
-        return Response({'error': 'A coupon has already been applied to this order'}, status=status.HTTP_400_BAD_REQUEST)
+        # return Response({'error': 'A coupon has already been applied to this order'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({
+            'success': False,
+            'error': 'A coupon has already been applied to this order',
+            'discount_amount': 0,
+            'new_total': order_total,
+            'coupon_code': None,
+            'order': PlaceOrderSerializer(order).data,
+            'order_items': OrderItemSerializer(OrderItem.objects.filter(order_id=order.id), many=True).data
+        }, status=status.HTTP_400_BAD_REQUEST)
 
     discount_amount = Decimal(0)
     if coupon.discount_type == 'FLAT':

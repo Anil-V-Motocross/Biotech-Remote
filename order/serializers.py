@@ -4,14 +4,36 @@ from order.models import Order, OrderItem, DeliveryAddress
 from account.models import Address
 
 
+
 class OrderSerializer(serializers.ModelSerializer):
-    payment_method = serializers.CharField(source="payment_method.name", read_only=True)  # ✅ Return name instead of ID
+    payment_method = serializers.CharField(read_only=True) 
+    pickup_store = serializers.SerializerMethodField()  
+    pickup_deadline = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)  
 
     class Meta:
         model = Order
-        fields = ['id', 'order_id', 'customer_name', 'total_price', 'total_discount', 'grand_total', 'email',
-                  'mobile', 'tracking_id', 'delivery_option', 'payment_method', 'razorpay_order_id', 'coupon_discount']
-        
+        fields = [
+            'id', 'order_id', 'customer_name', 'total_price', 'total_discount', 'grand_total', 
+            'email', 'mobile', 'tracking_id', 'delivery_option', 'payment_method', 
+            'razorpay_order_id', 'coupon_discount', 'pickup_deadline', 'pickup_store'
+        ]
+    
+    def get_pickup_store(self, obj):
+        """
+        Returns store details if the delivery option is 'Pick Up Store'.
+        """
+        if obj.delivery_option == "PickUpStore" and obj.store_id:
+            return {
+                "id": obj.store_id.id,
+                "location": obj.store_id.location,
+                "address": obj.store_id.address,
+                "contact": obj.store_id.contact,
+                "time_period": obj.store_id.time_period,
+                "address_link": obj.store_id.address_link,
+                "image": obj.store_id.image.url if obj.store_id.image else None
+            }
+        return None
+
         
 class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:

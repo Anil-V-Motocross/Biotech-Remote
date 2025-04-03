@@ -8,6 +8,9 @@ from account.permissions import DynamicPermission
 from rest_framework import serializers
 from account.models import Address
 from order.serializers import DeliveryAddressSerializer, OrderItemSerializer, OrderSerializer
+from store.models import Store
+from django.utils import timezone  
+from datetime import timedelta
 
 @api_view(['PATCH'])
 @permission_classes([IsAuthenticated, DynamicPermission])
@@ -22,10 +25,19 @@ def order_summary(request):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
+        print("user in order summary:", request.user)
+        
         # Extract data from the request
         order_id = request.data.get('order_id', None)
         address_id = request.data.get('address_id', None)
         delivery_option = request.data.get('delivery_option', None)
+
+        #New 
+        store_id = request.data.get('store_id', None)
+        print("selected order:", order_id)
+        print("selected address:", address_id)
+        print("selected delivery option:", delivery_option)
+        print("selected store:", store_id)
         
         # Validate required fields
         if not order_id:
@@ -67,9 +79,30 @@ def order_summary(request):
         else:
             return Response(data={"message": "error", 'errors': delivery_serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         
+
+        # New
+        if delivery_option == 'Pick Up Store':
+            if not store_id:
+                return Response({'message': 'Store id is required for store pickup.'}, status=status.HTTP_400_BAD_REQUEST)
+
+            store = Store.objects.filter(id=store_id).first()
+            if not store:
+                return Response({'message': 'Store not found.'}, status=status.HTTP_400_BAD_REQUEST)
+
+            order.store_id = store
+            order.pickup_deadline = timezone.now() + timedelta(days=7)
+            order.delivery_option = 'PickUpStore'
+            order.save()
+        else:
+            # Set Home Delivery Option
+            order.delivery_option = delivery_option
+            order.save()
+
+
+
         # Update the order's delivery option
-        order.delivery_option = delivery_option
-        order.save()
+        # order.delivery_option = delivery_option
+        # order.save()
         
         # Fetch order items
         order_items = OrderItem.objects.filter(order_id=order.id)

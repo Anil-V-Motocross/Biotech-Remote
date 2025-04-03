@@ -29,7 +29,7 @@ def order_history_items(request, order_id):
         if Order.objects.filter(id=order_id, customer_id=request.user.id).exists():
             order_items = OrderItem.objects.filter(order_id=order_id)
             serializer = OrderItemSerializer(order_items, many=True)
-            tracking_updates = OrderStatus.objects.filter(order_id=order_id).exclude(status='INITIATED').order_by('-timestamp')
+            tracking_updates = OrderStatus.objects.filter(order_id=order_id).exclude(status='INITIATED').order_by('timestamp')
             tracking_data = [
                 {
                     'status': update.get_status_display(),

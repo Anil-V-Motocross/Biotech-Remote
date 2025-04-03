@@ -1,4 +1,4 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.response import Response
 from rest_framework import status
 from product.models import Product
@@ -15,7 +15,8 @@ from django.db.models.functions import Floor
 from product.serializers import AddOnProductSerializer
 from order.models import Cart, Wishlist, OrderItem
 from django.utils.timezone import now
-
+from rest_framework.permissions import AllowAny
+from account.token_permissions import OptionalTokenAuthentication
 
 class ReviewSerializer(serializers.ModelSerializer):
     date_created = serializers.DateTimeField(format='%d/%m/%Y')
@@ -184,6 +185,8 @@ class ProductSerializer(serializers.ModelSerializer):
         return False
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
+@authentication_classes([OptionalTokenAuthentication])
 def default_product(request, product_id=None):
     if request.method == 'GET' and product_id:
         # Filter the product to get the default one with the specified product_id

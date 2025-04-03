@@ -30,7 +30,7 @@ from django.db.models import Q
 
 
 class ProductFilter(django_filters.FilterSet):
-    product_type = django_filters.CharFilter(field_name="product_id__type", lookup_expr="iexact")
+    type = django_filters.CharFilter(field_name="product_id__type", lookup_expr="iexact")
     subcategories = django_filters.CharFilter(field_name="product_id__productsubcategory__subcategory_id__name", lookup_expr="icontains")
     price_min = django_filters.NumberFilter(field_name="mrp", lookup_expr="gte")
     price_max = django_filters.NumberFilter(field_name="mrp", lookup_expr="lte")
@@ -68,4 +68,4 @@ class ProductFilter(django_filters.FilterSet):
 
     class Meta:
         model = Product
-        fields = ["product_type", "subcategories", "price_min", "price_max", "size", "planter_size", "planter", "weights", "litre_size", "color"]
+        fields = ["type", "subcategories", "price_min", "price_max", "size", "planter_size", "planter", "weights", "litre_size", "color"]

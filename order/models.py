@@ -5,8 +5,9 @@ from django.core.files.base import ContentFile
 import os
 from combo.models import ComboOffer
 from decimal import Decimal
+from django.utils import timezone
+from datetime import timedelta
 
-# Create your models here.
 
 class Order(models.Model):
     order_id = models.CharField(max_length=50, default=0)
@@ -23,17 +24,25 @@ class Order(models.Model):
 
     tracking_id = models.CharField(max_length=50, null=True, blank=True)
 
-    delivery_option_types=[
+    DELIVERY_OPTIONS = [
         ('Standard', 'Standard'),
         ('Express', 'Express'),
+        ('PickUpStore', 'Pick Up Store'),
     ]
-    delivery_option = models.CharField(max_length=10, choices=delivery_option_types, default='Standard')
+    delivery_option = models.CharField(max_length=15, choices=DELIVERY_OPTIONS, default='Standard')
 
     payment_method_types=[
         ('Cash', 'Cash'),
         ('UPI', 'UPI'),
     ]
     payment_method = models.CharField(max_length=10, choices=payment_method_types, null=True, blank=True)
+
+    # ✅ Store reference (Only if PickUpStore is selected)
+    store_id = models.ForeignKey('store.Store', on_delete=models.SET_NULL, null=True, blank=True)
+
+    # ✅ Pickup deadline (only if PickUpStore is chosen)
+    pickup_deadline = models.DateTimeField(null=True, blank=True)
+    
 
     # status = models.CharField(max_length=50)
     razorpay_order_id = models.CharField(max_length=50, null=True, blank=True)
@@ -46,6 +55,16 @@ class Order(models.Model):
     applied_coupon = models.ForeignKey('coupon.Coupon', on_delete=models.SET_NULL, null=True, blank=True)  # Applied coupon
     coupon_discount = models.FloatField(default=0)
 
+    def save(self, *args, **kwargs):
+        """
+        Auto-set pickup deadline if the user selects 'Pick Up Store'.
+        """
+        if self.delivery_option == 'PickUpStore' and not self.pickup_deadline:
+            self.pickup_deadline = timezone.now() + timedelta(days=7)  # 7 days from now
+        elif self.delivery_option != 'PickUpStore':  
+            self.pickup_deadline = None  # Reset if delivery option changes
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return str(self.id)
 
@@ -54,12 +73,15 @@ class OrderStatus(models.Model):
         ('INITIATED', 'Initiated'),
         ('PROCESSING', 'Processing'),
         ('ORDER_CONFIRMED', 'Order Confirmed'),
+        ('READY_FOR_PICKUP', 'Ready for Pickup'),  
+        ('PICKUP_COMPLETED', 'Pickup Completed'),  
         ('DISPATCHED', 'Dispatched'),
         ('ON_THE_WAY', 'On the Way'),
         ('OUT_FOR_DELIVERY', 'Out for Delivery'),
         ('DELIVERED', 'Delivered'),
         ('CANCELLED', 'Cancelled'),
         ('RETURNED', 'Returned'),
+        ('PICKUP_EXPIRED', 'Pickup Expired'),
     ]
 
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='status_history')
