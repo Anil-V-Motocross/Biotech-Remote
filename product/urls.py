@@ -17,6 +17,7 @@ from .view.ratings_and_reviews import rating_review_create
 from .view.search_main_product_in_admin  import admin_search_products
 from .view.recently_viewed import RecentlyViewedProductsView
 from .view.inventory_products import list_products
+from .view.offers import list_discounted_products
 
 app_name = 'product'
 
@@ -45,6 +46,7 @@ urlpatterns = [
     path('searchProducts/', search_products, name='search_products'),
     path('category-products/<int:pk>/', category_products, name='category-products'),
     path('subcategory-products/<int:pk>/', subcategory_products, name='subcategory-products'),
+    path('offerProducts/', list_discounted_products, name='offer_products'),
 
     path('ratingAndReviews/', rating_review_create, name='rating_and_review'),
     path('ratingAndReviews/<int:main_product_id>/', rating_review_create, name='rating_and_review'),

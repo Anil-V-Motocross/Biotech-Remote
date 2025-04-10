@@ -30,9 +30,8 @@ def list_products(request):
             status=status.HTTP_403_FORBIDDEN
         )
 
-    query_name = request.query_params.get('name', None)
-    query_type = request.query_params.get('type', None)  # Filter by MainProduct type
-    query_sku = request.query_params.get('sku', None)
+    query_name = request.query_params.get('search', None)
+    stock_status = request.query_params.get('stock', None)
 
     products = Product.objects.all()
 
@@ -40,11 +39,12 @@ def list_products(request):
     if query_name:
         products = products.filter(name__icontains=query_name)
 
-    if query_type:
-        products = products.filter(product_id__type=query_type)  
-
-    if query_sku:
-        products = products.filter(sku__icontains=query_sku)
+    if stock_status == 'in':
+        products = products.filter(stock__gt=0)
+    elif stock_status == 'out':
+        products = products.filter(stock__lte=0)  
+    elif stock_status == 'all':
+        products = Product.objects.all()          
 
     # Pagination
     paginator = PageNumberPagination()

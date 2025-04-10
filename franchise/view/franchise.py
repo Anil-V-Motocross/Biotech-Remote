@@ -27,7 +27,7 @@ def franchise(request,pk=None):
             return Response(data={'message': 'You do not have permission to perform this action.'},
                             status=status.HTTP_403_FORBIDDEN)
 
-        franchises = Franchise.objects.all()
+        franchises = FranchiseEnquiry.objects.all()
         serializer = FranchiseSerializer(franchises, many=True)
         data = {
             'franchises': serializer.data
@@ -45,8 +45,8 @@ def franchise(request,pk=None):
             return Response(data={'message': 'You do not have permission to perform this action.'},
                             status=status.HTTP_403_FORBIDDEN)
 
-        if Franchise.objects.filter(id=pk).exists():
-            franchise_instance = Franchise.objects.get(id=pk)
+        if FranchiseEnquiry.objects.filter(id=pk).exists():
+            franchise_instance = FranchiseEnquiry.objects.get(id=pk)
             serializer = FranchiseSerializer(franchise_instance)
             return Response(data={'message': 'success', 'data': serializer.data}, status=status.HTTP_200_OK)
         return Response(data={'message': 'franchise does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
@@ -64,8 +64,8 @@ def franchise(request,pk=None):
         if not franchise_id:
             return Response(data={'message': 'franchise ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        if Franchise.objects.filter(id=franchise_id).exists():
-            franchise_instance = Franchise.objects.get(id=franchise_id)
+        if FranchiseEnquiry.objects.filter(id=franchise_id).exists():
+            franchise_instance = FranchiseEnquiry.objects.get(id=franchise_id)
             franchise_instance.save()
 
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
@@ -81,8 +81,8 @@ def franchise(request,pk=None):
             return Response(data={'message': 'You do not have permission to perform this action.'},
                             status=status.HTTP_403_FORBIDDEN)
 
-        if Franchise.objects.filter(id=pk).exists():
-            franchise = Franchise.objects.get(id=pk)
+        if FranchiseEnquiry.objects.filter(id=pk).exists():
+            franchise = FranchiseEnquiry.objects.get(id=pk)
             franchise.delete()
             return Response(data={'message': 'success'}, status=status.HTTP_200_OK)
         return Response(data={'message': 'franchises not not found.'}, status=status.HTTP_404_NOT_FOUND)

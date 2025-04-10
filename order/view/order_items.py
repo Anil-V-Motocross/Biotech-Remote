@@ -15,7 +15,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
     combination = serializers.CharField(source='product_id.name', read_only=True)
     class Meta:
         model = OrderItem
-        fields = ['id', 'order_id',  'bmo', 'name', 'product_id', 'combination', 'quantity', 'price', 'total']
+        fields = ['id', 'order_id',  'bmo', 'name', 'product_id', 'combination', 'quantity', 'selling_price', 'mrp', 'total']
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, DynamicPermission])

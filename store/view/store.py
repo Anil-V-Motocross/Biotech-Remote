@@ -6,6 +6,8 @@ from store.models import Store
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from account.permissions import DynamicPermission
 from rest_framework import serializers
+from django.db.models import Q
+
 
 class StoreSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,12 +26,21 @@ def store(request, pk=None):
         if not any(request.user.has_perm(perm) for perm in required_permissions):
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
-        stores = Store.objects.all()
+        search_query = request.GET.get('search', '').strip()
+
+        if search_query:
+            stores = Store.objects.filter(
+                Q(location__icontains=search_query) |
+                Q(address__icontains=search_query) |
+                Q(contact__icontains=search_query)
+            )
+        else:
+            stores = Store.objects.all()
+
         serializer = StoreSerializer(stores, many=True)
-        data = {
-            'stores': serializer.data
-        }
+        data = {'stores': serializer.data}
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+
     
     if request.method == 'GET' and pk:
         required_permissions = [
@@ -104,11 +115,24 @@ def store(request, pk=None):
 @api_view(['GET'])
 def store_list(request):
     if request.method == 'GET':
-        stores = Store.objects.all()
-        serializer = StoreSerializer(stores, many=True)
-        data = {
-            'stores': serializer.data
-        }
-        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
-    
-    return Response(data={'message': 'Something went wrong.'}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            search_query = request.GET.get('search', '').strip()
+
+            if search_query:
+                # Case-insensitive search across location, address, and contact
+                stores = Store.objects.filter(
+                    Q(location__icontains=search_query) |
+                    Q(address__icontains=search_query) |
+                    Q(contact__icontains=search_query)
+                )
+            else:
+                stores = Store.objects.all()
+
+            serializer = StoreSerializer(stores, many=True)
+            data = {
+                'stores': serializer.data
+            }
+            return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response(data={'message': 'Something went wrong', 'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

@@ -42,6 +42,7 @@ urlpatterns = [
     path('dealOfTheWeek/', include(('dealoftheweek.urls'))),
     path('btcoins/', include('btcoins.urls')),
     path('wallet/', include('wallet.urls')),
+    path('tracking/', include('tracking.urls')),
 
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),

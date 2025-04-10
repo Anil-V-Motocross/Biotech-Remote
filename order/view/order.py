@@ -1,16 +1,18 @@
-import requests
-import rest_framework.decorators
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from order.models import Order
+from order.models import Order, OrderStatus
 from rest_framework import serializers
 from account.permissions import DynamicPermission
 from rest_framework.decorators import authentication_classes, permission_classes, api_view
 from account.permissions import DynamicPermission
 from tracking.view.pushOrderData import push_order_data
 from account.models import User
+from django.utils.dateparse import parse_date
+from django.db.models import Subquery, OuterRef
+from rest_framework.pagination import PageNumberPagination
+
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,12 +28,41 @@ def order(request, pk=None):
             'order.view_order'
         ]
         
-        if not any(request.user.has_perm(perm) for perm in required_permissions):
+        if not any(request.user.has_perm(perm) for perm in required_permissions) or not request.user.is_staff:
             return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
         
+        # Get filters from query params
+        start_date = request.query_params.get('start', None)
+        end_date = request.query_params.get('end', None)
+        status_filter = request.query_params.get('status', None)
+
         orders = Order.objects.all()
-        serializer = OrderSerializer(orders, many=True)
-        return Response(data={'message': 'success', 'data': serializer.data}, status=status.HTTP_200_OK)
+
+        # Filter by date range
+        if start_date and end_date:
+            start = parse_date(start_date)
+            end = parse_date(end_date)
+            if start and end:
+                orders = orders.filter(date__range=(start, end))
+
+        # Annotate latest status for all orders
+        latest_status = OrderStatus.objects.filter(order=OuterRef('pk')).order_by('-timestamp')
+        orders = orders.annotate(
+            latest_status=Subquery(latest_status.values('status')[:1])
+        )
+
+        # Filter by latest status if provided
+        if status_filter:
+            orders = orders.filter(latest_status=status_filter.upper())
+
+        orders = orders.exclude(latest_status='INITIATED')    
+
+        paginator = PageNumberPagination()
+        result_page = paginator.paginate_queryset(orders, request)
+
+        serializer = OrderSerializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)
+        # return Response(data={'message': 'success', 'data': serializer.data}, status=status.HTTP_200_OK)
     
     if request.method == 'GET' and pk:
         required_permissions = [
