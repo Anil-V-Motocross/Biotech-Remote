@@ -7,7 +7,7 @@ from category.models import Category, SubCategory
 from product.models import ProductCategory, MainProduct, ProductSubCategory
 from account.token_permissions import OptionalTokenAuthentication
 from rest_framework.permissions import AllowAny
-
+from rest_framework.pagination import PageNumberPagination
 
 @api_view(['GET'])
 def category_products(request, pk):
@@ -43,9 +43,18 @@ def category_products(request, pk):
         # Fetch MainProducts using the correct field
         products = MainProduct.objects.filter(id__in=main_product_ids)
 
+        paginator = PageNumberPagination()
+        result_page = paginator.paginate_queryset(products, request)
+
         # Serialize & return response
-        serializer = MainProductSerializer(products, many=True, context={'request': request})
-        return Response(data={"message": "success", "products": serializer.data}, status=200)
+        serializer = MainProductSerializer(result_page, many=True, context={'request': request})
+        return Response(data={
+            "count": paginator.page.paginator.count,
+            "next": paginator.get_next_link(),
+            "previous": paginator.get_previous_link(),        
+            "message": "success", 
+            "products": serializer.data
+            }, status=200)
 
     except Exception as e:
         return Response(data={"message": "An error occurred", "error": str(e)}, status=500)
@@ -68,9 +77,18 @@ def subcategory_products(request, pk):
         products = MainProduct.objects.filter(id__in=main_product_ids)
         print("Filtered MainProducts:", products)
 
+        paginator = PageNumberPagination()
+        result_page = paginator.paginate_queryset(products, request)
+
         # Serialize & return response
-        serializer = MainProductSerializer(products, many=True, context={'request': request})
-        return Response(data={"message": "success", "products": serializer.data}, status=200)
+        serializer = MainProductSerializer(result_page, many=True, context={'request': request})
+        return Response(data={
+            "count": paginator.page.paginator.count,
+            "next": paginator.get_next_link(),
+            "previous": paginator.get_previous_link(),        
+            "message": "success", 
+            "products": serializer.data
+            }, status=200)
 
     except Exception as e:
         return Response(data={"message": "An error occurred", "error": str(e)}, status=500)

@@ -6,7 +6,7 @@ from .filters import ProductFilter
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from account.token_permissions import OptionalTokenAuthentication
-
+from rest_framework.pagination import PageNumberPagination
 
 class ProductFilterListView(generics.ListAPIView):
     permission_classes = [AllowAny]
@@ -16,36 +16,34 @@ class ProductFilterListView(generics.ListAPIView):
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProductFilter
-
-    # def list(self, request, *args, **kwargs):
-    #     queryset = self.filter_queryset(self.get_queryset())
-    #     serializer = self.get_serializer(queryset, many=True)
-
-    #     # Capture applied filters
-    #     applied_filters = {
-    #         key: value.split(",") if "," in value else value
-    #         for key, value in request.GET.items()
-    #     }
-
-    #     return Response({
-    #         "filters_applied": applied_filters,
-    #         "results": serializer.data,
-    #     })
+    pagination_class = PageNumberPagination
+        
     def list(self, request, *args, **kwargs):
-        print("Request received with query params:", request.GET)  # Debug request params
+        print("Request received with query params:", request.GET)
 
         queryset = self.filter_queryset(self.get_queryset())
-        print("Filtered queryset count:", queryset.count())  # Debug queryset count
+        print("Filtered queryset count:", queryset.count())
 
-        serializer = self.get_serializer(queryset, many=True)
-        
         applied_filters = {
             key: value.split(",") if "," in value else value
             for key, value in request.GET.items()
         }
-        print("Applied filters:", applied_filters)  # Debug applied filters
+        print("Applied filters:", applied_filters)
 
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return Response({
+                "count": self.paginator.page.paginator.count,
+                "next": self.paginator.get_next_link(),
+                "previous": self.paginator.get_previous_link(),
+                "filters_applied": applied_filters,
+                "results": serializer.data
+            })
+
+        serializer = self.get_serializer(queryset, many=True)
         return Response({
             "filters_applied": applied_filters,
-            "results": serializer.data,
-        })    
+            "results": serializer.data
+        })
+        

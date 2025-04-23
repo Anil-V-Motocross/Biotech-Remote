@@ -14,12 +14,15 @@ from .view.order_items import order_items
 from .view.place_order2 import place_order
 from .view.validate_coupon import validate_coupon
 from .view.invoice import OrderInvoicePDFView
+from .view.notifications import ProcessingOrdersCountView
+from .view.return_order import request_return
 
 app_name = 'order'
 
 urlpatterns = [
     path('', order, name='order'),
     path('<int:pk>/', order, name='order'),
+    path('notifications/', ProcessingOrdersCountView.as_view(), name='processing-orders-count'),
     
     path('orderItem/', order_items, name='order_items'),
     
@@ -36,6 +39,7 @@ urlpatterns = [
     path("verifyPayment/", verify_payment, name="verify_payment"),
     path("orderHistory/", order_history, name="order_history"), # this will retun all orders of a user
     path("orderHistoryItems/<int:order_id>/", order_history_items, name="order_history_items"), # this will retun all orders of a user`
+    path('return/<int:order_id>/', request_return, name='request-return'),
     
     path('userOrders/<int:customer_id>/', user_orders, name='user_orders'),  # Need to be ckeck whos is using it
 

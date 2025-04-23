@@ -18,6 +18,8 @@ from .view.search_main_product_in_admin  import admin_search_products
 from .view.recently_viewed import RecentlyViewedProductsView
 from .view.inventory_products import list_products
 from .view.offers import list_discounted_products
+from .view.importExport import ExportProductExcelView, ImportProductExcelView
+
 
 app_name = 'product'
 
@@ -30,6 +32,7 @@ urlpatterns = [
 
     # manage products
     path('product/', product, name='product'),
+    path('product/<int:pk>/', product, name='product'),
     path('updateDefaultProduct/<int:product_id>/', update_default_product, name='update_default_product'),
 
     # customer urls
@@ -54,4 +57,6 @@ urlpatterns = [
     # admin
     path('adminProductSearch/', admin_search_products, name='admin_product_search'),
     path('adminInventoryProducts/', list_products, name='inventory_products'),
+    path('export-products/', ExportProductExcelView.as_view(), name='export-products'),
+    path('import-products/', ImportProductExcelView.as_view(), name='import-products'),
 ]

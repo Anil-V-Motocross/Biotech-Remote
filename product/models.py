@@ -39,37 +39,7 @@ class MainProduct(models.Model):
 
     def __str__(self):
         return self.name
-    
-class MainProductImage(models.Model):
-    product = models.ForeignKey(MainProduct, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='main_product_images/')
 
-    def __str__(self):
-        return f"Image for {self.product.name}"
-    
-class ProductCategory(models.Model):
-    product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
-    category_id = models.ForeignKey('category.Category', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.product_id.name} - {self.category_id.name}"
-    
-
-class ProductSubCategory(models.Model):
-    product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
-    subcategory_id = models.ForeignKey('category.SubCategory', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.product_id.name} - {self.subcategory_id.name}"
-    
-
-class ProductTag(models.Model):
-    product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
-    tag = models.CharField(max_length=100)
-
-    def __str__(self):
-        return f"{self.product_id.name} - {self.tag}"
-    
 
 class Product(models.Model):
     product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
@@ -116,17 +86,54 @@ class Product(models.Model):
         if not (0 <= self.discount <= 100):
             raise ValidationError({'discount': 'Discount percentage must be between 0 and 100.'})
 
-        # Calculate expected selling price from MRP and discount
-        calculated_selling_price = self.mrp * (1 - self.discount / 100)
+        # Calculate expected values
+        expected_selling_price = self.mrp * (1 - self.discount / 100)
+        expected_profit = self.selling_price - self.cost
 
-        if round(self.selling_price, 2) != round(calculated_selling_price, 2):
-            raise ValidationError({'selling_price': 'Selling Price must be MRP - (Discount% of MRP).'})
+        # Allow a tolerance of ±1 for selling price
+        if abs(self.selling_price - expected_selling_price) > 1:
+            raise ValidationError({
+                'selling_price': f'Selling Price should be approximately MRP - (Discount% of MRP). Expected around {round(expected_selling_price, 2)}'
+            })
 
-        # Validate profit calculation
-        calculated_profit = self.selling_price - self.cost
+        # Allow a tolerance of ±1 for profit
+        if abs(self.profit - expected_profit) > 1:
+            raise ValidationError({
+                'profit': f'Profit should be approximately Selling Price - Cost Price. Expected around {round(expected_profit, 2)}'
+            })
 
-        if round(self.profit, 2) != round(calculated_profit, 2):
-            raise ValidationError({'profit': 'Profit must be equal to Selling Price - Cost Price.'})
+class MainProductImage(models.Model):
+    product = models.ForeignKey(MainProduct, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='main_product_images/')
+
+    def __str__(self):
+        return f"Image for {self.product.name}"
+    
+class ProductCategory(models.Model):
+    product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    category_id = models.ForeignKey('category.Category', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.product_id.name} - {self.category_id.name}"
+    
+
+class ProductSubCategory(models.Model):
+    product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    subcategory_id = models.ForeignKey('category.SubCategory', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.product_id.name} - {self.subcategory_id.name}"
+    
+
+class ProductTag(models.Model):
+    product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)
+    tag = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.product_id.name} - {self.tag}"
+    
+
+
 
 class Rating(models.Model):
     main_product_id = models.ForeignKey(MainProduct, on_delete=models.CASCADE)

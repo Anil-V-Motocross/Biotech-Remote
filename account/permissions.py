@@ -14,3 +14,7 @@ class DynamicPermission(BasePermission):
 
         # Ensure the user has ALL required permissions
         return all(request.user.has_perm(perm) for perm in required_permissions)
+    
+class IsStaffUser(BasePermission):
+    def has_permission(self, request, view):
+        return request.user and request.user.is_authenticated and request.user.is_staff    

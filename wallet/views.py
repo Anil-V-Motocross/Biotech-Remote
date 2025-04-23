@@ -4,6 +4,13 @@ from django.shortcuts import get_object_or_404
 from .models import Wallet, Transaction
 from .serializers import WalletSerializer, TransactionSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.permissions import IsAuthenticated
+import razorpay
+from decimal import Decimal
+from django.db import transaction as db_transaction
+import os
+
 
 class WalletDetailView(generics.RetrieveAPIView):
     """
@@ -74,3 +81,69 @@ class TransactionListView(generics.ListAPIView):
 
         except Exception as e:
             return Response({"message": "Error retrieving transactions", "data": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def create_wallet_order(request):
+    amount = request.data.get("amount")
+    if not amount:
+        return Response({"error": "Amount is required"}, status=status.HTTP_400_BAD_REQUEST)
+    
+    try:
+        amount = Decimal(amount)
+        razorpay_client = razorpay.Client(auth=(os.getenv('RAZORPAY_KEY'), os.getenv('RAZORPAY_SECRET')))
+        order_data = {
+            "amount": int(amount * 100),  # Razorpay expects amount in paise
+            "currency": "INR",
+            "payment_capture": 1,
+            "notes": {"purpose": "Add to Wallet", "user_email": request.user.email}
+        }
+        razorpay_order = razorpay_client.order.create(data=order_data)
+        return Response({"order": razorpay_order}, status=status.HTTP_201_CREATED)
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def verify_wallet_payment(request):
+    data = request.data
+    try:
+        razorpay_client = razorpay.Client(auth=(os.getenv('RAZORPAY_KEY'), os.getenv('RAZORPAY_SECRET')))
+
+        # Step 1: Verify Signature
+        razorpay_client.utility.verify_payment_signature({
+            'razorpay_order_id': data['razorpay_order_id'],
+            'razorpay_payment_id': data['razorpay_payment_id'],
+            'razorpay_signature': data['razorpay_signature'],
+        })
+
+        # Step 2: Fetch payment details to get amount
+        payment = razorpay_client.payment.fetch(data['razorpay_payment_id'])
+        amount = Decimal(payment['amount']) / 100  # Convert back from paise to INR
+
+        with db_transaction.atomic():
+            wallet = request.user.wallet
+            wallet.credit(amount)
+
+            Transaction.objects.create(
+                wallet=wallet,
+                transaction_type="CREDIT",
+                amount=amount,
+                status="COMPLETED",
+                reference_id=data['razorpay_payment_id'],
+                description="Added to wallet via Razorpay"
+            )
+
+        return Response({"message": "Wallet credited successfully"}, status=status.HTTP_200_OK)
+
+    except razorpay.errors.SignatureVerificationError:
+        return Response({"error": "Signature verification failed"}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

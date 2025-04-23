@@ -38,3 +38,14 @@ class Webhook(models.Model):
 
     def __str__(self):
         return f"Webhook ({'Active' if self.is_active else 'Inactive'}) - {self.url}"
+
+
+class DeliveryLocation(models.Model):
+    pincode = models.CharField(max_length=6, unique=True)
+    city = models.CharField(max_length=500, blank=True)
+    state = models.CharField(max_length=100, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        
+        return self.pincode

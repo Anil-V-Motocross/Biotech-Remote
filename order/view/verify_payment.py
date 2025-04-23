@@ -8,7 +8,8 @@ import os
 from dotenv import load_dotenv
 from order.models import Order, OrderStatus, Cart, OrderItem
 from coupon.models import CouponUsage
-
+from account.utils import send_sms_to_admin
+from order.view.send_sms_to_admin import send_order_sms_to_admin
 
 # Load .env file
 load_dotenv()
@@ -51,7 +52,11 @@ def verify_payment(request):
 
         # Check if all order items exactly match the cart items
         if order_items == cart_items:  
-            Cart.objects.filter(user_id=request.user.id).delete()       
+            Cart.objects.filter(user_id=request.user.id).delete()  
+
+        # Notify Admin via SMS and Email
+        send_order_sms_to_admin(order)
+        # send_admin_email(order)
 
         return Response({"message": "Payment successful"}, status=status.HTTP_200_OK)
     except razorpay.errors.SignatureVerificationError:

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Shipment, Webhook
+from .models import Shipment, Webhook, DeliveryLocation
 
 
 @admin.register(Shipment)
@@ -15,3 +15,11 @@ class WebhookAdmin(admin.ModelAdmin):
     search_fields = ('url', 'events')
     list_filter = ('is_active',)
     readonly_fields = ('created_at', 'updated_at')
+
+
+@admin.register(DeliveryLocation)
+class DeliveryLocationAdmin(admin.ModelAdmin):
+    list_display = ('pincode', 'city', 'state', 'created_at')
+    search_fields = ('pincode',)
+    ordering = ('-created_at',)
+

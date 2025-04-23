@@ -15,10 +15,10 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-@api_view(['POST'])
+@api_view(['POST', 'GET', 'PATCH'])
 @permission_classes([IsAuthenticated, DynamicPermission])
 @authentication_classes([JWTAuthentication])
-def product(request):
+def product(request, pk = None):
     if request.method == 'POST':
         required_permissions = [
             'product.add_product'
@@ -90,5 +90,47 @@ def product(request):
             {'message': 'Products added successfully.', 'saved_products': [p.id for p in saved_products]}, 
             status=status.HTTP_201_CREATED
         )
+    
+    if request.method == 'GET' and pk:
+        required_permissions = [
+            'product.view_product'
+        ]
+        
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        
+        try:
+            product = Product.objects.get(id=pk)
+        except MainProduct.DoesNotExist:
+            return Response({'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
 
+        serializer = ProductSerializer(product)
+
+        data = {
+            'product': serializer.data,
+        }
+        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+    
+    if request.method == 'PATCH' and pk:
+        required_permissions = [
+            'product.change_product'
+        ]
+
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+
+        try:
+            product_instance = Product.objects.get(id=pk)
+        except Product.DoesNotExist:
+            return Response({'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = ProductSerializer(product_instance, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response({'message': 'Product updated successfully.', 'data': serializer.data}, status=status.HTTP_200_OK)
+        else:
+            return Response({'message': 'Validation failed.', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)    
+    
     return Response(data={'message': 'Invalid request method.'}, status=status.HTTP_400_BAD_REQUEST)

@@ -8,6 +8,10 @@ from rest_framework import serializers
 from order.models import Order
 import os
 from dotenv import load_dotenv
+from decimal import Decimal
+from django.db import transaction as db_transaction
+from wallet.models import Transaction, Wallet
+
 
 # Load .env file
 load_dotenv()
@@ -40,6 +44,8 @@ def proceed_to_payment(request):
             # order = Order.objects.get(id=order_id, customer_id=15)
             order.payment_method = payment_method
             order.save()
+
+            total_amount = Decimal(order.grand_total)
             
             if payment_method == 'UPI':
                 # Razorpay payment gateway
@@ -62,6 +68,63 @@ def proceed_to_payment(request):
                     'order_id':order.id
                 }
                 return Response(data)
+
+            elif payment_method == 'Wallet':
+                wallet = request.user.wallet
+                if not wallet.is_active:
+                    return Response({'message': 'Wallet is inactive.'}, status=status.HTTP_403_FORBIDDEN)
+
+                with db_transaction.atomic():
+                    if wallet.has_sufficient_balance(total_amount):
+                        wallet.debit(total_amount)
+
+                        Transaction.objects.create(
+                            wallet=wallet,
+                            transaction_type="DEBIT",
+                            amount=total_amount,
+                            status="COMPLETED",
+                            description=f"Wallet payment for Order #{order.id}"
+                        )
+
+                        return Response({'message': 'Payment successful via wallet.'}, status=status.HTTP_200_OK)
+
+                    else:
+                        wallet_amount = wallet.balance
+                        remaining_amount = total_amount - wallet_amount
+
+                        # Debit wallet fully
+                        wallet.debit(wallet_amount)
+                        Transaction.objects.create(
+                            wallet=wallet,
+                            transaction_type="DEBIT",
+                            amount=wallet_amount,
+                            status="COMPLETED",
+                            description=f"Partial wallet payment for Order #{order.id}"
+                        )
+
+                        # Proceed with Razorpay for remaining
+                        import razorpay
+                        razorpay_client = razorpay.Client(auth=(os.getenv('RAZORPAY_KEY'), os.getenv('RAZORPAY_SECRET')))
+                        data = {
+                            'amount': int(remaining_amount * 100),  # in paise
+                            'currency': 'INR',
+                            'payment_capture': 1,
+                            'receipt': order.order_id,
+                            'notes': {
+                                'customer_id': order.customer_id.bmu
+                            }
+                        }
+                        razorpay_order = razorpay_client.order.create(data)
+                        order.razorpay_order_id = razorpay_order.get('id')
+                        order.save()
+
+                        return Response({
+                            'message': 'Wallet partially used. Please complete remaining payment via UPI.',
+                            'wallet_debited': str(wallet_amount),
+                            'razorpay_order': razorpay_order,
+                            'order_id': order.id
+                        }, status=status.HTTP_206_PARTIAL_CONTENT)
+
             elif payment_method == 'Cash':
                 return Response(data={'message': 'Payment successful.'}, status=status.HTTP_200_OK)
             else:

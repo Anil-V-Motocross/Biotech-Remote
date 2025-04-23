@@ -225,40 +225,15 @@ class ProductInventorySerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     id = serializers.CharField(source='product_id.id')
-    # Include main product image as the first element in the images list
-    images = serializers.SerializerMethodField()
-    # add short_description from MainProduct
-    short_description = serializers.ReadOnlyField(source='product_id.short_description')
-    main_product_name = serializers.ReadOnlyField(source='product_id.name')
+    image = serializers.SerializerMethodField()
+    name = serializers.ReadOnlyField(source='product_id.name')
     is_cart = serializers.SerializerMethodField()
     is_wishlist = serializers.SerializerMethodField()
-
+    product_rating = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
-        fields = ['id', 'selling_price', 'mrp', 'is_cart', 'is_wishlist', 'images', 'short_description', 'main_product_name', 'size_id', 'planter_size_id', 'planter_id', 'weight_id', 'litre_id', 'color_id']
-
-    def get_images(self, obj):
-        # Start with the product's main image
-        image_list = [{"image": self.get_absolute_url(obj.image)}] if obj.image else []
-        
-        # Add the related MainProductImages
-        main_product_images = MainProductImage.objects.filter(product=obj.product_id)
-        for main_product_image in main_product_images:
-            image_list.append({"image": self.get_absolute_url(main_product_image.image)})
-
-        return image_list
-
-    def get_absolute_url(self, image_field):
-        """
-        This method constructs the absolute URL for the given image field.
-        It uses request.build_absolute_uri() with MEDIA_URL to construct the full URL.
-        """
-        request = self.context.get('request')  # Get the request object from the context
-        if request and image_field:
-            # Generate the full absolute URL for the image
-            return request.build_absolute_uri(settings.MEDIA_URL + image_field.name)
-        return None 
+        fields = ['id', 'name', 'is_cart', 'is_wishlist', 'mrp', 'selling_price', 'image', 'product_rating']
 
     def get_is_cart(self, obj):
         """Check if the product exists in the user's cart."""
@@ -273,3 +248,37 @@ class ProductSerializer(serializers.ModelSerializer):
         if user.is_authenticated:
             return Wishlist.objects.filter(user_id=user, product_id=obj).exists()
         return False
+    
+    def get_product_rating(self, obj):
+        product_rating = Rating.objects.filter(main_product_id=obj.product_id.id).aggregate(
+            avg_rating=Avg('product_rating'),
+            num_ratings=Count('id')
+        )
+        product_rating['avg_rating'] = round(product_rating['avg_rating'], 2) if product_rating['avg_rating'] else 0
+
+        # Breakdown of star ratings
+        stars_given = list(
+            Rating.objects.filter(main_product_id=obj.product_id.id)
+            .annotate(rounded_rating=Floor(F('product_rating')))
+            .values('rounded_rating')
+            .annotate(count=Count('id'))
+            .order_by('-rounded_rating')
+        )
+
+        return product_rating
+    
+    def get_image(self, obj):
+        """
+        Returns the relative path of the first main product image.
+        Fallback to product.image if no MainProductImage is found.
+        """
+        # Try MainProductImage first
+        main_image = MainProductImage.objects.filter(product=obj.product_id).first()
+        if main_image and main_image.image:
+            return main_image.image.url  # returns '/media/...'
+
+        # Fallback to Product.image
+        if obj.image:
+            return obj.image.url
+
+        return None    

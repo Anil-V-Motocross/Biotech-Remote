@@ -80,6 +80,9 @@ class OrderStatus(models.Model):
         ('OUT_FOR_DELIVERY', 'Out for Delivery'),
         ('DELIVERED', 'Delivered'),
         ('CANCELLED', 'Cancelled'),
+        ('RETURN_REQUESTED', 'Return Requested'),
+        ('RETURN_APPROVED', 'Return Approved'),
+        ('RETURN_REJECTED', 'Return Rejected'),
         ('RETURNED', 'Returned'),
         ('PICKUP_EXPIRED', 'Pickup Expired'),
     ]

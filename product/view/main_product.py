@@ -57,6 +57,29 @@ def main_product(request, pk=None):
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
     
+    if request.method == 'GET' and pk:
+        required_permissions = [
+            'product.view_mainproduct'
+        ]
+        
+        if not any(request.user.has_perm(perm) for perm in required_permissions):
+            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+        
+        try:
+            product = MainProduct.objects.get(id=pk)
+        except MainProduct.DoesNotExist:
+            return Response({'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = MainProductSerializer(product)
+        image_queryset = MainProductImage.objects.filter(product=product)
+        image_serializer = MainProductImageSerializer(image_queryset, many=True)
+
+        data = {
+            'product': serializer.data,
+            'images': image_serializer.data
+        }
+        return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
+    
     if request.method == 'POST':
         required_permissions = [
             'product.add_mainproduct', 'product.add_mainproductimage'
@@ -138,9 +161,14 @@ def main_product(request, pk=None):
             return Response({'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
 
         # Update product fields
-        for field in ['name', 'short_description', 'ribbon', 'threshold', 'description', 'whats_included', 'vedio_link', 'type']:
+        for field in [
+            'name', 'short_description', 'ribbon', 'threshold',
+            'description', 'whats_included', 'vedio_link', 'type',
+            'is_featured', 'is_best_seller', 'is_seasonal_collection', 'is_trending'
+        ]:
             if field in request.data:
                 setattr(product, field, request.data[field])
+
 
         product.save()
 

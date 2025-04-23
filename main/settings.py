@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'btcoins',
 
     'django_weasyprint',
+    'import_export',
 
 ]
 

@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from order.models import Order, DeliveryAddress
 from account.permissions import DynamicPermission
+from datetime import timedelta
+from django.utils import timezone
 
 class DeliveryAddressSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,11 +18,12 @@ class OrderSerializer(serializers.ModelSerializer):
     delivery_address = serializers.SerializerMethodField()
     product_details  = serializers.SerializerMethodField()
     status = serializers.SerializerMethodField()
+    is_returnable = serializers.SerializerMethodField()
 
     class Meta:
         model = Order
         fields = ['id', 'order_id', 'date', 'total_price', 'total_discount', 'tracking_id', 'grand_total', 
-                  'payment_method', 'customer_name', 'delivery_option', 'status', 'razorpay_order_id', 'delivery_address', 'product_details']
+                  'payment_method', 'customer_name', 'delivery_option', 'status', 'razorpay_order_id', 'delivery_address', 'product_details', 'is_returnable']
 
     def get_delivery_address(self, obj):
         try:
@@ -45,6 +48,28 @@ class OrderSerializer(serializers.ModelSerializer):
         """ Fetch the latest status of the order """
         latest_status = obj.status_history.first()  # Get the latest status based on ordering in Meta class
         return latest_status.status if latest_status else None
+    
+    def get_is_returnable(self, obj):
+        latest_status = obj.status_history.first()
+
+        if not latest_status or latest_status.status != 'DELIVERED':
+            return False
+
+        # Must be within 7-day return window
+        delivery_date = latest_status.timestamp
+        if timezone.now() > delivery_date + timedelta(days=7):
+            return False
+
+        # Must not contain plants
+        order_items = obj.orderitem_set.all()
+        for item in order_items:
+            # if getattr(item.product_id.product_id, 'type', None) == 'plant':
+            if item.product_id.product_id.type == 'plant':
+                return False
+
+        return True
+
+
 
 # @api_view(['GET'])
 # @permission_classes([IsAuthenticated, DynamicPermission])   
