@@ -51,19 +51,20 @@ def send_otp(mobile, otp):
         url = "https://control.msg91.com/api/v5/flow/"
         # payload = {"template_id": "60ffda6d9c235f799241960f",
         #            "recipients": [{"mobiles": phone, "name": name, "otp": otp}]}  674a89f9d6fc05032f5bf902
-        payload = {"template_id": "60ffda6d9c235f799241960f",
+        # payload = {"template_id": "60ffda6d9c235f799241960f",
+        payload = {"template_id": "679b3f30d6fc05314a4a9742",
                    "recipients": [{
                        "mobiles": phone,
-                       "name": "ABC",
-                       "otp": otp
+                       "var1": "Customer",
+                       "var2": otp
                    }]
                    }
 
         headers = {
             "accept": "application/json",
             "content-type": "application/json",
-            # "authkey": "433172AwxmUdTOWK6746d6c2P1"
-            "authkey": "112997AWvDqQDssV665ba34edP1"
+            "authkey": "433172AwxmUdTOWK6746d6c2P1"
+            # "authkey": "112997AWvDqQDssV665ba34edP1"
         }
 
         response = requests.post(url, json=payload, headers=headers)

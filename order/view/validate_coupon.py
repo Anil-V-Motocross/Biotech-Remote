@@ -335,7 +335,7 @@ def validate_coupon(request):
         # return Response({'error': f'Minimum order value should be {coupon.minimum_order_value}'}, status=status.HTTP_400_BAD_REQUEST)
         return Response({
             'success': False,
-            'error': f'Minimum order value should be {coupon.minimum_order_value}',
+            'error': f"Oops! This coupon requires a minimum order value of ₹{coupon.minimum_order_value}. You're almost there — just add a few more products to unlock your savings!",
             'discount_amount': 0,
             'new_total': order_total,
             'coupon_code': None,

@@ -8,6 +8,9 @@ from account.permissions import DynamicPermission
 from rest_framework import serializers
 from django.core.files.base import ContentFile
 import json
+from rest_framework.utils.serializer_helpers import ReturnDict
+from copy import deepcopy
+
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -111,26 +114,82 @@ def product(request, pk = None):
         }
         return Response(data={'message': 'success', 'data': data}, status=status.HTTP_200_OK)
     
+    # if request.method == 'PATCH' and pk:
+    #     required_permissions = [
+    #         'product.change_product'
+    #     ]
+
+    #     if not any(request.user.has_perm(perm) for perm in required_permissions):
+    #         return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+
+    #     try:
+    #         product_instance = Product.objects.get(id=pk)
+    #     except Product.DoesNotExist:
+    #         return Response({'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+    #     serializer = ProductSerializer(product_instance, data=request.data, partial=True)
+
+    #     if serializer.is_valid():
+    #         serializer.save()
+
+    #         return Response({'message': 'Product updated successfully.', 'data': serializer.data}, status=status.HTTP_200_OK)
+    #     else:
+    #         return Response({'message': 'Validation failed.', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)    
+    
+    # return Response(data={'message': 'Invalid request method.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
     if request.method == 'PATCH' and pk:
-        required_permissions = [
-            'product.change_product'
-        ]
+        required_permissions = ['product.change_product']
 
         if not any(request.user.has_perm(perm) for perm in required_permissions):
-            return Response(data={'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
+            return Response({'message': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
 
         try:
             product_instance = Product.objects.get(id=pk)
         except Product.DoesNotExist:
             return Response({'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
 
-        serializer = ProductSerializer(product_instance, data=request.data, partial=True)
+        # Convert request.data to a mutable dict
+        data = request.data.copy()
+
+        # Handle boolean fields properly
+        boolean_fields = ['is_best_seller', 'is_featured', 'is_seasonal_collection', 'is_trending', 'visible_online']
+        for field in boolean_fields:
+            if field in data:
+                val = data.get(field)
+                if isinstance(val, str):
+                    # Strip quotes if present and convert to lowercase
+                    cleaned_val = val.strip('"\'').lower()
+                    data[field] = cleaned_val == 'true'
+                # Handle JSON-like objects that might be strings
+                elif hasattr(val, 'lower') and callable(getattr(val, 'lower')):
+                    data[field] = val.lower() == 'true'
+        
+        # Handle list/object fields that might be formatted as [object Object]
+        object_fields = ['photos', 'add_ons']
+        for field in object_fields:
+            if field in data and isinstance(data[field], str) and '[object Object]' in data[field]:
+                # If it's showing as [object Object], it's likely a frontend issue
+                # Consider removing it from the update to prevent errors
+                del data[field]
+        
+        serializer = ProductSerializer(product_instance, data=data, partial=True)
 
         if serializer.is_valid():
             serializer.save()
-
-            return Response({'message': 'Product updated successfully.', 'data': serializer.data}, status=status.HTTP_200_OK)
+            return Response({
+                'status': True,
+                'message': 'Product updated successfully.',
+                'data': serializer.data
+            }, status=status.HTTP_200_OK)
         else:
-            return Response({'message': 'Validation failed.', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)    
-    
-    return Response(data={'message': 'Invalid request method.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({
+                'status': False,
+                'message': 'Validation failed.',
+                'errors': serializer.errors
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+    return Response({'message': 'Invalid request method.'}, status=status.HTTP_400_BAD_REQUEST)
+
