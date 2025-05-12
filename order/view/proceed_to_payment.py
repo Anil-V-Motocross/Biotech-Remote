@@ -5,13 +5,14 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from account.permissions import DynamicPermission
 from rest_framework import serializers
-from order.models import Order
+from order.models import Order, OrderStatus, OrderItem, Cart
+from coupon.models import CouponUsage
 import os
 from dotenv import load_dotenv
 from decimal import Decimal
 from django.db import transaction as db_transaction
 from wallet.models import Transaction, Wallet
-
+from order.view.send_sms_to_admin import send_order_sms_to_admin
 
 # Load .env file
 load_dotenv()
@@ -85,7 +86,34 @@ def proceed_to_payment(request):
                             status="COMPLETED",
                             description=f"Wallet payment for Order #{order.id}"
                         )
+                        order = Order.objects.get(id=order_id)
 
+                        order_status = OrderStatus.objects.create(order=order, status="PROCESSING")
+
+                        if order.coupon_applied and order.applied_coupon:
+                            # Save coupon usage
+                            coupon = order.applied_coupon
+                            # Ensure only one coupon usage per user per coupon
+                            coupon_usage, created = CouponUsage.objects.get_or_create(
+                                user=order.customer_id, 
+                                coupon=coupon,
+                                order=order
+                            )
+
+                            if created:
+                                print(f"✅ Coupon '{coupon.code}' usage recorded for user {order.customer_id}.")
+                            else:
+                                print(f"⚠️ Coupon '{coupon.code}' was already used in this order.")    
+
+                        cart_items = set(Cart.objects.filter(user_id=request.user.id).values_list('product_id', flat=True))
+                        order_items = set(OrderItem.objects.filter(order_id=order).values_list('product_id', flat=True))
+
+                        # Check if all order items exactly match the cart items
+                        if order_items == cart_items:  
+                            Cart.objects.filter(user_id=request.user.id).delete()  
+
+                        # Notify Admin via SMS and Email
+                        send_order_sms_to_admin(order)
                         return Response({'message': 'Payment successful via wallet.'}, status=status.HTTP_200_OK)
 
                     else:
